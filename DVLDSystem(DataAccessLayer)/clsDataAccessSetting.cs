@@ -9,6 +9,6 @@ namespace DVLDSystem_DataAccessLayer_
     static class clsDataAccessSetting
     {
 
-        public static string ConnectionString = "Server=.;Database=Clinic_test;User Id=admin;Password=mode2010;";
+        public static string ConnectionString = "Server=.;Database=DVLD;User Id=admin;Password=mode2010;";
     }
 }
