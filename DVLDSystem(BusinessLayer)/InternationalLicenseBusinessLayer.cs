@@ -62,12 +62,12 @@ namespace DVLDSystem_BusinessLayer_
             DateTime IssueDate  = DateTime.Now,   ExpirationDate = DateTime.Now;
             bool IsActive = false;
 
-           /* Enter all Variables */
+           
            if (clsInternationalLicenseDataAccessLayer.GetInternationalLicenseInfoByID(InternationalLicenseID,ref ApplicationID,ref DriverID,ref IssuedUsingLocalLicenseID,ref IssueDate
                                                                                       ,ref ExpirationDate,ref IsActive,ref CreatedByUserID))
            {
                 return new clsInternationalLicense(InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, CreatedByUserID);
-               /* return new clsInternationalLicense(Variables)*/
+               
            }
            else
            {
