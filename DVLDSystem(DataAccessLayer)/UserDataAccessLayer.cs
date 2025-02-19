@@ -251,12 +251,7 @@ namespace DVLDSystem_DataAccessLayer_
                              People.ImagePath, Users.UserName, Users.Password, Users.IsActive
                              FROM            Users INNER JOIN
                              People ON Users.PersonID = People.PersonID
-						     where UserID like '% @UserID %'
-
-
-
-
-";
+						     where UserID like '% @UserID %' ";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@UserID", UserID);
 
