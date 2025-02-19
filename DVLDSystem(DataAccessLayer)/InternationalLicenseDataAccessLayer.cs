@@ -13,7 +13,7 @@ namespace DVLDSystem_DataAccessLayer_
 
         public static bool GetInternationalLicenseInfoByID(int InternationalLicenseID, ref int ApplicationID, 
                                                                                ref int DriverID, ref int IssuedUsingLocalLicenseID, 
-                                                                               ref DateTime IssueDate, ref DateTime ExpirationDate, ref byte IsActive, ref int CreatedByUserID)
+                                                                               ref DateTime IssueDate, ref DateTime ExpirationDate, ref bool IsActive, ref int CreatedByUserID)
         {
 
             bool IsFound = false;
@@ -42,7 +42,7 @@ namespace DVLDSystem_DataAccessLayer_
                     IssuedUsingLocalLicenseID = (int)reader["IssuedUsingLocalLicenseID"];
                     IssueDate = (DateTime)reader["IssueDate"];
                     ExpirationDate = (DateTime)reader["ExpirationDate"];
-                    IsActive = (byte)reader["IsActive"];
+                    IsActive = (bool)reader["IsActive"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
 
 
@@ -65,7 +65,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
-        public static int AddNewInternationalLicense(int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, byte IsActive, int CreatedByUserID)
+        public static int AddNewInternationalLicense(int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
         {
             int InternationalLicenseId = -1;
 
@@ -105,7 +105,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return InternationalLicenseId;
         }
-        public static bool UpdateInternationalLicenseByID(int InternationalLicenseID, int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, byte IsActive, int CreatedByUserID)
+        public static bool UpdateInternationalLicenseByID(int InternationalLicenseID, int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
         {
             int AffectedRows = 0;
 
