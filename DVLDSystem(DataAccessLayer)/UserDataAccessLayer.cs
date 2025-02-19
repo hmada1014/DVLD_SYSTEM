@@ -1,0 +1,287 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DVLDSystem_DataAccessLayer_
+{
+    public class clsUserDataAccessLayer
+    {
+        public static bool GetUserInfoByUserID(int UserID, ref int PersonID, ref string UserName, ref string Password, ref bool IsActive)
+        {
+
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select * from Users where UserID = @UserID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@UserID", UserID);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    PersonID = (int)reader["PersonID"];
+                    UserName = (string)reader["UserName"];
+                    Password = (string)reader["Password"];
+                    IsActive = (bool)reader["IsActive"];
+
+
+                }
+                else
+                {
+                    IsFound = false;
+
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+        public static int AddNewUser(int PersonID, string UserName, string Password, bool IsActive)
+        {
+            int UserId = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = $"insert into Users (PersonID,UserName,Password,IsActive)" +
+            $"Values(@PersonID,@UserName,@Password,@IsActive) select scope_identity();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@UserName", UserName);
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@IsActive", IsActive);
+
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int InsertID))
+                {
+                    UserId = InsertID;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return UserId;
+        }
+        public static bool UpdateUserByUserID(int UserID, int PersonID, string UserName, string Password, bool IsActive)
+        {
+            int AffectedRows = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"update Users 
+                            set
+                            PersonID = @PersonID,
+                            UserName = @UserName,
+                            Password = @Password,
+                            IsActive = @IsActive
+                            where UserID = @UserID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@UserID", UserID);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@UserName", UserName);
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@IsActive", IsActive);
+
+
+            try
+            {
+                connection.Open();
+                AffectedRows = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (AffectedRows > 0);
+        }
+
+        public static bool DeleteUserByUserID(int UserID)
+        {
+            int AffectedRows = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = "delete from Users where  UserID = @UserID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserID", UserID);
+
+
+            try
+            {
+                connection.Open();
+                AffectedRows = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return (AffectedRows > 0);
+        }
+        public static DataView GetAllUser()
+        {
+            DataTable dtUser = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = " select UserID,PersonID,UserName,Password,IsActive from Users ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dtUser.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dtUser.DefaultView;
+        }
+        public static int GetTotalUsers()
+        {
+            int Total = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select count(*) from Users";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int total))
+                {
+                    Total = total;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+            }
+            return Total;
+        }
+        public static bool IsUserExist(int UserID)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Found = 1 from Users where UserID = @UserID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserID", UserID);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+        public static DataView SearchUserByUserID(int UserID)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT   Users.UserID, People.NationalNo, People.FirstName, People.SecondName, People.ThirdName, People.LastName, People.DateOfBirth, People.Gender, People.Address, People.Phone, People.Email, People.NationalityCountryID, 
+                             People.ImagePath, Users.UserName, Users.Password, Users.IsActive
+                             FROM            Users INNER JOIN
+                             People ON Users.PersonID = People.PersonID
+						     where UserID like '% @UserID %'
+
+
+
+
+";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserID", UserID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+
+
+    }
+}
