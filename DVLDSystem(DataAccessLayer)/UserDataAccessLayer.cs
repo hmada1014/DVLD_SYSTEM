@@ -242,7 +242,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
-        public static DataView SearchUserByUserID(int UserID)
+        public static DataView SearchUserByUserID(string UserID)
         {
             DataTable dataTable = new DataTable();
 
