@@ -4,11 +4,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DVLDSystem_DataAccessLayer_;
 
 namespace DVLDSystem_BusinessLayer_
 {
   
-   public class clsInternationalLicenseBusinessLayer
+   public class clsInternationalLicense
    {
        public enum enInternationalLicenseMode { Add = 0, Update = 1 }
        public enInternationalLicenseMode Mode = enInternationalLicenseMode.Add;
@@ -23,7 +24,7 @@ namespace DVLDSystem_BusinessLayer_
        public int CreatedByUserID { get; set; }
 
 
-       public clsInternationalLicenseBusinessLayer()
+       public clsInternationalLicense()
        {
            this.InternationalLicenseID = -1;
            this.ApplicationID = -1;
@@ -40,7 +41,7 @@ namespace DVLDSystem_BusinessLayer_
 
        }
 
-       private clsInternationalLicenseBusinessLayer(int InternationalLicenseID, int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, byte IsActive, int CreatedByUserID)
+       private clsInternationalLicense(int InternationalLicenseID, int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, byte IsActive, int CreatedByUserID)
        {
            this.InternationalLicenseID = InternationalLicenseID;
            this.ApplicationID = ApplicationID;
@@ -55,15 +56,17 @@ namespace DVLDSystem_BusinessLayer_
            this.Mode = enInternationalLicenseMode.Update;
 
        }
-       public static bool Find(int InternationalLicenseID)
+       public static clsInternationalLicense Find(int InternationalLicenseID)
         {
             int ApplicationID = -1, DriverID = -1, CreatedByUserID = -1 , IssuedUsingLocalLicenseID = -1;     
             DateTime IssueDate  = DateTime.Now,   ExpirationDate = DateTime.Now;
-            bool IsActive = true;
+            byte IsActive = 0;
 
            /* Enter all Variables */
-           if (cls)
+           if (clsInternationalLicenseDataAccessLayer.GetInternationalLicenseInfoByID(InternationalLicenseID,ref ApplicationID,ref DriverID,ref IssuedUsingLocalLicenseID,ref IssueDate
+                                                                                      ,ref ExpirationDate,ref IsActive,ref CreatedByUserID))
            {
+                return new clsInternationalLicense(InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive, CreatedByUserID);
                /* return new clsInternationalLicense(Variables)*/
            }
            else
@@ -73,24 +76,27 @@ namespace DVLDSystem_BusinessLayer_
        }
        public static bool IsInternationalLicenseExist(int InternationalLicenseID)
        {
-           /* return from data access*/
+            return clsInternationalLicenseDataAccessLayer.IsInternationalLicenseIDExist(InternationalLicenseID);
+         
        }
        private bool _AddNewInternationalLicense()
        {
-           this.InternationalLicenseID = -1; /*Function from data access*/
+            this.InternationalLicenseID = clsInternationalLicenseDataAccessLayer.AddNewInternationalLicense(this.ApplicationID, this.DriverID, this.IssuedUsingLocalLicenseID, this.IssueDate, this.ExpirationDate, this.IsActive, this.CreatedByUserID);
            return (this.InternationalLicenseID != -1);
        }
        private bool _UpdateInternationalLicense()
        {
-           /* return from data access function*/
+          return  clsInternationalLicenseDataAccessLayer.UpdateInternationalLicenseByID(this.InternationalLicenseID, this.ApplicationID, this.DriverID
+                                                                                  , this.IssuedUsingLocalLicenseID, this.IssueDate, this.ExpirationDate, this.IsActive, this.CreatedByUserID);
        }
        public static bool DeleteInternationalLicense(int InternationalLicenseID)
        {
-           /* return from data access function*/
+            return clsInternationalLicenseDataAccessLayer.DeleteInternationalLicenseByID(InternationalLicenseID);
+          
        }
        public static DataView GetAllInternationalLicenses()
        {
-           /* return from data access function*/
+           return clsInternationalLicenseDataAccessLayer.GetAllInternationalLicense();
        }
        public bool Save()
        {
