@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DVLDSystem_DataAccessLayer_
 {
-    internal class clsInternationalLicenseDataAccessLayer
+    public class clsInternationalLicenseDataAccessLayer
     {
 
         public static bool GetInternationalLicenseInfoByID(int InternationalLicenseID, ref int ApplicationID, 

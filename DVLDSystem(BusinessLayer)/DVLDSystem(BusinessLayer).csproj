@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountryBusinessLayer.cs" />
+    <Compile Include="InternationalLicenseBusinessLayer.cs" />
     <Compile Include="PeopleBusinessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
