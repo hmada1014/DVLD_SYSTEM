@@ -20,7 +20,7 @@ namespace DVLDSystem_BusinessLayer_
        public int IssuedUsingLocalLicenseID { get; set; }
        public DateTime IssueDate { get; set; }
        public DateTime ExpirationDate { get; set; }
-       public byte IsActive { get; set; }
+       public bool IsActive { get; set; }
        public int CreatedByUserID { get; set; }
 
 
@@ -32,7 +32,7 @@ namespace DVLDSystem_BusinessLayer_
            this.IssuedUsingLocalLicenseID = -1;
            this.IssueDate = DateTime.Now;
            this.ExpirationDate = DateTime.Now;
-           this.IsActive = 0;
+           this.IsActive = false;
            this.CreatedByUserID = -1;
 
 
@@ -41,7 +41,7 @@ namespace DVLDSystem_BusinessLayer_
 
        }
 
-       private clsInternationalLicense(int InternationalLicenseID, int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, byte IsActive, int CreatedByUserID)
+       private clsInternationalLicense(int InternationalLicenseID, int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
        {
            this.InternationalLicenseID = InternationalLicenseID;
            this.ApplicationID = ApplicationID;
@@ -60,7 +60,7 @@ namespace DVLDSystem_BusinessLayer_
         {
             int ApplicationID = -1, DriverID = -1, CreatedByUserID = -1 , IssuedUsingLocalLicenseID = -1;     
             DateTime IssueDate  = DateTime.Now,   ExpirationDate = DateTime.Now;
-            byte IsActive = 0;
+            bool IsActive = false;
 
            /* Enter all Variables */
            if (clsInternationalLicenseDataAccessLayer.GetInternationalLicenseInfoByID(InternationalLicenseID,ref ApplicationID,ref DriverID,ref IssuedUsingLocalLicenseID,ref IssueDate
