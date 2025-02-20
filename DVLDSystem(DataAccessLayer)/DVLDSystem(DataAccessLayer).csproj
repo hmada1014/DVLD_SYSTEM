@@ -45,6 +45,7 @@
     <Compile Include="CountryDataAccessLayer.cs" />
     <Compile Include="DetaineLicenseDataAccessLayer.cs" />
     <Compile Include="InternationalLicenseDataAccessLayer.cs" />
+    <Compile Include="LicenseDataAccessLayer.cs" />
     <Compile Include="PeopleDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDataAccessLayer.cs" />
