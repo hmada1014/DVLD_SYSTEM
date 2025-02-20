@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DVLDSystem_DataAccessLayer_
 {
-    public class clsDetaineLicense
+    public class clsDetaineLicenseDataAccessLayer
     {
         public static bool GetDetainInfoByDetainID(int DetainID, ref int LicenseID, ref DateTime DetainDate, ref decimal FineFees, ref int CreatedByUserID, ref bool IsReleased, ref DateTime ReleaseDate, ref int ReleasedByUserID, ref int ReleaseApplicationID)
         {

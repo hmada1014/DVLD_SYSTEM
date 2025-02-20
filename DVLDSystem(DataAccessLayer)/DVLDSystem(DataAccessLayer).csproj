@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="clsDataAccessSetting.cs" />
     <Compile Include="CountryDataAccessLayer.cs" />
-    <Compile Include="DetaineLicense.cs" />
+    <Compile Include="DetaineLicenseDataAccessLayer.cs" />
     <Compile Include="InternationalLicenseDataAccessLayer.cs" />
     <Compile Include="PeopleDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
