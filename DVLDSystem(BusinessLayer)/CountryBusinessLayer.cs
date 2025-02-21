@@ -68,10 +68,15 @@ namespace DVLDSystem_BusinessLayer_
             return clsCountryDataAccessLayer.DeleteCountryByCountryID(CountryID);
 
         }
-        public static DataView GetAllCountrys()
+        public static DataView GetAllCountries()
         {
 
-            return clsCountryDataAccessLayer.GetAllCountry();
+            return clsCountryDataAccessLayer.GetAllCountries();
+        }
+
+        public static DataView SearchCountriesByCountryID(string CountryID)
+        {
+            return clsCountryDataAccessLayer.SearchCountryByCountryID(CountryID);
         }
         public bool Save()
         {
