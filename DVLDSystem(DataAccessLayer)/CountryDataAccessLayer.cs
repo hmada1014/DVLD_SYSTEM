@@ -150,7 +150,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return (AffectedRows > 0);
         }
-        public static DataView GetAllCountry()
+        public static DataView GetAllCountries()
         {
             DataTable dtCountry = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
