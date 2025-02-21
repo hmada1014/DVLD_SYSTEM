@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DVLDSystem_DataAccessLayer_
 {
-    public class TestTypeDataAccessLayer
+    public class clsTestTypeDataAccessLayer
     {
         public static bool GetTestTypeInfoByTestTypeID(int TestTypeID, ref string TestTypeTitle, ref string TestTypeDescription, ref decimal TestTypeFees)
         {
