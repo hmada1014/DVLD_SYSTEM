@@ -55,19 +55,16 @@ namespace DVLDSystem_BusinessLayer_
         }
         public static clsTestAppointment Find(int TestAppointmentID)
         {
-            int LicenseID = -1,
-                TestTypeID = -1,
-                LocalDrivingLicenseApplicationID = -1,
-                CreatedByUserID = -1;
+            int LicenseID = -1,TestTypeID = -1,LocalDrivingLicenseApplicationID = -1,CreatedByUserID = -1;
 
             DateTime AppointmentDate = DateTime.MinValue;
             decimal PaidFees = -1m;
             bool IsLocked = false;
 
-            /* Enter all Variables */
+            
             if (clsTestAppointmentDataAccessLayer.GetTestAppointmentInfoByTestAppointmentID(TestAppointmentID, ref TestTypeID, ref LocalDrivingLicenseApplicationID, ref AppointmentDate, ref PaidFees, ref CreatedByUserID, ref IsLocked))
             {
-                return new clsTestAppointment(TestAppointmentID,  TestTypeID,  LocalDrivingLicenseApplicationID,  AppointmentDate,  PaidFees,  CreatedByUserID,  IsLocked);
+                return new clsTestAppointment(TestAppointmentID,TestTypeID,LocalDrivingLicenseApplicationID,AppointmentDate,  PaidFees,  CreatedByUserID,  IsLocked);
             }
             else
             {
