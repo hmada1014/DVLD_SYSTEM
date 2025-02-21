@@ -231,7 +231,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
-        public static DataView SearchCountryByCountryID(int CountryID)
+        public static DataView SearchCountryByCountryID(string CountryID)
         {
             DataTable dataTable = new DataTable();
 
