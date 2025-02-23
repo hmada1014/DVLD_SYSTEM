@@ -130,7 +130,7 @@ namespace DVLDSystem_DataAccessLayer_
         }
 
 
-        public static bool DeleteLocalDrivingLicenseApplicationByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        public static bool DeleteLocalDrivingLicenseApplicationByID(int LocalDrivingLicenseApplicationID)
         {
             int AffectedRows = 0;
 
