@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationBusinessLayer.cs" />
+    <Compile Include="ApplicationTypeBusinessLayer.cs" />
     <Compile Include="CountryBusinessLayer.cs" />
     <Compile Include="DetaineLicenseBusinessLayer.cs" />
     <Compile Include="DriverBusinessLayer.cs" />
