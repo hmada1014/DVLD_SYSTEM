@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDataAccessLayer.cs" />
+    <Compile Include="ApplicationTypeDataAccessLayer.cs" />
     <Compile Include="clsDataAccessSetting.cs" />
     <Compile Include="CountryDataAccessLayer.cs" />
     <Compile Include="DetaineLicenseDataAccessLayer.cs" />
