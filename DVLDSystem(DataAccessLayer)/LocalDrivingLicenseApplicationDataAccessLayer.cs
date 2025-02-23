@@ -94,7 +94,7 @@ namespace DVLDSystem_DataAccessLayer_
             return LocalDrivingLicenseApplicationId;
         }
 
-        public static bool UpdateLocalDrivingLicenseApplicationByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
+        public static bool UpdateLocalDrivingLicenseApplicationByID(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
         {
             int AffectedRows = 0;
 
