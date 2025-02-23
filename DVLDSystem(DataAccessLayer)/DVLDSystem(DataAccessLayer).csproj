@@ -49,6 +49,7 @@
     <Compile Include="InternationalLicenseDataAccessLayer.cs" />
     <Compile Include="LicenseClassDataAccessLayer.cs" />
     <Compile Include="LicenseDataAccessLayer.cs" />
+    <Compile Include="LocalDrivingLicenseApplicationDataAccessLayer.cs" />
     <Compile Include="PeopleDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestAppointmentDataAccessLayer.cs" />
