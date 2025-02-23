@@ -49,6 +49,7 @@
     <Compile Include="PeopleDataAccessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestAppointmentDataAccessLayer.cs" />
+    <Compile Include="TestDataAccessLayer.cs" />
     <Compile Include="TestTypeDataAccessLayer.cs" />
     <Compile Include="UserDataAccessLayer.cs" />
   </ItemGroup>
