@@ -46,6 +46,7 @@
     <Compile Include="DetaineLicenseBusinessLayer.cs" />
     <Compile Include="InternationalLicenseBusinessLayer.cs" />
     <Compile Include="LicenseBusinessLayer.cs" />
+    <Compile Include="LicenseClassBusinessLayer.cs" />
     <Compile Include="PeopleBusinessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestAppointmentBusinessLayer.cs" />
