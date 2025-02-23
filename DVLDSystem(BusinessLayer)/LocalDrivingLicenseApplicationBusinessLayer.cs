@@ -26,9 +26,7 @@ namespace DVLDSystem_BusinessLayer_
             this.ApplicationID = -1;
             this.LicenseClassID = -1;
 
-
             this.Mode = enLocalDrivingLicenseApplicationMode.Add;
-
 
         }
 
@@ -44,9 +42,9 @@ namespace DVLDSystem_BusinessLayer_
         }
         public static clsLocalDrivingLicenseApplication Find(int LocalDrivingLicenseApplicationID)
         {
-            /* remove ref and add Minimum value any dataType accept number = -1 in one line:int LocalDrivingLicenseApplicationID , ref int ApplicationID , ref int LicenseClassID ,
-             make it organize */
-            if (/* call data access to get by ref --- [LocalDrivingLicenseApplicationID ,ref ApplicationID ,ref LicenseClassID]*/)
+            int ApplicationID = -1, LicenseClassID = -1;
+
+            if (clsLocalDrivingLicenseApplicationDataAccess.GetLocalDrivingLicenseApplicationInfoByID(LocalDrivingLicenseApplicationID, ref ApplicationID, ref LicenseClassID))
             {
                 return new clsLocalDrivingLicenseApplication(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID);
             }
@@ -70,11 +68,11 @@ namespace DVLDSystem_BusinessLayer_
         }
         public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
         {
-            return clsLocalDrivingLicenseApplicationDataAccess.DeleteLocalDrivingLicenseApplicationByLocalDrivingLicenseApplicationID(LocalDrivingLicenseApplicationID);
+            return clsLocalDrivingLicenseApplicationDataAccess.DeleteLocalDrivingLicenseApplicationByID(LocalDrivingLicenseApplicationID);
         }
         public static DataView GetAllLocalDrivingLicenseApplications()
         {
-            /* return from data access function*/
+            return clsLocalDrivingLicenseApplicationDataAccess.GetAllLocalDrivingLicenseApplication();
         }
         public bool Save()
         {
