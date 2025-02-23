@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DVLDSystem_BusinessLayer_
 {
-    public class clsTestTypeData
+    public class clsTestType
     {
-        public enum enTestTypeDataMode { Add = 0, Update = 1 }
-        public enTestTypeDataMode Mode = enTestTypeDataMode.Add;
+        public enum enTestTypeMode { Add = 0, Update = 1 }
+        public enTestTypeMode Mode = enTestTypeMode.Add;
 
         public int TestTypeID { get; set; }
         public string TestTypeTitle { get; set; }
@@ -19,7 +19,7 @@ namespace DVLDSystem_BusinessLayer_
         public decimal TestTypeFees { get; set; }
 
 
-        public clsTestTypeData()
+        public clsTestType()
 
         {
             this.TestTypeID = -1;
@@ -28,12 +28,12 @@ namespace DVLDSystem_BusinessLayer_
             this.TestTypeFees = -1;
 
 
-            this.Mode = enTestTypeDataMode.Add;
+            this.Mode = enTestTypeMode.Add;
 
 
         }
 
-        private clsTestTypeData(int TestTypeID, string TestTypeTitle, string TestTypeDescription, decimal TestTypeFees)
+        private clsTestType(int TestTypeID, string TestTypeTitle, string TestTypeDescription, decimal TestTypeFees)
         {
             this.TestTypeID = TestTypeID;
             this.TestTypeTitle = TestTypeTitle;
@@ -41,10 +41,10 @@ namespace DVLDSystem_BusinessLayer_
             this.TestTypeFees = TestTypeFees;
 
 
-            this.Mode = enTestTypeDataMode.Update;
+            this.Mode = enTestTypeMode.Update;
 
         }
-        public static clsTestTypeData Find(int TestTypeID)
+        public static clsTestType Find(int TestTypeID)
         {
 
             string TestTypeTitle = string.Empty, TestTypeDescription = string.Empty;
@@ -52,7 +52,7 @@ namespace DVLDSystem_BusinessLayer_
 
             if (clsTestTypeDataAccessLayer.GetTestTypeInfoByTestTypeID(TestTypeID, ref TestTypeTitle, ref TestTypeDescription, ref TestTypeFees))
             {
-                return new clsTestTypeData(TestTypeID, TestTypeTitle, TestTypeDescription, TestTypeFees);
+                return new clsTestType(TestTypeID, TestTypeTitle, TestTypeDescription, TestTypeFees);
             }
             else
             {
@@ -84,17 +84,17 @@ namespace DVLDSystem_BusinessLayer_
         {
             switch (this.Mode)
             {
-                case enTestTypeDataMode.Add:
+                case enTestTypeMode.Add:
                     if (_AddNewTestTypeData())
                     {
-                        this.Mode = enTestTypeDataMode.Update;
+                        this.Mode = enTestTypeMode.Update;
                         return true;
                     }
                     else
                     {
                         return false;
                     }
-                case enTestTypeDataMode.Update:
+                case enTestTypeMode.Update:
                     return _UpdateTestTypeData();
             }
             return false;
