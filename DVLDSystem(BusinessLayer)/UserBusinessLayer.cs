@@ -66,6 +66,14 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsUserDataAccessLayer.IsUserExist(UserID);
         }
+        public static bool IsUserExist(string UserName)
+        {
+            return clsUserDataAccessLayer.IsUserExist(UserName);
+        }
+        public static bool IsUserExist(string UserName , string Password)
+        {
+            return clsUserDataAccessLayer.IsUserExist(UserName,Password);
+        }
         private bool _AddNewUser()
         {
             this.UserID = clsUserDataAccessLayer.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
