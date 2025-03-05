@@ -242,6 +242,65 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
+        public static bool IsUserExist(string UserName, string Password)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Found =1 from Users 
+                             where UserName = @UserName COLLATE SQL_Latin1_General_CP1_CS_AS 
+                             and Password = @Password COLLATE SQL_Latin1_General_CP1_CS_AS";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserName", UserName);
+            command.Parameters.AddWithValue("@Password", Password);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+        public static bool IsUserExist(string UserName)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Found = 1 from Users where UserName = @UserName COLLATE SQL_Latin1_General_CP1_CS_AS";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserName", UserName);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+
+
+
+
         public static DataView SearchUserByUserID(string UserID)
         {
             DataTable dataTable = new DataTable();
