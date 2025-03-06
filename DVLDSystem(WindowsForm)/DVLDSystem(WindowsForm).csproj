@@ -96,12 +96,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="testfrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="testfrm.Designer.cs">
-      <DependentUpon>testfrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="User Control\RoundedPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,9 +115,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="testfrm.resx">
-      <DependentUpon>testfrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\RoundedPanel.resx">
       <DependentUpon>RoundedPanel.cs</DependentUpon>
