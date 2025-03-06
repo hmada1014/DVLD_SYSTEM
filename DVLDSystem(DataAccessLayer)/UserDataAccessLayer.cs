@@ -66,7 +66,7 @@ namespace DVLDSystem_DataAccessLayer_
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string query = @"select * from Users where UserName = @UserName";
+            string query = @"select * from Users where UserName = @UserName and Password = @Password ";
 
             SqlCommand command = new SqlCommand(query, connection);
 
