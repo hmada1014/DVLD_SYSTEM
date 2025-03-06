@@ -68,7 +68,7 @@ namespace DVLDSystem_BusinessLayer_
             int PersonID = -1 , UserID =-1;
             bool IsActive = false;
 
-            if (clsUserDataAccessLayer.GetUserInfoByUserID(UserID, ref PersonID, ref UserName, ref Password, ref IsActive))
+            if (clsUserDataAccessLayer.GetUserInfoByUserNameAndPassword(UserName,Password,ref UserID, ref PersonID, ref IsActive))
             {
                 return new clsUser(UserID, PersonID, UserName, Password, IsActive);
             }
