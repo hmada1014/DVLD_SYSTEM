@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace DVLDSystem_WindowsForm_
 {
-    public partial class RoundedPanel : UserControl
+    public partial class ucRoundedPanel : UserControl
     {
-        public RoundedPanel()
+        public ucRoundedPanel()
         {
             this.BackColor = Color.White; // Default background color
             this.Resize += (s, e) => this.Invalidate(); // Redraw on resize

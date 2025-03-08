@@ -1,6 +1,6 @@
 ﻿namespace DVLDSystem_WindowsForm_
 {
-    partial class RoundedPanel
+    partial class ucRoundedPanel
     {
         /// <summary> 
         /// Required designer variable.
