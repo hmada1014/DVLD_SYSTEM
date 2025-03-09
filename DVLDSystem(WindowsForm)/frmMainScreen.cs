@@ -57,5 +57,12 @@ namespace DVLDSystem_WindowsForm_
             ResizeImages();
             lblUsername.Text += User.UserName;
         }
+
+        private void tsmPeople_Click(object sender, EventArgs e)
+        {
+            frmPeople People = new frmPeople();
+            People.MdiParent = this;
+            People.Show();
+        }
     }
 }

@@ -66,6 +66,7 @@
             this.tsmPeople.Name = "tsmPeople";
             this.tsmPeople.Size = new System.Drawing.Size(55, 20);
             this.tsmPeople.Text = "People";
+            this.tsmPeople.Click += new System.EventHandler(this.tsmPeople_Click);
             // 
             // tsmDrivers
             // 
@@ -96,11 +97,11 @@
             this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblUsername.Location = new System.Drawing.Point(750, 24);
+            this.lblUsername.Location = new System.Drawing.Point(749, 24);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(96, 19);
+            this.lblUsername.Size = new System.Drawing.Size(57, 19);
             this.lblUsername.TabIndex = 3;
-            this.lblUsername.Text = "Username : ";
+            this.lblUsername.Text = "User : ";
             // 
             // frmMainScreen
             // 
