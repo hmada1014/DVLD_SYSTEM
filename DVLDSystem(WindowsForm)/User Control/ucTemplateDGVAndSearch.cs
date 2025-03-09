@@ -14,11 +14,13 @@ namespace DVLDSystem_WindowsForm_.User_Control
     public partial class ucTemplateDGVAndSearch : UserControl
     {
         private string _FormName;
+       
         private enum enModeUC { Application,People,Drivers,Users}
         private enModeUC _enMode = enModeUC.Application;
         public ucTemplateDGVAndSearch()
         {
             InitializeComponent();
+            
         }
         public ucTemplateDGVAndSearch(string FormName)
         {
@@ -26,6 +28,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             _FormName = FormName;
 
+            
             switch (_FormName)
             {
                 case "frmApplication":
@@ -50,6 +53,17 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             dgvShowList.DataSource = DataSours;
         }
+
+        public object ShowComboBox
+        {
+            get { return cbFindBy.DataSource; }
+        }
+
+        public void FillComboBox(object ob)
+        {
+            cbFindBy.DataSource = ob;
+        }
+
         private void changeHeaderNameForUser()
         {
             if (dgvShowList.Columns.Count > 0)
@@ -91,51 +105,61 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 dgvShowList.Columns["CountryName"].HeaderText = "Country Name";
                 dgvShowList.Columns["ImagePath"].HeaderText = "Image Path";
         }
+        private void SearchPeople(string ID)
+        {
+            DataTable dt = clsPerson.SearchPersonByPersonID(ID).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = changeColumnGendar(dt);
+                changeHeaderNameForPeople();
+            }
+            lblRrecords.Text = dgvShowList.Columns.Count.ToString();
+        }
+        private void SearchUser(string ID)
+        {
+            dgvShowList.DataSource = clsUser.SearchUserByUserID(ID);
+            changeHeaderNameForUser();
+            lblRrecords.Text = dgvShowList.Columns.Count.ToString();
+
+        }
         private void SearchDataByID(string ID)
         {
-
+            dgvShowList.DataSource = null;
             switch (_enMode)
             {
                 case enModeUC.Application:
 
                     break;
                 case enModeUC.People:
-                    dgvShowList.DataSource = null;
-                    DataTable dt = clsPerson.SearchPersonByPersonID(ID).Table;
-                    if (dt.Rows.Count > 0)
-                    {
-                        dgvShowList.DataSource = changeColumnGendar(dt);
-                        changeHeaderNameForPeople(); 
-                    }
+                    SearchPeople(ID);
                     break;
                 case enModeUC.Drivers:
                     
                     break;
                 case enModeUC.Users:
-                    dgvShowList.DataSource = clsUser.SearchUserByUserID(ID);
-                    changeHeaderNameForUser();
+                    SearchUser(ID);
                     break;
 
             }
         }
         private void txtSearchDGV_TextChanged(object sender, EventArgs e)
         {
-            switch (_enMode)
+            switch (cbFindBy.Text)
             {
-                case enModeUC.Application:
-                    
-                    break;
-                case enModeUC.People:
+                case "ID":
                     SearchDataByID(txtSearchDGV.Text.Trim());
                     break;
-                case enModeUC.Drivers: 
+                case "Name":
+                    
                     break;
-                case enModeUC.Users:
-                    SearchDataByID(txtSearchDGV.Text.Trim());   
+                case " ": 
+                    break;
+                case "  ":
+                       
                     break;
 
             }
 
-        }
+        }   
     }
 }

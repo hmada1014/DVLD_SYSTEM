@@ -32,7 +32,11 @@
             this.lblFindBy = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
             this.txtSearchDGV = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
+            this.lblRrecords = new System.Windows.Forms.Label();
+            this.lblRecordsTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // cbFindBy
@@ -61,8 +65,8 @@
             // 
             this.dgvShowList.AllowUserToAddRows = false;
             this.dgvShowList.AllowUserToDeleteRows = false;
+            this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowList.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvShowList.Location = new System.Drawing.Point(0, 78);
             this.dgvShowList.Name = "dgvShowList";
             this.dgvShowList.ReadOnly = true;
@@ -91,17 +95,56 @@
             this.txtSearchDGV.TabIndex = 3;
             this.txtSearchDGV.TextChanged += new System.EventHandler(this.txtSearchDGV_TextChanged);
             // 
+            // btnRefreshDGV
+            // 
+            this.btnRefreshDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefreshDGV.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRefreshDGV.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRefreshDGV.IconChar = FontAwesome.Sharp.IconChar.RotateBackward;
+            this.btnRefreshDGV.IconColor = System.Drawing.SystemColors.ControlText;
+            this.btnRefreshDGV.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRefreshDGV.Location = new System.Drawing.Point(592, 25);
+            this.btnRefreshDGV.Name = "btnRefreshDGV";
+            this.btnRefreshDGV.Size = new System.Drawing.Size(32, 32);
+            this.btnRefreshDGV.TabIndex = 4;
+            this.btnRefreshDGV.TabStop = false;
+            this.btnRefreshDGV.Visible = false;
+            // 
+            // lblRrecords
+            // 
+            this.lblRrecords.AutoSize = true;
+            this.lblRrecords.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lblRrecords.Location = new System.Drawing.Point(105, 372);
+            this.lblRrecords.Name = "lblRrecords";
+            this.lblRrecords.Size = new System.Drawing.Size(18, 19);
+            this.lblRrecords.TabIndex = 8;
+            this.lblRrecords.Text = "0";
+            // 
+            // lblRecordsTitle
+            // 
+            this.lblRecordsTitle.AutoSize = true;
+            this.lblRecordsTitle.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lblRecordsTitle.Location = new System.Drawing.Point(8, 371);
+            this.lblRecordsTitle.Name = "lblRecordsTitle";
+            this.lblRecordsTitle.Size = new System.Drawing.Size(88, 19);
+            this.lblRecordsTitle.TabIndex = 7;
+            this.lblRecordsTitle.Text = "#Records :";
+            // 
             // ucTemplateDGVAndSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblRrecords);
+            this.Controls.Add(this.lblRecordsTitle);
+            this.Controls.Add(this.btnRefreshDGV);
             this.Controls.Add(this.txtSearchDGV);
             this.Controls.Add(this.dgvShowList);
             this.Controls.Add(this.lblFindBy);
             this.Controls.Add(this.cbFindBy);
             this.Name = "ucTemplateDGVAndSearch";
-            this.Size = new System.Drawing.Size(651, 368);
+            this.Size = new System.Drawing.Size(651, 395);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +156,8 @@
         private System.Windows.Forms.Label lblFindBy;
         private System.Windows.Forms.DataGridView dgvShowList;
         private Guna.UI2.WinForms.Guna2TextBox txtSearchDGV;
+        private FontAwesome.Sharp.IconPictureBox btnRefreshDGV;
+        private System.Windows.Forms.Label lblRrecords;
+        private System.Windows.Forms.Label lblRecordsTitle;
     }
 }
