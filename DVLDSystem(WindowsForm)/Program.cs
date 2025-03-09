@@ -16,7 +16,7 @@ namespace DVLDSystem_WindowsForm_
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmLoginScreen());
+            Application.Run(new frmLoginScreen());
             Application.Run(new testfrm());
 
         }
