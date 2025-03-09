@@ -347,19 +347,15 @@ namespace DVLDSystem_DataAccessLayer_
             return IsFound;
         }
 
-
-
-
         public static DataView SearchUserByUserID(string UserID)
         {
             DataTable dataTable = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = @"SELECT   Users.UserID, People.NationalNo, People.FirstName, People.SecondName, People.ThirdName, People.LastName, People.DateOfBirth, People.Gender, People.Address, People.Phone, People.Email, People.NationalityCountryID, 
-                             People.ImagePath, Users.UserName, Users.Password, Users.IsActive
-                             FROM            Users INNER JOIN
+            string query = @"SELECT   Users.UserID, People.PersonID  , concat(People.FirstName ,' ', People.SecondName,' ', People.ThirdName,' ', People.LastName) as Full_Name ,Users.UserName,Users.IsActive
+                             FROM Users INNER JOIN
                              People ON Users.PersonID = People.PersonID
-						     where UserID like '% @UserID %' ";
+						     where UserID like '%'+ @UserID + '%'";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@UserID", UserID);
 
