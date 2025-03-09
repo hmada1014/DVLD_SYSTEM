@@ -331,7 +331,11 @@ namespace DVLDSystem_DataAccessLayer_
         {
             DataTable dtPerson = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = " select PersonID,NationalNo,FirstName,SecondName,ThirdName,LastName,DateOfBirth,Gender,Address,Phone,Email,NationalityCountryID,ImagePath from People ";
+            string query = @"SELECT People.PersonID, People.NationalNo,FullName = Concat(People.FirstName,' ', People.SecondName,' ', People.ThirdName,' ', People.LastName),
+                             People.DateOfBirth, People.Gender, People.Address, 
+                             People.Phone, People.Email, Countries.CountryName, 
+                             People.ImagePath FROM People 
+                             INNER JOIN Countries ON People.NationalityCountryID = Countries.CountryID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -355,6 +359,38 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dtPerson.DefaultView;
         }
+
+        public static DataView SearchPersonByPersonID(string PersonID)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = "Enter your query";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+
 
 
 
