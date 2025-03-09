@@ -214,7 +214,11 @@ namespace DVLDSystem_DataAccessLayer_
         {
             DataTable dtUser = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = " select UserID,PersonID,UserName,Password,IsActive from Users ";
+            string query = @"SELECT   Users.UserID, People.PersonID  , 
+                             concat(People.FirstName ,' ', People.SecondName,' ',
+                             People.ThirdName,' ', People.LastName) as FullName ,
+                             Users.UserName,Users.IsActive
+                             FROM Users INNER JOIN People ON Users.PersonID = People.PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
