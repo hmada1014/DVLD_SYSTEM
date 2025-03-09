@@ -113,6 +113,10 @@ namespace DVLDSystem_BusinessLayer_
 
             return clsPeopleDataAccessLayer.GetAllPerson();
         }
+        public static DataView SearchPersonByPersonID(string PersonID)
+        {
+            return clsPeopleDataAccessLayer.SearchPersonByPersonID(PersonID);
+        }
         public bool Save()
         {
             switch (this.Mode)
