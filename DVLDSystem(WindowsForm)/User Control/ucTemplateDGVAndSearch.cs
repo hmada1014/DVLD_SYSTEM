@@ -14,14 +14,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
     public partial class ucTemplateDGVAndSearch : UserControl
     {
         private string _FormName;
-
         private enum enModeUC { Application,People,Drivers,Users}
         private enModeUC _enMode = enModeUC.Application;
         public ucTemplateDGVAndSearch()
         {
             InitializeComponent();
         }
-
         public ucTemplateDGVAndSearch(string FormName)
         {
             InitializeComponent();
@@ -44,19 +42,14 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-
-
-
         public DataGridView ShowDataGridView
         {
             get { return dgvShowList; }
         }
-
         public void RefreshDGV(object DataSours)
         {
             dgvShowList.DataSource = DataSours;
         }
-
         private void changeHeaderNameForUser()
         {
             if (dgvShowList.Columns.Count > 0)
@@ -68,7 +61,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 dgvShowList.Columns["IsActive"].HeaderText = "Is Active"; 
             }
         }
-
         private DataTable changeColumnGendar(DataTable dt) 
         {
             dt.Columns.Add("GenderNew", typeof(string));
@@ -126,7 +118,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             }
         }
-
         private void txtSearchDGV_TextChanged(object sender, EventArgs e)
         {
             switch (_enMode)
@@ -146,6 +137,5 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
 
         }
-
     }
 }
