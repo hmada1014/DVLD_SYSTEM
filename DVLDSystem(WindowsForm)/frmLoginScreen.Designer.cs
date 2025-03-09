@@ -279,8 +279,8 @@
 
         #endregion
 
-        private RoundedPanel rPlLeft;
-        private RoundedPanel rPlTop;
+        private ucRoundedPanel rPlLeft;
+        private ucRoundedPanel rPlTop;
         private FontAwesome.Sharp.IconButton ibtnClose;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
