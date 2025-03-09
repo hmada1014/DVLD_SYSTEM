@@ -81,6 +81,12 @@
     <Compile Include="frmMainScreen.Designer.cs">
       <DependentUpon>frmMainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeople.Designer.cs">
+      <DependentUpon>frmPeople.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenChildForm\clsOpenChildForm.cs" />
     <Compile Include="Drag Form\clsDragForm.cs" />
     <Compile Include="frmLoginScreen.cs">
@@ -96,11 +102,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="User Control\RoundedPanel.cs">
+    <Compile Include="User Control\ucTemplateDGV.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User Control\RoundedPanel.Designer.cs">
-      <DependentUpon>RoundedPanel.cs</DependentUpon>
+    <Compile Include="User Control\ucTemplateDGV.Designer.cs">
+      <DependentUpon>ucTemplateDGV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\ucTemplateDGVAndSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucTemplateDGVAndSearch.Designer.cs">
+      <DependentUpon>ucTemplateDGVAndSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\ucRoundedPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucRoundedPanel.Designer.cs">
+      <DependentUpon>ucRoundedPanel.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AccessDeniedForms\AccessDenied.resx">
       <DependentUpon>AccessDenied.cs</DependentUpon>
@@ -111,13 +129,22 @@
     <EmbeddedResource Include="frmMainScreen.resx">
       <DependentUpon>frmMainScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPeople.resx">
+      <DependentUpon>frmPeople.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Control\RoundedPanel.resx">
-      <DependentUpon>RoundedPanel.cs</DependentUpon>
+    <EmbeddedResource Include="User Control\ucTemplateDGV.resx">
+      <DependentUpon>ucTemplateDGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucTemplateDGVAndSearch.resx">
+      <DependentUpon>ucTemplateDGVAndSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucRoundedPanel.resx">
+      <DependentUpon>ucRoundedPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -173,6 +200,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\New Project %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addcontacts_83750.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peopleBigSize.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
