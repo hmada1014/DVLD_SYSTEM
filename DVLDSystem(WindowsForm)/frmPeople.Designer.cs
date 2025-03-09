@@ -28,24 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblRecordsTitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblRrecords = new System.Windows.Forms.Label();
             this.ucTemplateDGVAndSearch = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmPeople");
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblRecordsTitle
-            // 
-            this.lblRecordsTitle.AutoSize = true;
-            this.lblRecordsTitle.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblRecordsTitle.Location = new System.Drawing.Point(6, 581);
-            this.lblRecordsTitle.Name = "lblRecordsTitle";
-            this.lblRecordsTitle.Size = new System.Drawing.Size(88, 19);
-            this.lblRecordsTitle.TabIndex = 2;
-            this.lblRecordsTitle.Text = "#Records :";
             // 
             // pictureBox1
             // 
@@ -83,21 +71,11 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Manage People";
             // 
-            // lblRrecords
-            // 
-            this.lblRrecords.AutoSize = true;
-            this.lblRrecords.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblRrecords.Location = new System.Drawing.Point(103, 582);
-            this.lblRrecords.Name = "lblRrecords";
-            this.lblRrecords.Size = new System.Drawing.Size(18, 19);
-            this.lblRrecords.TabIndex = 6;
-            this.lblRrecords.Text = "0";
-            // 
-            // ucSearchDGV1
+            // ucTemplateDGVAndSearch
             // 
             this.ucTemplateDGVAndSearch.Location = new System.Drawing.Point(0, 199);
-            this.ucTemplateDGVAndSearch.Name = "ucSearchDGV1";
-            this.ucTemplateDGVAndSearch.Size = new System.Drawing.Size(910, 377);
+            this.ucTemplateDGVAndSearch.Name = "ucTemplateDGVAndSearch";
+            this.ucTemplateDGVAndSearch.Size = new System.Drawing.Size(911, 390);
             this.ucTemplateDGVAndSearch.TabIndex = 3;
             // 
             // frmPeople
@@ -106,10 +84,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(908, 601);
-            this.Controls.Add(this.lblRrecords);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblRecordsTitle);
             this.Controls.Add(this.guna2ImageButton1);
             this.Controls.Add(this.ucTemplateDGVAndSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -125,10 +101,8 @@
 
         #endregion
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
-        private System.Windows.Forms.Label lblRecordsTitle;
-        private User_Control.ucTemplateDGVAndSearch ucTemplateDGVAndSearch;
+       private User_Control.ucTemplateDGVAndSearch  ucTemplateDGVAndSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblRrecords;
     }
 }

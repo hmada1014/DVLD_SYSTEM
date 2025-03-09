@@ -18,16 +18,14 @@ namespace DVLDSystem_WindowsForm_
         {
             InitializeComponent();
         }
-
-        
-        
-
         private void frmPeople_Load(object sender, EventArgs e)
         {
-            //ucTemplateDGVAndSearch.RefreshDGV(clsPerson.GetAllPersons());
-
             ucTemplateDGVAndSearch.RefreshDGV(clsPerson.GetAllPersons());
 
+            string[] strings = { "ID", "Name", };
+
+            ucTemplateDGVAndSearch.FillComboBox(strings);
         }
+
     }
 }
