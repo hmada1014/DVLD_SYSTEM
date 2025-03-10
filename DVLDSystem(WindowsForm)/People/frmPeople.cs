@@ -27,10 +27,8 @@ namespace DVLDSystem_WindowsForm_
         }
         private void frmPeople_Load(object sender, EventArgs e)
         {
-           // ucTemplateDGVAndSearch1.RefreshDGV(clsPerson.GetAllPersons());
+            ucTemplateDGVAndSearch1.RefreshDGV(clsPerson.GetAllPersons());
             ucTemplateDGVAndSearch1.FillComboBox(FillComboBoxwhitString());
-
-            ucTemplateDGVAndSearch1.RefreshDGV(clsPerson.SearchPersonByPersonName("0"));
 
         }
     }
