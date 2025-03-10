@@ -28,24 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblRecordsTitle = new System.Windows.Forms.Label();
+            this.ucTemplateDGVAndSearch1 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmPeople");
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblRrecords = new System.Windows.Forms.Label();
-            this.ucTemplateDGVAndSearch = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmPeople");
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblRecordsTitle
-            // 
-            this.lblRecordsTitle.AutoSize = true;
-            this.lblRecordsTitle.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblRecordsTitle.Location = new System.Drawing.Point(6, 581);
-            this.lblRecordsTitle.Name = "lblRecordsTitle";
-            this.lblRecordsTitle.Size = new System.Drawing.Size(88, 19);
-            this.lblRecordsTitle.TabIndex = 2;
-            this.lblRecordsTitle.Text = "#Records :";
             // 
             // pictureBox1
             // 
@@ -66,7 +54,7 @@
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
             this.guna2ImageButton1.ImageSize = new System.Drawing.Size(48, 48);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(833, 220);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(833, 215);
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.Size = new System.Drawing.Size(63, 55);
@@ -83,22 +71,13 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Manage People";
             // 
-            // lblRrecords
+            // ucTemplateDGVAndSearch1
             // 
-            this.lblRrecords.AutoSize = true;
-            this.lblRrecords.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblRrecords.Location = new System.Drawing.Point(103, 582);
-            this.lblRrecords.Name = "lblRrecords";
-            this.lblRrecords.Size = new System.Drawing.Size(18, 19);
-            this.lblRrecords.TabIndex = 6;
-            this.lblRrecords.Text = "0";
-            // 
-            // ucSearchDGV1
-            // 
-            this.ucTemplateDGVAndSearch.Location = new System.Drawing.Point(0, 199);
-            this.ucTemplateDGVAndSearch.Name = "ucSearchDGV1";
-            this.ucTemplateDGVAndSearch.Size = new System.Drawing.Size(910, 377);
-            this.ucTemplateDGVAndSearch.TabIndex = 3;
+            this.ucTemplateDGVAndSearch1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucTemplateDGVAndSearch1.Location = new System.Drawing.Point(0, 206);
+            this.ucTemplateDGVAndSearch1.Name = "ucTemplateDGVAndSearch1";
+            this.ucTemplateDGVAndSearch1.Size = new System.Drawing.Size(908, 395);
+            this.ucTemplateDGVAndSearch1.TabIndex = 6;
             // 
             // frmPeople
             // 
@@ -106,12 +85,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(908, 601);
-            this.Controls.Add(this.lblRrecords);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblRecordsTitle);
             this.Controls.Add(this.guna2ImageButton1);
-            this.Controls.Add(this.ucTemplateDGVAndSearch);
+            this.Controls.Add(this.ucTemplateDGVAndSearch1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmPeople";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -125,10 +102,8 @@
 
         #endregion
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
-        private System.Windows.Forms.Label lblRecordsTitle;
-        private User_Control.ucTemplateDGVAndSearch ucTemplateDGVAndSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblRrecords;
+        private User_Control.ucTemplateDGVAndSearch ucTemplateDGVAndSearch1;
     }
 }

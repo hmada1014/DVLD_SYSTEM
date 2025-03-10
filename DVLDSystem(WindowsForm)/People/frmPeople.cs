@@ -16,17 +16,21 @@ namespace DVLDSystem_WindowsForm_
     {
         public frmPeople()
         {
+            
             InitializeComponent();
         }
 
-        
-        
-
+        private string [] FillComboBoxwhitString()
+        {
+            string[] strings = { "ID", "Name" };
+            return strings;
+        }
         private void frmPeople_Load(object sender, EventArgs e)
         {
-            //ucTemplateDGVAndSearch.RefreshDGV(clsPerson.GetAllPersons());
+           // ucTemplateDGVAndSearch1.RefreshDGV(clsPerson.GetAllPersons());
+            ucTemplateDGVAndSearch1.FillComboBox(FillComboBoxwhitString());
 
-            ucTemplateDGVAndSearch.RefreshDGV(clsPerson.GetAllPersons());
+            ucTemplateDGVAndSearch1.RefreshDGV(clsPerson.SearchPersonByPersonName("0"));
 
         }
     }
