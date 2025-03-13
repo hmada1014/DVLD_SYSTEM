@@ -28,12 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            
             this.ucTemplateDGVAndSearch1 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmPeople");
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnAddPerson = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ucTemplateDGVAndSearch1
+            // 
+            this.ucTemplateDGVAndSearch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ucTemplateDGVAndSearch1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucTemplateDGVAndSearch1.Location = new System.Drawing.Point(0, 206);
+            this.ucTemplateDGVAndSearch1.Name = "ucTemplateDGVAndSearch1";
+            this.ucTemplateDGVAndSearch1.Size = new System.Drawing.Size(908, 395);
+            this.ucTemplateDGVAndSearch1.TabIndex = 6;
             // 
             // pictureBox1
             // 
@@ -45,20 +55,21 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // guna2ImageButton1
+            // btnAddPerson
             // 
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.addcontacts_83750;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(48, 48);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(833, 215);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(63, 55);
-            this.guna2ImageButton1.TabIndex = 1;
+            this.btnAddPerson.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnAddPerson.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnAddPerson.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnAddPerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.addcontacts_83750;
+            this.btnAddPerson.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAddPerson.ImageRotate = 0F;
+            this.btnAddPerson.ImageSize = new System.Drawing.Size(48, 48);
+            this.btnAddPerson.Location = new System.Drawing.Point(833, 215);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnAddPerson.Size = new System.Drawing.Size(63, 55);
+            this.btnAddPerson.TabIndex = 1;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
             // label1
             // 
@@ -71,14 +82,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Manage People";
             // 
-            // ucTemplateDGVAndSearch1
-            // 
-            this.ucTemplateDGVAndSearch1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucTemplateDGVAndSearch1.Location = new System.Drawing.Point(0, 206);
-            this.ucTemplateDGVAndSearch1.Name = "ucTemplateDGVAndSearch1";
-            this.ucTemplateDGVAndSearch1.Size = new System.Drawing.Size(908, 395);
-            this.ucTemplateDGVAndSearch1.TabIndex = 6;
-            // 
             // frmPeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -87,7 +90,7 @@
             this.ClientSize = new System.Drawing.Size(908, 601);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.guna2ImageButton1);
+            this.Controls.Add(this.btnAddPerson);
             this.Controls.Add(this.ucTemplateDGVAndSearch1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmPeople";
@@ -101,7 +104,7 @@
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private Guna.UI2.WinForms.Guna2ImageButton btnAddPerson;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private User_Control.ucTemplateDGVAndSearch ucTemplateDGVAndSearch1;

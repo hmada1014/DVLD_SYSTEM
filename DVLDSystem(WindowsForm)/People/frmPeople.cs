@@ -1,4 +1,5 @@
 ﻿using DVLDSystem_BusinessLayer_;
+using DVLDSystem_WindowsForm_.People;
 using DVLDSystem_WindowsForm_.User_Control;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,15 @@ namespace DVLDSystem_WindowsForm_
     {
         public frmPeople()
         {
-            
             InitializeComponent();
+            //InitializeucTemplateDGVAndSearch();
         }
 
-        private string [] FillComboBoxwhitString()
+        private void InitializeucTemplateDGVAndSearch()
+        {
+            this.ucTemplateDGVAndSearch1 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmPeople");
+        }
+        private string [] _FillComboBoxwhitString()
         {
             string[] strings = { "ID", "Name" };
             return strings;
@@ -28,8 +33,14 @@ namespace DVLDSystem_WindowsForm_
         private void frmPeople_Load(object sender, EventArgs e)
         {
             ucTemplateDGVAndSearch1.RefreshDGV(clsPerson.GetAllPersons());
-            ucTemplateDGVAndSearch1.FillComboBox(FillComboBoxwhitString());
+            ucTemplateDGVAndSearch1.FillComboBox(_FillComboBoxwhitString());
 
+        }
+
+        private void btnAddPerson_Click(object sender, EventArgs e)
+        {
+            frmAddEditPeople addEditPeople = new frmAddEditPeople(-1);
+            addEditPeople.ShowDialog();
         }
     }
 }
