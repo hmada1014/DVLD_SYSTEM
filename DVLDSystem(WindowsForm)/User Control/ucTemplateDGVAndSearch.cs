@@ -51,17 +51,17 @@ namespace DVLDSystem_WindowsForm_.User_Control
         public void RefreshDGV(object DataSours)
         {
 
-            DataView dv = ConvertToDataView(DataSours);
+            DataView dv = _ConvertToDataView(DataSours);
             if (dv == null) return;
 
-            dgvShowList.DataSource = ProcessPeopleGenderColumn(dv.Table);
+            dgvShowList.DataSource = _ProcessPeopleGenderColumn(dv.Table);
             if (_enMode == enModeUC.People)
             {
-                UpdatePeopleColumnHeaders();
+                _UpdatePeopleColumnHeaders();
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
-        private DataView ConvertToDataView(object DataSours)
+        private DataView _ConvertToDataView(object DataSours)
         {
             if (DataSours is DataView)
             {
@@ -80,34 +80,34 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             cbFindBy.DataSource = ob;
         }
-        private void UpdateUserColumnHeaders()
+        private void _UpdateUserColumnHeaders()
         {
             if (dgvShowList.Columns.Count <= 0) return;
-            SafeHeaderUpdate("UserID", "User ID");
-            SafeHeaderUpdate("PersonID", "Person ID");
-            SafeHeaderUpdate("Full_Name" , "Full Name");
-            SafeHeaderUpdate("UserName", "User Name");
-            SafeHeaderUpdate("IsActive", "Is Active");
+            _SafeHeaderUpdate("UserID", "User ID");
+            _SafeHeaderUpdate("PersonID", "Person ID");
+            _SafeHeaderUpdate("Full_Name" , "Full Name");
+            _SafeHeaderUpdate("UserName", "User Name");
+            _SafeHeaderUpdate("IsActive", "Is Active");
 
         }
-        private void UpdatePeopleColumnHeaders()
+        private void _UpdatePeopleColumnHeaders()
         {
             if (dgvShowList.Columns.Count <= 0) return;
-            SafeHeaderUpdate("PersonID", "Person ID");
-            SafeHeaderUpdate("NationalNo", "National No");
-            SafeHeaderUpdate("FullName", "Full Name");
-            SafeHeaderUpdate("DateOfBirth", "Date Of Birth");
-            SafeHeaderUpdate("CountryName","Country Name");
-            SafeHeaderUpdate("ImagePath", "ImagePath");
+            _SafeHeaderUpdate("PersonID", "Person ID");
+            _SafeHeaderUpdate("NationalNo", "National No");
+            _SafeHeaderUpdate("FullName", "Full Name");
+            _SafeHeaderUpdate("DateOfBirth", "Date Of Birth");
+            _SafeHeaderUpdate("CountryName","Country Name");
+            _SafeHeaderUpdate("ImagePath", "ImagePath");
         }
-        private void SafeHeaderUpdate(string ColumnName, string headerText)
+        private void _SafeHeaderUpdate(string ColumnName, string headerText)
         {
             if (dgvShowList.Columns.Contains(ColumnName))
             {
                 dgvShowList.Columns[ColumnName].HeaderText = headerText;
             }
         }
-        private DataTable ProcessPeopleGenderColumn(DataTable dt) 
+        private DataTable _ProcessPeopleGenderColumn(DataTable dt) 
         {
             if(dt.Columns.Count<=0)return dt;
             dt.Columns.Add("GenderNew", typeof(string));
@@ -128,24 +128,24 @@ namespace DVLDSystem_WindowsForm_.User_Control
             dt.Columns["Gender"].SetOrdinal(4);
             return dt;
         }
-        private void SearchPeople(string ID)
+        private void _SearchPeople(string ID)
         {
             DataTable dt = clsPerson.SearchPersonByPersonID(ID).Table;
             if (dt.Rows.Count > 0)
             {
-                dgvShowList.DataSource = ProcessPeopleGenderColumn(dt);
-                UpdatePeopleColumnHeaders();
+                dgvShowList.DataSource = _ProcessPeopleGenderColumn(dt);
+                _UpdatePeopleColumnHeaders();
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
-        private void SearchUser(string ID)
+        private void _SearchUser(string ID)
         {
             dgvShowList.DataSource = clsUser.SearchUserByUserID(ID);
-            UpdateUserColumnHeaders();
+            _UpdateUserColumnHeaders();
             lblRrecords.Text = dgvShowList.RowCount.ToString();
 
         }
-        private void SearchDataByID(string ID)
+        private void _SearchDataByID(string ID)
         {
             dgvShowList.DataSource = null;
             switch (_enMode)
@@ -154,23 +154,23 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
                     break;
                 case enModeUC.People:
-                    SearchPeople(ID);
+                    _SearchPeople(ID);
                     break;
                 case enModeUC.Drivers:
                     
                     break;
                 case enModeUC.Users:
-                    SearchUser(ID);
+                    _SearchUser(ID);
                     break;
 
             }
         }
-        private void txtSearchDGV_TextChanged(object sender, EventArgs e)
+        private void _txtSearchDGV_TextChanged(object sender, EventArgs e)
         {
             switch (cbFindBy.Text)
             {
                 case "ID":
-                    SearchDataByID(txtSearchDGV.Text.Trim());
+                    _SearchDataByID(txtSearchDGV.Text.Trim());
                     break;
                 case "Name":
                     
