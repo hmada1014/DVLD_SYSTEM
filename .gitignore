@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/DVLDSystem(WindowsForm)/test.cs
+/DVLDSystem(WindowsForm)/test.Designer.cs
+/DVLDSystem(WindowsForm)/test.resx
+/DVLDSystem(WindowsForm)/test1.cs
+/DVLDSystem(WindowsForm)/test1.Designer.cs
+/DVLDSystem(WindowsForm)/test1.resx
