@@ -94,6 +94,10 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsPeopleDataAccessLayer.IsPersonExist(PersonID);
         }
+        public static bool IsPersonExist(string NationalNo)
+        {
+            return clsPeopleDataAccessLayer.IsPersonExist(NationalNo);
+        }
         private bool _AddNewPerson()
         {
             this.PersonID = clsPeopleDataAccessLayer.AddNewPerson(this.NationalNo, this.FirstName, this.SecondName, this.ThirdName, this.LastName, this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
