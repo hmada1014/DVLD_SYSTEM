@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.lblFindBy = new System.Windows.Forms.Label();
@@ -36,8 +37,12 @@
             this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
             this.lblRrecords = new System.Windows.Forms.Label();
             this.lblRecordsTitle = new System.Windows.Forms.Label();
+            this.cmsEditDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editTSM = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteTSM = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
+            this.cmsEditDelete.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbFindBy
@@ -78,6 +83,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShowList.ContextMenuStrip = this.cmsEditDelete;
             this.dgvShowList.Location = new System.Drawing.Point(0, 78);
             this.dgvShowList.Name = "dgvShowList";
             this.dgvShowList.ReadOnly = true;
@@ -141,6 +147,28 @@
             this.lblRecordsTitle.TabIndex = 7;
             this.lblRecordsTitle.Text = "#Records :";
             // 
+            // cmsEditDelete
+            // 
+            this.cmsEditDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editTSM,
+            this.deleteTSM});
+            this.cmsEditDelete.Name = "cmsAddEdit";
+            this.cmsEditDelete.Size = new System.Drawing.Size(108, 48);
+            // 
+            // editTSM
+            // 
+            this.editTSM.Name = "editTSM";
+            this.editTSM.Size = new System.Drawing.Size(107, 22);
+            this.editTSM.Text = "Edit";
+            this.editTSM.Click += new System.EventHandler(this.editTSM_Click);
+            // 
+            // deleteTSM
+            // 
+            this.deleteTSM.Name = "deleteTSM";
+            this.deleteTSM.Size = new System.Drawing.Size(107, 22);
+            this.deleteTSM.Text = "Delete";
+            this.deleteTSM.Click += new System.EventHandler(this.deleteTSM_Click);
+            // 
             // ucTemplateDGVAndSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,6 +185,7 @@
             this.Size = new System.Drawing.Size(651, 395);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
+            this.cmsEditDelete.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +200,8 @@
         private FontAwesome.Sharp.IconPictureBox btnRefreshDGV;
         private System.Windows.Forms.Label lblRrecords;
         private System.Windows.Forms.Label lblRecordsTitle;
+        private System.Windows.Forms.ContextMenuStrip cmsEditDelete;
+        private System.Windows.Forms.ToolStripMenuItem editTSM;
+        private System.Windows.Forms.ToolStripMenuItem deleteTSM;
     }
 }

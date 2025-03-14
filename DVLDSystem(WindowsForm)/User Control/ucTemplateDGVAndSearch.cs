@@ -1,4 +1,5 @@
 ﻿using DVLDSystem_BusinessLayer_;
+using DVLDSystem_WindowsForm_.People;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -183,6 +184,41 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             }
 
-        }   
+        }
+
+        private void editTSM_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(),out int ID))
+            {
+  
+                frmAddEditPeople editPeople = new frmAddEditPeople(ID);
+                editPeople.ShowDialog(); 
+            }
+            else
+            {
+                MessageBox.Show("Person Not Found to Edit.", "warning");
+            }
+        }
+
+        private void deleteTSM_Click(object sender, EventArgs e)
+        {
+            int ID = Convert.ToInt32( dgvShowList.CurrentRow.Cells["PersonID"].Value);
+            if (clsPerson.IsPersonExist(ID))
+            {
+                if (MessageBox.Show("Are you suer you want to Delete Person", "waring Delete Person", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    
+                    if (clsPerson.DeletePerson(ID))
+                    {
+                        MessageBox.Show($"Person with ID {ID} was Deleted", "Successfully deleted\r\n ");
+                    }
+                } 
+            }
+            else
+            {
+                MessageBox.Show($"Person with ID {ID} was not found");
+            }
+
+        }
     }
 }
