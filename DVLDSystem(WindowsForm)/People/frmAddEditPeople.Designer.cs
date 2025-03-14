@@ -226,7 +226,6 @@
             this.txtThirdName.Size = new System.Drawing.Size(200, 35);
             this.txtThirdName.TabIndex = 12;
             this.txtThirdName.Tag = "txtThirdName";
-            this.txtThirdName.Validating += new System.ComponentModel.CancelEventHandler(this._ValidateEmptyOrNull);
             // 
             // label6
             // 
@@ -360,7 +359,6 @@
             this.txtEmail.Size = new System.Drawing.Size(200, 35);
             this.txtEmail.TabIndex = 22;
             this.txtEmail.Tag = "txtEmail";
-            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this._ValidateEmptyOrNull);
             // 
             // label11
             // 

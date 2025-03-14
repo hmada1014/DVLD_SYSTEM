@@ -136,7 +136,7 @@ namespace DVLDSystem_WindowsForm_.People
         }
         private bool _ValidateNationalNo(Guna2TextBox textBox, string errorMessage)
         {
-            if(clsValidation.CustomValid(textBox.Text.Trim() , @"^\w+([\-\s\/]\w+)*$"))
+            if(!clsValidation.CustomValid(textBox.Text.Trim() , @"^\w+([\-\s\/]\w+)*$"))
             {
                 ep1.SetError(textBox, errorMessage);
                 return false;
@@ -163,7 +163,7 @@ namespace DVLDSystem_WindowsForm_.People
         private bool _ValidateAddress(Guna2TextBox textBox, string errorMessage)
         {
      
-            if (!clsValidation.CustomValid(textBox.Text.Trim(), @"^[\w\s.,#\-\/]{15,}$"))
+            if (!clsValidation.CustomValid(textBox.Text.Trim(), @"^[\w\s.,#\-\/]{6,}$"))
             {
                 ep1.SetError(textBox, errorMessage);
                 return false;
@@ -221,12 +221,12 @@ namespace DVLDSystem_WindowsForm_.People
             isValid &= _ValidateNationalNo(txtNationalNo, "it's allow latters , number,- /.");
             isValid &= _ValidateName(txtFirstName, "it's only Latters.");
             isValid &= _ValidateName(txtSecondName, "it's only Latters.");
-            isValid &= _ValidateName(txtThirdName ,"it's only Latters.");
             isValid &= _ValidateName(txtLastName, "it's only Latters.");
-            isValid &= _ValidateAddress(txtAddress, "At least 15 Latters");
+            isValid &= _ValidateAddress(txtAddress, "At least 6 Latters");
             isValid &= _ValidatePhone(txtPhone, "it's only number and '+' is optonal  ");
-            isValid &= _ValidateEmail(txtEmail, "wrong email example : example@example.com");
-            isValid &= _ValidateImage(pbImage, "This field is required.");
+            if (!string.IsNullOrEmpty(txtEmail.Text.Trim()))
+                isValid &= _ValidateEmail(txtEmail, "wrong email example : example@example.com");
+            
 
             return isValid;
         }
