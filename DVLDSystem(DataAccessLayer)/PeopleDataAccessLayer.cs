@@ -301,6 +301,32 @@ namespace DVLDSystem_DataAccessLayer_
             return IsFound;
         }
 
+        public static bool IsPersonExist(string NationalNo)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Found = 1 from People where NationalNo = @NationalNo";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
         public static bool DeletePersonByPersonID(int PersonID)
         {
             int AffectedRows = 0;
