@@ -210,12 +210,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
             int ID = Convert.ToInt32( dgvShowList.CurrentRow.Cells["PersonID"].Value);
             if (clsPerson.IsPersonExist(ID))
             {
-                if (MessageBox.Show("Are you suer you want to Delete Person", "waring Delete Person", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"Are you suer you want to Delete Person ID : {ID}", "waring Delete Person", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     
                     if (clsPerson.DeletePerson(ID))
                     {
-                        MessageBox.Show($"Person with ID {ID} was Deleted", "Successfully deleted\r\n ");
+                        MessageBox.Show($"Person with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ");
                     }
                 } 
             }
@@ -235,7 +235,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     
                     break;
                 case "frmPeople":
-                    dgvShowList.DataSource = clsPerson.GetAllPersons();
+                    RefreshDGV(clsPerson.GetAllPersons());
                     break;
                 case "frmDrivers":
                   
