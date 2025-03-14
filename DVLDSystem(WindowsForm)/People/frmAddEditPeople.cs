@@ -134,9 +134,14 @@ namespace DVLDSystem_WindowsForm_.People
             }
 
         }
-        private bool _ValidateNationalNo(Guna2TextBox textBox, string errorMessage)
+        private bool _ValidateNationalNo(Guna2TextBox textBox, string errorMessage, string errorMessage2)
         {
-            if(!clsValidation.CustomValid(textBox.Text.Trim() , @"^\w+([\-\s\/]\w+)*$"))
+            if (clsPerson.IsPersonExist(textBox.Text.Trim()))
+            {
+                ep1.SetError(textBox, errorMessage2);
+                return false;
+            }
+            else if (!clsValidation.CustomValid(textBox.Text.Trim() , @"^\w+([\-\s\/]\w+)*$"))
             {
                 ep1.SetError(textBox, errorMessage);
                 return false;
@@ -218,7 +223,7 @@ namespace DVLDSystem_WindowsForm_.People
         {
             bool isValid = true;
 
-            isValid &= _ValidateNationalNo(txtNationalNo, "it's allow latters , number,- /.");
+            isValid &= _ValidateNationalNo(txtNationalNo, "it's allow latters , number,- /.", "this NationalNo is exists");
             isValid &= _ValidateName(txtFirstName, "it's only Latters.");
             isValid &= _ValidateName(txtSecondName, "it's only Latters.");
             isValid &= _ValidateName(txtLastName, "it's only Latters.");
