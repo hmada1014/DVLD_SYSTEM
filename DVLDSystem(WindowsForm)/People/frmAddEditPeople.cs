@@ -124,8 +124,8 @@ namespace DVLDSystem_WindowsForm_.People
             Guna2TextBox textBox = sender as Guna2TextBox; 
             if (string.IsNullOrEmpty(textBox.Text.Trim()))
             {
-                string a = textBox.Tag.ToString();
-                e.Cancel = true;
+                
+               e.Cancel = true;
                 ep1.SetError(textBox, "This field is required.");
             }
             else
@@ -282,6 +282,19 @@ namespace DVLDSystem_WindowsForm_.People
             else
             {
                 MessageBox.Show("Please correct the validation errors before saving.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmAddEditPeople_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                this.AutoValidate = AutoValidate.Disable;
             }
         }
 
