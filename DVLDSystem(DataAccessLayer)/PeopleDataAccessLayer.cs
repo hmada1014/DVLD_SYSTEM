@@ -226,6 +226,7 @@ namespace DVLDSystem_DataAccessLayer_
 
             SqlCommand command = new SqlCommand(Query, connection);
 
+            command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@NationalNo", NationalNo);
             command.Parameters.AddWithValue("@FirstName", FirstName);
             command.Parameters.AddWithValue("@SecondName", SecondName);
