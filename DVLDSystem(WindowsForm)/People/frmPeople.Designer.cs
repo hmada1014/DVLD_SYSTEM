@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            
-            this.ucTemplateDGVAndSearch1 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmPeople");
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnAddPerson = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.ucTemplateDGVAndSearch1 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmPeople");
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ucTemplateDGVAndSearch1
-            // 
-            this.ucTemplateDGVAndSearch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.ucTemplateDGVAndSearch1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucTemplateDGVAndSearch1.Location = new System.Drawing.Point(0, 206);
-            this.ucTemplateDGVAndSearch1.Name = "ucTemplateDGVAndSearch1";
-            this.ucTemplateDGVAndSearch1.Size = new System.Drawing.Size(908, 395);
-            this.ucTemplateDGVAndSearch1.TabIndex = 6;
             // 
             // pictureBox1
             // 
@@ -64,7 +54,7 @@
             this.btnAddPerson.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnAddPerson.ImageRotate = 0F;
             this.btnAddPerson.ImageSize = new System.Drawing.Size(48, 48);
-            this.btnAddPerson.Location = new System.Drawing.Point(833, 215);
+            this.btnAddPerson.Location = new System.Drawing.Point(819, 221);
             this.btnAddPerson.Name = "btnAddPerson";
             this.btnAddPerson.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnAddPerson.Size = new System.Drawing.Size(63, 55);
@@ -81,6 +71,15 @@
             this.label1.Size = new System.Drawing.Size(221, 33);
             this.label1.TabIndex = 5;
             this.label1.Text = "Manage People";
+            // 
+            // ucTemplateDGVAndSearch1
+            // 
+            this.ucTemplateDGVAndSearch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ucTemplateDGVAndSearch1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucTemplateDGVAndSearch1.Location = new System.Drawing.Point(0, 206);
+            this.ucTemplateDGVAndSearch1.Name = "ucTemplateDGVAndSearch1";
+            this.ucTemplateDGVAndSearch1.Size = new System.Drawing.Size(908, 395);
+            this.ucTemplateDGVAndSearch1.TabIndex = 6;
             // 
             // frmPeople
             // 

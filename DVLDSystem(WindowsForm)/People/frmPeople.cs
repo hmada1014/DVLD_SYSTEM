@@ -18,12 +18,7 @@ namespace DVLDSystem_WindowsForm_
         public frmPeople()
         {
             InitializeComponent();
-            //InitializeucTemplateDGVAndSearch();
-        }
-
-        private void InitializeucTemplateDGVAndSearch()
-        {
-            this.ucTemplateDGVAndSearch1 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmPeople");
+           
         }
         private string [] _FillComboBoxwhitString()
         {
@@ -34,7 +29,6 @@ namespace DVLDSystem_WindowsForm_
         {
             ucTemplateDGVAndSearch1.RefreshDGV(clsPerson.GetAllPersons());
             ucTemplateDGVAndSearch1.FillComboBox(_FillComboBoxwhitString());
-
         }
 
         private void btnAddPerson_Click(object sender, EventArgs e)
