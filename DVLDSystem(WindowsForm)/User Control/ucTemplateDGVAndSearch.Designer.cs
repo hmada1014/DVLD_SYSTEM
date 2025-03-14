@@ -33,16 +33,16 @@
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.lblFindBy = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
+            this.cmsEditDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TSM_EditPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_DeletePerson = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearchDGV = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
             this.lblRrecords = new System.Windows.Forms.Label();
             this.lblRecordsTitle = new System.Windows.Forms.Label();
-            this.cmsEditDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editTSM = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteTSM = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
             this.cmsEditDelete.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // cbFindBy
@@ -89,6 +89,30 @@
             this.dgvShowList.ReadOnly = true;
             this.dgvShowList.Size = new System.Drawing.Size(651, 290);
             this.dgvShowList.TabIndex = 2;
+            // 
+            // cmsEditDelete
+            // 
+            this.cmsEditDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSM_EditPerson,
+            this.TSM_DeletePerson});
+            this.cmsEditDelete.Name = "cmsAddEdit";
+            this.cmsEditDelete.Size = new System.Drawing.Size(181, 70);
+            // 
+            // TSM_EditPerson
+            // 
+            this.TSM_EditPerson.Name = "TSM_EditPerson";
+            this.TSM_EditPerson.Size = new System.Drawing.Size(180, 22);
+            this.TSM_EditPerson.Text = "Edit";
+            this.TSM_EditPerson.Visible = false;
+            this.TSM_EditPerson.Click += new System.EventHandler(this.editPersonTSM_Click);
+            // 
+            // TSM_DeletePerson
+            // 
+            this.TSM_DeletePerson.Name = "TSM_DeletePerson";
+            this.TSM_DeletePerson.Size = new System.Drawing.Size(180, 22);
+            this.TSM_DeletePerson.Text = "Delete";
+            this.TSM_DeletePerson.Visible = false;
+            this.TSM_DeletePerson.Click += new System.EventHandler(this.deleteTSMPerson_Click);
             // 
             // txtSearchDGV
             // 
@@ -147,28 +171,6 @@
             this.lblRecordsTitle.TabIndex = 7;
             this.lblRecordsTitle.Text = "#Records :";
             // 
-            // cmsEditDelete
-            // 
-            this.cmsEditDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editTSM,
-            this.deleteTSM});
-            this.cmsEditDelete.Name = "cmsAddEdit";
-            this.cmsEditDelete.Size = new System.Drawing.Size(108, 48);
-            // 
-            // editTSM
-            // 
-            this.editTSM.Name = "editTSM";
-            this.editTSM.Size = new System.Drawing.Size(107, 22);
-            this.editTSM.Text = "Edit";
-            this.editTSM.Click += new System.EventHandler(this.editTSM_Click);
-            // 
-            // deleteTSM
-            // 
-            this.deleteTSM.Name = "deleteTSM";
-            this.deleteTSM.Size = new System.Drawing.Size(107, 22);
-            this.deleteTSM.Text = "Delete";
-            this.deleteTSM.Click += new System.EventHandler(this.deleteTSM_Click);
-            // 
             // ucTemplateDGVAndSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,8 +186,8 @@
             this.Name = "ucTemplateDGVAndSearch";
             this.Size = new System.Drawing.Size(651, 395);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
             this.cmsEditDelete.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +203,7 @@
         private System.Windows.Forms.Label lblRrecords;
         private System.Windows.Forms.Label lblRecordsTitle;
         private System.Windows.Forms.ContextMenuStrip cmsEditDelete;
-        private System.Windows.Forms.ToolStripMenuItem editTSM;
-        private System.Windows.Forms.ToolStripMenuItem deleteTSM;
+        private System.Windows.Forms.ToolStripMenuItem TSM_EditPerson;
+        private System.Windows.Forms.ToolStripMenuItem TSM_DeletePerson;
     }
 }

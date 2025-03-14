@@ -36,6 +36,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
                 case "frmPeople":
                     _enMode = enModeUC.People;
+                    _ShowToolStripMenuItemForPeple();
                     break;
                 case "frmDrivers":
                     _enMode = enModeUC.Drivers;
@@ -185,9 +186,14 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
 
         }
-
-        private void editTSM_Click(object sender, EventArgs e)
+        private void _ShowToolStripMenuItemForPeple()
         {
+            TSM_EditPerson.Visible = true;
+            TSM_DeletePerson.Visible = true;
+        }
+        private void editPersonTSM_Click(object sender, EventArgs e)
+        {
+            
             if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(),out int ID))
             {
   
@@ -199,8 +205,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 MessageBox.Show("Person Not Found to Edit.", "warning");
             }
         }
-
-        private void deleteTSM_Click(object sender, EventArgs e)
+        private void deleteTSMPerson_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32( dgvShowList.CurrentRow.Cells["PersonID"].Value);
             if (clsPerson.IsPersonExist(ID))
