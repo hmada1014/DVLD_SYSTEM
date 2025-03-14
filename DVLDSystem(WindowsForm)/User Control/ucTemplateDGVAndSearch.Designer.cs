@@ -96,12 +96,12 @@
             this.TSM_EditPerson,
             this.TSM_DeletePerson});
             this.cmsEditDelete.Name = "cmsAddEdit";
-            this.cmsEditDelete.Size = new System.Drawing.Size(181, 70);
+            this.cmsEditDelete.Size = new System.Drawing.Size(108, 48);
             // 
             // TSM_EditPerson
             // 
             this.TSM_EditPerson.Name = "TSM_EditPerson";
-            this.TSM_EditPerson.Size = new System.Drawing.Size(180, 22);
+            this.TSM_EditPerson.Size = new System.Drawing.Size(107, 22);
             this.TSM_EditPerson.Text = "Edit";
             this.TSM_EditPerson.Visible = false;
             this.TSM_EditPerson.Click += new System.EventHandler(this.editPersonTSM_Click);
@@ -109,7 +109,7 @@
             // TSM_DeletePerson
             // 
             this.TSM_DeletePerson.Name = "TSM_DeletePerson";
-            this.TSM_DeletePerson.Size = new System.Drawing.Size(180, 22);
+            this.TSM_DeletePerson.Size = new System.Drawing.Size(107, 22);
             this.TSM_DeletePerson.Text = "Delete";
             this.TSM_DeletePerson.Visible = false;
             this.TSM_DeletePerson.Click += new System.EventHandler(this.deleteTSMPerson_Click);
@@ -144,12 +144,13 @@
             this.btnRefreshDGV.IconChar = FontAwesome.Sharp.IconChar.RotateBackward;
             this.btnRefreshDGV.IconColor = System.Drawing.SystemColors.ControlText;
             this.btnRefreshDGV.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRefreshDGV.Location = new System.Drawing.Point(592, 25);
+            this.btnRefreshDGV.IconSize = 27;
+            this.btnRefreshDGV.Location = new System.Drawing.Point(616, 368);
             this.btnRefreshDGV.Name = "btnRefreshDGV";
-            this.btnRefreshDGV.Size = new System.Drawing.Size(32, 32);
+            this.btnRefreshDGV.Size = new System.Drawing.Size(35, 27);
             this.btnRefreshDGV.TabIndex = 4;
             this.btnRefreshDGV.TabStop = false;
-            this.btnRefreshDGV.Visible = false;
+            this.btnRefreshDGV.Click += new System.EventHandler(this.btnRefreshDGV_Click);
             // 
             // lblRrecords
             // 

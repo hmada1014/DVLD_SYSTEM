@@ -225,5 +225,25 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
 
         }
+        private void btnRefreshDGV_Click(object sender, EventArgs e)
+        {
+            txtSearchDGV.Clear();
+            switch(_FormName)
+            {
+                
+                case "frmApplication":
+                    
+                    break;
+                case "frmPeople":
+                    dgvShowList.DataSource = clsPerson.GetAllPersons();
+                    break;
+                case "frmDrivers":
+                  
+                    break;
+                case "frmUsers":
+                    
+                    break;
+            }
+        }
     }
 }
