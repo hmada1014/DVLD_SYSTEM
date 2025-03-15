@@ -139,7 +139,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             dt.Columns["Gender"].SetOrdinal(4);
             return dt;
         }
-        private void _SearchPeople(string ID)
+        private void _SearchPeopleID(string ID)
         {
             DataTable dt = clsPerson.SearchPersonByPersonID(ID).Table;
             if (dt.Rows.Count > 0)
@@ -149,7 +149,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
-        private void _SearchUser(string ID)
+        private void _SearchUserID(string ID)
         {
             dgvShowList.DataSource = clsUser.SearchUserByUserID(ID);
             _UpdateUserColumnHeaders();
@@ -165,13 +165,44 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
                     break;
                 case enModeUC.People:
-                    _SearchPeople(ID);
+                    _SearchPeopleID(ID);
                     break;
                 case enModeUC.Drivers:
                     
                     break;
                 case enModeUC.Users:
-                    _SearchUser(ID);
+                    _SearchUserID(ID);
+                    break;
+
+            }
+        }
+
+        private void _SearchPeopleNationalNo(string NationalNo)
+        {
+            DataTable dt = clsPerson.SearchPersonByNationalNo(NationalNo).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchDataByNationalNo(string NationalNo)
+        {
+            dgvShowList.DataSource = null;
+            switch (_enMode)
+            {
+                case enModeUC.Application:
+
+                    break;
+                case enModeUC.People:
+                    _SearchPeopleNationalNo(NationalNo);
+                    break;
+                case enModeUC.Drivers:
+
+                    break;
+                case enModeUC.Users:
+                    
                     break;
 
             }
@@ -183,8 +214,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case "ID":
                     _SearchDataByID(txtSearchDGV.Text.Trim());
                     break;
-                case "Name":
-                    
+                case "NationalNo":
+                    _SearchDataByNationalNo(txtSearchDGV.Text.Trim());
                     break;
                 case " ": 
                     break;
