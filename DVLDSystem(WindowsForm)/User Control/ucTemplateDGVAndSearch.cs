@@ -27,8 +27,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
             InitializeComponent();
 
             _FormName = FormName;
-
-            
             switch (_FormName)
             {
                 case "frmApplication":
@@ -52,15 +50,24 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         public void RefreshDGV(object DataSours)
         {
-
             DataView dv = _ConvertToDataView(DataSours);
             if (dv == null) return;
 
-            dgvShowList.DataSource = _ProcessPeopleGenderColumn(dv.Table);
-            if (_enMode == enModeUC.People)
+            switch(_enMode)
             {
-                _UpdatePeopleColumnHeaders();
+                case enModeUC.Application:
+                    break;
+                case enModeUC.People:
+                    dgvShowList.DataSource = _ProcessPeopleGenderColumn(dv.Table);
+                    _UpdatePeopleColumnHeaders();
+                    break;
+                case enModeUC.Drivers:
+                    break;
+                case enModeUC.Users:
+                    dgvShowList.DataSource = dv;
+                    break;
             }
+
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
         private DataView _ConvertToDataView(object DataSours)
