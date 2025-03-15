@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.lblFindBy = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
@@ -72,22 +74,31 @@
             // 
             this.dgvShowList.AllowUserToAddRows = false;
             this.dgvShowList.AllowUserToDeleteRows = false;
+            this.dgvShowList.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
+            this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvShowList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvShowList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.dgvShowList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(64)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.AliceBlue;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowList.ContextMenuStrip = this.cmsEditDelete;
+            this.dgvShowList.EnableHeadersVisualStyles = false;
+            this.dgvShowList.GridColor = System.Drawing.Color.Black;
             this.dgvShowList.Location = new System.Drawing.Point(0, 78);
             this.dgvShowList.Name = "dgvShowList";
             this.dgvShowList.ReadOnly = true;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.dgvShowList.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvShowList.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
             this.dgvShowList.Size = new System.Drawing.Size(651, 290);
             this.dgvShowList.TabIndex = 2;
             // 
@@ -101,6 +112,7 @@
             // 
             // TSM_EditPerson
             // 
+            this.TSM_EditPerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
             this.TSM_EditPerson.Name = "TSM_EditPerson";
             this.TSM_EditPerson.Size = new System.Drawing.Size(107, 22);
             this.TSM_EditPerson.Text = "Edit";
@@ -109,6 +121,7 @@
             // 
             // TSM_DeletePerson
             // 
+            this.TSM_DeletePerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
             this.TSM_DeletePerson.Name = "TSM_DeletePerson";
             this.TSM_DeletePerson.Size = new System.Drawing.Size(107, 22);
             this.TSM_DeletePerson.Text = "Delete";
