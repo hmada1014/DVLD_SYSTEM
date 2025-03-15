@@ -30,7 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ucTemplateDGVAndSearch2 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmUsers");
+            this.ucTemplateDGVAndSearch2 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch();
             this.btnAddUser = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -79,6 +79,7 @@
             this.btnAddUser.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnAddUser.Size = new System.Drawing.Size(63, 55);
             this.btnAddUser.TabIndex = 8;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // frmUser
             // 

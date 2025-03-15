@@ -28,5 +28,10 @@ namespace DVLDSystem_WindowsForm_.User
             ucTemplateDGVAndSearch2.RefreshDGV(clsUser.GetAllUsers());
             ucTemplateDGVAndSearch2.FillComboBox(_FillComboBoxwhitString());
         }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

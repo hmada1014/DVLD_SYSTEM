@@ -75,30 +75,30 @@
     <Compile Include="AccessDeniedForms\AccessDenied.designer.cs">
       <DependentUpon>AccessDenied.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\frmMainScreen.cs">
+    <Compile Include="Main  Forms\frmMainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\frmMainScreen.Designer.cs">
+    <Compile Include="Main  Forms\frmMainScreen.Designer.cs">
       <DependentUpon>frmMainScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmAddEditPeople.cs">
+    <Compile Include="People  Forms\frmAddEditPeople.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmAddEditPeople.Designer.cs">
+    <Compile Include="People  Forms\frmAddEditPeople.Designer.cs">
       <DependentUpon>frmAddEditPeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmPeople.cs">
+    <Compile Include="People  Forms\frmPeople.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmPeople.Designer.cs">
+    <Compile Include="People  Forms\frmPeople.Designer.cs">
       <DependentUpon>frmPeople.cs</DependentUpon>
     </Compile>
     <Compile Include="OpenChildForm\clsOpenChildForm.cs" />
     <Compile Include="Drag Form\clsDragForm.cs" />
-    <Compile Include="Login\frmLoginScreen.cs">
+    <Compile Include="Login Forms\frmLoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\frmLoginScreen.Designer.cs">
+    <Compile Include="Login Forms\frmLoginScreen.Designer.cs">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -126,26 +126,32 @@
     <Compile Include="User Control\ucRoundedPanel.Designer.cs">
       <DependentUpon>ucRoundedPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmUser.cs">
+    <Compile Include="User  Forms\frmAddEditeUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\frmUser.Designer.cs">
+    <Compile Include="User  Forms\frmAddEditeUser.Designer.cs">
+      <DependentUpon>frmAddEditeUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User  Forms\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User  Forms\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="AccessDeniedForms\AccessDenied.resx">
       <DependentUpon>AccessDenied.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login\frmLoginScreen.resx">
+    <EmbeddedResource Include="Login Forms\frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\frmMainScreen.resx">
+    <EmbeddedResource Include="Main  Forms\frmMainScreen.resx">
       <DependentUpon>frmMainScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmAddEditPeople.resx">
+    <EmbeddedResource Include="People  Forms\frmAddEditPeople.resx">
       <DependentUpon>frmAddEditPeople.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmPeople.resx">
+    <EmbeddedResource Include="People  Forms\frmPeople.resx">
       <DependentUpon>frmPeople.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucRoundedPanel.resx">
       <DependentUpon>ucRoundedPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User  Forms\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
