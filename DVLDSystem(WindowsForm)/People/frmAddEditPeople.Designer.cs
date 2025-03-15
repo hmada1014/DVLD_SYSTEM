@@ -490,6 +490,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditPeople";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddEditPeople";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddEditPeople_FormClosing);
             this.Load += new System.EventHandler(this.frmAddEditPeople_Load);
