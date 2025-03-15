@@ -385,6 +385,40 @@ namespace DVLDSystem_DataAccessLayer_
             return dataTable.DefaultView;
         }
 
+        public static DataView SearchUserByPersonID(string PersonID)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @" SELECT   Users.UserID, People.PersonID  , concat(People.FirstName ,' ', People.SecondName,' ', People.ThirdName,' ', People.LastName) as Full_Name ,Users.UserName,Users.IsActive
+                             FROM Users INNER JOIN
+                             People ON Users.PersonID = People.PersonID
+						     where People.PersonID like '%'+ @PersonID + '%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+
 
     }
 }

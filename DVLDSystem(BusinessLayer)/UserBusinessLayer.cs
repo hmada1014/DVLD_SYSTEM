@@ -107,6 +107,11 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsUserDataAccessLayer.SearchUserByUserID(UserID);
         }
+
+        public static DataView SearchUserByPersonID(string PersonID)
+        {
+            return clsUserDataAccessLayer.SearchUserByPersonID(PersonID);
+        }
         public static DataView GetAllUsers()
         {
             return clsUserDataAccessLayer.GetAllUser();
