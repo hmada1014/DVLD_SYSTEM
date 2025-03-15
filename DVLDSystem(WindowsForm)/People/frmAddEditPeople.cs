@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -134,14 +135,17 @@ namespace DVLDSystem_WindowsForm_.People
             }
 
         }
-        private bool _ValidateNationalNo(Guna2TextBox textBox, string errorMessage, string errorMessage2)
+        private bool _ValidateNationalNo(Guna2TextBox textBox,Label PersonID, string errorMessage, string errorMessage2)
         {
-            if (clsPerson.IsPersonExist(textBox.Text.Trim()))
+            if (!clsPerson.IsPersonExist(textBox.Text.Trim(),PersonID.Text.Trim()))
             {
-                ep1.SetError(textBox, errorMessage2);
-                return false;
+                if (clsPerson.IsPersonExist(textBox.Text.Trim()))
+                {
+                    ep1.SetError(textBox, errorMessage2);
+                    return false; 
+                }
             }
-            else if (!clsValidation.CustomValid(textBox.Text.Trim() , @"^\w+([\-\s\/]\w+)*$"))
+            if (!clsValidation.CustomValid(textBox.Text.Trim() , @"^\w+([\-\s\/]\w+)*$"))
             {
                 ep1.SetError(textBox, errorMessage);
                 return false;
@@ -206,24 +210,11 @@ namespace DVLDSystem_WindowsForm_.People
                 return true;
             }
         }
-        private bool _ValidateImage(Guna2CirclePictureBox PictureBox, string errorMessageRequired)
-        {
-            if (string.IsNullOrWhiteSpace(PictureBox.ImageLocation.Trim()))
-            {
-                ep1.SetError(PictureBox, errorMessageRequired);
-                return false;
-            }
-            else
-            {
-                ep1.SetError(PictureBox, "");
-                return true;
-            }
-        }
         private bool _ValidateForm()
         {
             bool isValid = true;
 
-            isValid &= _ValidateNationalNo(txtNationalNo, "it's allow latters , number,- /.", "this NationalNo is exists");
+            isValid &= _ValidateNationalNo(txtNationalNo,lblPersonID, "it's allow latters , number,- /.", "this NationalNo is exists");
             isValid &= _ValidateName(txtFirstName, "it's only Latters.");
             isValid &= _ValidateName(txtSecondName, "it's only Latters.");
             isValid &= _ValidateName(txtLastName, "it's only Latters.");
@@ -284,12 +275,6 @@ namespace DVLDSystem_WindowsForm_.People
                 MessageBox.Show("Please correct the validation errors before saving.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void frmAddEditPeople_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
