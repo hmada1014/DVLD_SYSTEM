@@ -58,8 +58,10 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case enModeUC.Application:
                     break;
                 case enModeUC.People:
-                    dgvShowList.DataSource = _ProcessPeopleGenderColumn(dv.Table);
+                    dgvShowList.DataSource = dv ;
                     _UpdatePeopleColumnHeaders();
+                    //dgvShowList.DataSource = _ProcessPeopleGenderColumn(dv.Table);
+                    //_UpdatePeopleColumnHeaders();
                     break;
                 case enModeUC.Drivers:
                     break;
@@ -106,7 +108,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             _SafeHeaderUpdate("NationalNo", "National No");
             _SafeHeaderUpdate("FullName", "Full Name");
             _SafeHeaderUpdate("DateOfBirth", "Date Of Birth");
-            _SafeHeaderUpdate("CountryName","Country Name");
+            _SafeHeaderUpdate("CountryName", "Nationality");
             _SafeHeaderUpdate("ImagePath", "ImagePath");
         }
         private void _SafeHeaderUpdate(string ColumnName, string headerText)
@@ -142,7 +144,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             DataTable dt = clsPerson.SearchPersonByPersonID(ID).Table;
             if (dt.Rows.Count > 0)
             {
-                dgvShowList.DataSource = _ProcessPeopleGenderColumn(dt);
+                dgvShowList.DataSource = dt;
                 _UpdatePeopleColumnHeaders();
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
