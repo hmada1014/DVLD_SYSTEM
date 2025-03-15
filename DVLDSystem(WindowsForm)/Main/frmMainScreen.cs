@@ -1,5 +1,6 @@
 ﻿using DVLDSystem_BusinessLayer_;
 using DVLDSystem_WindowsForm_.Properties;
+using DVLDSystem_WindowsForm_.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,12 +58,38 @@ namespace DVLDSystem_WindowsForm_
             ResizeImages();
             lblUsername.Text += User.UserName;
         }
+        private bool _CheckIsFormOpen(Type formName)
+        {
+            foreach (Form openForm in this.MdiChildren)
+            {
+                if (openForm.GetType() == formName)
+                {
+                    openForm.BringToFront();
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         private void tsmPeople_Click(object sender, EventArgs e)
         {
-            frmPeople People = new frmPeople();
-            People.MdiParent = this;
-            People.Show();
+            if (!_CheckIsFormOpen(typeof(frmPeople)))
+            {
+                frmPeople People = new frmPeople();
+                People.MdiParent = this;
+                People.Show(); 
+            }
+        }
+
+        private void tsmUsers_Click(object sender, EventArgs e)
+        {
+            if (!_CheckIsFormOpen(typeof(frmUser)))
+            {
+                frmUser User = new frmUser();
+                User.MdiParent = this;
+                User.Show();
+            }
         }
     }
 }

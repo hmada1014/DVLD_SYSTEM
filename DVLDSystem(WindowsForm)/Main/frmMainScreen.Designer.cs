@@ -81,6 +81,7 @@
             this.tsmUsers.Name = "tsmUsers";
             this.tsmUsers.Size = new System.Drawing.Size(47, 20);
             this.tsmUsers.Text = "Users";
+            this.tsmUsers.Click += new System.EventHandler(this.tsmUsers_Click);
             // 
             // tsmClose
             // 
