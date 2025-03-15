@@ -139,6 +139,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             dt.Columns["Gender"].SetOrdinal(4);
             return dt;
         }
+        //-------------------------------------------------
         private void _SearchPeopleID(string ID)
         {
             DataTable dt = clsPerson.SearchPersonByPersonID(ID).Table;
@@ -207,6 +208,37 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             }
         }
+
+        private void _SearchUserByPersonID(string PersonID)
+        {
+            DataTable dt = clsUser.SearchUserByPersonID(PersonID).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchDataByPersonID(string PersonID)
+        {
+            dgvShowList.DataSource = null;
+            switch (_enMode)
+            {
+                case enModeUC.Application:
+
+                    break;
+                case enModeUC.People:
+                    
+                    break;
+                case enModeUC.Drivers:
+
+                    break;
+                case enModeUC.Users:
+                    _SearchUserByPersonID(PersonID);
+                    break;
+
+            }
+        }
         private void _txtSearchDGV_TextChanged(object sender, EventArgs e)
         {
             switch (cbFindBy.Text)
@@ -217,7 +249,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case "NationalNo":
                     _SearchDataByNationalNo(txtSearchDGV.Text.Trim());
                     break;
-                case " ": 
+                case "PersonID":
+                    _SearchDataByPersonID(txtSearchDGV.Text.Trim());
                     break;
                 case "  ":
                        
@@ -270,7 +303,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
             txtSearchDGV.Clear();
             switch(_FormName)
             {
-                
                 case "frmApplication":
                     
                     break;
@@ -284,6 +316,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     
                     break;
             }
+        }
+
+        private void TSM_Refresh_Click(object sender, EventArgs e)
+        {
+            btnRefreshDGV_Click(sender,e);
         }
     }
 }
