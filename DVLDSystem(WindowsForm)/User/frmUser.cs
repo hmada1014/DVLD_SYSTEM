@@ -18,9 +18,15 @@ namespace DVLDSystem_WindowsForm_.User
             InitializeComponent();
         }
 
+        private string[] _FillComboBoxwhitString()
+        {
+            string[] strings = { "ID", "PersonID" };
+            return strings;
+        }
         private void frmUser_Load(object sender, EventArgs e)
         {
             ucTemplateDGVAndSearch2.RefreshDGV(clsUser.GetAllUsers());
+            ucTemplateDGVAndSearch2.FillComboBox(_FillComboBoxwhitString());
         }
     }
 }
