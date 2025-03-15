@@ -1,0 +1,68 @@
+﻿using DVLDSystem_BusinessLayer_;
+using DVLDSystem_WindowsForm_.Properties;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace DVLDSystem_WindowsForm_
+{
+    public partial class frmMainScreen : Form
+    {
+        private int _UserID = -1;
+
+        clsUser User;
+        public frmMainScreen(int UserID)
+        {
+            InitializeComponent();
+
+            _UserID = UserID;
+
+            if (_UserID != -1)
+            {
+                User = clsUser.Find(_UserID);   
+            }
+
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private Image ResizeImage(Image img, int width, int height)
+        {
+            Bitmap bmp = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(img, 0, 0, width, height);
+            }
+            return bmp;
+        }
+        private void ResizeImages()
+        {
+            tsmApplication.Image = ResizeImage(Resources.Applications, 48, 48);
+            tsmPeople.Image = ResizeImage(Resources.People, 48, 48);
+            tsmDrivers.Image = ResizeImage(Resources.Drivers, 48, 48);
+            tsmUsers.Image = ResizeImage(Resources.Users, 48, 48);
+            tsmClose.Image = ResizeImage(Resources.close, 48, 48);
+        }
+        private void frmMainScreen_Load(object sender, EventArgs e)
+        {
+            ResizeImages();
+            lblUsername.Text += User.UserName;
+        }
+
+        private void tsmPeople_Click(object sender, EventArgs e)
+        {
+            frmPeople People = new frmPeople();
+            People.MdiParent = this;
+            People.Show();
+        }
+    }
+}
