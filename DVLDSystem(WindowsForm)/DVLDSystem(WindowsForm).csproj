@@ -159,6 +159,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="User  Forms\frmAddEditeUser.resx">
+      <DependentUpon>frmAddEditeUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucTemplateDGV.resx">
       <DependentUpon>ucTemplateDGV.cs</DependentUpon>
     </EmbeddedResource>
