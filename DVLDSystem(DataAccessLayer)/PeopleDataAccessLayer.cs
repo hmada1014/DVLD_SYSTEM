@@ -448,6 +448,45 @@ namespace DVLDSystem_DataAccessLayer_
         }
 
 
+        public static DataView SearchPersonByNationalNo(string NationalNo)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @" SELECT People.PersonID, People.NationalNo,FullName = Concat(People.FirstName,' ', People.SecondName,' ', People.ThirdName,' ', People.LastName), 
+                             People.DateOfBirth, People.Gender, People.Address, People.Phone, 
+                             People.Email, Countries.CountryName, 
+                             People.ImagePath
+                             FROM People INNER JOIN
+                             Countries ON People.NationalityCountryID = Countries.CountryID
+						     where People.NationalNo like '%'+@NationalNo+'%' ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+
+
 
 
     }

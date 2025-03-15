@@ -126,6 +126,11 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsPeopleDataAccessLayer.SearchPersonByPersonID(PersonID);
         }
+
+        public static DataView SearchPersonByNationalNo(string NationalNo)
+        {
+            return clsPeopleDataAccessLayer.SearchPersonByNationalNo(NationalNo);
+        }
         public bool Save()
         {
             switch (this.Mode)
