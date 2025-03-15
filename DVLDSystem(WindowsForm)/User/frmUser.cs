@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLDSystem_BusinessLayer_;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace DVLDSystem_WindowsForm_.User
         public frmUser()
         {
             InitializeComponent();
+        }
+
+        private void frmUser_Load(object sender, EventArgs e)
+        {
+            ucTemplateDGVAndSearch2.RefreshDGV(clsUser.GetAllUsers());
         }
     }
 }
