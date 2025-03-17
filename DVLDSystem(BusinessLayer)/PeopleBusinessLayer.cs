@@ -90,6 +90,26 @@ namespace DVLDSystem_BusinessLayer_
                 return null;
             }
         }
+
+        public static clsPerson Find(string NationalNo)
+        {
+            string  FirstName = "", SecondName = "", ThirdName = "", LastName = "", Address = "", Phone = "", Email = "", ImagePath = "";
+            byte Gender = 0;
+            DateTime DateOfBirth = DateTime.Now;
+            int PersonID = -1, NationalityCountryID = -1;
+
+
+            if (clsPeopleDataAccessLayer.GetPersonInfoByNationalNo(NationalNo, ref PersonID, ref FirstName, ref SecondName, ref ThirdName, ref LastName, ref DateOfBirth,
+                                                            ref Gender, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath))
+            {
+
+                return new clsPerson(PersonID, NationalNo, FirstName, SecondName, ThirdName, LastName, DateOfBirth, Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+            }
+            else
+            {
+                return null;
+            }
+        }
         public static bool IsPersonExist(int PersonID)
         {
             return clsPeopleDataAccessLayer.IsPersonExist(PersonID);
