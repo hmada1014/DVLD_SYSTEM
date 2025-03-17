@@ -13,11 +13,21 @@ namespace DVLDSystem_BusinessLayer_
         public enum enUserMode { Add = 0, Update = 1 }
         public enUserMode Mode = enUserMode.Add;
 
+        public enum enPermission
+        {
+            All = -1,
+            Application = 1,
+            People = 2,
+            Drivers = 4,
+            Users = 8,
+        }
+
         public int UserID { get; set; }
         public int PersonID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
+        public int Permission { get; set; }
 
 
         public clsUser()
@@ -27,6 +37,7 @@ namespace DVLDSystem_BusinessLayer_
             this.PersonID = -1;
             this.UserName = string.Empty;
             this.Password = string.Empty;
+            this.Permission = 0;
             this.IsActive = false;
 
 
@@ -35,12 +46,13 @@ namespace DVLDSystem_BusinessLayer_
 
         }
 
-        private clsUser(int UserID, int PersonID, string UserName, string Password, bool IsActive)
+        private clsUser(int UserID, int PersonID, string UserName, string Password,int Permission, bool IsActive)
         {
             this.UserID = UserID;
             this.PersonID = PersonID;
             this.UserName = UserName;
             this.Password = Password;
+            this.Permission = Permission;
             this.IsActive = IsActive;
 
 
@@ -49,13 +61,13 @@ namespace DVLDSystem_BusinessLayer_
         }
         public static clsUser Find(int UserID)
         {
-            int PersonID = -1;
+            int PersonID = -1 , Permission = 0;
             string UserName = string.Empty, Password = string.Empty;
             bool IsActive = false;
 
-            if (clsUserDataAccessLayer.GetUserInfoByUserID(UserID, ref PersonID, ref UserName, ref Password, ref IsActive))
+            if (clsUserDataAccessLayer.GetUserInfoByUserID(UserID, ref PersonID, ref UserName, ref Password,ref Permission, ref IsActive))
             {
-                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, Password, Permission,IsActive);
             }
             else
             {
@@ -65,12 +77,12 @@ namespace DVLDSystem_BusinessLayer_
 
         public static clsUser Find(string UserName , string Password )
         {
-            int PersonID = -1 , UserID =-1;
+            int PersonID = -1 , UserID =-1 ,Permission = 0;
             bool IsActive = false;
 
-            if (clsUserDataAccessLayer.GetUserInfoByUserNameAndPassword(UserName,Password,ref UserID, ref PersonID, ref IsActive))
+            if (clsUserDataAccessLayer.GetUserInfoByUserNameAndPassword(UserName,Password,ref UserID, ref PersonID, ref Permission,ref IsActive))
             {
-                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, Password, Permission, IsActive);
             }
             else
             {

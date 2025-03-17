@@ -10,7 +10,7 @@ namespace DVLDSystem_DataAccessLayer_
 {
     public class clsUserDataAccessLayer
     {
-        public static bool GetUserInfoByUserID(int UserID, ref int PersonID, ref string UserName, ref string Password, ref bool IsActive)
+        public static bool GetUserInfoByUserID(int UserID, ref int PersonID, ref string UserName, ref string Password ,ref int Permission, ref bool IsActive)
         {
 
             bool IsFound = false;
@@ -39,6 +39,14 @@ namespace DVLDSystem_DataAccessLayer_
                     Password = (string)reader["Password"];
                     IsActive = (bool)reader["IsActive"];
 
+                    if (reader["Permission"] != null)
+                    {
+                        Permission = (int)reader["Permission"]; 
+                    }
+                    else
+                    {
+                        Permission = 0;
+                    }
 
                 }
                 else
@@ -59,7 +67,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
-        public static bool GetUserInfoByUserNameAndPassword(string UserName, string Password, ref int UserID, ref int PersonID, ref bool IsActive)
+        public static bool GetUserInfoByUserNameAndPassword(string UserName, string Password, ref int UserID, ref int PersonID, ref int Permission, ref bool IsActive)
         {
 
             bool IsFound = false;
@@ -87,7 +95,14 @@ namespace DVLDSystem_DataAccessLayer_
                     UserID = (int)reader["UserID"];
                     PersonID = (int)reader["PersonID"];
                     IsActive = (bool)reader["IsActive"];
-
+                    if (reader["Permission"] != null)
+                    {
+                        Permission = (int)reader["Permission"];
+                    }
+                    else
+                    {
+                        Permission = 0;
+                    }
 
                 }
                 else
