@@ -385,7 +385,7 @@
             this.lblTitleHeader.AutoSize = true;
             this.lblTitleHeader.Font = new System.Drawing.Font("Tahoma", 35F, System.Drawing.FontStyle.Bold);
             this.lblTitleHeader.ForeColor = System.Drawing.Color.Maroon;
-            this.lblTitleHeader.Location = new System.Drawing.Point(160, 30);
+            this.lblTitleHeader.Location = new System.Drawing.Point(171, 31);
             this.lblTitleHeader.Name = "lblTitleHeader";
             this.lblTitleHeader.Size = new System.Drawing.Size(281, 57);
             this.lblTitleHeader.TabIndex = 1;
