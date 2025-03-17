@@ -75,6 +75,12 @@
     <Compile Include="AccessDeniedForms\AccessDenied.designer.cs">
       <DependentUpon>AccessDenied.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSelectePerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectePerson.Designer.cs">
+      <DependentUpon>frmSelectePerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main  Forms\frmMainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\ucPersonCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucPersonCard.Designer.cs">
+      <DependentUpon>ucPersonCard.cs</DependentUpon>
     </Compile>
     <Compile Include="User Control\ucTemplateDGV.cs">
       <SubType>UserControl</SubType>
@@ -142,6 +154,9 @@
     <EmbeddedResource Include="AccessDeniedForms\AccessDenied.resx">
       <DependentUpon>AccessDenied.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectePerson.resx">
+      <DependentUpon>frmSelectePerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login Forms\frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User  Forms\frmAddEditeUser.resx">
       <DependentUpon>frmAddEditeUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucPersonCard.resx">
+      <DependentUpon>ucPersonCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucTemplateDGV.resx">
       <DependentUpon>ucTemplateDGV.cs</DependentUpon>
@@ -243,6 +261,60 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Screenshot 2025-03-15 201348.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\At sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Identification Documents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Earth Planet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male User 100 px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Account.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Customer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Toggle Indeterminate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Find User Male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add User Male Skin Type 7.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
