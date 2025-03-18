@@ -32,31 +32,31 @@
             this.lblTitleHeader = new System.Windows.Forms.Label();
             this.tcUser = new System.Windows.Forms.TabControl();
             this.tpPersonSelected = new System.Windows.Forms.TabPage();
-            this.tpUserInfo = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
-            this.lblPersonID = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.ToggleSwitchISActive = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbAllPermission = new System.Windows.Forms.CheckBox();
-            this.cbApplication = new System.Windows.Forms.CheckBox();
-            this.cbPeople = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.cbUsers = new System.Windows.Forms.CheckBox();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.ucPersonCard4 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
             this.btnSelectePerson = new Guna.UI2.WinForms.Guna2Button();
+            this.tpUserInfo = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbUsers = new System.Windows.Forms.CheckBox();
+            this.cbDrivers = new System.Windows.Forms.CheckBox();
+            this.cbPeople = new System.Windows.Forms.CheckBox();
+            this.cbApplication = new System.Windows.Forms.CheckBox();
+            this.cbAllPermission = new System.Windows.Forms.CheckBox();
+            this.ToggleSwitchISActive = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblPersonID = new System.Windows.Forms.Label();
+            this.lblUserID = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.ucPersonCard4 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.tcUser.SuspendLayout();
             this.tpPersonSelected.SuspendLayout();
             this.tpUserInfo.SuspendLayout();
@@ -101,11 +101,45 @@
             this.tpPersonSelected.Text = "Person Selected";
             this.tpPersonSelected.UseVisualStyleBackColor = true;
             // 
+            // ucPersonCard4
+            // 
+            this.ucPersonCard4.Address = "????";
+            this.ucPersonCard4.Country = "????";
+            this.ucPersonCard4.DateOfBirth = "????";
+            this.ucPersonCard4.Email = "????";
+            this.ucPersonCard4.Gendor = "???";
+            this.ucPersonCard4.ID = "???";
+            this.ucPersonCard4.Location = new System.Drawing.Point(0, 45);
+            this.ucPersonCard4.Name = "ucPersonCard4";
+            this.ucPersonCard4.NotionalNo = "?????";
+            this.ucPersonCard4.PersonName = "Empty Name ";
+            this.ucPersonCard4.Phone = "????";
+            this.ucPersonCard4.Picture = ((System.Drawing.Image)(resources.GetObject("ucPersonCard4.Picture")));
+            this.ucPersonCard4.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ucPersonCard4.Size = new System.Drawing.Size(783, 252);
+            this.ucPersonCard4.TabIndex = 4;
+            // 
+            // btnSelectePerson
+            // 
+            this.btnSelectePerson.BorderRadius = 10;
+            this.btnSelectePerson.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSelectePerson.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSelectePerson.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSelectePerson.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSelectePerson.Font = new System.Drawing.Font("Roboto Condensed", 11F, System.Drawing.FontStyle.Bold);
+            this.btnSelectePerson.ForeColor = System.Drawing.Color.White;
+            this.btnSelectePerson.Location = new System.Drawing.Point(662, 4);
+            this.btnSelectePerson.Name = "btnSelectePerson";
+            this.btnSelectePerson.Size = new System.Drawing.Size(114, 35);
+            this.btnSelectePerson.TabIndex = 3;
+            this.btnSelectePerson.Text = "select person";
+            this.btnSelectePerson.Click += new System.EventHandler(this.btnSelectePerson_Click);
+            // 
             // tpUserInfo
             // 
             this.tpUserInfo.Controls.Add(this.groupBox1);
             this.tpUserInfo.Controls.Add(this.ToggleSwitchISActive);
-            this.tpUserInfo.Controls.Add(this.textBox1);
+            this.tpUserInfo.Controls.Add(this.txtUsername);
             this.tpUserInfo.Controls.Add(this.txtPassword);
             this.tpUserInfo.Controls.Add(this.lblPersonID);
             this.tpUserInfo.Controls.Add(this.lblUserID);
@@ -122,94 +156,81 @@
             this.tpUserInfo.Location = new System.Drawing.Point(4, 22);
             this.tpUserInfo.Name = "tpUserInfo";
             this.tpUserInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpUserInfo.Size = new System.Drawing.Size(786, 276);
+            this.tpUserInfo.Size = new System.Drawing.Size(786, 297);
             this.tpUserInfo.TabIndex = 1;
             this.tpUserInfo.Text = "User info";
             this.tpUserInfo.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // groupBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F);
-            this.label1.Location = new System.Drawing.Point(22, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "User ID :";
+            this.groupBox1.Controls.Add(this.cbUsers);
+            this.groupBox1.Controls.Add(this.cbDrivers);
+            this.groupBox1.Controls.Add(this.cbPeople);
+            this.groupBox1.Controls.Add(this.cbApplication);
+            this.groupBox1.Controls.Add(this.cbAllPermission);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
+            this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox1.Location = new System.Drawing.Point(351, 43);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(425, 186);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Permission :";
             // 
-            // label2
+            // cbUsers
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 14.25F);
-            this.label2.Location = new System.Drawing.Point(22, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Person ID :";
+            this.cbUsers.AutoSize = true;
+            this.cbUsers.ForeColor = System.Drawing.Color.DarkGray;
+            this.cbUsers.Location = new System.Drawing.Point(203, 95);
+            this.cbUsers.Name = "cbUsers";
+            this.cbUsers.Size = new System.Drawing.Size(110, 37);
+            this.cbUsers.TabIndex = 4;
+            this.cbUsers.Text = "Users";
+            this.cbUsers.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // cbDrivers
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F);
-            this.label3.Location = new System.Drawing.Point(22, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 23);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "UserName :";
+            this.cbDrivers.AutoSize = true;
+            this.cbDrivers.ForeColor = System.Drawing.Color.DarkGray;
+            this.cbDrivers.Location = new System.Drawing.Point(203, 50);
+            this.cbDrivers.Name = "cbDrivers";
+            this.cbDrivers.Size = new System.Drawing.Size(132, 37);
+            this.cbDrivers.TabIndex = 3;
+            this.cbDrivers.Text = "Drivers";
+            this.cbDrivers.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // cbPeople
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 14.25F);
-            this.label4.Location = new System.Drawing.Point(22, 163);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 23);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Password :";
+            this.cbPeople.AutoSize = true;
+            this.cbPeople.ForeColor = System.Drawing.Color.DarkGray;
+            this.cbPeople.Location = new System.Drawing.Point(6, 140);
+            this.cbPeople.Name = "cbPeople";
+            this.cbPeople.Size = new System.Drawing.Size(126, 37);
+            this.cbPeople.TabIndex = 2;
+            this.cbPeople.Text = "People";
+            this.cbPeople.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // cbApplication
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F);
-            this.label5.Location = new System.Drawing.Point(30, 200);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 23);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Is Active :";
+            this.cbApplication.AutoSize = true;
+            this.cbApplication.ForeColor = System.Drawing.Color.DarkGray;
+            this.cbApplication.Location = new System.Drawing.Point(6, 95);
+            this.cbApplication.Name = "cbApplication";
+            this.cbApplication.Size = new System.Drawing.Size(185, 37);
+            this.cbApplication.TabIndex = 1;
+            this.cbApplication.Text = "Application";
+            this.cbApplication.UseVisualStyleBackColor = true;
             // 
-            // lblUserID
+            // cbAllPermission
             // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Tahoma", 14.25F);
-            this.lblUserID.Location = new System.Drawing.Point(166, 45);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(37, 23);
-            this.lblUserID.TabIndex = 5;
-            this.lblUserID.Text = "???";
-            // 
-            // lblPersonID
-            // 
-            this.lblPersonID.AutoSize = true;
-            this.lblPersonID.Font = new System.Drawing.Font("Tahoma", 14.25F);
-            this.lblPersonID.Location = new System.Drawing.Point(166, 83);
-            this.lblPersonID.Name = "lblPersonID";
-            this.lblPersonID.Size = new System.Drawing.Size(37, 23);
-            this.lblPersonID.TabIndex = 8;
-            this.lblPersonID.Text = "???";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(166, 168);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(112, 20);
-            this.txtPassword.TabIndex = 10;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(166, 126);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(112, 20);
-            this.textBox1.TabIndex = 12;
+            this.cbAllPermission.AutoSize = true;
+            this.cbAllPermission.ForeColor = System.Drawing.Color.DarkGray;
+            this.cbAllPermission.Location = new System.Drawing.Point(6, 50);
+            this.cbAllPermission.Name = "cbAllPermission";
+            this.cbAllPermission.Size = new System.Drawing.Size(68, 37);
+            this.cbAllPermission.TabIndex = 0;
+            this.cbAllPermission.Text = "All";
+            this.cbAllPermission.UseVisualStyleBackColor = true;
             // 
             // ToggleSwitchISActive
             // 
@@ -227,107 +248,89 @@
             this.ToggleSwitchISActive.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.ToggleSwitchISActive.UncheckedState.InnerColor = System.Drawing.Color.White;
             // 
-            // groupBox1
+            // txtUsername
             // 
-            this.groupBox1.Controls.Add(this.cbUsers);
-            this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Controls.Add(this.cbPeople);
-            this.groupBox1.Controls.Add(this.cbApplication);
-            this.groupBox1.Controls.Add(this.cbAllPermission);
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox1.Location = new System.Drawing.Point(351, 43);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(425, 186);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Permission :";
+            this.txtUsername.Location = new System.Drawing.Point(166, 126);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(112, 20);
+            this.txtUsername.TabIndex = 12;
             // 
-            // cbAllPermission
+            // txtPassword
             // 
-            this.cbAllPermission.AutoSize = true;
-            this.cbAllPermission.ForeColor = System.Drawing.Color.DarkGray;
-            this.cbAllPermission.Location = new System.Drawing.Point(6, 50);
-            this.cbAllPermission.Name = "cbAllPermission";
-            this.cbAllPermission.Size = new System.Drawing.Size(68, 37);
-            this.cbAllPermission.TabIndex = 0;
-            this.cbAllPermission.Text = "All";
-            this.cbAllPermission.UseVisualStyleBackColor = true;
+            this.txtPassword.Location = new System.Drawing.Point(166, 168);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(112, 20);
+            this.txtPassword.TabIndex = 10;
             // 
-            // cbApplication
+            // lblPersonID
             // 
-            this.cbApplication.AutoSize = true;
-            this.cbApplication.ForeColor = System.Drawing.Color.DarkGray;
-            this.cbApplication.Location = new System.Drawing.Point(6, 95);
-            this.cbApplication.Name = "cbApplication";
-            this.cbApplication.Size = new System.Drawing.Size(185, 37);
-            this.cbApplication.TabIndex = 1;
-            this.cbApplication.Text = "Application";
-            this.cbApplication.UseVisualStyleBackColor = true;
+            this.lblPersonID.AutoSize = true;
+            this.lblPersonID.Font = new System.Drawing.Font("Tahoma", 14.25F);
+            this.lblPersonID.Location = new System.Drawing.Point(166, 83);
+            this.lblPersonID.Name = "lblPersonID";
+            this.lblPersonID.Size = new System.Drawing.Size(37, 23);
+            this.lblPersonID.TabIndex = 8;
+            this.lblPersonID.Text = "???";
             // 
-            // cbPeople
+            // lblUserID
             // 
-            this.cbPeople.AutoSize = true;
-            this.cbPeople.ForeColor = System.Drawing.Color.DarkGray;
-            this.cbPeople.Location = new System.Drawing.Point(6, 140);
-            this.cbPeople.Name = "cbPeople";
-            this.cbPeople.Size = new System.Drawing.Size(126, 37);
-            this.cbPeople.TabIndex = 2;
-            this.cbPeople.Text = "People";
-            this.cbPeople.UseVisualStyleBackColor = true;
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Font = new System.Drawing.Font("Tahoma", 14.25F);
+            this.lblUserID.Location = new System.Drawing.Point(166, 45);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(37, 23);
+            this.lblUserID.TabIndex = 5;
+            this.lblUserID.Text = "???";
             // 
-            // checkBox4
+            // label5
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.ForeColor = System.Drawing.Color.DarkGray;
-            this.checkBox4.Location = new System.Drawing.Point(203, 50);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(132, 37);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "Drivers";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F);
+            this.label5.Location = new System.Drawing.Point(30, 200);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 23);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Is Active :";
             // 
-            // cbUsers
+            // label4
             // 
-            this.cbUsers.AutoSize = true;
-            this.cbUsers.ForeColor = System.Drawing.Color.DarkGray;
-            this.cbUsers.Location = new System.Drawing.Point(203, 95);
-            this.cbUsers.Name = "cbUsers";
-            this.cbUsers.Size = new System.Drawing.Size(110, 37);
-            this.cbUsers.TabIndex = 4;
-            this.cbUsers.Text = "Users";
-            this.cbUsers.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 14.25F);
+            this.label4.Location = new System.Drawing.Point(22, 163);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 23);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Password :";
             // 
-            // btnSave
+            // label3
             // 
-            this.btnSave.BorderRadius = 10;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.Font = new System.Drawing.Font("Roboto Condensed", 21F);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(322, 407);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(151, 35);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F);
+            this.label3.Location = new System.Drawing.Point(22, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 23);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "UserName :";
             // 
-            // btnSelectePerson
+            // label2
             // 
-            this.btnSelectePerson.BorderRadius = 10;
-            this.btnSelectePerson.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSelectePerson.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSelectePerson.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSelectePerson.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSelectePerson.Font = new System.Drawing.Font("Roboto Condensed", 11F, System.Drawing.FontStyle.Bold);
-            this.btnSelectePerson.ForeColor = System.Drawing.Color.White;
-            this.btnSelectePerson.Location = new System.Drawing.Point(662, 4);
-            this.btnSelectePerson.Name = "btnSelectePerson";
-            this.btnSelectePerson.Size = new System.Drawing.Size(114, 35);
-            this.btnSelectePerson.TabIndex = 3;
-            this.btnSelectePerson.Text = "select person";
-            this.btnSelectePerson.Click += new System.EventHandler(this.btnSelectePerson_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 14.25F);
+            this.label2.Location = new System.Drawing.Point(22, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Person ID :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F);
+            this.label1.Location = new System.Drawing.Point(22, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "User ID :";
             // 
             // iconPictureBox5
             // 
@@ -409,23 +412,20 @@
             this.iconPictureBox1.TabIndex = 6;
             this.iconPictureBox1.TabStop = false;
             // 
-            // ucPersonCard4
+            // btnSave
             // 
-            this.ucPersonCard4.Address = "????";
-            this.ucPersonCard4.Country = "????";
-            this.ucPersonCard4.DateOfBirth = "????";
-            this.ucPersonCard4.Email = "????";
-            this.ucPersonCard4.Gendor = "???";
-            this.ucPersonCard4.ID = "???";
-            this.ucPersonCard4.Location = new System.Drawing.Point(0, 45);
-            this.ucPersonCard4.Name = "ucPersonCard4";
-            this.ucPersonCard4.NotionalNo = "?????";
-            this.ucPersonCard4.PersonName = "Empty Name ";
-            this.ucPersonCard4.Phone = "????";
-            this.ucPersonCard4.Picture = ((System.Drawing.Image)(resources.GetObject("ucPersonCard4.Picture")));
-            this.ucPersonCard4.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ucPersonCard4.Size = new System.Drawing.Size(783, 252);
-            this.ucPersonCard4.TabIndex = 4;
+            this.btnSave.BorderRadius = 10;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.Font = new System.Drawing.Font("Roboto Condensed", 21F);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(322, 407);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(151, 35);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
             // 
             // frmAddEditeUser
             // 
@@ -439,7 +439,6 @@
             this.Name = "frmAddEditeUser";
             this.Text = "frmAddEditeUser";
             this.Load += new System.EventHandler(this.frmAddEditeUser_Load);
-            this.Click += new System.EventHandler(this.frmAddEditeUser_Click);
             this.tcUser.ResumeLayout(false);
             this.tpPersonSelected.ResumeLayout(false);
             this.tpUserInfo.ResumeLayout(false);
@@ -474,12 +473,12 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUsername;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
         private Guna.UI2.WinForms.Guna2ToggleSwitch ToggleSwitchISActive;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cbUsers;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox cbDrivers;
         private System.Windows.Forms.CheckBox cbPeople;
         private System.Windows.Forms.CheckBox cbApplication;
         private System.Windows.Forms.CheckBox cbAllPermission;
