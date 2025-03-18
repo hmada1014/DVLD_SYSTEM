@@ -73,6 +73,16 @@ namespace DVLDSystem_WindowsForm_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_User_Male {
+            get {
+                object obj = ResourceManager.GetObject("Add User Male", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Add_User_Male_Skin_Type_7 {
             get {
                 object obj = ResourceManager.GetObject("Add User Male Skin Type 7", resourceCulture);
@@ -293,6 +303,16 @@ namespace DVLDSystem_WindowsForm_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mohammedKhale {
+            get {
+                object obj = ResourceManager.GetObject("mohammedKhale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap New_Project__5_ {
             get {
                 object obj = ResourceManager.GetObject("New Project (5)", resourceCulture);
@@ -356,6 +376,16 @@ namespace DVLDSystem_WindowsForm_.Properties {
         internal static System.Drawing.Bitmap person_man {
             get {
                 object obj = ResourceManager.GetObject("person_man", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap person_woman {
+            get {
+                object obj = ResourceManager.GetObject("person_woman", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
