@@ -34,9 +34,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbFinder = new System.Windows.Forms.ComboBox();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.ucPersonCard3 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
             this.btnAddPerson = new FontAwesome.Sharp.IconButton();
             this.btnSearchPerson = new FontAwesome.Sharp.IconButton();
-            this.ucPersonCard3 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
             this.SuspendLayout();
             // 
             // label1
@@ -103,6 +103,24 @@
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // ucPersonCard3
+            // 
+            this.ucPersonCard3.Address = "????";
+            this.ucPersonCard3.Country = "????";
+            this.ucPersonCard3.DateOfBirth = "????";
+            this.ucPersonCard3.Email = "????";
+            this.ucPersonCard3.Gendor = "???";
+            this.ucPersonCard3.ID = "???";
+            this.ucPersonCard3.Location = new System.Drawing.Point(2, 150);
+            this.ucPersonCard3.Name = "ucPersonCard3";
+            this.ucPersonCard3.NotionalNo = "?????";
+            this.ucPersonCard3.PersonName = "Empty Name ";
+            this.ucPersonCard3.Phone = "????";
+            this.ucPersonCard3.Picture = ((System.Drawing.Image)(resources.GetObject("ucPersonCard3.Picture")));
+            this.ucPersonCard3.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ucPersonCard3.Size = new System.Drawing.Size(761, 243);
+            this.ucPersonCard3.TabIndex = 9;
+            // 
             // btnAddPerson
             // 
             this.btnAddPerson.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Add_User_Male_Skin_Type_7;
@@ -132,24 +150,6 @@
             this.btnSearchPerson.TabIndex = 5;
             this.btnSearchPerson.UseVisualStyleBackColor = true;
             this.btnSearchPerson.Click += new System.EventHandler(this.btnSearchPerson_Click);
-            // 
-            // ucPersonCard3
-            // 
-            this.ucPersonCard3.Address = "????";
-            this.ucPersonCard3.Country = "????";
-            this.ucPersonCard3.DateOfBirth = "????";
-            this.ucPersonCard3.Email = "????";
-            this.ucPersonCard3.Gendor = "???";
-            this.ucPersonCard3.ID = "???";
-            this.ucPersonCard3.Location = new System.Drawing.Point(2, 150);
-            this.ucPersonCard3.Name = "ucPersonCard3";
-            this.ucPersonCard3.NotionalNo = "?????";
-            this.ucPersonCard3.PersonName = "Empty Name ";
-            this.ucPersonCard3.Phone = "????";
-            this.ucPersonCard3.Picture = ((System.Drawing.Image)(resources.GetObject("ucPersonCard3.Picture")));
-            this.ucPersonCard3.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ucPersonCard3.Size = new System.Drawing.Size(761, 243);
-            this.ucPersonCard3.TabIndex = 9;
             // 
             // frmSelectePerson
             // 
