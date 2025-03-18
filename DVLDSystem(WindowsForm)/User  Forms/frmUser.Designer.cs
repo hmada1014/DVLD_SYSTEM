@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ucTemplateDGVAndSearch2 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmUsers");
+            this.ucTemplateDGVAndSearch2 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch();
             this.btnAddUser = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Users;
-            this.pictureBox1.Location = new System.Drawing.Point(377, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(157, 115);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -70,7 +60,7 @@
             this.btnAddUser.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnAddUser.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAddUser.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnAddUser.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.addcontacts_83750;
+            this.btnAddUser.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Add_User_Male_Skin_Type_7;
             this.btnAddUser.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnAddUser.ImageRotate = 0F;
             this.btnAddUser.ImageSize = new System.Drawing.Size(48, 48);
@@ -80,6 +70,16 @@
             this.btnAddUser.Size = new System.Drawing.Size(63, 55);
             this.btnAddUser.TabIndex = 8;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Users;
+            this.pictureBox1.Location = new System.Drawing.Point(377, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(157, 115);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // frmUser
             // 

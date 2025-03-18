@@ -31,8 +31,8 @@ namespace DVLDSystem_WindowsForm_.User
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            frmUser user1 = new frmUser();
-            user1.ShowDialog();
+            frmAddEditeUser AddUser = new frmAddEditeUser(-1);
+            AddUser.ShowDialog();
         }
     }
 }
