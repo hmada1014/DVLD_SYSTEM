@@ -56,7 +56,7 @@ namespace DVLDSystem_WindowsForm_
         private void frmMainScreen_Load(object sender, EventArgs e)
         {
             ResizeImages();
-            lblUsername.Text += User.UserName;
+            lblUsername.Text = User.UserName;
         }
         private bool _CheckIsFormOpen(Type formName)
         {
