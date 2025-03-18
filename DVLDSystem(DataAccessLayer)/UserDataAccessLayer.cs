@@ -39,7 +39,7 @@ namespace DVLDSystem_DataAccessLayer_
                     Password = (string)reader["Password"];
                     IsActive = (bool)reader["IsActive"];
 
-                    if (reader["Permission"] != null)
+                    if (reader["Permission"] != null && reader["Permission"] == "")
                     {
                         Permission = (int)reader["Permission"]; 
                     }
@@ -95,9 +95,9 @@ namespace DVLDSystem_DataAccessLayer_
                     UserID = (int)reader["UserID"];
                     PersonID = (int)reader["PersonID"];
                     IsActive = (bool)reader["IsActive"];
-                    if (reader["Permission"] != null)
+                    if (reader["Permission"] != null && reader["Permission"] == "")
                     {
-                        Permission = (int)reader["Permission"];
+                        Permission = Convert.ToInt32( reader["Permission"]);
                     }
                     else
                     {

@@ -19,6 +19,7 @@ namespace DVLDSystem_BusinessLayer_
         public string SecondName { get; set; }
         public string ThirdName { get; set; }
         public string LastName { get; set; }
+        public string FullName { get; }
         public DateTime DateOfBirth { get; set; }
         public byte Gender { get; set; }
         public string Address { get; set; }
@@ -44,6 +45,7 @@ namespace DVLDSystem_BusinessLayer_
             this.Email = "";
             this.NationalityCountryID = -1;
             this.ImagePath = "";
+            this.FullName = FirstName +" "+SecondName+" "+ThirdName+" "+LastName;
 
 
             this.Mode = enPersonMode.Add;
@@ -66,7 +68,7 @@ namespace DVLDSystem_BusinessLayer_
             this.Email = Email;
             this.NationalityCountryID = NationalityCountryID;
             this.ImagePath = ImagePath;
-
+            this.FullName = FirstName + " " + SecondName + " " + ThirdName + " " + LastName;
 
             this.Mode = enPersonMode.Update;
 
