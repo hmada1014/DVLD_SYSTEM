@@ -123,20 +123,22 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
-        public static int AddNewUser(int PersonID, string UserName, string Password, bool IsActive)
+        public static int AddNewUser(int PersonID, string UserName, string Password, int Permission, bool IsActive)
         {
             int UserId = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string query = $"insert into Users (PersonID,UserName,Password,IsActive)" +
-            $"Values(@PersonID,@UserName,@Password,@IsActive) select scope_identity();";
+            string query = $"insert into Users (PersonID,UserName,Password,Permission,IsActive)" +
+            $"Values(@PersonID,@UserName,@Password,@Permission,@IsActive) select scope_identity();";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@UserName", UserName);
             command.Parameters.AddWithValue("@Password", Password);
             command.Parameters.AddWithValue("@IsActive", IsActive);
+            command.Parameters.AddWithValue("@Permission", Permission);
+
 
 
             try
@@ -160,7 +162,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return UserId;
         }
-        public static bool UpdateUserByUserID(int UserID, int PersonID, string UserName, string Password, bool IsActive)
+        public static bool UpdateUserByUserID(int UserID, int PersonID, string UserName, string Password, int Permission, bool IsActive)
         {
             int AffectedRows = 0;
 
@@ -171,6 +173,7 @@ namespace DVLDSystem_DataAccessLayer_
                             PersonID = @PersonID,
                             UserName = @UserName,
                             Password = @Password,
+                            Permission =@Permission,
                             IsActive = @IsActive
                             where UserID = @UserID";
 
@@ -180,6 +183,7 @@ namespace DVLDSystem_DataAccessLayer_
             command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@UserName", UserName);
             command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@Permission", Permission);
             command.Parameters.AddWithValue("@IsActive", IsActive);
 
 
@@ -198,7 +202,6 @@ namespace DVLDSystem_DataAccessLayer_
 
             return (AffectedRows > 0);
         }
-
         public static bool DeleteUserByUserID(int UserID)
         {
             int AffectedRows = 0;
@@ -365,7 +368,6 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
-
         public static DataView SearchUserByUserID(string UserID)
         {
             DataTable dataTable = new DataTable();
@@ -399,7 +401,6 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dataTable.DefaultView;
         }
-
         public static DataView SearchUserByPersonID(string PersonID)
         {
             DataTable dataTable = new DataTable();
@@ -433,7 +434,5 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dataTable.DefaultView;
         }
-
-
     }
 }

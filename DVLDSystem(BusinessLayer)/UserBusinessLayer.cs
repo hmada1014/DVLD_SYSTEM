@@ -103,12 +103,12 @@ namespace DVLDSystem_BusinessLayer_
         }
         private bool _AddNewUser()
         {
-            this.UserID = clsUserDataAccessLayer.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
+            this.UserID = clsUserDataAccessLayer.AddNewUser(this.PersonID, this.UserName, this.Password,this.Permission, this.IsActive);
             return (this.UserID != -1);
         }
         private bool _UpdateUser()
         {
-            return clsUserDataAccessLayer.UpdateUserByUserID(this.UserID, this.PersonID, this.UserName, this.Password, this.IsActive);
+            return clsUserDataAccessLayer.UpdateUserByUserID(this.UserID, this.PersonID, this.UserName, this.Password, this.Permission,this.IsActive);
         }
         public static bool DeleteUser(int UserID)
         {
