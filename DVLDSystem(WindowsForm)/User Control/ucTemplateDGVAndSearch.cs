@@ -1,5 +1,6 @@
 ﻿using DVLDSystem_BusinessLayer_;
 using DVLDSystem_WindowsForm_.People;
+using DVLDSystem_WindowsForm_.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
                 case "frmUsers":
                     _enMode = enModeUC.Users;
+                    _ShowToolStripMenuItemForUser();
                     break;
             }
         }
@@ -177,7 +179,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             }
         }
-
         private void _SearchPeopleNationalNo(string NationalNo)
         {
             DataTable dt = clsPerson.SearchPersonByNationalNo(NationalNo).Table;
@@ -208,7 +209,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             }
         }
-
         private void _SearchUserByPersonID(string PersonID)
         {
             DataTable dt = clsUser.SearchUserByPersonID(PersonID).Table;
@@ -264,6 +264,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
             TSM_EditPerson.Visible = true;
             TSM_DeletePerson.Visible = true;
         }
+
+        private void _ShowToolStripMenuItemForUser()
+        {
+            TSM_EditUser.Visible = true;
+            TSM_DeleteUser.Visible = true;
+        }
         private void editPersonTSM_Click(object sender, EventArgs e)
         {
             
@@ -317,10 +323,40 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-
         private void TSM_Refresh_Click(object sender, EventArgs e)
         {
             btnRefreshDGV_Click(sender,e);
+        }
+        private void TSM_DeleteUser_Click(object sender, EventArgs e)
+        {
+            int ID = Convert.ToInt32(dgvShowList.CurrentRow.Cells["UserID"].Value);
+            if (clsUser.IsUserExist(ID))
+            {
+                if (MessageBox.Show($"Are you suer you want to Delete User ID : {ID}", "waring Delete User", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    if (clsUser.DeleteUser(ID))
+                    {
+                        MessageBox.Show($"User with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Person with ID {ID} was not found");
+            }
+        }
+        private void TSM_EditUser_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(), out int ID))
+            {
+                frmAddEditeUser editeUser = new frmAddEditeUser(ID);
+                editeUser.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("User Not Found to Edit.", "warning");
+            }
         }
     }
 }

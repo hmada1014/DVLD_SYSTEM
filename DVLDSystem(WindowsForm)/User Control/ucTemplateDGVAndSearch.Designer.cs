@@ -36,13 +36,15 @@
             this.lblFindBy = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
             this.cmsEditDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TSM_EditPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_DeletePerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_Refresh = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearchDGV = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblRrecords = new System.Windows.Forms.Label();
             this.lblRecordsTitle = new System.Windows.Forms.Label();
             this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
-            this.TSM_EditPerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_DeletePerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_Refresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_EditUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_DeleteUser = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.cmsEditDelete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
@@ -106,9 +108,37 @@
             this.cmsEditDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSM_EditPerson,
             this.TSM_DeletePerson,
-            this.TSM_Refresh});
+            this.TSM_Refresh,
+            this.TSM_EditUser,
+            this.TSM_DeleteUser});
             this.cmsEditDelete.Name = "cmsAddEdit";
-            this.cmsEditDelete.Size = new System.Drawing.Size(181, 92);
+            this.cmsEditDelete.Size = new System.Drawing.Size(181, 136);
+            // 
+            // TSM_EditPerson
+            // 
+            this.TSM_EditPerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
+            this.TSM_EditPerson.Name = "TSM_EditPerson";
+            this.TSM_EditPerson.Size = new System.Drawing.Size(180, 22);
+            this.TSM_EditPerson.Text = "Edit";
+            this.TSM_EditPerson.Visible = false;
+            this.TSM_EditPerson.Click += new System.EventHandler(this.editPersonTSM_Click);
+            // 
+            // TSM_DeletePerson
+            // 
+            this.TSM_DeletePerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
+            this.TSM_DeletePerson.Name = "TSM_DeletePerson";
+            this.TSM_DeletePerson.Size = new System.Drawing.Size(180, 22);
+            this.TSM_DeletePerson.Text = "Delete";
+            this.TSM_DeletePerson.Visible = false;
+            this.TSM_DeletePerson.Click += new System.EventHandler(this.deleteTSMPerson_Click);
+            // 
+            // TSM_Refresh
+            // 
+            this.TSM_Refresh.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Screenshot_2025_03_15_201348;
+            this.TSM_Refresh.Name = "TSM_Refresh";
+            this.TSM_Refresh.Size = new System.Drawing.Size(180, 22);
+            this.TSM_Refresh.Text = "Refresh";
+            this.TSM_Refresh.Click += new System.EventHandler(this.TSM_Refresh_Click);
             // 
             // txtSearchDGV
             // 
@@ -168,31 +198,23 @@
             this.btnRefreshDGV.TabStop = false;
             this.btnRefreshDGV.Click += new System.EventHandler(this.btnRefreshDGV_Click);
             // 
-            // TSM_EditPerson
+            // TSM_EditUser
             // 
-            this.TSM_EditPerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
-            this.TSM_EditPerson.Name = "TSM_EditPerson";
-            this.TSM_EditPerson.Size = new System.Drawing.Size(180, 22);
-            this.TSM_EditPerson.Text = "Edit";
-            this.TSM_EditPerson.Visible = false;
-            this.TSM_EditPerson.Click += new System.EventHandler(this.editPersonTSM_Click);
+            this.TSM_EditUser.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
+            this.TSM_EditUser.Name = "TSM_EditUser";
+            this.TSM_EditUser.Size = new System.Drawing.Size(180, 22);
+            this.TSM_EditUser.Text = "Edit";
+            this.TSM_EditUser.Visible = false;
+            this.TSM_EditUser.Click += new System.EventHandler(this.TSM_EditUser_Click);
             // 
-            // TSM_DeletePerson
+            // TSM_DeleteUser
             // 
-            this.TSM_DeletePerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
-            this.TSM_DeletePerson.Name = "TSM_DeletePerson";
-            this.TSM_DeletePerson.Size = new System.Drawing.Size(180, 22);
-            this.TSM_DeletePerson.Text = "Delete";
-            this.TSM_DeletePerson.Visible = false;
-            this.TSM_DeletePerson.Click += new System.EventHandler(this.deleteTSMPerson_Click);
-            // 
-            // TSM_Refresh
-            // 
-            this.TSM_Refresh.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Screenshot_2025_03_15_201348;
-            this.TSM_Refresh.Name = "TSM_Refresh";
-            this.TSM_Refresh.Size = new System.Drawing.Size(180, 22);
-            this.TSM_Refresh.Text = "Refresh";
-            this.TSM_Refresh.Click += new System.EventHandler(this.TSM_Refresh_Click);
+            this.TSM_DeleteUser.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
+            this.TSM_DeleteUser.Name = "TSM_DeleteUser";
+            this.TSM_DeleteUser.Size = new System.Drawing.Size(180, 22);
+            this.TSM_DeleteUser.Text = "Delete";
+            this.TSM_DeleteUser.Visible = false;
+            this.TSM_DeleteUser.Click += new System.EventHandler(this.TSM_DeleteUser_Click);
             // 
             // ucTemplateDGVAndSearch
             // 
@@ -229,5 +251,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSM_EditPerson;
         private System.Windows.Forms.ToolStripMenuItem TSM_DeletePerson;
         private System.Windows.Forms.ToolStripMenuItem TSM_Refresh;
+        private System.Windows.Forms.ToolStripMenuItem TSM_EditUser;
+        private System.Windows.Forms.ToolStripMenuItem TSM_DeleteUser;
     }
 }
