@@ -101,13 +101,29 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsUserDataAccessLayer.IsUserExist(UserName,Password);
         }
+        public static bool IsUserExist(string UserName, string UserID , string Password = "")
+        {
+            return clsUserDataAccessLayer.IsUserExist(UserName, UserID ,"");
+        }
         private bool _AddNewUser()
         {
-            this.UserID = clsUserDataAccessLayer.AddNewUser(this.PersonID, this.UserName, this.Password,this.Permission, this.IsActive);
+            if (!clsUser.IsUserExist(this.UserName))
+            {
+                this.UserID = clsUserDataAccessLayer.AddNewUser(this.PersonID, this.UserName, this.Password, this.Permission, this.IsActive);
+            }
             return (this.UserID != -1);
         }
         private bool _UpdateUser()
         {
+            clsUser _User = clsUser.Find(this.UserID);
+
+            if (_User.UserName != this.UserName)
+            {
+                if (clsUser.IsUserExist(this.UserName))
+                {
+                    return false;
+                }
+            }
             return clsUserDataAccessLayer.UpdateUserByUserID(this.UserID, this.PersonID, this.UserName, this.Password, this.Permission,this.IsActive);
         }
         public static bool DeleteUser(int UserID)
