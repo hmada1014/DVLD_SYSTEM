@@ -319,7 +319,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                   
                     break;
                 case "frmUsers":
-                    
+                    RefreshDGV(clsUser.GetAllUsers());
                     break;
             }
         }
