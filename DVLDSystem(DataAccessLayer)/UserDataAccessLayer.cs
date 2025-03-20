@@ -39,9 +39,9 @@ namespace DVLDSystem_DataAccessLayer_
                     Password = (string)reader["Password"];
                     IsActive = (bool)reader["IsActive"];
 
-                    if (reader["Permission"] != null && reader["Permission"] == "")
+                    if (int.TryParse(reader["Permission"].ToString(),out int permission))
                     {
-                        Permission = (int)reader["Permission"]; 
+                        Permission = permission; 
                     }
                     else
                     {
@@ -137,7 +137,11 @@ namespace DVLDSystem_DataAccessLayer_
             command.Parameters.AddWithValue("@UserName", UserName);
             command.Parameters.AddWithValue("@Password", Password);
             command.Parameters.AddWithValue("@IsActive", IsActive);
-            command.Parameters.AddWithValue("@Permission", Permission);
+            if (Permission != 0)
+                command.Parameters.AddWithValue("@Permission", Permission); 
+            else
+                command.Parameters.AddWithValue("@Permission", null);
+
 
 
 
@@ -183,8 +187,11 @@ namespace DVLDSystem_DataAccessLayer_
             command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@UserName", UserName);
             command.Parameters.AddWithValue("@Password", Password);
-            command.Parameters.AddWithValue("@Permission", Permission);
             command.Parameters.AddWithValue("@IsActive", IsActive);
+            if (Permission != 0)
+                command.Parameters.AddWithValue("@Permission", Permission);
+            else
+                command.Parameters.AddWithValue("@Permission", null);
 
 
             try
@@ -347,10 +354,41 @@ namespace DVLDSystem_DataAccessLayer_
             bool IsFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string query = @"select Found = 1 from Users where UserName = @UserName COLLATE SQL_Latin1_General_CP1_CS_AS";
+            string query = @"select Found = 1 from Users where UserName = @UserName";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@UserName", UserName);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+        public static bool IsUserExist(string UserName , string UserID ,string PersonID = "")
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Found = 1 from Users 
+                             where 
+                             UserName = @UserName COLLATE SQL_Latin1_General_CP1_CS_AS and
+                             UserID like @UserID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserName", UserName);
+            command.Parameters.AddWithValue("@UserID", UserID);
+
 
 
             try
