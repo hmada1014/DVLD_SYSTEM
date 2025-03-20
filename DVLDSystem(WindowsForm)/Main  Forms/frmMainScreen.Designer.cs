@@ -116,6 +116,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msMain;
             this.Name = "frmMainScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Main";
             this.Load += new System.EventHandler(this.frmMainScreen_Load);
             this.msMain.ResumeLayout(false);
