@@ -137,6 +137,15 @@ namespace DVLDSystem_BusinessLayer_
         }
         private bool _UpdatePerson()
         {
+            clsPerson _Person = clsPerson.Find(this.PersonID);
+            if (_Person.NationalNo.ToUpper() != this.NationalNo.ToUpper() )
+            {
+                if (clsPerson.IsPersonExist(this.NationalNo))
+                {
+                    return false;
+                }
+            }
+
             return clsPeopleDataAccessLayer.UpdatePerson(this.PersonID, this.NationalNo, this.FirstName, this.SecondName, this.ThirdName, this.LastName, this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
         }
         public static bool DeletePerson(int PersonID)
