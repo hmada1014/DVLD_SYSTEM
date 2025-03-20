@@ -137,15 +137,15 @@ namespace DVLDSystem_WindowsForm_.People
         }
         private bool _ValidateNationalNo(Guna2TextBox textBox,Label PersonID, string errorMessage, string errorMessage2)
         {
-            if (!clsPerson.IsPersonExist(textBox.Text.Trim(),PersonID.Text.Trim()))
+            if (!clsPerson.IsPersonExist(textBox.Text.Trim(), PersonID.Text.Trim()))
             {
                 if (clsPerson.IsPersonExist(textBox.Text.Trim()))
                 {
                     ep1.SetError(textBox, errorMessage2);
-                    return false; 
+                    return false;
                 }
             }
-            if (!clsValidation.CustomValid(textBox.Text.Trim() , @"^\w+([\-\s\/]\w+)*$"))
+            if (!clsValidation.CustomValid(textBox.Text.Trim(), @"^\w+([\-\s\/]\w+)*$"))
             {
                 ep1.SetError(textBox, errorMessage);
                 return false;
@@ -226,6 +226,43 @@ namespace DVLDSystem_WindowsForm_.People
 
             return isValid;
         }
+        private void _FillPersonObject()
+        {
+            _CurrentPerson.NationalNo = txtNationalNo.Text.Trim();
+            _CurrentPerson.FirstName = txtFirstName.Text.Trim();
+            _CurrentPerson.SecondName = txtSecondName.Text.Trim();
+            _CurrentPerson.ThirdName = txtThirdName.Text.Trim();
+            _CurrentPerson.LastName = txtLastName.Text.Trim();
+            _CurrentPerson.DateOfBirth = dtpDateOfBirth.Value;
+            _CurrentPerson.Gender = Convert.ToByte((cbGender.SelectedIndex == -1) ? 0 : cbGender.SelectedIndex);
+            _CurrentPerson.Address = txtAddress.Text.Trim();
+            _CurrentPerson.Phone = txtPhone.Text.Trim();
+            _CurrentPerson.Email = txtEmail.Text.Trim();
+            _CurrentPerson.NationalityCountryID = cbCountry.SelectedIndex == -1 ? 0 : cbCountry.SelectedIndex + 1;
+            if (pbImage.ImageLocation != null)
+            {
+                _CurrentPerson.ImagePath = pbImage.ImageLocation;
+            }
+            else
+            {
+                _CurrentPerson.ImagePath = null;
+            }
+        }
+        private void _SavePerson()
+        {
+            if (_CurrentPerson.Save())
+            {
+                MessageBox.Show("Person was saved Successfully");
+                _Mode = enMode.Update;
+                lblTitleHeader.Text = "Update ID : " + _CurrentPerson.PersonID.ToString();
+                lblPersonID.Text = _CurrentPerson.PersonID.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show("Person was not saved Successfully", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void _btnSave_Click(object sender, EventArgs e)
         {
             if (!this.ValidateChildren())
@@ -236,39 +273,8 @@ namespace DVLDSystem_WindowsForm_.People
 
             if (_ValidateForm())
             {
-                _CurrentPerson.NationalNo = txtNationalNo.Text.Trim();
-                _CurrentPerson.FirstName = txtFirstName.Text.Trim();
-                _CurrentPerson.SecondName = txtSecondName.Text.Trim();
-                _CurrentPerson.ThirdName = txtThirdName.Text.Trim();
-                _CurrentPerson.LastName = txtLastName.Text.Trim();
-                _CurrentPerson.DateOfBirth = dtpDateOfBirth.Value;
-                _CurrentPerson.Gender = Convert.ToByte((cbGender.SelectedIndex == -1) ? 0 : cbGender.SelectedIndex);
-                _CurrentPerson.Address = txtAddress.Text.Trim();
-                _CurrentPerson.Phone = txtPhone.Text.Trim();
-                _CurrentPerson.Email = txtEmail.Text.Trim();
-                _CurrentPerson.NationalityCountryID = cbCountry.SelectedIndex == -1 ?0:cbCountry.SelectedIndex+1;
-                if (pbImage.ImageLocation != null)
-                {
-                    _CurrentPerson.ImagePath = pbImage.ImageLocation;
-                }
-                else
-                {
-                    _CurrentPerson.ImagePath= null;
-                }
-
-                if (_CurrentPerson.Save())
-                {
-                    MessageBox.Show("Person was saved Successfully");
-                }
-                else
-                {
-                    MessageBox.Show("Person was not saved Successfully");
-                }
-
-                _Mode = enMode.Update;
-                lblTitleHeader.Text = "Update ID : " + _CurrentPerson.PersonID.ToString();
-                lblPersonID.Text = _CurrentPerson.PersonID.ToString();
-
+                _FillPersonObject();
+                _SavePerson();
             }
             else
             {
