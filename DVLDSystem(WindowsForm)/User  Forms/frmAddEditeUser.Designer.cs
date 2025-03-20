@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditeUser));
             this.lblTitleHeader = new System.Windows.Forms.Label();
             this.tcUser = new System.Windows.Forms.TabControl();
@@ -57,6 +58,7 @@
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.ep = new System.Windows.Forms.ErrorProvider(this.components);
             this.tcUser.SuspendLayout();
             this.tpPersonSelected.SuspendLayout();
             this.tpUserInfo.SuspendLayout();
@@ -66,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ep)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitleHeader
@@ -170,18 +173,19 @@
             this.groupBox1.Controls.Add(this.cbAllPermission);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
             this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox1.Location = new System.Drawing.Point(351, 43);
+            this.groupBox1.Location = new System.Drawing.Point(318, 43);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(425, 186);
+            this.groupBox1.Size = new System.Drawing.Size(380, 186);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Permission :";
+            this.groupBox1.Validating += new System.ComponentModel.CancelEventHandler(this.cb_Validating);
             // 
             // cbUsers
             // 
             this.cbUsers.AutoSize = true;
             this.cbUsers.ForeColor = System.Drawing.Color.DarkGray;
-            this.cbUsers.Location = new System.Drawing.Point(203, 95);
+            this.cbUsers.Location = new System.Drawing.Point(232, 95);
             this.cbUsers.Name = "cbUsers";
             this.cbUsers.Size = new System.Drawing.Size(110, 37);
             this.cbUsers.TabIndex = 4;
@@ -192,7 +196,7 @@
             // 
             this.cbDrivers.AutoSize = true;
             this.cbDrivers.ForeColor = System.Drawing.Color.DarkGray;
-            this.cbDrivers.Location = new System.Drawing.Point(203, 50);
+            this.cbDrivers.Location = new System.Drawing.Point(232, 50);
             this.cbDrivers.Name = "cbDrivers";
             this.cbDrivers.Size = new System.Drawing.Size(132, 37);
             this.cbDrivers.TabIndex = 3;
@@ -231,6 +235,7 @@
             this.cbAllPermission.TabIndex = 0;
             this.cbAllPermission.Text = "All";
             this.cbAllPermission.UseVisualStyleBackColor = true;
+            this.cbAllPermission.CheckedChanged += new System.EventHandler(this.cbAllPermission_CheckedChanged);
             // 
             // ToggleSwitchISActive
             // 
@@ -254,6 +259,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(112, 20);
             this.txtUsername.TabIndex = 12;
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Validating);
             // 
             // txtPassword
             // 
@@ -261,6 +267,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(112, 20);
             this.txtPassword.TabIndex = 10;
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Validating);
             // 
             // lblPersonID
             // 
@@ -426,6 +433,11 @@
             this.btnSave.Size = new System.Drawing.Size(151, 35);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // ep
+            // 
+            this.ep.ContainerControl = this;
             // 
             // frmAddEditeUser
             // 
@@ -437,6 +449,7 @@
             this.Controls.Add(this.lblTitleHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmAddEditeUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddEditeUser";
             this.Load += new System.EventHandler(this.frmAddEditeUser_Load);
             this.tcUser.ResumeLayout(false);
@@ -450,6 +463,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ep)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,5 +499,6 @@
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnSelectePerson;
         private User_Control.ucPersonCard ucPersonCard4;
+        private System.Windows.Forms.ErrorProvider ep;
     }
 }
