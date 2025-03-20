@@ -127,6 +127,11 @@ namespace DVLDSystem_BusinessLayer_
         }
         private bool _AddNewPerson()
         {
+            if (clsPerson.IsPersonExist(this.NationalNo.Trim()))
+            {
+                return false;
+            }
+
             this.PersonID = clsPeopleDataAccessLayer.AddNewPerson(this.NationalNo, this.FirstName, this.SecondName, this.ThirdName, this.LastName, this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
             return (this.PersonID != -1);
         }
