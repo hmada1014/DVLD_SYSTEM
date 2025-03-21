@@ -62,8 +62,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case enModeUC.People:
                     dgvShowList.DataSource = dv ;
                     _UpdatePeopleColumnHeaders();
-                    //dgvShowList.DataSource = _ProcessPeopleGenderColumn(dv.Table);
-                    //_UpdatePeopleColumnHeaders();
                     break;
                 case enModeUC.Drivers:
                     break;
