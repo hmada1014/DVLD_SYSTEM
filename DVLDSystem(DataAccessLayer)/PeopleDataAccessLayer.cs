@@ -415,12 +415,13 @@ namespace DVLDSystem_DataAccessLayer_
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = @"SELECT People.PersonID, People.NationalNo,FullName = Concat(People.FirstName,' ', People.SecondName,' ', People.ThirdName,' ', People.LastName), 
-                             People.DateOfBirth, People.Gender, People.Address, People.Phone, 
+                             People.DateOfBirth, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.Address, People.Phone, 
                              People.Email, Countries.CountryName, 
                              People.ImagePath
                              FROM People INNER JOIN
                              Countries ON People.NationalityCountryID = Countries.CountryID
-						     where People.PersonID like '%'+@PersonID+'%' ";
+						     where People.PersonID like '%'+@PersonID+'%'";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
