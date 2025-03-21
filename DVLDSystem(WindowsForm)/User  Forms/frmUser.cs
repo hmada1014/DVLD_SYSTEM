@@ -33,6 +33,7 @@ namespace DVLDSystem_WindowsForm_.User
         {
             frmAddEditeUser AddUser = new frmAddEditeUser(-1);
             AddUser.ShowDialog();
+            ucTemplateDGVAndSearch2.RefreshDGV(clsUser.GetAllUsers());
         }
     }
 }
