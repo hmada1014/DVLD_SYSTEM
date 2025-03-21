@@ -382,7 +382,7 @@ namespace DVLDSystem_DataAccessLayer_
 
             string query = @"select Found = 1 from Users 
                              where 
-                             UserName = @UserName COLLATE SQL_Latin1_General_CP1_CS_AS and
+                             UserName = @UserName and
                              UserID like @UserID ";
 
             SqlCommand command = new SqlCommand(query, connection);
