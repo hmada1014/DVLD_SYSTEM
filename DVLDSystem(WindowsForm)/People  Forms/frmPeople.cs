@@ -35,6 +35,8 @@ namespace DVLDSystem_WindowsForm_
         {
             frmAddEditPeople addEditPeople = new frmAddEditPeople(-1);
             addEditPeople.ShowDialog();
+            ucTemplateDGVAndSearch1.RefreshDGV(clsPerson.GetAllPersons());
+
         }
     }
 }
