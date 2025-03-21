@@ -258,7 +258,7 @@ namespace DVLDSystem_WindowsForm_.User
         private void _FillUserObject()
         {
             _CurrenUser.PersonID = Convert.ToInt32(lblPersonID.Text);
-            _CurrenUser.UserName = txtUsername.Text.Trim();
+            _CurrenUser.UserName = txtUsername.Text.Trim().ToLower();
             _CurrenUser.Password = txtPassword.Text.Trim();
             _CurrenUser.IsActive = ToggleSwitchISActive.Checked;
             _CurrenUser.Permission = _GetUserPermission();
