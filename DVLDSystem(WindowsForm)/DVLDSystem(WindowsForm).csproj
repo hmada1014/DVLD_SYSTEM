@@ -316,5 +316,65 @@
   <ItemGroup>
     <None Include="Resources\Add User Male Skin Type 7.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Applications1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papers_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tasks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id_reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users__1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test_reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\world.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\house.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hand %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hand %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\world %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

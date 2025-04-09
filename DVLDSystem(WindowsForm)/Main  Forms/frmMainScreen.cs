@@ -31,10 +31,7 @@ namespace DVLDSystem_WindowsForm_
 
         }
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+     /* 
         private Image ResizeImage(Image img, int width, int height)
         {
             Bitmap bmp = new Bitmap(width, height);
@@ -51,11 +48,11 @@ namespace DVLDSystem_WindowsForm_
             tsmPeople.Image = ResizeImage(Resources.People, 48, 48);
             tsmDrivers.Image = ResizeImage(Resources.Drivers, 48, 48);
             tsmUsers.Image = ResizeImage(Resources.Users, 48, 48);
-            tsmClose.Image = ResizeImage(Resources.close, 48, 48);
-        }
+            tsmAccountSettings.Image = ResizeImage(Resources.close, 48, 48);
+        }*/
         private void frmMainScreen_Load(object sender, EventArgs e)
         {
-            ResizeImages();
+            //ResizeImages();
             lblUsername.Text = User.UserName;
         }
         private bool _CheckIsFormOpen(Type formName)
