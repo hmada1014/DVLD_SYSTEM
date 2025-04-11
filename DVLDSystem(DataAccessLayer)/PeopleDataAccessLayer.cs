@@ -384,7 +384,7 @@ namespace DVLDSystem_DataAccessLayer_
         {
             DataTable dtPerson = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = @"select * from People_View";
+            string query = @"select * from People_2_View";
 
             SqlCommand command = new SqlCommand(query, connection);
 
