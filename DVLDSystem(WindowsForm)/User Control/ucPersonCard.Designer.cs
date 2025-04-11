@@ -46,6 +46,7 @@
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
+            this.lblEditPersonInfo = new System.Windows.Forms.LinkLabel();
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.iconPictureBox8 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox7 = new FontAwesome.Sharp.IconPictureBox();
@@ -174,9 +175,9 @@
             this.lblGendor.ForeColor = System.Drawing.Color.DimGray;
             this.lblGendor.Location = new System.Drawing.Point(145, 115);
             this.lblGendor.Name = "lblGendor";
-            this.lblGendor.Size = new System.Drawing.Size(32, 17);
+            this.lblGendor.Size = new System.Drawing.Size(52, 17);
             this.lblGendor.TabIndex = 20;
-            this.lblGendor.Text = "???";
+            this.lblGendor.Text = "[????]";
             // 
             // lblNationalNo
             // 
@@ -185,9 +186,9 @@
             this.lblNationalNo.ForeColor = System.Drawing.Color.DimGray;
             this.lblNationalNo.Location = new System.Drawing.Point(145, 79);
             this.lblNationalNo.Name = "lblNationalNo";
-            this.lblNationalNo.Size = new System.Drawing.Size(48, 17);
+            this.lblNationalNo.Size = new System.Drawing.Size(52, 17);
             this.lblNationalNo.TabIndex = 21;
-            this.lblNationalNo.Text = "?????";
+            this.lblNationalNo.Text = "[????]";
             // 
             // lblEmail
             // 
@@ -196,9 +197,9 @@
             this.lblEmail.ForeColor = System.Drawing.Color.DimGray;
             this.lblEmail.Location = new System.Drawing.Point(145, 155);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(40, 17);
+            this.lblEmail.Size = new System.Drawing.Size(52, 17);
             this.lblEmail.TabIndex = 22;
-            this.lblEmail.Text = "????";
+            this.lblEmail.Text = "[????]";
             // 
             // lblAddress
             // 
@@ -207,9 +208,9 @@
             this.lblAddress.ForeColor = System.Drawing.Color.DimGray;
             this.lblAddress.Location = new System.Drawing.Point(145, 193);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(40, 17);
+            this.lblAddress.Size = new System.Drawing.Size(52, 17);
             this.lblAddress.TabIndex = 23;
-            this.lblAddress.Text = "????";
+            this.lblAddress.Text = "[????]";
             // 
             // lblDateOfBirth
             // 
@@ -218,9 +219,9 @@
             this.lblDateOfBirth.ForeColor = System.Drawing.Color.DimGray;
             this.lblDateOfBirth.Location = new System.Drawing.Point(419, 80);
             this.lblDateOfBirth.Name = "lblDateOfBirth";
-            this.lblDateOfBirth.Size = new System.Drawing.Size(40, 17);
+            this.lblDateOfBirth.Size = new System.Drawing.Size(52, 17);
             this.lblDateOfBirth.TabIndex = 24;
-            this.lblDateOfBirth.Text = "????";
+            this.lblDateOfBirth.Text = "[????]";
             // 
             // lblPhone
             // 
@@ -229,9 +230,9 @@
             this.lblPhone.ForeColor = System.Drawing.Color.DimGray;
             this.lblPhone.Location = new System.Drawing.Point(419, 117);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(40, 17);
+            this.lblPhone.Size = new System.Drawing.Size(52, 17);
             this.lblPhone.TabIndex = 25;
-            this.lblPhone.Text = "????";
+            this.lblPhone.Text = "[????]";
             // 
             // lblCountry
             // 
@@ -240,9 +241,9 @@
             this.lblCountry.ForeColor = System.Drawing.Color.DimGray;
             this.lblCountry.Location = new System.Drawing.Point(419, 154);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(40, 17);
+            this.lblCountry.Size = new System.Drawing.Size(52, 17);
             this.lblCountry.TabIndex = 26;
-            this.lblCountry.Text = "????";
+            this.lblCountry.Text = "[????]";
             // 
             // lblID
             // 
@@ -251,18 +252,30 @@
             this.lblID.ForeColor = System.Drawing.Color.DimGray;
             this.lblID.Location = new System.Drawing.Point(145, 7);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(32, 17);
+            this.lblID.Size = new System.Drawing.Size(52, 17);
             this.lblID.TabIndex = 27;
-            this.lblID.Text = "???";
+            this.lblID.Text = "[????]";
+            // 
+            // lblEditPersonInfo
+            // 
+            this.lblEditPersonInfo.AutoSize = true;
+            this.lblEditPersonInfo.Enabled = false;
+            this.lblEditPersonInfo.Location = new System.Drawing.Point(632, 14);
+            this.lblEditPersonInfo.Name = "lblEditPersonInfo";
+            this.lblEditPersonInfo.Size = new System.Drawing.Size(84, 13);
+            this.lblEditPersonInfo.TabIndex = 29;
+            this.lblEditPersonInfo.TabStop = true;
+            this.lblEditPersonInfo.Text = "Edit Person Info";
+            this.lblEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEditPersonInfo_LinkClicked);
             // 
             // pbImage
             // 
-            this.pbImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbImage.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Account;
-            this.pbImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbImage.Location = new System.Drawing.Point(657, 44);
+            this.pbImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbImage.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Male_512;
+            this.pbImage.Location = new System.Drawing.Point(607, 41);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(128, 142);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbImage.TabIndex = 28;
             this.pbImage.TabStop = false;
             // 
@@ -394,6 +407,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblEditPersonInfo);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblCountry);
@@ -466,5 +480,6 @@
         private System.Windows.Forms.Label lblCountry;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.PictureBox pbImage;
+        private System.Windows.Forms.LinkLabel lblEditPersonInfo;
     }
 }

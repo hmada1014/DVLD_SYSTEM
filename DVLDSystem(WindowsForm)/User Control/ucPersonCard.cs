@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DVLDSystem_BusinessLayer_;
+using DVLDSystem_WindowsForm_.People;
+using DVLDSystem_WindowsForm_.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -130,6 +133,55 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             get { return pbImage.BackgroundImageLayout; }
             set { pbImage.BackgroundImageLayout = value; Invalidate(); }
+        }
+
+
+        public void LoadPersonInfo(clsPerson Personinfo)
+        {
+            if (Personinfo != null)
+            {
+                ID = Personinfo.PersonID.ToString();
+                PersonName = Personinfo.FullName;
+                NotionalNo = Personinfo.NationalNo;
+                Gendor = Personinfo.Gender == 0 ? "Male" : "Female";
+                Email = Personinfo.Email;
+                Address = Personinfo.Address;
+                DateOfBirth = Personinfo.DateOfBirth.ToString();
+                Phone = Personinfo.Phone;
+                Country = Personinfo.NationalityCountryID.ToString();
+                if (Personinfo.ImagePath != string.Empty && Personinfo.ImagePath != " ")
+                {
+                    pbImage.ImageLocation = Personinfo.ImagePath;
+                }
+                else
+                {
+                    pbImage.Image = Gendor == "Male" ? Resources.Male_512 : Resources.Female_512;
+                }
+                lblEditPersonInfo.Enabled = true;
+                
+            }
+            else
+            {
+                ID = "[????]";
+                PersonName = "Empty Name";
+                NotionalNo = "[????]";
+                Gendor = "[????]";
+                Email = "[????]";
+                Address = "[????]";
+                DateOfBirth = "[????]";
+                Phone = "[????]";
+                Country = "[????]";
+                
+               pbImage.Image = Resources.Male_512;
+                
+                lblEditPersonInfo.Enabled = false;
+            }
+        }
+
+        private void lblEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddEditPeople Person = new frmAddEditPeople(Convert.ToInt32(ID));
+            Person.ShowDialog();
         }
     }
 }
