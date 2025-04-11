@@ -69,7 +69,8 @@ namespace DVLDSystem_WindowsForm_
 
         private void frmLoginScreen_Load(object sender, EventArgs e)
         {
-           
+            
+            this.KeyPreview = true;
         }
 
         private void ClearText()
@@ -121,5 +122,17 @@ namespace DVLDSystem_WindowsForm_
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void frmLoginScreen_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;          // Prevents the "ding"
+     
+                btnLogin.PerformClick();   // Or call your login method
+            }
+        }
+
+ 
     }
 }
