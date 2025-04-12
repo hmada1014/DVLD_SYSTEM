@@ -158,15 +158,51 @@ namespace DVLDSystem_BusinessLayer_
 
             return clsPeopleDataAccessLayer.GetAllPerson();
         }
-        public static DataView SearchPersonByPersonID(string PersonID)
+        //----------------------------- Search Section --------------------------------------
+        public static DataView SearchPeopleByPersonID(string PersonID)
         {
-            return clsPeopleDataAccessLayer.SearchPersonByPersonID(PersonID);
+            return clsPeopleDataAccessLayer.SearchPeopleByPersonID(PersonID);
+        }
+        public static DataView SearchPeopleByNationalNo(string NationalNo)
+        {
+            return clsPeopleDataAccessLayer.SearchPeopleByNationalNo(NationalNo);
+        }
+        public static DataView SearchPeopleByFirstName(string FirstName)
+        {
+            return clsPeopleDataAccessLayer.SearchPeopleByFirstName(FirstName);
+        }
+        public static DataView SearchPeopleBySecondName(string SecondName)
+        {
+            return clsPeopleDataAccessLayer.SearchPeopleBySecondName(SecondName);    
+        }
+        public static DataView SearchPeopleByThirdName(string ThirdName)
+        {
+            return clsPeopleDataAccessLayer.SearchPeopleByThirdName(ThirdName);
+        }
+        public static DataView SearchPeopleByLastName(string LastName)
+        {
+            return clsPeopleDataAccessLayer.SearchPeopleByLastName(LastName);
+        }
+        public static DataView SearchPeopleByGender(byte Gender)
+        {
+            return clsPeopleDataAccessLayer.SearchPeopleByGender(Gender);
+        }
+        public static DataView SearchPeopleByPhone(string Phone)
+        {
+            return clsPeopleDataAccessLayer.SearchPeopleByPhone(Phone);
+        }
+        public static DataView SearchPeopleByNationality(string Nationality)
+        {
+          return   clsPeopleDataAccessLayer.SearchPeopleByNationality(Nationality);
+        }
+        public static DataView SearchPeopleByEmail(string Email)
+        {
+            return clsPeopleDataAccessLayer.SearchPeopleByEmail(Email);
         }
 
-        public static DataView SearchPersonByNationalNo(string NationalNo)
-        {
-            return clsPeopleDataAccessLayer.SearchPersonByNationalNo(NationalNo);
-        }
+
+        //---------------------------------------------------------------------------------
+
         public bool Save()
         {
             switch (this.Mode)

@@ -409,19 +409,16 @@ namespace DVLDSystem_DataAccessLayer_
             return dtPerson.DefaultView;
         }
 
-        public static DataView SearchPersonByPersonID(string PersonID)
+        public static DataView SearchPeopleByPersonID(string PersonID)
         {
             DataTable dataTable = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = @"SELECT People.PersonID, People.NationalNo,FullName = Concat(People.FirstName,' ', People.SecondName,' ', People.ThirdName,' ', People.LastName), 
-                             People.DateOfBirth, 
-							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.Address, People.Phone, 
-                             People.Email, Countries.CountryName, 
-                             People.ImagePath
-                             FROM People INNER JOIN
-                             Countries ON People.NationalityCountryID = Countries.CountryID
-						     where People.PersonID like '%'+@PersonID+'%'";
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.PersonID like '%'+@PersonID+'%'";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
@@ -447,20 +444,16 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dataTable.DefaultView;
         }
-
-
-        public static DataView SearchPersonByNationalNo(string NationalNo)
+        public static DataView SearchPeopleByNationalNo(string NationalNo)
         {
             DataTable dataTable = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = @" SELECT People.PersonID, People.NationalNo,FullName = Concat(People.FirstName,' ', People.SecondName,' ', People.ThirdName,' ', People.LastName), 
-                             People.DateOfBirth, People.Gender, People.Address, People.Phone, 
-                             People.Email, Countries.CountryName, 
-                             People.ImagePath
-                             FROM People INNER JOIN
-                             Countries ON People.NationalityCountryID = Countries.CountryID
-						     where People.NationalNo like '%'+@NationalNo+'%' ";
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.NationalNo like '%'+@NationalNo+'%'";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@NationalNo", NationalNo);
@@ -486,9 +479,279 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dataTable.DefaultView;
         }
+        public static DataView SearchPeopleByFirstName(string FirstName)
+        {
+            DataTable dataTable = new DataTable();
 
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.FirstName like '%'+@FirstName+'%'";
 
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@FirstName", FirstName);
 
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
 
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchPeopleBySecondName(string SecondName)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.SecondName like '%'+@SecondName+'%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@SecondName", SecondName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchPeopleByThirdName(string ThirdName)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.ThirdName like '%'+@ThirdName+'%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ThirdName", ThirdName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchPeopleByLastName(string LastName)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.LastName like '%'+LastName+'%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LastName", LastName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchPeopleByGender(byte Gender)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.Gender like @Gender";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Gender", Gender);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchPeopleByPhone(string Phone)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.Phone like '%'+@Phone+'%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Phone", Phone);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchPeopleByEmail(string Email)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT People.PersonID, People.NationalNo,People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+							 CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor,People.DateOfBirth,
+							 (select CountryName from Countries where CountryID = NationalityCountryID) as CoutryName ,People.Phone,People.Email
+                             FROM People
+							 where People.Email like '%'+@Email+'%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Email", Email);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchPeopleByNationality(string Nationality)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT       People.PersonID, People.NationalNo, People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+                             CASE WHEN People.Gender = 0 THEN 'Male' WHEN People.Gender = 1 THEN 'Female' ELSE 'Unknown' END AS Gendor, People.DateOfBirth,
+                             (SELECT  CountryName FROM Countries WHERE (CountryID = People.NationalityCountryID)) AS CoutryName, People.Phone, People.Email
+                             FROM         People INNER JOIN
+                             Countries AS Countries_1 ON People.NationalityCountryID = Countries_1.CountryID
+                             WHERE        (Countries_1.CountryName LIKE '%' + @Nationality + '%')";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Nationality", Nationality);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
     }
 }
