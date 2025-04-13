@@ -22,7 +22,11 @@ namespace DVLDSystem_WindowsForm_
         }
         private string [] _FillComboBoxwhitString()
         {
-            string[] strings = { "ID", "NationalNo" };
+            string[] strings = { "None", "Person ID", 
+                                 "National No" , "First Name",
+                                 "Second Name", "Third Name", 
+                                 "Last Name" , "Nationality" ,
+                                 "Gendor","Phone","Email" };
             return strings;
         }
         private void frmPeople_Load(object sender, EventArgs e)
