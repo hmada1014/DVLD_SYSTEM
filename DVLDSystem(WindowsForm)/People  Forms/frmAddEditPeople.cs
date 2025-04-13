@@ -1,4 +1,5 @@
 ﻿using DVLDSystem_BusinessLayer_;
+using DVLDSystem_WindowsForm_.Properties;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.IO;
+
 
 namespace DVLDSystem_WindowsForm_.People
 {
@@ -22,6 +25,8 @@ namespace DVLDSystem_WindowsForm_.People
 
         private int _ID;
         private clsPerson _CurrentPerson;
+
+    
         public frmAddEditPeople(int ID)
         {
             InitializeComponent();
@@ -51,11 +56,14 @@ namespace DVLDSystem_WindowsForm_.People
             cbCountry.SelectedIndex = 0;
             cbGender.SelectedIndex = 0;
 
+            dtpDateOfBirth.MaxDate = DateTime.Today.AddYears(-18);
+            dtpDateOfBirth.CustomFormat = "dd/MM/yy";
 
             if (_Mode == enMode.Add)
             {
                 lblTitleHeader.Text = "Add New Person";
                 _CurrentPerson = new clsPerson();
+                pbImage.Image = Resources.Male_512;
                 return;
             }
 
@@ -71,7 +79,7 @@ namespace DVLDSystem_WindowsForm_.People
 
             if (_Mode == enMode.Update)
             {
-                lblTitleHeader.Text = "Update ID : "+_CurrentPerson.PersonID.ToString();
+                lblTitleHeader.Text = "Update";
                 lblPersonID.Text = _CurrentPerson.PersonID.ToString();
                 txtNationalNo.Text = _CurrentPerson.NationalNo.ToString();
                 txtFirstName.Text = _CurrentPerson.FirstName.ToString();
@@ -102,12 +110,33 @@ namespace DVLDSystem_WindowsForm_.People
             {
                 openFile.Filter = "image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
                 openFile.Title = "Select an Image";
+               // string oldPath = pbImage.ImageLocation;
 
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     pbImage.ImageLocation = openFile.FileName;
                     MessageBox.Show($"Image selected: {pbImage.ImageLocation}", "Image Location");
                     lblLinkRemoveImage.Visible = true;
+                    pbImage.Tag = "1";
+                    
+
+                    //Guid guid = Guid.NewGuid();
+
+
+
+                    //if (oldPath != null )
+                    //{
+                    //    File.Copy(oldPath, $"D:\\DVLD-People-Images\\{guid}.png", true);
+
+                    //}
+                    //else
+                    //{
+                    //    File.Copy(openFile.FileName, $"D:\\DVLD-People-Images\\{guid}.png", true); 
+                        
+                    //}
+
+
+
                 }
             }
 
@@ -118,6 +147,8 @@ namespace DVLDSystem_WindowsForm_.People
             {
                 pbImage.ImageLocation = null;
                 lblLinkRemoveImage.Visible=false;
+                pbImage.Tag = "0";
+                cbGender_SelectedIndexChanged(sender,e);
             }
         }
         private void _ValidateEmptyOrNull(object sender, System.ComponentModel.CancelEventArgs e)
@@ -125,8 +156,7 @@ namespace DVLDSystem_WindowsForm_.People
             Guna2TextBox textBox = sender as Guna2TextBox; 
             if (string.IsNullOrEmpty(textBox.Text.Trim()))
             {
-                
-               e.Cancel = true;
+                e.Cancel = true;
                 ep1.SetError(textBox, "This field is required.");
             }
             else
@@ -254,7 +284,7 @@ namespace DVLDSystem_WindowsForm_.People
             {
                 MessageBox.Show("Person was saved Successfully");
                 _Mode = enMode.Update;
-                lblTitleHeader.Text = "Update ID : " + _CurrentPerson.PersonID.ToString();
+                lblTitleHeader.Text = "Update";
                 lblPersonID.Text = _CurrentPerson.PersonID.ToString();
 
             }
@@ -265,12 +295,15 @@ namespace DVLDSystem_WindowsForm_.People
         }
         private void _btnSave_Click(object sender, EventArgs e)
         {
+            
+
             if (!this.ValidateChildren())
             {
                 MessageBox.Show("Please fill all required fields before saving.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               
                 return;
             }
-
+            
             if (_ValidateForm())
             {
                 _FillPersonObject();
@@ -288,6 +321,30 @@ namespace DVLDSystem_WindowsForm_.People
                 this.AutoValidate = AutoValidate.Disable;
             }
         }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (pbImage.Tag.ToString() == "0")
+            {
+                switch (cbGender.Text)
+                {
+                    case "Male":
+                        pbImage.Image = Resources.Male_512;
+                        break;
+                    case "Female":
+                        pbImage.Image = Resources.Female_512;
+                        break;
+                } 
+            }
+                
+            
+        }
+
 
         //private void cbCountry_TextChanged(object sender, EventArgs e)
         //{
