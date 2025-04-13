@@ -29,22 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.lblFindBy = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
             this.cmsEditDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.TSM_EditPerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_DeletePerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_Refresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.EeleteGeneral = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearchDGV = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblRrecords = new System.Windows.Forms.Label();
             this.lblRecordsTitle = new System.Windows.Forms.Label();
             this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
-            this.TSM_EditUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_DeleteUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_Refresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbGendor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.cmsEditDelete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
@@ -60,6 +59,7 @@
             this.cbFindBy.Name = "cbFindBy";
             this.cbFindBy.Size = new System.Drawing.Size(134, 21);
             this.cbFindBy.TabIndex = 0;
+            this.cbFindBy.SelectedIndexChanged += new System.EventHandler(this.cbFindBy_SelectedIndexChanged);
             // 
             // lblFindBy
             // 
@@ -78,19 +78,19 @@
             this.dgvShowList.AllowUserToAddRows = false;
             this.dgvShowList.AllowUserToDeleteRows = false;
             this.dgvShowList.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
-            this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
+            this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvShowList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvShowList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(64)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(64)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowList.ContextMenuStrip = this.cmsEditDelete;
             this.dgvShowList.EnableHeadersVisualStyles = false;
@@ -98,47 +98,36 @@
             this.dgvShowList.Location = new System.Drawing.Point(0, 78);
             this.dgvShowList.Name = "dgvShowList";
             this.dgvShowList.ReadOnly = true;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dgvShowList.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dgvShowList.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvShowList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShowList.Size = new System.Drawing.Size(651, 290);
             this.dgvShowList.TabIndex = 2;
             // 
             // cmsEditDelete
             // 
             this.cmsEditDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSM_EditPerson,
-            this.TSM_DeletePerson,
-            this.TSM_Refresh,
-            this.TSM_EditUser,
-            this.TSM_DeleteUser});
+            this.EditGeneral,
+            this.EeleteGeneral,
+            this.TSM_Refresh});
             this.cmsEditDelete.Name = "cmsAddEdit";
-            this.cmsEditDelete.Size = new System.Drawing.Size(181, 136);
+            this.cmsEditDelete.Size = new System.Drawing.Size(114, 70);
             // 
-            // TSM_EditPerson
+            // EditGeneral
             // 
-            this.TSM_EditPerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
-            this.TSM_EditPerson.Name = "TSM_EditPerson";
-            this.TSM_EditPerson.Size = new System.Drawing.Size(180, 22);
-            this.TSM_EditPerson.Text = "Edit";
-            this.TSM_EditPerson.Visible = false;
-            this.TSM_EditPerson.Click += new System.EventHandler(this.editPersonTSM_Click);
+            this.EditGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
+            this.EditGeneral.Name = "EditGeneral";
+            this.EditGeneral.Size = new System.Drawing.Size(113, 22);
+            this.EditGeneral.Text = "Edit";
+            this.EditGeneral.Click += new System.EventHandler(this.EditGeneral_Click);
             // 
-            // TSM_DeletePerson
+            // EeleteGeneral
             // 
-            this.TSM_DeletePerson.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
-            this.TSM_DeletePerson.Name = "TSM_DeletePerson";
-            this.TSM_DeletePerson.Size = new System.Drawing.Size(180, 22);
-            this.TSM_DeletePerson.Text = "Delete";
-            this.TSM_DeletePerson.Visible = false;
-            this.TSM_DeletePerson.Click += new System.EventHandler(this.deleteTSMPerson_Click);
-            // 
-            // TSM_Refresh
-            // 
-            this.TSM_Refresh.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Screenshot_2025_03_15_201348;
-            this.TSM_Refresh.Name = "TSM_Refresh";
-            this.TSM_Refresh.Size = new System.Drawing.Size(180, 22);
-            this.TSM_Refresh.Text = "Refresh";
-            this.TSM_Refresh.Click += new System.EventHandler(this.TSM_Refresh_Click);
+            this.EeleteGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
+            this.EeleteGeneral.Name = "EeleteGeneral";
+            this.EeleteGeneral.Size = new System.Drawing.Size(113, 22);
+            this.EeleteGeneral.Text = "Delete";
+            this.EeleteGeneral.Click += new System.EventHandler(this.DeleteGeneral_Click);
             // 
             // txtSearchDGV
             // 
@@ -161,6 +150,7 @@
             this.txtSearchDGV.Size = new System.Drawing.Size(310, 36);
             this.txtSearchDGV.TabIndex = 3;
             this.txtSearchDGV.TextChanged += new System.EventHandler(this._txtSearchDGV_TextChanged);
+            this.txtSearchDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchDGV_KeyPress);
             // 
             // lblRrecords
             // 
@@ -198,29 +188,36 @@
             this.btnRefreshDGV.TabStop = false;
             this.btnRefreshDGV.Click += new System.EventHandler(this.btnRefreshDGV_Click);
             // 
-            // TSM_EditUser
+            // TSM_Refresh
             // 
-            this.TSM_EditUser.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
-            this.TSM_EditUser.Name = "TSM_EditUser";
-            this.TSM_EditUser.Size = new System.Drawing.Size(180, 22);
-            this.TSM_EditUser.Text = "Edit";
-            this.TSM_EditUser.Visible = false;
-            this.TSM_EditUser.Click += new System.EventHandler(this.TSM_EditUser_Click);
+            this.TSM_Refresh.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Screenshot_2025_03_15_201348;
+            this.TSM_Refresh.Name = "TSM_Refresh";
+            this.TSM_Refresh.Size = new System.Drawing.Size(113, 22);
+            this.TSM_Refresh.Text = "Refresh";
+            this.TSM_Refresh.Click += new System.EventHandler(this.TSM_Refresh_Click);
             // 
-            // TSM_DeleteUser
+            // cbGendor
             // 
-            this.TSM_DeleteUser.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
-            this.TSM_DeleteUser.Name = "TSM_DeleteUser";
-            this.TSM_DeleteUser.Size = new System.Drawing.Size(180, 22);
-            this.TSM_DeleteUser.Text = "Delete";
-            this.TSM_DeleteUser.Visible = false;
-            this.TSM_DeleteUser.Click += new System.EventHandler(this.TSM_DeleteUser_Click);
+            this.cbGendor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbGendor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGendor.FormattingEnabled = true;
+            this.cbGendor.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cbGendor.Location = new System.Drawing.Point(281, 29);
+            this.cbGendor.Name = "cbGendor";
+            this.cbGendor.Size = new System.Drawing.Size(134, 21);
+            this.cbGendor.TabIndex = 9;
+            this.cbGendor.Visible = false;
+            this.cbGendor.SelectedIndexChanged += new System.EventHandler(this.cbGendor_SelectedIndexChanged);
             // 
             // ucTemplateDGVAndSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.Controls.Add(this.cbGendor);
             this.Controls.Add(this.lblRrecords);
             this.Controls.Add(this.lblRecordsTitle);
             this.Controls.Add(this.btnRefreshDGV);
@@ -248,10 +245,9 @@
         private System.Windows.Forms.Label lblRrecords;
         private System.Windows.Forms.Label lblRecordsTitle;
         private System.Windows.Forms.ContextMenuStrip cmsEditDelete;
-        private System.Windows.Forms.ToolStripMenuItem TSM_EditPerson;
-        private System.Windows.Forms.ToolStripMenuItem TSM_DeletePerson;
+        private System.Windows.Forms.ToolStripMenuItem EditGeneral;
+        private System.Windows.Forms.ToolStripMenuItem EeleteGeneral;
         private System.Windows.Forms.ToolStripMenuItem TSM_Refresh;
-        private System.Windows.Forms.ToolStripMenuItem TSM_EditUser;
-        private System.Windows.Forms.ToolStripMenuItem TSM_DeleteUser;
+        private System.Windows.Forms.ComboBox cbGendor;
     }
 }

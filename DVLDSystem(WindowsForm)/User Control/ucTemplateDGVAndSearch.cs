@@ -16,8 +16,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
     public partial class ucTemplateDGVAndSearch : UserControl
     {
         private string _FormName;
-        private enum enModeUC { Application,People,Drivers,Users}
-        private enModeUC _enMode = enModeUC.Application;
+        private enum enModeUC { Application,People,Drivers,Users,Empty}
+        private enModeUC _enMode = enModeUC.Empty;
         public ucTemplateDGVAndSearch()
         {
             InitializeComponent();
@@ -35,14 +35,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
                 case "frmPeople":
                     _enMode = enModeUC.People;
-                    _ShowToolStripMenuItemForPeple();
                     break;
                 case "frmDrivers":
                     _enMode = enModeUC.Drivers;
                     break;
                 case "frmUsers":
                     _enMode = enModeUC.Users;
-                    _ShowToolStripMenuItemForUser();
                     break;
             }
         }
@@ -50,6 +48,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             get { return dgvShowList; }
         }
+        //-------------------------- UI Data Helper --------------
         public void RefreshDGV(object DataSours)
         {
             DataView dv = _ConvertToDataView(DataSours);
@@ -106,10 +105,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
             if (dgvShowList.Columns.Count <= 0) return;
             _SafeHeaderUpdate("PersonID", "Person ID");
             _SafeHeaderUpdate("NationalNo", "National No");
-            _SafeHeaderUpdate("FullName", "Full Name");
+            _SafeHeaderUpdate("FirstName", "First Name");
+            _SafeHeaderUpdate("SecondName", "Second Name");
+            _SafeHeaderUpdate("ThirdName", "Third Name");
+            _SafeHeaderUpdate("LastName", "Last Name");
+            _SafeHeaderUpdate("LastName", "Last Name");
             _SafeHeaderUpdate("DateOfBirth", "Date Of Birth");
-            _SafeHeaderUpdate("CountryName", "Nationality");
-            _SafeHeaderUpdate("ImagePath", "ImagePath");
         }
         private void _SafeHeaderUpdate(string ColumnName, string headerText)
         {
@@ -139,10 +140,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
             dt.Columns["Gender"].SetOrdinal(4);
             return dt;
         }
-        //-------------------------------------------------
-        private void _SearchPeopleID(string ID)
+        //-------------------------------------------------------------
+
+        //--------------- Filter By People ---------------------------
+        private void _SearchPeopleByPersonID(string ID)
         {
-            DataTable dt = clsPerson.SearchPersonByPersonID(ID).Table;
+            DataTable dt = clsPerson.SearchPeopleByPersonID(ID).Table;
             if (dt.Rows.Count > 0)
             {
                 dgvShowList.DataSource = dt;
@@ -150,62 +153,107 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
+        private void _SearchPeopleByNationalNo(string NationalNo)
+        {
+            DataTable dt = clsPerson.SearchPeopleByNationalNo(NationalNo).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchPeopleByFirstName(string FirstName)
+        {
+            DataTable dt = clsPerson.SearchPeopleByFirstName(FirstName).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchPeopleBySecondName(string FirstName)
+        {
+            DataTable dt = clsPerson.SearchPeopleByFirstName(FirstName).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchPeopleByThirdName(string ThirdName)
+        {
+            DataTable dt = clsPerson.SearchPeopleByThirdName(ThirdName).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchPeopleByLastName(string LastName)
+        {
+            DataTable dt = clsPerson.SearchPeopleByLastName(LastName).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchPeopleByGender(byte Gender)
+        {
+            DataTable dt = clsPerson.SearchPeopleByGender(Gender).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchPeopleByPhone(string Phone)
+        {
+            DataTable dt = clsPerson.SearchPeopleByPhone(Phone).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchPeopleByEmail(string Email)
+        {
+            DataTable dt = clsPerson.SearchPeopleByEmail(Email).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchPeopleByNationality(string Nationality)
+        {
+            DataTable dt = clsPerson.SearchPeopleByNationality(Nationality).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdatePeopleColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+
+        //------------------------------------------------------------
+
+
+        //--------------- Filter By User -----------------------------
         private void _SearchUserID(string ID)
         {
             dgvShowList.DataSource = clsUser.SearchUserByUserID(ID);
             _UpdateUserColumnHeaders();
             lblRrecords.Text = dgvShowList.RowCount.ToString();
 
-        }
-        private void _SearchDataByID(string ID)
-        {
-            dgvShowList.DataSource = null;
-            switch (_enMode)
-            {
-                case enModeUC.Application:
-
-                    break;
-                case enModeUC.People:
-                    _SearchPeopleID(ID);
-                    break;
-                case enModeUC.Drivers:
-                    
-                    break;
-                case enModeUC.Users:
-                    _SearchUserID(ID);
-                    break;
-
-            }
-        }
-        private void _SearchPeopleNationalNo(string NationalNo)
-        {
-            DataTable dt = clsPerson.SearchPersonByNationalNo(NationalNo).Table;
-            if (dt.Rows.Count > 0)
-            {
-                dgvShowList.DataSource = dt;
-                _UpdatePeopleColumnHeaders();
-            }
-            lblRrecords.Text = dgvShowList.RowCount.ToString();
-        }
-        private void _SearchDataByNationalNo(string NationalNo)
-        {
-            dgvShowList.DataSource = null;
-            switch (_enMode)
-            {
-                case enModeUC.Application:
-
-                    break;
-                case enModeUC.People:
-                    _SearchPeopleNationalNo(NationalNo);
-                    break;
-                case enModeUC.Drivers:
-
-                    break;
-                case enModeUC.Users:
-                    
-                    break;
-
-            }
         }
         private void _SearchUserByPersonID(string PersonID)
         {
@@ -217,104 +265,102 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
-        private void _SearchDataByPersonID(string PersonID)
+        //------------------------------------------------------------
+
+        //-------------- For _txtSearchDGV_TextChanged ---------------
+        private void _SearchDataByFilteringPeople(string Text)
+        {
+            switch(cbFindBy.Text)
+            {
+                case "None":
+                    break;
+                case "Person ID":
+                    _SearchPeopleByPersonID(txtSearchDGV.Text.Trim());
+                    break;
+                case "National No":
+                    _SearchPeopleByNationalNo(txtSearchDGV.Text.Trim());
+                    break;
+                case "First Name":
+                    _SearchPeopleByFirstName(txtSearchDGV.Text.Trim());
+                    break;
+                case "Second Name":
+                    _SearchPeopleBySecondName(txtSearchDGV.Text.Trim());
+                    break;
+                case "Third Name":
+                    _SearchPeopleByThirdName(txtSearchDGV.Text.Trim());
+                    break;
+                case "Last Name":
+                    _SearchPeopleByLastName(txtSearchDGV.Text.Trim());
+                    break;
+                case"Nationality":
+                    _SearchPeopleByNationality(txtSearchDGV.Text.Trim());
+                    break;
+                case "Gendor":
+                    _SearchPeopleByGender(Convert.ToByte(cbGendor.SelectedIndex));
+                    break;
+                case "Phone":
+                    _SearchPeopleByPhone(txtSearchDGV.Text.Trim());
+                    break;
+                case "Email":
+                    _SearchPeopleByEmail(txtSearchDGV.Text.Trim()); 
+                    break;
+            }
+        }
+        private void _SearchDataByFilteringUsers(string Text)
+        {
+            switch(cbFindBy.Text)
+            {
+                case "None":
+                    break;
+                case "User ID":
+                    break;
+                case "UserName":
+                    break;
+                case "Person ID":
+                    break;
+                case "Full Name":
+                    break;
+                case "Is Active":
+                    break;
+            }
+        }
+        //------------------------------------------------------------
+        private void _txtSearchDGV_TextChanged(object sender, EventArgs e)
         {
             dgvShowList.DataSource = null;
             switch (_enMode)
             {
                 case enModeUC.Application:
-
+                    
                     break;
                 case enModeUC.People:
-                    
+                    _SearchDataByFilteringPeople(txtSearchDGV.Text.Trim());
                     break;
                 case enModeUC.Drivers:
-
+                   
                     break;
                 case enModeUC.Users:
-                    _SearchUserByPersonID(PersonID);
+                    _SearchDataByFilteringUsers(txtSearchDGV.Text.Trim());
                     break;
-
-            }
-        }
-        private void _txtSearchDGV_TextChanged(object sender, EventArgs e)
-        {
-            switch (cbFindBy.Text)
-            {
-                case "ID":
-                    _SearchDataByID(txtSearchDGV.Text.Trim());
+                case enModeUC.Empty:
                     break;
-                case "NationalNo":
-                    _SearchDataByNationalNo(txtSearchDGV.Text.Trim());
-                    break;
-                case "PersonID":
-                    _SearchDataByPersonID(txtSearchDGV.Text.Trim());
-                    break;
-                case "  ":
-                       
-                    break;
-
             }
 
         }
-        private void _ShowToolStripMenuItemForPeple()
-        {
-            TSM_EditPerson.Visible = true;
-            TSM_DeletePerson.Visible = true;
-        }
-
-        private void _ShowToolStripMenuItemForUser()
-        {
-            TSM_EditUser.Visible = true;
-            TSM_DeleteUser.Visible = true;
-        }
-        private void editPersonTSM_Click(object sender, EventArgs e)
-        {
-            
-            if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(),out int ID))
-            {
-  
-                frmAddEditPeople editPeople = new frmAddEditPeople(ID);
-                editPeople.ShowDialog(); 
-            }
-            else
-            {
-                MessageBox.Show("Person Not Found to Edit.", "warning");
-            }
-        }
-        private void deleteTSMPerson_Click(object sender, EventArgs e)
-        {
-            int ID = Convert.ToInt32( dgvShowList.CurrentRow.Cells["PersonID"].Value);
-            if (clsPerson.IsPersonExist(ID))
-            {
-                if (MessageBox.Show($"Are you suer you want to Delete Person ID : {ID}", "waring Delete Person", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    
-                    if (clsPerson.DeletePerson(ID))
-                    {
-                        MessageBox.Show($"Person with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ");
-                    }
-                } 
-            }
-            else
-            {
-                MessageBox.Show($"Person with ID {ID} was not found");
-            }
-
-        }
+        //-------------------------------------------------------------------
         private void btnRefreshDGV_Click(object sender, EventArgs e)
         {
             txtSearchDGV.Clear();
-            switch(_FormName)
+            switch (_FormName)
             {
                 case "frmApplication":
-                    
+
                     break;
                 case "frmPeople":
                     RefreshDGV(clsPerson.GetAllPersons());
                     break;
                 case "frmDrivers":
-                  
+
                     break;
                 case "frmUsers":
                     RefreshDGV(clsUser.GetAllUsers());
@@ -323,9 +369,63 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         private void TSM_Refresh_Click(object sender, EventArgs e)
         {
-            btnRefreshDGV_Click(sender,e);
+            btnRefreshDGV_Click(sender, e);
         }
-        private void TSM_DeleteUser_Click(object sender, EventArgs e)
+
+        //-------------------------Person Edit & Delete ---------------------
+        private void _EditPerson()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(), out int ID))
+            {
+                frmAddEditPeople editPeople = new frmAddEditPeople(ID);
+                editPeople.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Person Not Found to Edit.", "warning");
+            }
+        }
+        private void _DeletePersone()
+        {
+            int ID = Convert.ToInt32(dgvShowList.CurrentRow.Cells["PersonID"].Value);
+            if (clsPerson.IsPersonExist(ID))
+            {
+                if (MessageBox.Show($"Are you suer you want to Delete Person ID : {ID}", "waring Delete Person", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    if (clsPerson.DeletePerson(ID))
+                    {
+                        MessageBox.Show($"Person with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Person was not deleted because it has data linked to it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Person with ID {ID} was not found");
+            }
+
+        }
+        //-------------------------------------------------------------------
+
+        //-------------------------User Edit & Delete -----------------------
+        private void _EditUser()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(), out int ID))
+            {
+                frmAddEditeUser editeUser = new frmAddEditeUser(ID);
+                editeUser.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("User Not Found to Edit.", "warning");
+            }
+        }
+        private void _DeleteUser()
         {
             int ID = Convert.ToInt32(dgvShowList.CurrentRow.Cells["UserID"].Value);
             if (clsUser.IsUserExist(ID))
@@ -337,23 +437,96 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     {
                         MessageBox.Show($"User with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ");
                     }
+                    else
+                    {
+                        MessageBox.Show("User was not deleted because it has data linked to it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show($"Person with ID {ID} was not found");
+                MessageBox.Show($"User with ID {ID} was not found");
             }
         }
-        private void TSM_EditUser_Click(object sender, EventArgs e)
+        //-------------------------------------------------------------------
+        private void EditGeneral_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(), out int ID))
+            switch (_enMode)
             {
-                frmAddEditeUser editeUser = new frmAddEditeUser(ID);
-                editeUser.ShowDialog();
+                case enModeUC.Application:
+
+                    break;
+                case enModeUC.People:
+                    _EditPerson();
+                    break;
+                case enModeUC.Drivers:
+
+                    break;
+                case enModeUC.Users:
+                    _EditUser();
+                    break;
+                case enModeUC.Empty:
+                    break;
+            }
+        }
+        private void DeleteGeneral_Click(object sender, EventArgs e)
+        {
+            switch (_enMode)
+            {
+                case enModeUC.Application:
+
+                    break;
+                case enModeUC.People:
+                    _DeletePersone();
+                    break;
+                case enModeUC.Drivers:
+
+                    break;
+                case enModeUC.Users:
+                    _DeleteUser();
+                    break;
+                case enModeUC.Empty:
+                    break;
+            }
+        }
+        private void cbFindBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbFindBy.Text == "None")
+            {
+                txtSearchDGV.Visible = false;
+                cbGendor.Visible = false;
+                btnRefreshDGV_Click(sender, e);
+                return;
+            }
+            else txtSearchDGV.Visible = true;
+
+            if (cbFindBy.Text == "Gendor")
+            {
+                txtSearchDGV.Visible = false;
+                cbGendor.Visible = true;
+                return;
             }
             else
             {
-                MessageBox.Show("User Not Found to Edit.", "warning");
+                txtSearchDGV.Visible = true;
+                cbGendor.Visible = false;
+            }
+
+            btnRefreshDGV_Click(sender, e);
+
+        }
+        private void cbGendor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _txtSearchDGV_TextChanged(sender, e);
+        }
+        private void txtSearchDGV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(cbFindBy.Text == "Person ID")
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
             }
         }
     }
