@@ -89,6 +89,12 @@ namespace DVLDSystem_BusinessLayer_
                 return null;
             }
         }
+
+        public static bool IsPersonExist(int PersonID)
+        {
+            return clsUserDataAccessLayer.IsPersonExist(PersonID);
+        }
+
         public static bool IsUserExist(int UserID)
         {
             return clsUserDataAccessLayer.IsUserExist(UserID);

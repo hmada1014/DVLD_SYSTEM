@@ -320,6 +320,32 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
+        public static bool IsPersonExist(int PersonID)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Found = 1 from Users where PersonID = @PersonID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
         public static bool IsUserExist(string UserName, string Password)
         {
             bool IsFound = false;
