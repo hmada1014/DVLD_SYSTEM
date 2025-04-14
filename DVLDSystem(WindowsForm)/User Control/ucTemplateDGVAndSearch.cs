@@ -1,6 +1,8 @@
 ﻿using DVLDSystem_BusinessLayer_;
 using DVLDSystem_WindowsForm_.People;
+using DVLDSystem_WindowsForm_.People__Forms;
 using DVLDSystem_WindowsForm_.User;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,9 +53,39 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-        public DataGridView ShowDataGridView
+
+        //----------------- Expose Properties of Controls in UserControl----
+
+        [Browsable(true)]
+        [Category("Misc Controls Properties")]
+        public Color dgvBackgroundColor
         {
-            get { return dgvShowList; }
+            get { return dgvShowList.BackgroundColor; }
+            set { dgvShowList.BackgroundColor = value;}
+        }
+
+        [Browsable(true)]
+        [Category("Misc Controls Properties")]
+        public DataGridViewAutoSizeRowsMode dgvAutoSizeRowsMode
+        {
+            get { return dgvShowList.AutoSizeRowsMode; }
+            set { dgvShowList.AutoSizeRowsMode = value; }
+        }
+
+        [Browsable(true)]
+        [Category("Misc Controls Properties")]
+        public DataGridViewAutoSizeColumnsMode dgvAutoSizeColumnMode
+        {
+            get { return dgvShowList.AutoSizeColumnsMode; }
+            set { dgvShowList.AutoSizeColumnsMode = value; }
+        }
+
+        [Browsable(true)]
+        [Category("Misc Controls Properties")]
+        public Point TextBoxLocation
+        {
+            get { return txtSearchDGV.Location; }
+            set { txtSearchDGV.Location = value; }
         }
         //-------------------------- UI Data Helper --------------
         public void RefreshDGV(object DataSours)
@@ -73,6 +105,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
                 case enModeUC.Users:
                     dgvShowList.DataSource = dv;
+                    _UpdateUserColumnHeaders();
                     break;
             }
 
@@ -89,10 +122,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 return null;
             }
         }
-        public object ShowComboBox
-        {
-            get { return cbFindBy.DataSource; }
-        }
         public void FillComboBox(object ob)
         {
             cbFindBy.DataSource = ob;
@@ -102,8 +131,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             if (dgvShowList.Columns.Count <= 0) return;
             _SafeHeaderUpdate("UserID", "User ID");
             _SafeHeaderUpdate("PersonID", "Person ID");
-            _SafeHeaderUpdate("Full_Name" , "Full Name");
-            _SafeHeaderUpdate("UserName", "User Name");
+            _SafeHeaderUpdate("FullName", "Full Name");
             _SafeHeaderUpdate("IsActive", "Is Active");
 
         }
@@ -147,7 +175,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
             dt.Columns["Gender"].SetOrdinal(4);
             return dt;
         }
+
+     
+
         //-------------------------------------------------------------
+
 
         //--------------- Filter By People ---------------------------
         private void _SearchPeopleByPersonID(string ID)
@@ -384,13 +416,14 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             frmAddEditPeople addPerson = new frmAddEditPeople(-1);
             addPerson.ShowDialog();
+            btnRefreshDGV_Click(null, null);
         }
         private void _ShowPersonDeitails()
         {
             if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(), out int ID))
             {
-                frmAddEditPeople Person = new frmAddEditPeople(ID);
-                Person.ShowDialog();
+                frmShowPersonDetails personDetails = new frmShowPersonDetails(ID);
+                personDetails.ShowDialog();
             }
             else
             {
@@ -404,6 +437,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 frmAddEditPeople editPeople = new frmAddEditPeople(ID);
                 editPeople.ShowDialog();
+                btnRefreshDGV_Click(null,null);
             }
             else
             {
@@ -415,12 +449,13 @@ namespace DVLDSystem_WindowsForm_.User_Control
             int ID = Convert.ToInt32(dgvShowList.CurrentRow.Cells["PersonID"].Value);
             if (clsPerson.IsPersonExist(ID))
             {
-                if (MessageBox.Show($"Are you suer you want to Delete Person ID : {ID}", "waring Delete Person", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"Are you suer you want to Delete Person ID : {ID}", "waring Delete Person", MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
 
                     if (clsPerson.DeletePerson(ID))
                     {
-                        MessageBox.Show($"Person with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ");
+                        MessageBox.Show($"Person with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        btnRefreshDGV_Click(null, null);
                     }
                     else
                     {
@@ -445,6 +480,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 frmAddEditeUser editeUser = new frmAddEditeUser(ID);
                 editeUser.ShowDialog();
+                btnRefreshDGV_Click(null, null);
             }
             else
             {
@@ -462,6 +498,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     if (clsUser.DeleteUser(ID))
                     {
                         MessageBox.Show($"User with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ");
+                        btnRefreshDGV_Click(null, null);
                     }
                     else
                     {
@@ -594,6 +631,15 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case enModeUC.Empty:
                     break;
             }
+        }
+        private void TSMSendEmailGeneral_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implement yet.", "info",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+        private void TSMPhoneCallGeneral_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implement yet", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }
