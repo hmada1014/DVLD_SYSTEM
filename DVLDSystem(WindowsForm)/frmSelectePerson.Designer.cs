@@ -123,7 +123,7 @@
             // 
             // btnAddPerson
             // 
-            this.btnAddPerson.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Add_User_Male_Skin_Type_7;
+            //this.btnAddPerson.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Add_User_Male_Skin_Type_7;
             this.btnAddPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddPerson.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -138,7 +138,7 @@
             // 
             // btnSearchPerson
             // 
-            this.btnSearchPerson.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Find_User_Male;
+       //     this.btnSearchPerson.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Find_User_Male;
             this.btnSearchPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSearchPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearchPerson.IconChar = FontAwesome.Sharp.IconChar.None;

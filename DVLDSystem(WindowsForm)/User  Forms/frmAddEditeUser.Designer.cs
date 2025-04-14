@@ -358,7 +358,7 @@
             // iconPictureBox4
             // 
             this.iconPictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox4.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Person;
+          //  this.iconPictureBox4.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Person;
             this.iconPictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.iconPictureBox4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -390,7 +390,7 @@
             // iconPictureBox2
             // 
             this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox2.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Male_User;
+           // this.iconPictureBox2.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Male_User;
             this.iconPictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -406,7 +406,7 @@
             // iconPictureBox1
             // 
             this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox1.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Male_User;
+            //this.iconPictureBox1.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Male_User;
             this.iconPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.iconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.None;

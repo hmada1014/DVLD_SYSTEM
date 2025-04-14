@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.ucTemplateDGVAndSearch2 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmUsers");
+            this.ucTemplateDGVAndSearch2 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch();
             this.btnAddUser = new Guna.UI2.WinForms.Guna2ImageButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -54,13 +54,14 @@
             this.ucTemplateDGVAndSearch2.Name = "ucTemplateDGVAndSearch2";
             this.ucTemplateDGVAndSearch2.Size = new System.Drawing.Size(908, 395);
             this.ucTemplateDGVAndSearch2.TabIndex = 7;
+            //this.ucTemplateDGVAndSearch2.TextBoxLocation = new System.Drawing.Point(306, 21);
             // 
             // btnAddUser
             // 
             this.btnAddUser.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnAddUser.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAddUser.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnAddUser.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Add_User_Male_Skin_Type_7;
+            this.btnAddUser.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Add_New_User_72;
             this.btnAddUser.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnAddUser.ImageRotate = 0F;
             this.btnAddUser.ImageSize = new System.Drawing.Size(48, 48);
@@ -73,7 +74,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Users;
+            this.pictureBox1.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Users_2_400;
             this.pictureBox1.Location = new System.Drawing.Point(377, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(157, 115);

@@ -40,7 +40,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Brown;
-            this.label1.Location = new System.Drawing.Point(476, 169);
+            this.label1.Location = new System.Drawing.Point(476, 152);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 33);
             this.label1.TabIndex = 5;
@@ -50,7 +50,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.People_400;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(508, 38);
+            this.pictureBox1.Location = new System.Drawing.Point(508, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(157, 115);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
