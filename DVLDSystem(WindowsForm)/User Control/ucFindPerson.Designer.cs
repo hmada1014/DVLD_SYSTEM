@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ucPersonCard1 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAddPerson = new FontAwesome.Sharp.IconButton();
             this.btnSearchPerson = new FontAwesome.Sharp.IconButton();
             this.cbFinder = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearchAPerson = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.ucPersonCard1 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,25 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Person Information";
+            // 
+            // ucPersonCard1
+            // 
+            this.ucPersonCard1.Address = "[????]";
+            this.ucPersonCard1.Country = "[????]";
+            this.ucPersonCard1.DateOfBirth = "[????]";
+            this.ucPersonCard1.Email = "[????]";
+            this.ucPersonCard1.Gendor = "[????]";
+            this.ucPersonCard1.ID = "[????]";
+            this.ucPersonCard1.Location = new System.Drawing.Point(12, 27);
+            this.ucPersonCard1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ucPersonCard1.Name = "ucPersonCard1";
+            this.ucPersonCard1.NotionalNo = "[????]";
+            this.ucPersonCard1.PersonName = "Empty Name ";
+            this.ucPersonCard1.Phone = "[????]";
+            this.ucPersonCard1.Picture = null;
+            this.ucPersonCard1.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ucPersonCard1.Size = new System.Drawing.Size(857, 238);
+            this.ucPersonCard1.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -135,25 +154,6 @@
             this.txtSearchAPerson.TabIndex = 7;
             this.txtSearchAPerson.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSearchAPerson.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchAPerson_KeyPress);
-            // 
-            // ucPersonCard1
-            // 
-            this.ucPersonCard1.Address = "[????]";
-            this.ucPersonCard1.Country = "[????]";
-            this.ucPersonCard1.DateOfBirth = "[????]";
-            this.ucPersonCard1.Email = "[????]";
-            this.ucPersonCard1.Gendor = "[????]";
-            this.ucPersonCard1.ID = "[????]";
-            this.ucPersonCard1.Location = new System.Drawing.Point(12, 27);
-            this.ucPersonCard1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ucPersonCard1.Name = "ucPersonCard1";
-            this.ucPersonCard1.NotionalNo = "[????]";
-            this.ucPersonCard1.PersonName = "Empty Name ";
-            this.ucPersonCard1.Phone = "[????]";
-            this.ucPersonCard1.Picture = null;
-            this.ucPersonCard1.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ucPersonCard1.Size = new System.Drawing.Size(857, 238);
-            this.ucPersonCard1.TabIndex = 0;
             // 
             // ucFindPerson
             // 
