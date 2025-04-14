@@ -32,15 +32,22 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 case "frmApplication":
                     _enMode = enModeUC.Application;
+                    TSMAddNewGeneral.Text = "Add New Application";
                     break;
                 case "frmPeople":
                     _enMode = enModeUC.People;
+                    TSMAddNewGeneral.Text = "Add New Person";
+
                     break;
                 case "frmDrivers":
                     _enMode = enModeUC.Drivers;
+                    TSMAddNewGeneral.Text = "Add New Driver";
+
                     break;
                 case "frmUsers":
                     _enMode = enModeUC.Users;
+                    TSMAddNewGeneral.Text = "Add New User";
+
                     break;
             }
         }
@@ -372,7 +379,25 @@ namespace DVLDSystem_WindowsForm_.User_Control
             btnRefreshDGV_Click(sender, e);
         }
 
-        //-------------------------Person Edit & Delete ---------------------
+        //-------------------------Person Edit & Delete & show info & add new ---------------------
+        private void _AddNewPerson()
+        {
+            frmAddEditPeople addPerson = new frmAddEditPeople(-1);
+            addPerson.ShowDialog();
+        }
+        private void _ShowPersonDeitails()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(), out int ID))
+            {
+                frmAddEditPeople Person = new frmAddEditPeople(ID);
+                Person.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Person Not Found to Show.", "warning");
+            }
+     
+        }
         private void _EditPerson()
         {
             if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(), out int ID))
@@ -412,7 +437,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         //-------------------------------------------------------------------
 
-        //-------------------------User Edit & Delete -----------------------
+        //-------------------------User Edit & Delete & show info -----------------------
+      
         private void _EditUser()
         {
             if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(), out int ID))
@@ -527,6 +553,46 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 {
                     e.Handled = true;
                 }
+            }
+        }
+        private void TSMShowDetailsGeneral_Click(object sender, EventArgs e)
+        {
+            switch (_enMode)
+            {
+                case enModeUC.Application:
+
+                    break;
+                case enModeUC.People:
+                    _ShowPersonDeitails();
+                    break;
+                case enModeUC.Drivers:
+
+                    break;
+                case enModeUC.Users:
+                    
+                    break;
+                case enModeUC.Empty:
+                    break;
+            }
+        }
+        private void TSMAddNewGeneral_Click(object sender, EventArgs e)
+        {
+            switch (_enMode)
+            {
+                case enModeUC.Application:
+
+                    break;
+                case enModeUC.People:
+                    _AddNewPerson();
+                    break;
+                case enModeUC.Drivers:
+
+                    break;
+                case enModeUC.Users:
+
+                    break;
+                case enModeUC.Empty:
+                    break;
             }
         }
     }

@@ -29,21 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.lblFindBy = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
             this.cmsEditDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.EditGeneral = new System.Windows.Forms.ToolStripMenuItem();
-            this.EeleteGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMEditGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMDeleteGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMRefreshGeneral = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearchDGV = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblRrecords = new System.Windows.Forms.Label();
             this.lblRecordsTitle = new System.Windows.Forms.Label();
             this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
-            this.TSM_Refresh = new System.Windows.Forms.ToolStripMenuItem();
             this.cbGendor = new System.Windows.Forms.ComboBox();
+            this.TSMShowDetailsGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMAddNewGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMSendEmailGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMPhoneCallGeneral = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.cmsEditDelete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
@@ -78,19 +84,19 @@
             this.dgvShowList.AllowUserToAddRows = false;
             this.dgvShowList.AllowUserToDeleteRows = false;
             this.dgvShowList.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
-            this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
+            this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvShowList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvShowList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(64)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 11.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(64)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowList.ContextMenuStrip = this.cmsEditDelete;
             this.dgvShowList.EnableHeadersVisualStyles = false;
@@ -98,8 +104,8 @@
             this.dgvShowList.Location = new System.Drawing.Point(0, 78);
             this.dgvShowList.Name = "dgvShowList";
             this.dgvShowList.ReadOnly = true;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.dgvShowList.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.dgvShowList.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvShowList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShowList.Size = new System.Drawing.Size(651, 290);
             this.dgvShowList.TabIndex = 2;
@@ -107,27 +113,41 @@
             // cmsEditDelete
             // 
             this.cmsEditDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditGeneral,
-            this.EeleteGeneral,
-            this.TSM_Refresh});
+            this.TSMShowDetailsGeneral,
+            this.toolStripMenuItem1,
+            this.TSMAddNewGeneral,
+            this.TSMEditGeneral,
+            this.TSMDeleteGeneral,
+            this.TSMRefreshGeneral,
+            this.toolStripSeparator1,
+            this.TSMSendEmailGeneral,
+            this.TSMPhoneCallGeneral});
             this.cmsEditDelete.Name = "cmsAddEdit";
-            this.cmsEditDelete.Size = new System.Drawing.Size(114, 70);
+            this.cmsEditDelete.Size = new System.Drawing.Size(181, 192);
             // 
-            // EditGeneral
+            // TSMEditGeneral
             // 
-            this.EditGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
-            this.EditGeneral.Name = "EditGeneral";
-            this.EditGeneral.Size = new System.Drawing.Size(113, 22);
-            this.EditGeneral.Text = "Edit";
-            this.EditGeneral.Click += new System.EventHandler(this.EditGeneral_Click);
+            this.TSMEditGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit;
+            this.TSMEditGeneral.Name = "TSMEditGeneral";
+            this.TSMEditGeneral.Size = new System.Drawing.Size(180, 22);
+            this.TSMEditGeneral.Text = "Edit";
+            this.TSMEditGeneral.Click += new System.EventHandler(this.EditGeneral_Click);
             // 
-            // EeleteGeneral
+            // TSMDeleteGeneral
             // 
-            this.EeleteGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
-            this.EeleteGeneral.Name = "EeleteGeneral";
-            this.EeleteGeneral.Size = new System.Drawing.Size(113, 22);
-            this.EeleteGeneral.Text = "Delete";
-            this.EeleteGeneral.Click += new System.EventHandler(this.DeleteGeneral_Click);
+            this.TSMDeleteGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
+            this.TSMDeleteGeneral.Name = "TSMDeleteGeneral";
+            this.TSMDeleteGeneral.Size = new System.Drawing.Size(180, 22);
+            this.TSMDeleteGeneral.Text = "Delete";
+            this.TSMDeleteGeneral.Click += new System.EventHandler(this.DeleteGeneral_Click);
+            // 
+            // TSMRefreshGeneral
+            // 
+            this.TSMRefreshGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Screenshot_2025_03_15_201348;
+            this.TSMRefreshGeneral.Name = "TSMRefreshGeneral";
+            this.TSMRefreshGeneral.Size = new System.Drawing.Size(180, 22);
+            this.TSMRefreshGeneral.Text = "Refresh";
+            this.TSMRefreshGeneral.Click += new System.EventHandler(this.TSM_Refresh_Click);
             // 
             // txtSearchDGV
             // 
@@ -188,14 +208,6 @@
             this.btnRefreshDGV.TabStop = false;
             this.btnRefreshDGV.Click += new System.EventHandler(this.btnRefreshDGV_Click);
             // 
-            // TSM_Refresh
-            // 
-            this.TSM_Refresh.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Screenshot_2025_03_15_201348;
-            this.TSM_Refresh.Name = "TSM_Refresh";
-            this.TSM_Refresh.Size = new System.Drawing.Size(113, 22);
-            this.TSM_Refresh.Text = "Refresh";
-            this.TSM_Refresh.Click += new System.EventHandler(this.TSM_Refresh_Click);
-            // 
             // cbGendor
             // 
             this.cbGendor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -211,6 +223,46 @@
             this.cbGendor.TabIndex = 9;
             this.cbGendor.Visible = false;
             this.cbGendor.SelectedIndexChanged += new System.EventHandler(this.cbGendor_SelectedIndexChanged);
+            // 
+            // TSMShowDetailsGeneral
+            // 
+            this.TSMShowDetailsGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonDetails_32;
+            this.TSMShowDetailsGeneral.Name = "TSMShowDetailsGeneral";
+            this.TSMShowDetailsGeneral.Size = new System.Drawing.Size(180, 22);
+            this.TSMShowDetailsGeneral.Text = "Show Details";
+            this.TSMShowDetailsGeneral.Click += new System.EventHandler(this.TSMShowDetailsGeneral_Click);
+            // 
+            // TSMAddNewGeneral
+            // 
+            this.TSMAddNewGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Add_Person_40;
+            this.TSMAddNewGeneral.Name = "TSMAddNewGeneral";
+            this.TSMAddNewGeneral.Size = new System.Drawing.Size(180, 22);
+            this.TSMAddNewGeneral.Text = "Add new ";
+            this.TSMAddNewGeneral.Click += new System.EventHandler(this.TSMAddNewGeneral_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // TSMSendEmailGeneral
+            // 
+            this.TSMSendEmailGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.send_email_32;
+            this.TSMSendEmailGeneral.Name = "TSMSendEmailGeneral";
+            this.TSMSendEmailGeneral.Size = new System.Drawing.Size(180, 22);
+            this.TSMSendEmailGeneral.Text = "Send Email";
+            // 
+            // TSMPhoneCallGeneral
+            // 
+            this.TSMPhoneCallGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.call_32;
+            this.TSMPhoneCallGeneral.Name = "TSMPhoneCallGeneral";
+            this.TSMPhoneCallGeneral.Size = new System.Drawing.Size(180, 22);
+            this.TSMPhoneCallGeneral.Text = "Phone Call";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // ucTemplateDGVAndSearch
             // 
@@ -245,9 +297,15 @@
         private System.Windows.Forms.Label lblRrecords;
         private System.Windows.Forms.Label lblRecordsTitle;
         private System.Windows.Forms.ContextMenuStrip cmsEditDelete;
-        private System.Windows.Forms.ToolStripMenuItem EditGeneral;
-        private System.Windows.Forms.ToolStripMenuItem EeleteGeneral;
-        private System.Windows.Forms.ToolStripMenuItem TSM_Refresh;
+        private System.Windows.Forms.ToolStripMenuItem TSMEditGeneral;
+        private System.Windows.Forms.ToolStripMenuItem TSMDeleteGeneral;
+        private System.Windows.Forms.ToolStripMenuItem TSMRefreshGeneral;
         private System.Windows.Forms.ComboBox cbGendor;
+        private System.Windows.Forms.ToolStripMenuItem TSMShowDetailsGeneral;
+        private System.Windows.Forms.ToolStripMenuItem TSMAddNewGeneral;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem TSMSendEmailGeneral;
+        private System.Windows.Forms.ToolStripMenuItem TSMPhoneCallGeneral;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
