@@ -81,6 +81,7 @@
             this.ucTemplateDGVAndSearch1.Name = "ucTemplateDGVAndSearch1";
             this.ucTemplateDGVAndSearch1.Size = new System.Drawing.Size(1172, 395);
             this.ucTemplateDGVAndSearch1.TabIndex = 6;
+            this.ucTemplateDGVAndSearch1.TextBoxLocation = new System.Drawing.Point(435, 21);
             // 
             // frmPeople
             // 

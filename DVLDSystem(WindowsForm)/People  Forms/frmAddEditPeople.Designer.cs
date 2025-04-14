@@ -83,7 +83,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 13F);
-            this.label1.Location = new System.Drawing.Point(18, 103);
+            this.label1.Location = new System.Drawing.Point(34, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 22);
             this.label1.TabIndex = 0;
@@ -294,8 +294,8 @@
             this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Items.AddRange(new object[] {
-            "Female",
-            "Male"});
+            "Male",
+            "Female"});
             this.cbGender.Location = new System.Drawing.Point(182, 148);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(66, 21);
@@ -412,11 +412,11 @@
             // lblTitleHeader
             // 
             this.lblTitleHeader.AutoSize = true;
-            this.lblTitleHeader.Font = new System.Drawing.Font("Tahoma", 35F, System.Drawing.FontStyle.Bold);
+            this.lblTitleHeader.Font = new System.Drawing.Font("Souvenir Lt BT", 40F, System.Drawing.FontStyle.Bold);
             this.lblTitleHeader.ForeColor = System.Drawing.Color.Maroon;
             this.lblTitleHeader.Location = new System.Drawing.Point(290, 20);
             this.lblTitleHeader.Name = "lblTitleHeader";
-            this.lblTitleHeader.Size = new System.Drawing.Size(281, 57);
+            this.lblTitleHeader.Size = new System.Drawing.Size(313, 67);
             this.lblTitleHeader.TabIndex = 1;
             this.lblTitleHeader.Text = "Title Name";
             // 
@@ -492,7 +492,7 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cbGender);
-            this.groupBox1.Location = new System.Drawing.Point(18, 128);
+            this.groupBox1.Location = new System.Drawing.Point(17, 128);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(859, 401);
             this.groupBox1.TabIndex = 31;
