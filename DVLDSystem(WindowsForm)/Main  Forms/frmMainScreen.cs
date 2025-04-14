@@ -17,7 +17,7 @@ namespace DVLDSystem_WindowsForm_
     {
         private int _UserID = -1;
 
-        clsUser User;
+        private clsUser _User;
         public frmMainScreen(int UserID)
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace DVLDSystem_WindowsForm_
 
             if (_UserID != -1)
             {
-                User = clsUser.Find(_UserID);   
+                _User = clsUser.Find(_UserID);   
             }
 
         }
@@ -53,7 +53,7 @@ namespace DVLDSystem_WindowsForm_
         private void frmMainScreen_Load(object sender, EventArgs e)
         {
             //ResizeImages();
-            lblUsername.Text = User.UserName;
+            lblUsername.Text = _User.UserName;
         }
         private bool _CheckIsFormOpen(Type formName)
         {
@@ -69,7 +69,7 @@ namespace DVLDSystem_WindowsForm_
             return false;
         }
 
-        private void tsmPeople_Click(object sender, EventArgs e)
+        private void TSMPeople_Click(object sender, EventArgs e)
         {
             if (!_CheckIsFormOpen(typeof(frmPeople)))
             {
@@ -79,7 +79,7 @@ namespace DVLDSystem_WindowsForm_
             }
         }
 
-        private void tsmUsers_Click(object sender, EventArgs e)
+        private void TSMUsers_Click(object sender, EventArgs e)
         {
             if (!_CheckIsFormOpen(typeof(frmUser)))
             {
@@ -87,6 +87,11 @@ namespace DVLDSystem_WindowsForm_
                 User.MdiParent = this;
                 User.Show();
             }
+        }
+
+        private void TSMSignOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

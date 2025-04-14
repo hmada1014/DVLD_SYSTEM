@@ -56,6 +56,9 @@
             this.tsmUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAccountSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.TSMCurrentUserInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMSignOut = new System.Windows.Forms.ToolStripMenuItem();
             this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,12 +155,12 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(370, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(386, 6);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(370, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(386, 6);
             // 
             // releaseDetainToolStripMenuItem
             // 
@@ -178,7 +181,7 @@
             // manageApplicationsToolStripMenuItem
             // 
             this.manageApplicationsToolStripMenuItem.Name = "manageApplicationsToolStripMenuItem";
-            this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(261, 6);
+            this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(310, 6);
             // 
             // manageApplicationsToolStripMenuItem1
             // 
@@ -210,7 +213,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(261, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(310, 6);
             // 
             // detainLicensesToolStripMenuItem
             // 
@@ -272,7 +275,7 @@
             this.tsmPeople.Name = "tsmPeople";
             this.tsmPeople.Size = new System.Drawing.Size(135, 68);
             this.tsmPeople.Text = "People";
-            this.tsmPeople.Click += new System.EventHandler(this.tsmPeople_Click);
+            this.tsmPeople.Click += new System.EventHandler(this.TSMPeople_Click);
             // 
             // tsmDrivers
             // 
@@ -291,11 +294,15 @@
             this.tsmUsers.Name = "tsmUsers";
             this.tsmUsers.Size = new System.Drawing.Size(126, 68);
             this.tsmUsers.Text = "Users";
-            this.tsmUsers.Click += new System.EventHandler(this.tsmUsers_Click);
+            this.tsmUsers.Click += new System.EventHandler(this.TSMUsers_Click);
             // 
             // tsmAccountSettings
             // 
             this.tsmAccountSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsmAccountSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMCurrentUserInfo,
+            this.TSMChangePassword,
+            this.TSMSignOut});
             this.tsmAccountSettings.Font = new System.Drawing.Font("Simplified Arabic Backslanted", 9F, System.Drawing.FontStyle.Bold);
             this.tsmAccountSettings.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.account_settings_64;
             this.tsmAccountSettings.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -313,7 +320,32 @@
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(57, 19);
             this.lblUsername.TabIndex = 3;
-            this.lblUsername.Text = "User : ";
+            this.lblUsername.Text = "_User : ";
+            // 
+            // TSMCurrentUserInfo
+            // 
+            this.TSMCurrentUserInfo.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonDetails_32;
+            this.TSMCurrentUserInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMCurrentUserInfo.Name = "TSMCurrentUserInfo";
+            this.TSMCurrentUserInfo.Size = new System.Drawing.Size(219, 38);
+            this.TSMCurrentUserInfo.Text = "Current _User info";
+            // 
+            // TSMChangePassword
+            // 
+            this.TSMChangePassword.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Password_32;
+            this.TSMChangePassword.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMChangePassword.Name = "TSMChangePassword";
+            this.TSMChangePassword.Size = new System.Drawing.Size(219, 38);
+            this.TSMChangePassword.Text = "Change Password";
+            // 
+            // TSMSignOut
+            // 
+            this.TSMSignOut.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.sign_out_32__2;
+            this.TSMSignOut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMSignOut.Name = "TSMSignOut";
+            this.TSMSignOut.Size = new System.Drawing.Size(219, 38);
+            this.TSMSignOut.Text = "Sign out";
+            this.TSMSignOut.Click += new System.EventHandler(this.TSMSignOut_Click);
             // 
             // frmMainScreen
             // 
@@ -367,5 +399,8 @@
         private System.Windows.Forms.ToolStripMenuItem releaseDetainedLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localDrivingLicenseApplicationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem internationalLinceseApplicationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSMCurrentUserInfo;
+        private System.Windows.Forms.ToolStripMenuItem TSMChangePassword;
+        private System.Windows.Forms.ToolStripMenuItem TSMSignOut;
     }
 }
