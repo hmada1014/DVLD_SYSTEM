@@ -57,25 +57,25 @@
             this.lblLinkRemoveImage = new System.Windows.Forms.LinkLabel();
             this.cbCountry = new System.Windows.Forms.ComboBox();
             this.ep1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.pbImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.ep1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,7 +129,7 @@
             this.txtNationalNo.Size = new System.Drawing.Size(145, 26);
             this.txtNationalNo.TabIndex = 5;
             this.txtNationalNo.Tag = "txtNationalNo";
-            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this._ValidateEmptyOrNull);
+            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this._ValidateEmptyOrNationalNo);
             // 
             // txtFirstName
             // 
@@ -457,57 +457,6 @@
             // 
             this.ep1.ContainerControl = this;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnClose);
-            this.groupBox1.Controls.Add(this.pictureBox5);
-            this.groupBox1.Controls.Add(this.pictureBox4);
-            this.groupBox1.Controls.Add(this.pictureBox3);
-            this.groupBox1.Controls.Add(this.lblLinkRemoveImage);
-            this.groupBox1.Controls.Add(this.lblLinkAddImage);
-            this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.pbImage);
-            this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.cbCountry);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtNationalNo);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtFirstName);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtSecondName);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Controls.Add(this.txtLastName);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtPhone);
-            this.groupBox1.Controls.Add(this.txtThirdName);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.dtpDateOfBirth);
-            this.groupBox1.Controls.Add(this.txtAddress);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.cbGender);
-            this.groupBox1.Location = new System.Drawing.Point(17, 128);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(859, 401);
-            this.groupBox1.TabIndex = 31;
-            this.groupBox1.TabStop = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Tahoma", 13F);
-            this.label13.Location = new System.Drawing.Point(16, 50);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 22);
-            this.label13.TabIndex = 32;
-            this.label13.Text = "Name:";
-            // 
             // pictureBox6
             // 
             this.pictureBox6.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Number_32;
@@ -518,27 +467,6 @@
             this.pictureBox6.Size = new System.Drawing.Size(32, 26);
             this.pictureBox6.TabIndex = 39;
             this.pictureBox6.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
-            this.btnClose.BorderThickness = 1;
-            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.FillColor = System.Drawing.SystemColors.Control;
-            this.btnClose.Font = new System.Drawing.Font("Tahoma", 15F);
-            this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(389, 349);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(128, 38);
-            this.btnClose.TabIndex = 38;
-            this.btnClose.Text = "close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pictureBox5
             // 
@@ -595,6 +523,78 @@
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnClose);
+            this.groupBox1.Controls.Add(this.pictureBox5);
+            this.groupBox1.Controls.Add(this.pictureBox4);
+            this.groupBox1.Controls.Add(this.pictureBox3);
+            this.groupBox1.Controls.Add(this.lblLinkRemoveImage);
+            this.groupBox1.Controls.Add(this.lblLinkAddImage);
+            this.groupBox1.Controls.Add(this.pictureBox2);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.pbImage);
+            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.cbCountry);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtNationalNo);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtFirstName);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtSecondName);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.txtLastName);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtPhone);
+            this.groupBox1.Controls.Add(this.txtThirdName);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.dtpDateOfBirth);
+            this.groupBox1.Controls.Add(this.txtAddress);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.cbGender);
+            this.groupBox1.Location = new System.Drawing.Point(17, 128);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(859, 401);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
+            this.btnClose.BorderThickness = 1;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.SystemColors.Control;
+            this.btnClose.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
+            this.btnClose.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnClose.Location = new System.Drawing.Point(389, 349);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(128, 38);
+            this.btnClose.TabIndex = 38;
+            this.btnClose.Text = "close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 13F);
+            this.label13.Location = new System.Drawing.Point(16, 50);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 22);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "Name:";
+            // 
             // pbImage
             // 
             this.pbImage.ErrorImage = null;
@@ -646,14 +646,14 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddEditPeople_FormClosing);
             this.Load += new System.EventHandler(this.frmAddEditPeople_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ep1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -165,6 +165,35 @@ namespace DVLDSystem_WindowsForm_.People
             }
 
         }
+        private void _ValidateEmptyOrNationalNo(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Guna2TextBox textBox = sender as Guna2TextBox;
+            if (string.IsNullOrEmpty(textBox.Text.Trim()))
+            {
+                e.Cancel = true;
+                ep1.SetError(textBox, "This field is required.");
+                return;
+            }
+            if (!clsPerson.IsPersonExist(textBox.Text.Trim(), lblPersonID.Text.Trim()))
+            {
+                if (clsPerson.IsPersonExist(textBox.Text.Trim()))
+                {
+                    ep1.SetError(textBox, "this NationalNo is exists");
+                    e.Cancel = true;
+                    return;
+
+                }
+                else
+                {
+                    ep1.SetError(textBox, string.Empty);
+                }
+            }
+            else
+            {
+                ep1.SetError(textBox, string.Empty);
+            }
+
+        }
         private bool _ValidateNationalNo(Guna2TextBox textBox,Label PersonID, string errorMessage, string errorMessage2)
         {
             if (!clsPerson.IsPersonExist(textBox.Text.Trim(), PersonID.Text.Trim()))
