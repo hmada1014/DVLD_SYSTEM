@@ -320,6 +320,36 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
+        public static bool IsUserExist(int UserID,int PerosnID)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Find=1 from Users
+			                 where 
+                             Users.UserID = @UserID and Users.PersonID = @PerosnID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserID", UserID);
+            command.Parameters.AddWithValue("@PerosnID", PerosnID);
+
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
         public static bool IsPersonExist(int PersonID)
         {
             bool IsFound = false;
@@ -358,6 +388,35 @@ namespace DVLDSystem_DataAccessLayer_
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@UserName", UserName);
             command.Parameters.AddWithValue("@Password", Password);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+        public static bool IsUserExist(string UserName, int PersonID)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Find=1 from Users
+			                 where
+                             Users.UserName = @UserName and Users.PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserName", UserName);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
 
             try
             {
@@ -465,6 +524,124 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dataTable.DefaultView;
         }
+        public static DataView SearchUserByUserName(string UserName)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT   Users.UserID, People.PersonID  , concat(People.FirstName ,' ', People.SecondName,' ', People.ThirdName,' ', People.LastName) as Full_Name ,Users.UserName,Users.IsActive
+                             FROM Users INNER JOIN
+                             People ON Users.PersonID = People.PersonID
+						     where Users.UserName like '%'+ @UserName + '%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserName", UserName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchUserByFullName(string FullName)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT 
+                             Users.UserID, 
+                             People.PersonID,  
+                             CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS Full_Name,
+                             Users.UserName,
+                             Users.IsActive
+                             FROM 
+                                 Users 
+                             INNER JOIN 
+                                 People ON Users.PersonID = People.PersonID
+                             WHERE 
+                                 CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) like '%' + @FullName +'%' ";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@FullName", FullName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchUserByIsActive(byte IsActive1 , byte IsActive2)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT 
+                             Users.UserID, 
+                             People.PersonID,  
+                             CONCAT(People.FirstName, ' ', People.SecondName, ' ', People.ThirdName, ' ', People.LastName) AS Full_Name,
+                             Users.UserName,
+                             Users.IsActive
+                             FROM 
+                                 Users 
+                             INNER JOIN 
+                                 People ON Users.PersonID = People.PersonID
+                             WHERE 
+                                 users.IsActive = @IsActive1 or users.IsActive = @IsActive2";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@IsActive1", IsActive1);
+            command.Parameters.AddWithValue("@IsActive2", IsActive2);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+
         public static DataView SearchUserByPersonID(string PersonID)
         {
             DataTable dataTable = new DataTable();

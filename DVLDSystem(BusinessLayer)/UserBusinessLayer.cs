@@ -89,15 +89,17 @@ namespace DVLDSystem_BusinessLayer_
                 return null;
             }
         }
-
         public static bool IsPersonExist(int PersonID)
         {
             return clsUserDataAccessLayer.IsPersonExist(PersonID);
         }
-
         public static bool IsUserExist(int UserID)
         {
             return clsUserDataAccessLayer.IsUserExist(UserID);
+        }
+        public static bool IsUserExist(int UserID,int PersonID)
+        {
+            return clsUserDataAccessLayer.IsUserExist(UserID,PersonID);
         }
         public static bool IsUserExist(string UserName)
         {
@@ -106,6 +108,10 @@ namespace DVLDSystem_BusinessLayer_
         public static bool IsUserExist(string UserName , string Password)
         {
             return clsUserDataAccessLayer.IsUserExist(UserName,Password);
+        }
+        public static bool IsUserExist(string UserName, int  PersonID)
+        {
+            return clsUserDataAccessLayer.IsUserExist(UserName, PersonID);
         }
         public static bool IsUserExist(string UserName, string UserID , string Password = "")
         {
@@ -140,6 +146,18 @@ namespace DVLDSystem_BusinessLayer_
         public static DataView SearchUserByUserID(string UserID)
         {
             return clsUserDataAccessLayer.SearchUserByUserID(UserID);
+        }
+        public static DataView SearchUserByUserName(string UserName)
+        {
+            return clsUserDataAccessLayer.SearchUserByUserName(UserName);
+        }
+        public static DataView SearchUserByIsActive(byte IsActive1 , byte IsActiv2)
+        {
+            return clsUserDataAccessLayer.SearchUserByIsActive(IsActive1,IsActiv2);
+        }
+        public static DataView SearchUserByFullName(string FullName)
+        {
+            return clsUserDataAccessLayer.SearchUserByFullName(FullName);
         }
 
         public static DataView SearchUserByPersonID(string PersonID)
