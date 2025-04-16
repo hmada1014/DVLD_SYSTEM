@@ -26,7 +26,9 @@ namespace DVLDSystem_WindowsForm_.People
         private int _ID;
         private clsPerson _CurrentPerson;
 
-    
+        public delegate void DataBackEventHandler(object sender, int PersonID);
+
+        public event DataBackEventHandler DataBack;
         public frmAddEditPeople(int ID)
         {
             InitializeComponent();
@@ -352,9 +354,9 @@ namespace DVLDSystem_WindowsForm_.People
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
+            DataBack?.Invoke(this,_CurrentPerson.PersonID);
             this.Close();
         }
-
         private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
         {
 
