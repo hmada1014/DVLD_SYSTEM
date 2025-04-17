@@ -30,5 +30,10 @@ namespace DVLDSystem_WindowsForm_.People__Forms
         {
             ucPersonCard1.LoadPersonInfo(_CurrentPerson);
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
