@@ -81,7 +81,7 @@ namespace DVLDSystem_WindowsForm_.People
 
             if (_Mode == enMode.Update)
             {
-                lblTitleHeader.Text = "Update";
+                lblTitleHeader.Text = "Update Person";
                 lblPersonID.Text = _CurrentPerson.PersonID.ToString();
                 txtNationalNo.Text = _CurrentPerson.NationalNo.ToString();
                 txtFirstName.Text = _CurrentPerson.FirstName.ToString();
@@ -233,7 +233,7 @@ namespace DVLDSystem_WindowsForm_.People
         private bool _ValidateAddress(Guna2TextBox textBox, string errorMessage)
         {
      
-            if (!clsValidation.CustomValid(textBox.Text.Trim(), @"^[\w\s.,#\-\/]{6,}$"))
+            if (!clsValidation.CustomValid(textBox.Text.Trim(), @"^[\s\S]{6,500}$"))
             {
                 ep1.SetError(textBox, errorMessage);
                 return false;
@@ -276,9 +276,9 @@ namespace DVLDSystem_WindowsForm_.People
             bool isValid = true;
 
             isValid &= _ValidateNationalNo(txtNationalNo,lblPersonID, "it's allow latters , number,- /.", "this NationalNo is exists");
-            isValid &= _ValidateName(txtFirstName, "it's only Latters.");
-            isValid &= _ValidateName(txtSecondName, "it's only Latters.");
-            isValid &= _ValidateName(txtLastName, "it's only Latters.");
+            isValid &= _ValidateName(txtFirstName, "it's only Latters , char 1-20.");
+            isValid &= _ValidateName(txtSecondName, "it's only Latters , char 1-20.");
+            isValid &= _ValidateName(txtLastName, "it's only Latters , char 1-20.");
             isValid &= _ValidateAddress(txtAddress, "At least 6 Latters");
             isValid &= _ValidatePhone(txtPhone, "it's only number and '+' is optonal  ");
             if (!string.IsNullOrEmpty(txtEmail.Text.Trim()))
@@ -313,9 +313,9 @@ namespace DVLDSystem_WindowsForm_.People
         {
             if (_CurrentPerson.Save())
             {
-                MessageBox.Show("Person was saved Successfully");
+                MessageBox.Show("Person was saved Successfully" ,"Saved",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 _Mode = enMode.Update;
-                lblTitleHeader.Text = "Update";
+                lblTitleHeader.Text = "Update Person";
                 lblPersonID.Text = _CurrentPerson.PersonID.ToString();
 
             }
@@ -330,7 +330,7 @@ namespace DVLDSystem_WindowsForm_.People
 
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Please fill all required fields before saving.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please fill all required fields Correctly before saving.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                
                 return;
             }
@@ -371,30 +371,8 @@ namespace DVLDSystem_WindowsForm_.People
                         pbImage.Image = Resources.Female_512;
                         break;
                 } 
-            }
-                
+            } 
             
         }
-
-
-        //private void cbCountry_TextChanged(object sender, EventArgs e)
-        //{
-        //    ComboBox comboBox = sender as ComboBox;
-
-        //    if (comboBox != null)
-        //    {
-
-        //        string Search = comboBox.Text;
-
-
-        //        string[] allitem = comboBox.Items.Cast<string>().ToArray();
-
-        //        var filteredItem = allitem.Where(item => item.StartsWith(Search, StringComparison.OrdinalIgnoreCase)).ToArray();
-
-        //        comboBox.DataSource = filteredItem;
-        //        comboBox.DroppedDown = true; 
-        //        //comboBox.SelectedIndex = 0;
-        //    }
-        //}
     }
 }
