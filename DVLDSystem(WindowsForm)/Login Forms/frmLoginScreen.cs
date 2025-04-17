@@ -2,7 +2,9 @@
 using DVLDSystem_WindowsForm_.Properties;
 using RentalVehical_WindowsForm;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Media;
 using System.Windows.Forms;
 
@@ -16,47 +18,33 @@ namespace DVLDSystem_WindowsForm_
         public frmLoginScreen()
         {
             InitializeComponent();
+            this.AcceptButton = btnLogin;
+            this.CancelButton = ibtnClose;
         }
-
         private void rPlTop_MouseDown(object sender, MouseEventArgs e)
         {
             clsDragForm.ReleaseCapture();
             clsDragForm.SendMessage(this.Handle);
         }
-
         private void ibtnClose_Click(object sender, EventArgs e)
         {
+            _RememberMeSave();
             Application.Exit();
         }
-
         private void rPlTop_MouseHover(object sender, EventArgs e)
         {
             rPlTop.BackColor = HoverColor;
       
         }
-
         private void rPlTop_MouseLeave(object sender, EventArgs e)
         {
             rPlTop.BackColor = DefaultColor;
         
         }
-
         private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
         {
             txtPassword.isPassword = (!cbShowPassword.Checked) ? true : false;
         }
-
-        private Image ResizeImage(Image img, int width, int height)
-        {
-            Bitmap bmp = new Bitmap(width, height);
-            using (Graphics g = Graphics.FromImage(bmp))
-            {
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(img, 0, 0, width, height);
-            }
-            return bmp;
-        }
-
         private void txtPassword_Enter(object sender, EventArgs e)
         {
             if (txtPassword.Text == string.Empty)
@@ -66,73 +54,94 @@ namespace DVLDSystem_WindowsForm_
 
             txtPassword.isPassword = (!cbShowPassword.Checked) ? true : false;
         }
-
         private void frmLoginScreen_Load(object sender, EventArgs e)
         {
-            
+            _RememberMeLoadData();
             this.KeyPreview = true;
         }
-
-        private void ClearText()
+        private void _RememberMeLoadData()
         {
-            txtUsername.Text = string.Empty;
-            txtPassword.Text = string.Empty;
+            if (Settings.Default.RememberMeCheckStatus)
+            {
+                txtUsername.Text = Settings.Default.Username ;
+                txtPassword.Text = Settings.Default.Password;
+                cbRememberMe.Checked = true;
+            }
+            else
+            {
+
+                txtUsername.Text = string.Empty;
+                txtPassword.Text = string.Empty;
+                cbRememberMe.Checked = false;
+
+            }
+        }
+        private void _RememberMeSave()
+        {
+            if (cbRememberMe.Checked)
+            {
+                
+                Settings.Default.RememberMeCheckStatus = true;
+                Settings.Default.Username = txtUsername.Text.Trim();
+                Settings.Default.Password = txtPassword.Text.Trim();
+                Settings.Default.Save();
+            }
+            else
+            {
+                Settings.Default.RememberMeCheckStatus = false;
+                Settings.Default.Username = string.Empty;
+                Settings.Default.Username = string.Empty;
+                Settings.Default.Save();
+            }
+            
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string Username = txtUsername.Text.Trim();
             string Password = txtPassword.Text.Trim();
 
-            if (clsUser.IsUserExist(Username, Password))
+            if (clsUser.IsUserExist(Username))
             {
                 clsUser User = clsUser.Find(Username, Password);
 
                 if (User != null)
                 {
                     txtMessageInvalied.Visible = false;
-                    this.Hide();
-                    using (frmMainScreen Main = new frmMainScreen(User.UserID))
+                    if (User.IsActive)
                     {
-                        Main.ShowDialog();
+                        this.Hide();
+                        using (frmMainScreen Main = new frmMainScreen(User.UserID))
+                        {
+                            
+                            _RememberMeSave();
+                            Main.ShowDialog();
+                        }
+                        this.Show(); 
                     }
-                    ClearText();
-                    this.Show();
+                    else
+                    {
+                        ShowLoginError("Your account is inactive, Please contact the administrator.", "Falied Login");
+                    }
                 }
                 else
                 {
-                    ShowLoginError("User does not exist.");
+                    ShowLoginError("wrong username/password.", "Falied Login");
                 }
             }
             else
             {
-                ShowLoginError("User does not exist.");
+                ShowLoginError("User does not exist ", "Falied Login");
             }
-
-
         }
-
-        private void ShowLoginError(string MessageErorr)
+        private void ShowLoginError(string MessageErorr , string Caption)
         {
             txtMessageInvalied.Visible = true;
             SystemSounds.Beep.Play();
-            MessageBox.Show(MessageErorr);
+            MessageBox.Show(MessageErorr,Caption,MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
-
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void frmLoginScreen_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.Handled = true;          // Prevents the "ding"
-     
-                btnLogin.PerformClick();   // Or call your login method
-            }
-        }
-
- 
+        } 
     }
 }

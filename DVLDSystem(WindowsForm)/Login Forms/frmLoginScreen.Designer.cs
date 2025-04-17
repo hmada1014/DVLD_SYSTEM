@@ -43,6 +43,7 @@
             this.btnMinimize = new FontAwesome.Sharp.IconButton();
             this.rPlTop = new DVLDSystem_WindowsForm_.ucRoundedPanel();
             this.rPlLeft = new DVLDSystem_WindowsForm_.ucRoundedPanel();
+            this.cbRememberMe = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -244,12 +245,23 @@
             this.rPlLeft.TopLeftRadius = 0;
             this.rPlLeft.TopRightRadius = 0;
             // 
+            // cbRememberMe
+            // 
+            this.cbRememberMe.AutoSize = true;
+            this.cbRememberMe.Location = new System.Drawing.Point(543, 284);
+            this.cbRememberMe.Name = "cbRememberMe";
+            this.cbRememberMe.Size = new System.Drawing.Size(94, 17);
+            this.cbRememberMe.TabIndex = 17;
+            this.cbRememberMe.Text = "Remember Me";
+            this.cbRememberMe.UseVisualStyleBackColor = true;
+            // 
             // frmLoginScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(205)))), ((int)(((byte)(198)))));
             this.ClientSize = new System.Drawing.Size(951, 491);
+            this.Controls.Add(this.cbRememberMe);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -270,7 +282,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLoginScreen";
             this.Load += new System.EventHandler(this.frmLoginScreen_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLoginScreen_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -294,5 +305,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private FontAwesome.Sharp.IconButton btnMinimize;
+        private System.Windows.Forms.CheckBox cbRememberMe;
     }
 }
