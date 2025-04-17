@@ -1,6 +1,7 @@
 ﻿using DVLDSystem_BusinessLayer_;
 using DVLDSystem_WindowsForm_.Properties;
 using DVLDSystem_WindowsForm_.User;
+using DVLDSystem_WindowsForm_.User__Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace DVLDSystem_WindowsForm_
     {
         private int _UserID = -1;
 
-        private clsUser _User;
+        private clsUser _CurrentUser;
         public frmMainScreen(int UserID)
         {
             InitializeComponent();
@@ -26,34 +27,15 @@ namespace DVLDSystem_WindowsForm_
 
             if (_UserID != -1)
             {
-                _User = clsUser.Find(_UserID);   
+                _CurrentUser = clsUser.Find(_UserID);   
             }
 
         }
 
-     /* 
-        private Image ResizeImage(Image img, int width, int height)
-        {
-            Bitmap bmp = new Bitmap(width, height);
-            using (Graphics g = Graphics.FromImage(bmp))
-            {
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(img, 0, 0, width, height);
-            }
-            return bmp;
-        }
-        private void ResizeImages()
-        {
-            tsmApplication.Image = ResizeImage(Resources.Applications, 48, 48);
-            tsmPeople.Image = ResizeImage(Resources.People, 48, 48);
-            tsmDrivers.Image = ResizeImage(Resources.Drivers, 48, 48);
-            tsmUsers.Image = ResizeImage(Resources.Users, 48, 48);
-            tsmAccountSettings.Image = ResizeImage(Resources.close, 48, 48);
-        }*/
+     
         private void frmMainScreen_Load(object sender, EventArgs e)
         {
-            //ResizeImages();
-            lblUsername.Text = _User.UserName;
+
         }
         private bool _CheckIsFormOpen(Type formName)
         {
@@ -92,6 +74,26 @@ namespace DVLDSystem_WindowsForm_
         private void TSMSignOut_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void TSMCurrentUserInfo_Click(object sender, EventArgs e)
+        {
+            if (_CurrentUser != null)
+            {
+                frmShowUserDetails userDetails = new frmShowUserDetails(_CurrentUser.UserID);
+                userDetails.MdiParent = this;
+                userDetails.Show(); 
+            }
+        }
+
+        private void TSMChangePassword_Click(object sender, EventArgs e)
+        {
+            if (_CurrentUser != null)
+            {
+                frmChangePasswordUser changePasswordUser = new frmChangePasswordUser(_CurrentUser.UserID);
+                changePasswordUser.MdiParent = this;
+                changePasswordUser.Show();
+            }
         }
     }
 }

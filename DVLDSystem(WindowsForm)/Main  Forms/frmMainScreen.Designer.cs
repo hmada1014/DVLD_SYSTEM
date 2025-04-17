@@ -55,7 +55,6 @@
             this.tsmDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAccountSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblUsername = new System.Windows.Forms.Label();
             this.TSMCurrentUserInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMSignOut = new System.Windows.Forms.ToolStripMenuItem();
@@ -311,24 +310,14 @@
             this.tsmAccountSettings.Size = new System.Drawing.Size(200, 68);
             this.tsmAccountSettings.Text = "Account Settings";
             // 
-            // lblUsername
-            // 
-            this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblUsername.Location = new System.Drawing.Point(841, 27);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(57, 19);
-            this.lblUsername.TabIndex = 3;
-            this.lblUsername.Text = "_User : ";
-            // 
             // TSMCurrentUserInfo
             // 
             this.TSMCurrentUserInfo.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonDetails_32;
             this.TSMCurrentUserInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMCurrentUserInfo.Name = "TSMCurrentUserInfo";
             this.TSMCurrentUserInfo.Size = new System.Drawing.Size(219, 38);
-            this.TSMCurrentUserInfo.Text = "Current _User info";
+            this.TSMCurrentUserInfo.Text = "Current User info";
+            this.TSMCurrentUserInfo.Click += new System.EventHandler(this.TSMCurrentUserInfo_Click);
             // 
             // TSMChangePassword
             // 
@@ -337,6 +326,7 @@
             this.TSMChangePassword.Name = "TSMChangePassword";
             this.TSMChangePassword.Size = new System.Drawing.Size(219, 38);
             this.TSMChangePassword.Text = "Change Password";
+            this.TSMChangePassword.Click += new System.EventHandler(this.TSMChangePassword_Click);
             // 
             // TSMSignOut
             // 
@@ -353,7 +343,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(959, 498);
-            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.msMain);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
@@ -377,7 +366,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmDrivers;
         private System.Windows.Forms.ToolStripMenuItem tsmUsers;
         private System.Windows.Forms.ToolStripMenuItem tsmAccountSettings;
-        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.ToolStripMenuItem drivingLicensesServicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newDrivingLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renewDrivingLicenseToolStripMenuItem;
