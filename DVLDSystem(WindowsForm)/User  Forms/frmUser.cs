@@ -20,7 +20,9 @@ namespace DVLDSystem_WindowsForm_.User
 
         private string[] _FillComboBoxwhitString()
         {
-            string[] strings = { "ID", "PersonID" };
+            string[] strings = {"None","User ID","UserName",
+                                "Person ID","Full Name",
+                                "Is Active"};
             return strings;
         }
         private void frmUser_Load(object sender, EventArgs e)
