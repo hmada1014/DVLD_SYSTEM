@@ -61,18 +61,23 @@ namespace DVLDSystem_WindowsForm_.User
 
             if (_Mode == enMode.Update)
             {
-                lblTitleHeader.Text = "Update User";
-                ucFindPerson1.LoadData(_CurrentUser.PersonID.ToString());
-                ucFindPerson1.GBFilterMode = false;
-                lblUserID.Text = _CurrentUser.UserID.ToString();
-                txtUsername.Text = _CurrentUser.UserName;
-                txtPassword.Text = _CurrentUser.Password;
-                txtConfirmPassword.Text = _CurrentUser.Password;
-                CkeckCbPermission(_CurrentUser.Permission);
-                ToggleSwitchISActive.Checked = _CurrentUser.IsActive;
-                btnSave.Enabled = true;
-                btnNext.Enabled = false;
+                _FillUserForm();
             }
+        }
+
+        private void _FillUserForm()
+        {
+            lblTitleHeader.Text = "Update User";
+            ucFindPerson1.LoadData(_CurrentUser.PersonID.ToString());
+            ucFindPerson1.GBFilterMode = false;
+            lblUserID.Text = _CurrentUser.UserID.ToString();
+            txtUsername.Text = _CurrentUser.UserName;
+            txtPassword.Text = _CurrentUser.Password;
+            txtConfirmPassword.Text = _CurrentUser.Password;
+            CkeckCbPermission(_CurrentUser.Permission);
+            ToggleSwitchISActive.Checked = _CurrentUser.IsActive;
+            btnSave.Enabled = true;
+            btnNext.Enabled = false;
         }
         private void CkeckCbPermission(int Permission)
         {
@@ -274,7 +279,7 @@ namespace DVLDSystem_WindowsForm_.User
             }
             else
             {
-                MessageBox.Show("Selecte Person before click button next.", "Selecte a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selecte Person before click next.", "Selecte a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnSave.Enabled = false;
             }
         }
