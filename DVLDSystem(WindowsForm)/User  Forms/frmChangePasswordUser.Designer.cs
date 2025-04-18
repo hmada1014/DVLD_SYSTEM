@@ -30,7 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.GBPersonInfo = new System.Windows.Forms.GroupBox();
+            this.ucPersonCard1 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ucUserCard1 = new DVLDSystem_WindowsForm_.User_Control.ucUserCard();
             this.lblCurrentPasswordTitle = new System.Windows.Forms.Label();
             this.lblNewPasswordTitle = new System.Windows.Forms.Label();
             this.lblConfirmPasswordTitle = new System.Windows.Forms.Label();
@@ -43,8 +45,6 @@
             this.txtConfirmPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtNewPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.ep1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ucUserCard1 = new DVLDSystem_WindowsForm_.User_Control.ucUserCard();
-            this.ucPersonCard1 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
             this.GBPersonInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,6 +64,26 @@
             this.GBPersonInfo.TabStop = false;
             this.GBPersonInfo.Text = "Person information";
             // 
+            // ucPersonCard1
+            // 
+            this.ucPersonCard1.Address = "[????]";
+            this.ucPersonCard1.Country = "[????]";
+            this.ucPersonCard1.DateOfBirth = "[????]";
+            this.ucPersonCard1.Email = "[????]";
+            this.ucPersonCard1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucPersonCard1.Gendor = "[????]";
+            this.ucPersonCard1.ID = "[????]";
+            this.ucPersonCard1.Location = new System.Drawing.Point(34, 34);
+            this.ucPersonCard1.Margin = new System.Windows.Forms.Padding(6);
+            this.ucPersonCard1.Name = "ucPersonCard1";
+            this.ucPersonCard1.NotionalNo = "[????]";
+            this.ucPersonCard1.PersonName = "Empty Name ";
+            this.ucPersonCard1.Phone = "[????]";
+            this.ucPersonCard1.Picture = null;
+            this.ucPersonCard1.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ucPersonCard1.Size = new System.Drawing.Size(824, 241);
+            this.ucPersonCard1.TabIndex = 0;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ucUserCard1);
@@ -74,6 +94,15 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login information";
+            // 
+            // ucUserCard1
+            // 
+            this.ucUserCard1.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.ucUserCard1.Location = new System.Drawing.Point(60, 34);
+            this.ucUserCard1.Margin = new System.Windows.Forms.Padding(6);
+            this.ucUserCard1.Name = "ucUserCard1";
+            this.ucUserCard1.Size = new System.Drawing.Size(739, 43);
+            this.ucUserCard1.TabIndex = 2;
             // 
             // lblCurrentPasswordTitle
             // 
@@ -187,12 +216,14 @@
             this.txtCurrentPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCurrentPassword.Location = new System.Drawing.Point(293, 417);
             this.txtCurrentPassword.Name = "txtCurrentPassword";
-            this.txtCurrentPassword.PasswordChar = '\0';
+            this.txtCurrentPassword.PasswordChar = '*';
             this.txtCurrentPassword.PlaceholderText = "";
             this.txtCurrentPassword.SelectedText = "";
             this.txtCurrentPassword.Size = new System.Drawing.Size(200, 36);
             this.txtCurrentPassword.TabIndex = 41;
-            this.txtCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtCurrentPassword_Validating);
+            this.txtCurrentPassword.Tag = "Current password cannot be blank";
+            this.txtCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Validating);
+            this.txtCurrentPassword.Validated += new System.EventHandler(this.txtCurrentPassword_Validated);
             // 
             // txtConfirmPassword
             // 
@@ -207,11 +238,13 @@
             this.txtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtConfirmPassword.Location = new System.Drawing.Point(293, 501);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.PasswordChar = '\0';
+            this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.PlaceholderText = "";
             this.txtConfirmPassword.SelectedText = "";
             this.txtConfirmPassword.Size = new System.Drawing.Size(200, 36);
             this.txtConfirmPassword.TabIndex = 42;
+            this.txtConfirmPassword.Tag = "Confirm password Cannot be blank";
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Validating);
             // 
             // txtNewPassword
             // 
@@ -226,44 +259,17 @@
             this.txtNewPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNewPassword.Location = new System.Drawing.Point(293, 459);
             this.txtNewPassword.Name = "txtNewPassword";
-            this.txtNewPassword.PasswordChar = '\0';
+            this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.PlaceholderText = "";
             this.txtNewPassword.SelectedText = "";
             this.txtNewPassword.Size = new System.Drawing.Size(200, 36);
             this.txtNewPassword.TabIndex = 43;
+            this.txtNewPassword.Tag = "New Password Cannot be blank";
+            this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Validating);
             // 
             // ep1
             // 
             this.ep1.ContainerControl = this;
-            // 
-            // ucUserCard1
-            // 
-            this.ucUserCard1.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.ucUserCard1.Location = new System.Drawing.Point(60, 34);
-            this.ucUserCard1.Margin = new System.Windows.Forms.Padding(6);
-            this.ucUserCard1.Name = "ucUserCard1";
-            this.ucUserCard1.Size = new System.Drawing.Size(739, 43);
-            this.ucUserCard1.TabIndex = 2;
-            // 
-            // ucPersonCard1
-            // 
-            this.ucPersonCard1.Address = "[????]";
-            this.ucPersonCard1.Country = "[????]";
-            this.ucPersonCard1.DateOfBirth = "[????]";
-            this.ucPersonCard1.Email = "[????]";
-            this.ucPersonCard1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucPersonCard1.Gendor = "[????]";
-            this.ucPersonCard1.ID = "[????]";
-            this.ucPersonCard1.Location = new System.Drawing.Point(34, 34);
-            this.ucPersonCard1.Margin = new System.Windows.Forms.Padding(6);
-            this.ucPersonCard1.Name = "ucPersonCard1";
-            this.ucPersonCard1.NotionalNo = "[????]";
-            this.ucPersonCard1.PersonName = "Empty Name ";
-            this.ucPersonCard1.Phone = "[????]";
-            this.ucPersonCard1.Picture = null;
-            this.ucPersonCard1.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ucPersonCard1.Size = new System.Drawing.Size(824, 241);
-            this.ucPersonCard1.TabIndex = 0;
             // 
             // frmChangePasswordUser
             // 
@@ -283,8 +289,9 @@
             this.Controls.Add(this.lblCurrentPasswordTitle);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GBPersonInfo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmChangePasswordUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Change Password";
             this.Load += new System.EventHandler(this.frmChangePasswordUser_Load);
             this.GBPersonInfo.ResumeLayout(false);
