@@ -40,11 +40,19 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 return clsPerson.Find(Convert.ToInt32(text));       
             }
         }
-        private void btnSearchPerson_Click(object sender, EventArgs e)
+
+        public bool GBFilterMode
         {
-            if (txtSearchAPerson.Text.Trim() != string.Empty)
+            get { return GBFilter.Enabled; }
+            set { GBFilter.Enabled = value; }
+        }
+
+        private void FillUCPersonCard(string Person ,bool AddPersonUserFormCall = true)
+        {
+
+            if (Person.Trim() != string.Empty)
             {
-                clsPerson person = FindBy(txtSearchAPerson.Text.Trim());
+                clsPerson person = FindBy(Person.Trim());
                 if (person != null)
                 {
                     ucPersonCard1.LoadPersonInfo(person);
@@ -54,19 +62,36 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 else
                 {
                     ucPersonCard1.LoadPersonInfo(null);
-                    MessageBox.Show("person you search for not found","",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    if (AddPersonUserFormCall)
+                    {
+                        MessageBox.Show("person you search for not found", "", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    }
                     if (onPersonSelected != null)
                         PersonSelected(-1);
                 }
-
-              ;
+                
             }
-            
+        }
+        public void LoadData(string Person)
+        {
+            cbFinder.SelectedIndex = 1;
+            FillUCPersonCard(Person);
+        }
+        private void btnSearchPerson_Click(object sender, EventArgs e)
+        {
+            FillUCPersonCard(txtSearchAPerson.Text);
         }
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
             frmAddEditPeople Person = new frmAddEditPeople(-1);
+            Person.DataBack += PersonID_DataBack;
             Person.ShowDialog();
+        }
+
+        private void PersonID_DataBack(object sender, int PersonID)
+        {
+            cbFinder.SelectedIndex = 1;
+            FillUCPersonCard(PersonID.ToString() ,false);
         }
         private void FillFindBy()
         {

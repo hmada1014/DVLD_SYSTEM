@@ -29,61 +29,42 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ucPersonCard1 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GBFilter = new System.Windows.Forms.GroupBox();
             this.btnAddPerson = new FontAwesome.Sharp.IconButton();
             this.btnSearchPerson = new FontAwesome.Sharp.IconButton();
             this.cbFinder = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearchAPerson = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.ucPersonCard1 = new DVLDSystem_WindowsForm_.User_Control.ucPersonCard();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.GBFilter.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ucPersonCard1);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(20, 114);
+            this.groupBox1.Location = new System.Drawing.Point(6, 75);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(869, 265);
+            this.groupBox1.Size = new System.Drawing.Size(878, 265);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Person Information";
             // 
-            // ucPersonCard1
+            // GBFilter
             // 
-            this.ucPersonCard1.Address = "[????]";
-            this.ucPersonCard1.Country = "[????]";
-            this.ucPersonCard1.DateOfBirth = "[????]";
-            this.ucPersonCard1.Email = "[????]";
-            this.ucPersonCard1.Gendor = "[????]";
-            this.ucPersonCard1.ID = "[????]";
-            this.ucPersonCard1.Location = new System.Drawing.Point(12, 27);
-            this.ucPersonCard1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ucPersonCard1.Name = "ucPersonCard1";
-            this.ucPersonCard1.NotionalNo = "[????]";
-            this.ucPersonCard1.PersonName = "Empty Name ";
-            this.ucPersonCard1.Phone = "[????]";
-            this.ucPersonCard1.Picture = null;
-            this.ucPersonCard1.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ucPersonCard1.Size = new System.Drawing.Size(857, 238);
-            this.ucPersonCard1.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnAddPerson);
-            this.groupBox2.Controls.Add(this.btnSearchPerson);
-            this.groupBox2.Controls.Add(this.cbFinder);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtSearchAPerson);
-            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(20, 36);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(844, 72);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filter";
+            this.GBFilter.Controls.Add(this.btnAddPerson);
+            this.GBFilter.Controls.Add(this.btnSearchPerson);
+            this.GBFilter.Controls.Add(this.cbFinder);
+            this.GBFilter.Controls.Add(this.label2);
+            this.GBFilter.Controls.Add(this.txtSearchAPerson);
+            this.GBFilter.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.GBFilter.Location = new System.Drawing.Point(6, 2);
+            this.GBFilter.Name = "GBFilter";
+            this.GBFilter.Size = new System.Drawing.Size(844, 72);
+            this.GBFilter.TabIndex = 1;
+            this.GBFilter.TabStop = false;
+            this.GBFilter.Text = "Filter";
             // 
             // btnAddPerson
             // 
@@ -155,18 +136,39 @@
             this.txtSearchAPerson.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSearchAPerson.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchAPerson_KeyPress);
             // 
+            // ucPersonCard1
+            // 
+            this.ucPersonCard1.Address = "[????]";
+            this.ucPersonCard1.Country = "[????]";
+            this.ucPersonCard1.DateOfBirth = "[????]";
+            this.ucPersonCard1.Email = "[????]";
+            this.ucPersonCard1.Gendor = "[????]";
+            this.ucPersonCard1.ID = "[????]";
+            this.ucPersonCard1.Location = new System.Drawing.Point(12, 21);
+            this.ucPersonCard1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ucPersonCard1.Name = "ucPersonCard1";
+            this.ucPersonCard1.NotionalNo = "[????]";
+            this.ucPersonCard1.PersonName = "Empty Name ";
+            this.ucPersonCard1.Phone = "[????]";
+            this.ucPersonCard1.Picture = null;
+            this.ucPersonCard1.PictureBackgroundLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ucPersonCard1.Size = new System.Drawing.Size(857, 238);
+            this.ucPersonCard1.TabIndex = 0;
+            // 
             // ucFindPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox2);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Controls.Add(this.GBFilter);
             this.Controls.Add(this.groupBox1);
             this.Name = "ucFindPerson";
-            this.Size = new System.Drawing.Size(902, 382);
+            this.Size = new System.Drawing.Size(890, 346);
             this.Load += new System.EventHandler(this.ucFindPerson_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.GBFilter.ResumeLayout(false);
+            this.GBFilter.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -174,7 +176,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox GBFilter;
         private FontAwesome.Sharp.IconButton btnAddPerson;
         private FontAwesome.Sharp.IconButton btnSearchPerson;
         private System.Windows.Forms.ComboBox cbFinder;
