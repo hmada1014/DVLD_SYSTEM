@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DVLDSystem_BusinessLayer_
 {
-    public class clsApplicationType
+    public class clsApplicationTypes
     {
         public enum enApplicationTypeMode { Add = 0, Update = 1 }
         public enApplicationTypeMode Mode = enApplicationTypeMode.Add;
@@ -18,7 +18,7 @@ namespace DVLDSystem_BusinessLayer_
         public decimal ApplicationFees { get; set; }
 
 
-        public clsApplicationType()
+        public clsApplicationTypes()
 
         {
             this.ApplicationTypeID = -1;
@@ -28,7 +28,7 @@ namespace DVLDSystem_BusinessLayer_
             this.Mode = enApplicationTypeMode.Add;
         }
 
-        private clsApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
+        private clsApplicationTypes(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
         {
             this.ApplicationTypeID = ApplicationTypeID;
             this.ApplicationTypeTitle = ApplicationTypeTitle;
@@ -36,14 +36,14 @@ namespace DVLDSystem_BusinessLayer_
 
             this.Mode = enApplicationTypeMode.Update;
         }
-        public static clsApplicationType Find(int ApplicationTypeID)
+        public static clsApplicationTypes Find(int ApplicationTypeID)
         {
             decimal ApplicationFees = -1;
             string ApplicationTypeTitle = string.Empty;
 
             if (clsApplicationTypeDataAccessLayer.GetApplicationTypeIDInfoByApplicationTypeID(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationFees))
             {
-                return new clsApplicationType(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
+                return new clsApplicationTypes(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
             }
             else
             {
