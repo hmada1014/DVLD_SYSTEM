@@ -148,7 +148,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 Address = Personinfo.Address;
                 DateOfBirth = Personinfo.DateOfBirth.ToString();
                 Phone = Personinfo.Phone;
-                Country = Personinfo.NationalityCountryID.ToString();
+                Country = clsCountry.Find(Personinfo.NationalityCountryID).CountryName;
                 if (Personinfo.ImagePath != string.Empty && Personinfo.ImagePath != " ")
                 {
                     pbImage.ImageLocation = Personinfo.ImagePath;
@@ -178,9 +178,19 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
         }
 
+        private void _UpdatePersonCard(object sender ,int PersonID)
+        {
+            clsPerson person =  clsPerson.Find(PersonID);
+
+            if (person != null )
+            {
+                this.LoadPersonInfo(person);
+            }
+        }
         private void lblEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmAddEditPeople Person = new frmAddEditPeople(Convert.ToInt32(ID));
+            Person.DataBack += _UpdatePersonCard;
             Person.ShowDialog();
         }
     }
