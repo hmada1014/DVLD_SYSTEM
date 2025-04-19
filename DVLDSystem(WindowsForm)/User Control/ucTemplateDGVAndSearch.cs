@@ -2,6 +2,7 @@
 using DVLDSystem_WindowsForm_.People;
 using DVLDSystem_WindowsForm_.People__Forms;
 using DVLDSystem_WindowsForm_.User;
+using DVLDSystem_WindowsForm_.User__Forms;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         public ucTemplateDGVAndSearch(string FormName)
         {
             InitializeComponent();
-
+            
             _FormName = FormName;
             switch (_FormName)
             {
@@ -38,6 +39,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
                 case "frmPeople":
                     _enMode = enModeUC.People;
+                    _FillcbGeneralForGenderpeople();
                     TSMAddNewGeneral.Text = "Add New Person";
 
                     break;
@@ -48,10 +50,35 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
                 case "frmUsers":
                     _enMode = enModeUC.Users;
+                    _FillcbGeneralForIsActiveUser();
+                    _MenuForUser();
                     TSMAddNewGeneral.Text = "Add New User";
 
                     break;
             }
+          
+        }
+
+        private void cmsEditDelete_opening(object sender ,CancelEventArgs e)
+        {
+            // Cancel the menu if there are no rows
+            if (dgvShowList.Rows.Count == 0)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            // Cursor.Position current mouse position 
+            // Get mouse position relative to the DataGridView
+            Point clientPoint = dgvShowList.PointToClient(Cursor.Position);
+         
+            // Check if the click is on a valid row
+            DataGridView.HitTestInfo hitTest = dgvShowList.HitTest(clientPoint.X, clientPoint.Y);
+            if (hitTest.Type != DataGridViewHitTestType.Cell|| hitTest.RowIndex < 0)
+            {
+                e.Cancel = true;
+            }
+
         }
 
         //----------------- Expose Properties of Controls in UserControl----
@@ -182,6 +209,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
 
         //--------------- Filter By People ---------------------------
+        private void _FillcbGeneralForGenderpeople()
+        {
+            string[] Words = { "Male", "Female" };
+            cbGeneral.DataSource = Words;
+        }
         private void _SearchPeopleByPersonID(string ID)
         {
             DataTable dt = clsPerson.SearchPeopleByPersonID(ID).Table;
@@ -287,6 +319,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
 
         //--------------- Filter By User -----------------------------
+        private void _FillcbGeneralForIsActiveUser()
+        {
+            string[] Words = { "All", "Yes","No" };
+            cbGeneral.DataSource = Words;
+        }
         private void _SearchUserID(string ID)
         {
             dgvShowList.DataSource = clsUser.SearchUserByUserID(ID);
@@ -304,6 +341,49 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
+        private void _SearchUserByUserName(string UsenName)
+        {
+            DataTable dt = clsUser.SearchUserByUserName(UsenName).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateUserColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchUserByFullName(string FullName)
+        {
+            DataTable dt = clsUser.SearchUserByFullName(FullName).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateUserColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchUserByIsActive()
+        {
+            DataTable dt;
+            if (cbGeneral.Text == "All" )
+            {
+                dt = clsUser.SearchUserByIsActive(0, 1).Table; 
+            }
+            else if( cbGeneral.Text == "Yes")
+            {
+                dt = clsUser.SearchUserByIsActive(1, 1).Table;
+            }
+            else
+            {
+                dt = clsUser.SearchUserByIsActive(0, 0).Table;
+            }
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateUserColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+
         //------------------------------------------------------------
 
         //-------------- For _txtSearchDGV_TextChanged ---------------
@@ -335,7 +415,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _SearchPeopleByNationality(txtSearchDGV.Text.Trim());
                     break;
                 case "Gendor":
-                    _SearchPeopleByGender(Convert.ToByte(cbGendor.SelectedIndex));
+                    _SearchPeopleByGender(Convert.ToByte(cbGeneral.SelectedIndex));
                     break;
                 case "Phone":
                     _SearchPeopleByPhone(txtSearchDGV.Text.Trim());
@@ -352,14 +432,19 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case "None":
                     break;
                 case "User ID":
+                    _SearchUserID(txtSearchDGV.Text.Trim());
                     break;
                 case "UserName":
+                    _SearchUserByUserName(txtSearchDGV.Text.Trim());
                     break;
                 case "Person ID":
+                    _SearchUserByPersonID(txtSearchDGV.Text.Trim());
                     break;
                 case "Full Name":
+                    _SearchUserByFullName(txtSearchDGV.Text.Trim());
                     break;
                 case "Is Active":
+                    _SearchUserByIsActive();
                     break;
             }
         }
@@ -412,12 +497,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
 
         //-------------------------Person Edit & Delete & show info & add new ---------------------
-        private void _AddNewPerson()
-        {
-            frmAddEditPeople addPerson = new frmAddEditPeople(-1);
-            addPerson.ShowDialog();
-            btnRefreshDGV_Click(null, null);
-        }
         private void _ShowPersonDeitails()
         {
             if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(), out int ID))
@@ -431,6 +510,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
      
         }
+        private void _AddNewPerson()
+        {
+            frmAddEditPeople addPerson = new frmAddEditPeople(-1);
+            addPerson.ShowDialog();
+            btnRefreshDGV_Click(null, null);
+        }
         private void _EditPerson()
         {
             if (int.TryParse(dgvShowList.CurrentRow.Cells["PersonID"].Value.ToString(), out int ID))
@@ -441,7 +526,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
             else
             {
-                MessageBox.Show("Person Not Found to Edit.", "warning");
+                MessageBox.Show("Person Not Found to Edit.", "Failed");
             }
         }
         private void _DeletePersone()
@@ -449,7 +534,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             int ID = Convert.ToInt32(dgvShowList.CurrentRow.Cells["PersonID"].Value);
             if (clsPerson.IsPersonExist(ID))
             {
-                if (MessageBox.Show($"Are you suer you want to Delete Person ID : {ID}", "waring Delete Person", MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show($"Are you suer you want to Delete Person ID : {ID}", "Delete Person", MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
 
                     if (clsPerson.DeletePerson(ID))
@@ -459,21 +544,40 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     }
                     else
                     {
-                        MessageBox.Show("Person was not deleted because it has data linked to it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Person was not deleted because it has data linked to it", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
             }
             else
             {
-                MessageBox.Show($"Person with ID {ID} was not found");
+                MessageBox.Show($"Person with ID {ID} was not found", "Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
         }
         //-------------------------------------------------------------------
 
         //-------------------------User Edit & Delete & show info -----------------------
-      
+
+        private void _ShowUserDeitails()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(), out int ID))
+            {
+                frmShowUserDetails userDetails = new frmShowUserDetails(ID);
+                userDetails.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("User Not Found to Show.", "warning");
+            }
+
+        }
+        private void _AddNewUser()
+        {
+            frmAddEditeUser Adduser = new frmAddEditeUser(-1);
+            Adduser.ShowDialog();
+            btnRefreshDGV_Click(null, null);
+        }
         private void _EditUser()
         {
             if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(), out int ID))
@@ -492,26 +596,39 @@ namespace DVLDSystem_WindowsForm_.User_Control
             int ID = Convert.ToInt32(dgvShowList.CurrentRow.Cells["UserID"].Value);
             if (clsUser.IsUserExist(ID))
             {
-                if (MessageBox.Show($"Are you suer you want to Delete User ID : {ID}", "waring Delete User", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"Are you suer you want to Delete User ID : {ID}", "Delete User", MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
 
                     if (clsUser.DeleteUser(ID))
                     {
-                        MessageBox.Show($"User with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ");
+                        MessageBox.Show($"User with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         btnRefreshDGV_Click(null, null);
                     }
                     else
                     {
-                        MessageBox.Show("User was not deleted because it has data linked to it", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("User was not deleted because it has data linked to it", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show($"User with ID {ID} was not found");
+                MessageBox.Show($"User with ID {ID} was not found", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         //-------------------------------------------------------------------
+
+        //-------------------------------Custom menu for user-----------------------
+
+        private void _MenuForUser()
+        {
+            TSMChangePassword.Visible = true;
+            TSSchangePassword.Visible = true;
+        }
+
+
+        //-------------------------------------------------------------------
+
         private void EditGeneral_Click(object sender, EventArgs e)
         {
             switch (_enMode)
@@ -557,7 +674,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             if (cbFindBy.Text == "None")
             {
                 txtSearchDGV.Visible = false;
-                cbGendor.Visible = false;
+                cbGeneral.Visible = false;
                 btnRefreshDGV_Click(sender, e);
                 return;
             }
@@ -566,13 +683,25 @@ namespace DVLDSystem_WindowsForm_.User_Control
             if (cbFindBy.Text == "Gendor")
             {
                 txtSearchDGV.Visible = false;
-                cbGendor.Visible = true;
+                cbGeneral.Visible = true;
                 return;
             }
             else
             {
                 txtSearchDGV.Visible = true;
-                cbGendor.Visible = false;
+                cbGeneral.Visible = false;
+            }
+
+            if (cbFindBy.Text == "Is Active")
+            {
+                txtSearchDGV.Visible = false;
+                cbGeneral.Visible = true;
+                return;
+            }
+            else
+            {
+                txtSearchDGV.Visible = true;
+                cbGeneral.Visible = false;
             }
 
             btnRefreshDGV_Click(sender, e);
@@ -584,7 +713,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         private void txtSearchDGV_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(cbFindBy.Text == "Person ID")
+            if(cbFindBy.Text == "Person ID" || cbFindBy.Text == "User ID")
             {
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
                 {
@@ -606,7 +735,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
                     break;
                 case enModeUC.Users:
-                    
+                    _ShowUserDeitails();
                     break;
                 case enModeUC.Empty:
                     break;
@@ -640,6 +769,38 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             MessageBox.Show("Not implement yet", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+        }
+
+        private void TSMChangePassword_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(),out int UserID))
+            {
+
+                frmChangePasswordUser passwordUser = new frmChangePasswordUser(UserID);
+                passwordUser.ShowDialog();
+
+            } 
+        }
+
+        private void dgvShowList_ShowDeitails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (_enMode)
+            {
+                case enModeUC.Application:
+
+                    break;
+                case enModeUC.People:
+                    _ShowPersonDeitails();
+                    break;
+                case enModeUC.Drivers:
+
+                    break;
+                case enModeUC.Users:
+                    _ShowUserDeitails();
+                    break;
+                case enModeUC.Empty:
+                    break;
+            }
         }
     }
 }
