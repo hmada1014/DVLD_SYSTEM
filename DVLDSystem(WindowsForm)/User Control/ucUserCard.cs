@@ -18,7 +18,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             InitializeComponent();
         }
 
-        public void LoadData(int UserID)
+        public void LoadUserInfo(int UserID)
         {
             clsUser user = clsUser.Find(UserID);
             if (user != null)
