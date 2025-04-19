@@ -41,6 +41,7 @@ namespace DVLDSystem_WindowsForm_.People
             {
                 _Mode = enMode.Update;
             }
+            this.AcceptButton = btnSave;
 
         }
 

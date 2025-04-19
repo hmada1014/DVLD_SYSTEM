@@ -22,6 +22,7 @@ namespace DVLDSystem_WindowsForm_.User__Forms
             _UserID = userID;
 
             _CurrentUser = clsUser.Find(_UserID);
+            this.AcceptButton = btnSave;
 
         }
 

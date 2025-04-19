@@ -237,6 +237,10 @@ namespace DVLDSystem_WindowsForm_.User
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!btnSave.Enabled)
+            {
+                return;
+            }
             if (!this.ValidateChildren())
             {
                 MessageBox.Show("Please fill all required fields before saving.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);

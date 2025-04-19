@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddUser = new Guna.UI2.WinForms.Guna2ImageButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ucTemplateDGVAndSearch2 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch();
+            this.ucTemplateDGVAndSearch2 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGVAndSearch("frmUsers");
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
