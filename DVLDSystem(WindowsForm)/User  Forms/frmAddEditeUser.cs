@@ -39,6 +39,7 @@ namespace DVLDSystem_WindowsForm_.User
             {
                 _Mode = enMode.Update;
             }
+            this.AcceptButton = btnSave;
         }
 
         private void _LoadData()
