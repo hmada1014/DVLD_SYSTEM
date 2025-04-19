@@ -35,7 +35,7 @@
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.lblFindBy = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
-            this.cmsEditDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsGeneralMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TSMShowDetailsGeneral = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMAddNewGeneral = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +53,7 @@
             this.cbGeneral = new System.Windows.Forms.ComboBox();
             this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
-            this.cmsEditDelete.SuspendLayout();
+            this.cmsGeneralMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@
             this.cbFindBy.Name = "cbFindBy";
             this.cbFindBy.Size = new System.Drawing.Size(134, 21);
             this.cbFindBy.TabIndex = 0;
-            this.cbFindBy.SelectedIndexChanged += new System.EventHandler(this.cbFindBy_SelectedIndexChanged);
+            this.cbFindBy.SelectedIndexChanged += new System.EventHandler(this._cbFindBy_SelectedIndexChanged);
             // 
             // lblFindBy
             // 
@@ -100,7 +100,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowList.ContextMenuStrip = this.cmsEditDelete;
+            this.dgvShowList.ContextMenuStrip = this.cmsGeneralMenu;
             this.dgvShowList.EnableHeadersVisualStyles = false;
             this.dgvShowList.GridColor = System.Drawing.Color.Black;
             this.dgvShowList.Location = new System.Drawing.Point(0, 78);
@@ -111,11 +111,11 @@
             this.dgvShowList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShowList.Size = new System.Drawing.Size(651, 290);
             this.dgvShowList.TabIndex = 2;
-            this.dgvShowList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowList_ShowDeitails_CellDoubleClick);
+            this.dgvShowList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._dgvShowList_ShowDeitails_CellDoubleClick);
             // 
-            // cmsEditDelete
+            // cmsGeneralMenu
             // 
-            this.cmsEditDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsGeneralMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMShowDetailsGeneral,
             this.toolStripMenuItem1,
             this.TSMAddNewGeneral,
@@ -127,9 +127,9 @@
             this.TSSchangePassword,
             this.TSMSendEmailGeneral,
             this.TSMPhoneCallGeneral});
-            this.cmsEditDelete.Name = "cmsAddEdit";
-            this.cmsEditDelete.Size = new System.Drawing.Size(185, 326);
-            this.cmsEditDelete.Opening += new System.ComponentModel.CancelEventHandler(this.cmsEditDelete_opening);
+            this.cmsGeneralMenu.Name = "cmsAddEdit";
+            this.cmsGeneralMenu.Size = new System.Drawing.Size(185, 326);
+            this.cmsGeneralMenu.Opening += new System.ComponentModel.CancelEventHandler(this._cmsEditDelete_opening);
             // 
             // TSMShowDetailsGeneral
             // 
@@ -138,7 +138,7 @@
             this.TSMShowDetailsGeneral.Name = "TSMShowDetailsGeneral";
             this.TSMShowDetailsGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMShowDetailsGeneral.Text = "Show Details";
-            this.TSMShowDetailsGeneral.Click += new System.EventHandler(this.TSMShowDetailsGeneral_Click);
+            this.TSMShowDetailsGeneral.Click += new System.EventHandler(this._TSMShowDetailsGeneral_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -152,7 +152,7 @@
             this.TSMAddNewGeneral.Name = "TSMAddNewGeneral";
             this.TSMAddNewGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMAddNewGeneral.Text = "Add new ";
-            this.TSMAddNewGeneral.Click += new System.EventHandler(this.TSMAddNewGeneral_Click);
+            this.TSMAddNewGeneral.Click += new System.EventHandler(this._TSMAddNewGeneral_Click);
             // 
             // TSMEditGeneral
             // 
@@ -161,7 +161,7 @@
             this.TSMEditGeneral.Name = "TSMEditGeneral";
             this.TSMEditGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMEditGeneral.Text = "Edit";
-            this.TSMEditGeneral.Click += new System.EventHandler(this.EditGeneral_Click);
+            this.TSMEditGeneral.Click += new System.EventHandler(this._EditGeneral_Click);
             // 
             // TSMDeleteGeneral
             // 
@@ -170,7 +170,7 @@
             this.TSMDeleteGeneral.Name = "TSMDeleteGeneral";
             this.TSMDeleteGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMDeleteGeneral.Text = "Delete";
-            this.TSMDeleteGeneral.Click += new System.EventHandler(this.DeleteGeneral_Click);
+            this.TSMDeleteGeneral.Click += new System.EventHandler(this._DeleteGeneral_Click);
             // 
             // TSMRefreshGeneral
             // 
@@ -179,7 +179,7 @@
             this.TSMRefreshGeneral.Name = "TSMRefreshGeneral";
             this.TSMRefreshGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMRefreshGeneral.Text = "Refresh";
-            this.TSMRefreshGeneral.Click += new System.EventHandler(this.TSM_Refresh_Click);
+            this.TSMRefreshGeneral.Click += new System.EventHandler(this._TSM_Refresh_Click);
             // 
             // toolStripSeparator1
             // 
@@ -194,7 +194,7 @@
             this.TSMChangePassword.Size = new System.Drawing.Size(184, 38);
             this.TSMChangePassword.Text = "Change Password";
             this.TSMChangePassword.Visible = false;
-            this.TSMChangePassword.Click += new System.EventHandler(this.TSMChangePassword_Click);
+            this.TSMChangePassword.Click += new System.EventHandler(this._TSMChangePassword_Click);
             // 
             // TSSchangePassword
             // 
@@ -209,7 +209,7 @@
             this.TSMSendEmailGeneral.Name = "TSMSendEmailGeneral";
             this.TSMSendEmailGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMSendEmailGeneral.Text = "Send Email";
-            this.TSMSendEmailGeneral.Click += new System.EventHandler(this.TSMSendEmailGeneral_Click);
+            this.TSMSendEmailGeneral.Click += new System.EventHandler(this._TSMSendEmailGeneral_Click);
             // 
             // TSMPhoneCallGeneral
             // 
@@ -218,7 +218,7 @@
             this.TSMPhoneCallGeneral.Name = "TSMPhoneCallGeneral";
             this.TSMPhoneCallGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMPhoneCallGeneral.Text = "Phone Call";
-            this.TSMPhoneCallGeneral.Click += new System.EventHandler(this.TSMPhoneCallGeneral_Click);
+            this.TSMPhoneCallGeneral.Click += new System.EventHandler(this._TSMPhoneCallGeneral_Click);
             // 
             // txtSearchDGV
             // 
@@ -241,7 +241,7 @@
             this.txtSearchDGV.Size = new System.Drawing.Size(310, 36);
             this.txtSearchDGV.TabIndex = 3;
             this.txtSearchDGV.TextChanged += new System.EventHandler(this._txtSearchDGV_TextChanged);
-            this.txtSearchDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchDGV_KeyPress);
+            this.txtSearchDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._txtSearchDGV_KeyPress);
             // 
             // lblRrecords
             // 
@@ -274,7 +274,7 @@
             this.cbGeneral.Size = new System.Drawing.Size(134, 21);
             this.cbGeneral.TabIndex = 9;
             this.cbGeneral.Visible = false;
-            this.cbGeneral.SelectedIndexChanged += new System.EventHandler(this.cbGendor_SelectedIndexChanged);
+            this.cbGeneral.SelectedIndexChanged += new System.EventHandler(this._cbGendor_SelectedIndexChanged);
             // 
             // btnRefreshDGV
             // 
@@ -290,7 +290,7 @@
             this.btnRefreshDGV.Size = new System.Drawing.Size(35, 27);
             this.btnRefreshDGV.TabIndex = 4;
             this.btnRefreshDGV.TabStop = false;
-            this.btnRefreshDGV.Click += new System.EventHandler(this.btnRefreshDGV_Click);
+            this.btnRefreshDGV.Click += new System.EventHandler(this._btnRefreshDGV_Click);
             // 
             // ucTemplateDGVAndSearch
             // 
@@ -308,7 +308,7 @@
             this.Name = "ucTemplateDGVAndSearch";
             this.Size = new System.Drawing.Size(651, 395);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
-            this.cmsEditDelete.ResumeLayout(false);
+            this.cmsGeneralMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -324,7 +324,7 @@
         private FontAwesome.Sharp.IconPictureBox btnRefreshDGV;
         private System.Windows.Forms.Label lblRrecords;
         private System.Windows.Forms.Label lblRecordsTitle;
-        private System.Windows.Forms.ContextMenuStrip cmsEditDelete;
+        private System.Windows.Forms.ContextMenuStrip cmsGeneralMenu;
         private System.Windows.Forms.ToolStripMenuItem TSMEditGeneral;
         private System.Windows.Forms.ToolStripMenuItem TSMDeleteGeneral;
         private System.Windows.Forms.ToolStripMenuItem TSMRefreshGeneral;

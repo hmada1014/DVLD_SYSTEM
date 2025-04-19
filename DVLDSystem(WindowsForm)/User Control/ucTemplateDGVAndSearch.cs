@@ -59,29 +59,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
           
         }
 
-        private void cmsEditDelete_opening(object sender ,CancelEventArgs e)
-        {
-            // Cancel the menu if there are no rows
-            if (dgvShowList.Rows.Count == 0)
-            {
-                e.Cancel = true;
-                return;
-            }
-
-            // Cursor.Position current mouse position 
-            // Get mouse position relative to the DataGridView
-            Point clientPoint = dgvShowList.PointToClient(Cursor.Position);
-         
-            // Check if the click is on a valid row
-            DataGridView.HitTestInfo hitTest = dgvShowList.HitTest(clientPoint.X, clientPoint.Y);
-            if (hitTest.Type != DataGridViewHitTestType.Cell|| hitTest.RowIndex < 0)
-            {
-                e.Cancel = true;
-            }
-
-        }
-
-        //----------------- Expose Properties of Controls in UserControl----
+        /*########### Expose Properties of Controls in UserControl #######*/
 
         [Browsable(true)]
         [Category("Misc Controls Properties")]
@@ -114,7 +92,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
             get { return txtSearchDGV.Location; }
             set { txtSearchDGV.Location = value; }
         }
-        //-------------------------- UI Data Helper --------------
+
+        //############################ UI Data Helper ######################
         public void RefreshDGV(object DataSours)
         {
             DataView dv = _ConvertToDataView(DataSours);
@@ -203,11 +182,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
             return dt;
         }
 
+        /*############### for txtsearch ############################*/
      
-
-        //-------------------------------------------------------------
-
-
         //--------------- Filter By People ---------------------------
         private void _FillcbGeneralForGenderpeople()
         {
@@ -315,9 +291,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
 
-        //------------------------------------------------------------
-
-
         //--------------- Filter By User -----------------------------
         private void _FillcbGeneralForIsActiveUser()
         {
@@ -384,8 +357,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
 
-        //------------------------------------------------------------
-
         //-------------- For _txtSearchDGV_TextChanged ---------------
         private void _SearchDataByFilteringPeople(string Text)
         {
@@ -448,53 +419,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-        //------------------------------------------------------------
-        private void _txtSearchDGV_TextChanged(object sender, EventArgs e)
-        {
-            dgvShowList.DataSource = null;
-            switch (_enMode)
-            {
-                case enModeUC.Application:
-                    
-                    break;
-                case enModeUC.People:
-                    _SearchDataByFilteringPeople(txtSearchDGV.Text.Trim());
-                    break;
-                case enModeUC.Drivers:
-                   
-                    break;
-                case enModeUC.Users:
-                    _SearchDataByFilteringUsers(txtSearchDGV.Text.Trim());
-                    break;
-                case enModeUC.Empty:
-                    break;
-            }
 
-        }
-        //-------------------------------------------------------------------
-        private void btnRefreshDGV_Click(object sender, EventArgs e)
-        {
-            txtSearchDGV.Clear();
-            switch (_FormName)
-            {
-                case "frmApplication":
-
-                    break;
-                case "frmPeople":
-                    RefreshDGV(clsPerson.GetAllPersons());
-                    break;
-                case "frmDrivers":
-
-                    break;
-                case "frmUsers":
-                    RefreshDGV(clsUser.GetAllUsers());
-                    break;
-            }
-        }
-        private void TSM_Refresh_Click(object sender, EventArgs e)
-        {
-            btnRefreshDGV_Click(sender, e);
-        }
+        /*########################### cmsGeneralMenu ################################*/
 
         //-------------------------Person Edit & Delete & show info & add new ---------------------
         private void _ShowPersonDeitails()
@@ -514,7 +440,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             frmAddEditPeople addPerson = new frmAddEditPeople(-1);
             addPerson.ShowDialog();
-            btnRefreshDGV_Click(null, null);
+            _btnRefreshDGV_Click(null, null);
         }
         private void _EditPerson()
         {
@@ -522,7 +448,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 frmAddEditPeople editPeople = new frmAddEditPeople(ID);
                 editPeople.ShowDialog();
-                btnRefreshDGV_Click(null,null);
+                _btnRefreshDGV_Click(null,null);
             }
             else
             {
@@ -540,7 +466,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     if (clsPerson.DeletePerson(ID))
                     {
                         MessageBox.Show($"Person with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                        btnRefreshDGV_Click(null, null);
+                        _btnRefreshDGV_Click(null, null);
                     }
                     else
                     {
@@ -555,10 +481,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
 
         }
-        //-------------------------------------------------------------------
-
         //-------------------------User Edit & Delete & show info -----------------------
-
         private void _ShowUserDeitails()
         {
             if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(), out int ID))
@@ -576,7 +499,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             frmAddEditeUser Adduser = new frmAddEditeUser(-1);
             Adduser.ShowDialog();
-            btnRefreshDGV_Click(null, null);
+            _btnRefreshDGV_Click(null, null);
         }
         private void _EditUser()
         {
@@ -584,7 +507,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 frmAddEditeUser editeUser = new frmAddEditeUser(ID);
                 editeUser.ShowDialog();
-                btnRefreshDGV_Click(null, null);
+                _btnRefreshDGV_Click(null, null);
             }
             else
             {
@@ -602,7 +525,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     if (clsUser.DeleteUser(ID))
                     {
                         MessageBox.Show($"User with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                        btnRefreshDGV_Click(null, null);
+                        _btnRefreshDGV_Click(null, null);
                     }
                     else
                     {
@@ -615,21 +538,81 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 MessageBox.Show($"User with ID {ID} was not found", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        //-------------------------------------------------------------------
-
-        //-------------------------------Custom menu for user-----------------------
-
         private void _MenuForUser()
         {
             TSMChangePassword.Visible = true;
             TSSchangePassword.Visible = true;
         }
 
+        //########################## events #####################################
 
-        //-------------------------------------------------------------------
+        private void _cmsEditDelete_opening(object sender, CancelEventArgs e)
+        {
+            // Cancel the menu if there are no rows
+            if (dgvShowList.Rows.Count == 0)
+            {
+                e.Cancel = true;
+                return;
+            }
 
-        private void EditGeneral_Click(object sender, EventArgs e)
+            // Cursor.Position current mouse position 
+            // Get mouse position relative to the DataGridView
+            Point clientPoint = dgvShowList.PointToClient(Cursor.Position);
+
+            // Check if the click is on a valid row
+            DataGridView.HitTestInfo hitTest = dgvShowList.HitTest(clientPoint.X, clientPoint.Y);
+            if (hitTest.Type != DataGridViewHitTestType.Cell || hitTest.RowIndex < 0)
+            {
+                e.Cancel = true;
+            }
+
+        }
+        private void _txtSearchDGV_TextChanged(object sender, EventArgs e)
+        {
+            dgvShowList.DataSource = null;
+            switch (_enMode)
+            {
+                case enModeUC.Application:
+
+                    break;
+                case enModeUC.People:
+                    _SearchDataByFilteringPeople(txtSearchDGV.Text.Trim());
+                    break;
+                case enModeUC.Drivers:
+
+                    break;
+                case enModeUC.Users:
+                    _SearchDataByFilteringUsers(txtSearchDGV.Text.Trim());
+                    break;
+                case enModeUC.Empty:
+                    break;
+            }
+
+        }
+        private void _btnRefreshDGV_Click(object sender, EventArgs e)
+        {
+            txtSearchDGV.Clear();
+            switch (_FormName)
+            {
+                case "frmApplication":
+
+                    break;
+                case "frmPeople":
+                    RefreshDGV(clsPerson.GetAllPersons());
+                    break;
+                case "frmDrivers":
+
+                    break;
+                case "frmUsers":
+                    RefreshDGV(clsUser.GetAllUsers());
+                    break;
+            }
+        }
+        private void _TSM_Refresh_Click(object sender, EventArgs e)
+        {
+            _btnRefreshDGV_Click(sender, e);
+        }
+        private void _EditGeneral_Click(object sender, EventArgs e)
         {
             switch (_enMode)
             {
@@ -649,7 +632,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-        private void DeleteGeneral_Click(object sender, EventArgs e)
+        private void _DeleteGeneral_Click(object sender, EventArgs e)
         {
             switch (_enMode)
             {
@@ -669,13 +652,13 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-        private void cbFindBy_SelectedIndexChanged(object sender, EventArgs e)
+        private void _cbFindBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbFindBy.Text == "None")
             {
                 txtSearchDGV.Visible = false;
                 cbGeneral.Visible = false;
-                btnRefreshDGV_Click(sender, e);
+                _btnRefreshDGV_Click(sender, e);
                 return;
             }
             else txtSearchDGV.Visible = true;
@@ -704,14 +687,14 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 cbGeneral.Visible = false;
             }
 
-            btnRefreshDGV_Click(sender, e);
+            _btnRefreshDGV_Click(sender, e);
 
         }
-        private void cbGendor_SelectedIndexChanged(object sender, EventArgs e)
+        private void _cbGendor_SelectedIndexChanged(object sender, EventArgs e)
         {
             _txtSearchDGV_TextChanged(sender, e);
         }
-        private void txtSearchDGV_KeyPress(object sender, KeyPressEventArgs e)
+        private void _txtSearchDGV_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(cbFindBy.Text == "Person ID" || cbFindBy.Text == "User ID")
             {
@@ -721,7 +704,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 }
             }
         }
-        private void TSMShowDetailsGeneral_Click(object sender, EventArgs e)
+        private void _TSMShowDetailsGeneral_Click(object sender, EventArgs e)
         {
             switch (_enMode)
             {
@@ -741,7 +724,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-        private void TSMAddNewGeneral_Click(object sender, EventArgs e)
+        private void _TSMAddNewGeneral_Click(object sender, EventArgs e)
         {
             switch (_enMode)
             {
@@ -755,23 +738,22 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
                     break;
                 case enModeUC.Users:
-
+                    _AddNewUser();
                     break;
                 case enModeUC.Empty:
                     break;
             }
         }
-        private void TSMSendEmailGeneral_Click(object sender, EventArgs e)
+        private void _TSMSendEmailGeneral_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not implement yet.", "info",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
-        private void TSMPhoneCallGeneral_Click(object sender, EventArgs e)
+        private void _TSMPhoneCallGeneral_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not implement yet", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-
-        private void TSMChangePassword_Click(object sender, EventArgs e)
+        private void _TSMChangePassword_Click(object sender, EventArgs e)
         {
             if (int.TryParse(dgvShowList.CurrentRow.Cells["UserID"].Value.ToString(),out int UserID))
             {
@@ -781,8 +763,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             } 
         }
-
-        private void dgvShowList_ShowDeitails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void _dgvShowList_ShowDeitails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             switch (_enMode)
             {
