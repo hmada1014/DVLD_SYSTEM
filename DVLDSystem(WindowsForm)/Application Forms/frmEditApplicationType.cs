@@ -127,8 +127,8 @@ namespace DVLDSystem_WindowsForm_.Application_Forms
 
         private void _FillApplicationType()
         {
-            _ApplicationTypes.ApplicationTypeTitle = txtApplicationTypeTitle.Text;
-            _ApplicationTypes.ApplicationFees = Convert.ToDecimal(txtApplicationFees.Text);
+            _ApplicationTypes.ApplicationTypeTitle = txtApplicationTypeTitle.Text.Trim();
+            _ApplicationTypes.ApplicationFees = Convert.ToDecimal(txtApplicationFees.Text.Trim());
         }
 
         private void txtApplicationFees_KeyPress(object sender, KeyPressEventArgs e)
