@@ -76,6 +76,9 @@
             // ucTemplateDGVAndSearch1
             // 
             this.ucTemplateDGVAndSearch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ucTemplateDGVAndSearch1.dgvAutoSizeColumnMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.ucTemplateDGVAndSearch1.dgvAutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.None;
+            this.ucTemplateDGVAndSearch1.dgvBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.ucTemplateDGVAndSearch1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ucTemplateDGVAndSearch1.Location = new System.Drawing.Point(0, 194);
             this.ucTemplateDGVAndSearch1.Name = "ucTemplateDGVAndSearch1";
@@ -95,7 +98,7 @@
             this.Controls.Add(this.ucTemplateDGVAndSearch1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmPeople";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "People";
             this.Load += new System.EventHandler(this.frmPeople_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
