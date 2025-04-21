@@ -49,8 +49,8 @@
             this.manageDetainedLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.releaseDetainedLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageAoolicationTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageTestTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMManageApplicationTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmPeople = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUsers = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,8 +84,8 @@
             this.manageApplicationsToolStripMenuItem1,
             this.toolStripMenuItem1,
             this.detainLicensesToolStripMenuItem,
-            this.manageAoolicationTypesToolStripMenuItem,
-            this.manageTestTypesToolStripMenuItem});
+            this.TSMManageApplicationTypes,
+            this.TSMManageTestTypes});
             this.tsmApplication.Font = new System.Drawing.Font("Simplified Arabic Backslanted", 9F, System.Drawing.FontStyle.Bold);
             this.tsmApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Applications_64;
             this.tsmApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -250,21 +250,23 @@
             this.releaseDetainedLicenseToolStripMenuItem.Size = new System.Drawing.Size(284, 38);
             this.releaseDetainedLicenseToolStripMenuItem.Text = "Release Detained License";
             // 
-            // manageAoolicationTypesToolStripMenuItem
+            // TSMManageApplicationTypes
             // 
-            this.manageAoolicationTypesToolStripMenuItem.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Application_Types_64;
-            this.manageAoolicationTypesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.manageAoolicationTypesToolStripMenuItem.Name = "manageAoolicationTypesToolStripMenuItem";
-            this.manageAoolicationTypesToolStripMenuItem.Size = new System.Drawing.Size(313, 70);
-            this.manageAoolicationTypesToolStripMenuItem.Text = "Manage Application Types";
+            this.TSMManageApplicationTypes.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Application_Types_64;
+            this.TSMManageApplicationTypes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMManageApplicationTypes.Name = "TSMManageApplicationTypes";
+            this.TSMManageApplicationTypes.Size = new System.Drawing.Size(313, 70);
+            this.TSMManageApplicationTypes.Text = "Manage Application Types";
+            this.TSMManageApplicationTypes.Click += new System.EventHandler(this.TSMManageApplicationTypes_Click);
             // 
-            // manageTestTypesToolStripMenuItem
+            // TSMManageTestTypes
             // 
-            this.manageTestTypesToolStripMenuItem.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Test_Type_64;
-            this.manageTestTypesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.manageTestTypesToolStripMenuItem.Name = "manageTestTypesToolStripMenuItem";
-            this.manageTestTypesToolStripMenuItem.Size = new System.Drawing.Size(313, 70);
-            this.manageTestTypesToolStripMenuItem.Text = "Manage Test Types";
+            this.TSMManageTestTypes.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Test_Type_64;
+            this.TSMManageTestTypes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMManageTestTypes.Name = "TSMManageTestTypes";
+            this.TSMManageTestTypes.Size = new System.Drawing.Size(313, 70);
+            this.TSMManageTestTypes.Text = "Manage Test Types";
+            this.TSMManageTestTypes.Click += new System.EventHandler(this.TSMManageTestTypes_Click);
             // 
             // tsmPeople
             // 
@@ -376,8 +378,8 @@
         private System.Windows.Forms.ToolStripMenuItem manageApplicationsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem detainLicensesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageAoolicationTypesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageTestTypesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSMManageApplicationTypes;
+        private System.Windows.Forms.ToolStripMenuItem TSMManageTestTypes;
         private System.Windows.Forms.ToolStripMenuItem releaseDetainToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem internationalLicenseToolStripMenuItem;

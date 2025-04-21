@@ -1,4 +1,5 @@
 ﻿using DVLDSystem_BusinessLayer_;
+using DVLDSystem_WindowsForm_.Application_Forms;
 using DVLDSystem_WindowsForm_.Properties;
 using DVLDSystem_WindowsForm_.User;
 using DVLDSystem_WindowsForm_.User__Forms;
@@ -81,6 +82,7 @@ namespace DVLDSystem_WindowsForm_
             if (_CurrentUser != null)
             {
                 frmShowUserDetails userDetails = new frmShowUserDetails(_CurrentUser.UserID);
+                userDetails.StartPosition = FormStartPosition.CenterScreen;
                 userDetails.MdiParent = this;
                 userDetails.Show(); 
             }
@@ -91,8 +93,30 @@ namespace DVLDSystem_WindowsForm_
             if (_CurrentUser != null)
             {
                 frmChangePasswordUser changePasswordUser = new frmChangePasswordUser(_CurrentUser.UserID);
+                changePasswordUser.StartPosition = FormStartPosition.CenterScreen;
                 changePasswordUser.MdiParent = this;
                 changePasswordUser.Show();
+            }
+        }
+
+        private void TSMManageApplicationTypes_Click(object sender, EventArgs e)
+        {
+
+            if (!_CheckIsFormOpen(typeof(frmManageApplicationTypes)))
+            {
+                frmManageApplicationTypes applicationTypes = new frmManageApplicationTypes();
+                applicationTypes.MdiParent = this;
+                applicationTypes.Show();
+            }
+        }
+
+        private void TSMManageTestTypes_Click(object sender, EventArgs e)
+        {
+            if (!_CheckIsFormOpen(typeof(frmManageTestTypes)))
+            {
+                frmManageTestTypes applicationTypes = new frmManageTestTypes();
+                applicationTypes.MdiParent = this;
+                applicationTypes.Show();
             }
         }
     }
