@@ -41,7 +41,7 @@ namespace DVLDSystem_BusinessLayer_
 
         }
 
-        private clsApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
+        protected clsApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
         {
             this.ApplicationID = ApplicationID;
             this.ApplicantPersonID = ApplicantPersonID;
@@ -94,7 +94,7 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsApplicationDataAccessLayer.GetAllApplication();
         }
-        public bool Save()
+        public  virtual bool Save()
         {
             switch (this.Mode)
             {
