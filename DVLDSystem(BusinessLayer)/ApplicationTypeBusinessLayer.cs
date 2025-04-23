@@ -50,6 +50,21 @@ namespace DVLDSystem_BusinessLayer_
                 return null;
             }
         }
+
+        public static clsApplicationTypes Find(string ApplicationTypeTitle)
+        {
+            decimal ApplicationFees = -1;
+            int ApplicationTypeID = -1;
+
+            if (clsApplicationTypeDataAccessLayer.GetApplicationTypeIDInfoByApplicationTypeTitle(ApplicationTypeTitle,ref ApplicationTypeID, ref ApplicationFees))
+            {
+                return new clsApplicationTypes(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
+            }
+            else
+            {
+                return null;
+            }
+        }
         public static bool IsApplicationTypeExist(int ApplicationTypeID)
         {
             return clsApplicationTypeDataAccessLayer.IsApplicationTypeIDExist(ApplicationTypeID);
