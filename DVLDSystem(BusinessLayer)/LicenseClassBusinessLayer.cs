@@ -63,6 +63,24 @@ namespace DVLDSystem_BusinessLayer_
                 return null;
             }
         }
+
+        public static clsLicenseClass Find(string ClassName)
+        {
+            int LicenseClassID = -1;
+            byte MinimumAllowedAge = 0, DefaultValidityLength = 0;
+            decimal ClassFees = -1;
+            string ClassDescription = string.Empty;
+
+            if (clsLicenseClassDataAccessLayer.GetLicenseClassInfoByLicenseClassName(ClassName, ref LicenseClassID, ref ClassDescription, ref MinimumAllowedAge, ref DefaultValidityLength,ref ClassFees))
+            {
+                return new clsLicenseClass(LicenseClassID, ClassName, ClassDescription, MinimumAllowedAge, DefaultValidityLength, ClassFees);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static bool IsLicenseClassExist(int LicenseClassID)
         {
           return clsLicenseClassDataAccessLayer.IsLicenseClassExist(LicenseClassID);
