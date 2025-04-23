@@ -59,6 +59,54 @@ namespace DVLDSystem_DataAccessLayer_
             return IsFound;
         }
 
+        public static bool GetApplicationTypeIDInfoByApplicationTypeTitle( string ApplicationTypeTitle, ref int ApplicationTypeID, ref decimal ApplicationFees)
+        {
+
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select * from ApplicationTypes where ApplicationTypeTitle = @ApplicationTypeTitle";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeTitle", ApplicationTypeTitle);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    ApplicationTypeID = (int)reader["ApplicationTypeID"];
+                    ApplicationFees = (decimal)reader["ApplicationFees"];
+
+
+                }
+                else
+                {
+                    IsFound = false;
+
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+
         public static int AddNewApplicationTypeID(string ApplicationTypeTitle, decimal ApplicationFees)
         {
             int ApplicationTypeIDId = -1;
