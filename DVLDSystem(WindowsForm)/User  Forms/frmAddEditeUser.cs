@@ -291,6 +291,11 @@ namespace DVLDSystem_WindowsForm_.User
         private void ucFindPerson1_onPersonSelected(int obj)
         {
             _PersonID = obj;
+
+            if (_PersonID == -1)
+            {
+                btnSave.Enabled = false;
+            }
         }
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
