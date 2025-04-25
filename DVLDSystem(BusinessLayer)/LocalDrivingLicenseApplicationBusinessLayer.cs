@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,6 +121,24 @@ namespace DVLDSystem_BusinessLayer_
         public static DataView GetAllLocalDrivingLicenseApplications()
         {
             return clsLocalDrivingLicenseApplicationDataAccess.GetAllLocalDrivingLicenseApplication();
+        }
+
+        public static DataView SearchLDLApplicationByLDLApplicationID(string LDLApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.SearchLDLApplicationByLDLApplicationID(LDLApplicationID);
+        }
+        public static DataView SearchLDLApplicationByNationalNo(string NationalNo)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.SearchLDLApplicationByNationalNo(NationalNo);   
+        }
+        public static DataView SearchLDLApplicationByFullName(string FullName)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.SearchLDLApplicationByFullName(FullName);
+             
+        }
+        public static DataView SearchLDLApplicationByStatus(int Status)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.SearchLDLApplicationByStatus(Status);
         }
     }
 }

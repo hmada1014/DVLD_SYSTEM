@@ -321,14 +321,26 @@ FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
             }
             return IsFound;
         }
-        public static DataView SearchLocalDrivingLicenseApplicationByLocalDrivingLicenseApplicationID(int LocalDrivingLicenseApplicationID)
+        public static DataView SearchLDLApplicationByLDLApplicationID(string LDLApplicationID)
         {
             DataTable dataTable = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = "Enter your query";
+            string query = @" select * from (
+                             						 SELECT       dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID  , dbo.LicenseClasses.ClassName, dbo.People.NationalNo, dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') 
+                                                      + ' ' + dbo.People.LastName AS FullName, dbo.Applications.ApplicationDate,
+                                                          (SELECT       COUNT(dbo.TestAppointments.TestTypeID) AS PassedTestCount
+                                                            FROM             dbo.Tests INNER JOIN
+                                                                                      dbo.TestAppointments ON dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID
+                                                            WHERE         (dbo.TestAppointments.LocalDrivingLicenseApplicationID = dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) AND (dbo.Tests.TestResult = 1)) AS PassedTestCount, 
+                                                      CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' WHEN Applications.ApplicationStatus = 3 THEN 'Completed' END AS Status
+                             FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
+                                                      dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
+                                                      dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
+                                                      dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID)R1
+					         	 where R1.LocalDrivingLicenseApplicationID Like '%'+@LDLApplicationID+'%' ";
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
 
             try
             {
@@ -351,5 +363,131 @@ FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
             }
             return dataTable.DefaultView;
         }
+        public static DataView SearchLDLApplicationByNationalNo(string NationalNo)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @" select * from (
+                             						 SELECT       dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, dbo.LicenseClasses.ClassName, dbo.People.NationalNo, dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') 
+                                                      + ' ' + dbo.People.LastName AS FullName, dbo.Applications.ApplicationDate,
+                                                          (SELECT       COUNT(dbo.TestAppointments.TestTypeID) AS PassedTestCount
+                                                            FROM             dbo.Tests INNER JOIN
+                                                                                      dbo.TestAppointments ON dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID
+                                                            WHERE         (dbo.TestAppointments.LocalDrivingLicenseApplicationID = dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) AND (dbo.Tests.TestResult = 1)) AS PassedTestCount, 
+                                                      CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' WHEN Applications.ApplicationStatus = 3 THEN 'Completed' END AS Status
+                             FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
+                                                      dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
+                                                      dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
+                                                      dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID)R1
+                             						 where R1.NationalNo like '%'+@NationalNo+'%' ";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchLDLApplicationByFullName(string FullName)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"	 select * from (
+                             						 SELECT       dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, dbo.LicenseClasses.ClassName, dbo.People.NationalNo, dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') 
+                                                      + ' ' + dbo.People.LastName AS FullName, dbo.Applications.ApplicationDate,
+                                                          (SELECT       COUNT(dbo.TestAppointments.TestTypeID) AS PassedTestCount
+                                                            FROM             dbo.Tests INNER JOIN
+                                                                                      dbo.TestAppointments ON dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID
+                                                            WHERE         (dbo.TestAppointments.LocalDrivingLicenseApplicationID = dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) AND (dbo.Tests.TestResult = 1)) AS PassedTestCount, 
+                                                      CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' WHEN Applications.ApplicationStatus = 3 THEN 'Completed' END AS Status
+                             FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
+                                                      dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
+                                                      dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
+                                                      dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID)R1
+                             						 where R1.FullName like '%'+@FullName+'%' ";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@FullName", FullName);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchLDLApplicationByStatus(int Status)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT       dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, dbo.LicenseClasses.ClassName, dbo.People.NationalNo, dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') 
+                                                      + ' ' + dbo.People.LastName AS FullName, dbo.Applications.ApplicationDate,
+                                                          (SELECT       COUNT(dbo.TestAppointments.TestTypeID) AS PassedTestCount
+                                                            FROM             dbo.Tests INNER JOIN
+                                                                                      dbo.TestAppointments ON dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID
+                                                            WHERE         (dbo.TestAppointments.LocalDrivingLicenseApplicationID = dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) AND (dbo.Tests.TestResult = 1)) AS PassedTestCount, 
+                                                      CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' WHEN Applications.ApplicationStatus = 3 THEN 'Completed' END AS Status
+                             FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
+                                                      dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
+                                                      dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
+                                                      dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID
+                             						 where Applications.ApplicationStatus = @Status ";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Status", Status);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+
     }
 }
