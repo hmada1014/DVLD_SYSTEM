@@ -20,7 +20,7 @@ namespace DVLDSystem_WindowsForm_
              // Allows optional '+' and 7-15 digits
             return Regex.IsMatch(phone, pattern);
         }
-        static public bool IsValidName(string text , string pattern = @"^[A-Za-z\s]+$")
+        static public bool IsValidName(string text , string pattern = @"^[A-Za-z\s\-]{1,20}$")
         {
             return Regex.IsMatch(text, pattern);
         }

@@ -75,11 +75,41 @@
     <Compile Include="AccessDeniedForms\AccessDenied.designer.cs">
       <DependentUpon>AccessDenied.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSelectePerson.cs">
+    <Compile Include="Application Forms\frmEditApplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSelectePerson.Designer.cs">
-      <DependentUpon>frmSelectePerson.cs</DependentUpon>
+    <Compile Include="Application Forms\frmEditApplicationType.Designer.cs">
+      <DependentUpon>frmEditApplicationType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application Forms\frmEditTestType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application Forms\frmEditTestType.Designer.cs">
+      <DependentUpon>frmEditTestType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application Forms\frmAddEditLDLApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application Forms\frmAddEditLDLApplication.Designer.cs">
+      <DependentUpon>frmAddEditLDLApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application Forms\frmManageApplicationTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application Forms\frmManageApplicationTypes.Designer.cs">
+      <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application Forms\frmManageLDLApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application Forms\frmManageLDLApplication.Designer.cs">
+      <DependentUpon>frmManageLDLApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application Forms\frmManageTestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application Forms\frmManageTestTypes.Designer.cs">
+      <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Main  Forms\frmMainScreen.cs">
       <SubType>Form</SubType>
@@ -107,12 +137,42 @@
     <Compile Include="Login Forms\frmLoginScreen.Designer.cs">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="People  Forms\frmShowPersonDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People  Forms\frmShowPersonDetails.Designer.cs">
+      <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User  Forms\frmChangePasswordUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User  Forms\frmChangePasswordUser.Designer.cs">
+      <DependentUpon>frmChangePasswordUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User  Forms\frmShowUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User  Forms\frmShowUserDetails.Designer.cs">
+      <DependentUpon>frmShowUserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\ucFindPerson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucFindPerson.designer.cs">
+      <DependentUpon>ucFindPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="User Control\ucPersonCard.cs">
       <SubType>UserControl</SubType>
@@ -150,12 +210,33 @@
     <Compile Include="User  Forms\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Control\ucUserCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucUserCard.Designer.cs">
+      <DependentUpon>ucUserCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="AccessDeniedForms\AccessDenied.resx">
       <DependentUpon>AccessDenied.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSelectePerson.resx">
-      <DependentUpon>frmSelectePerson.cs</DependentUpon>
+    <EmbeddedResource Include="Application Forms\frmEditApplicationType.resx">
+      <DependentUpon>frmEditApplicationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application Forms\frmEditTestType.resx">
+      <DependentUpon>frmEditTestType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application Forms\frmAddEditLDLApplication.resx">
+      <DependentUpon>frmAddEditLDLApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application Forms\frmManageApplicationTypes.resx">
+      <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application Forms\frmManageLDLApplication.resx">
+      <DependentUpon>frmManageLDLApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application Forms\frmManageTestTypes.resx">
+      <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login Forms\frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
@@ -169,10 +250,25 @@
     <EmbeddedResource Include="People  Forms\frmPeople.resx">
       <DependentUpon>frmPeople.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="People  Forms\frmShowPersonDetails.resx">
+      <DependentUpon>frmShowPersonDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test.resx">
+      <DependentUpon>test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User  Forms\frmChangePasswordUser.resx">
+      <DependentUpon>frmChangePasswordUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User  Forms\frmShowUserDetails.resx">
+      <DependentUpon>frmShowUserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucFindPerson.resx">
+      <DependentUpon>ucFindPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User  Forms\frmAddEditeUser.resx">
       <DependentUpon>frmAddEditeUser.cs</DependentUpon>
@@ -191,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User  Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucUserCard.resx">
+      <DependentUpon>ucUserCard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -213,48 +312,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Applications.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Drivers.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Users.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\People.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\drive.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\driver1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DRIVING.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\New Project %285%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\driver new.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Driver.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\New Project %286%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\addcontacts_83750.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\peopleBigSize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Edit.png" />
@@ -281,12 +338,6 @@
     <None Include="Resources\Earth Planet.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Male User.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Male User 100 px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\person_man.png" />
   </ItemGroup>
   <ItemGroup>
@@ -296,13 +347,7 @@
     <None Include="Resources\Account.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Customer1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Password.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Person.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Toggle Indeterminate.png" />
@@ -311,70 +356,13 @@
     <None Include="Resources\Search.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Find User Male.png" />
+    <None Include="Resources\Edit_32_1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Add User Male Skin Type 7.png" />
+    <None Include="Resources\delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Applications1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\id.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\papers.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\papers_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tasks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\id_add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\id_reload.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\id_close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Users__1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\account_settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\test_reload.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\world.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\house.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hand %283%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hand %282%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\id1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\id %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\world %281%29.png" />
+    <None Include="Resources\Applications_512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
