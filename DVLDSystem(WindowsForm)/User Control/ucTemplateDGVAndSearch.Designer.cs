@@ -52,9 +52,27 @@
             this.lblRecordsTitle = new System.Windows.Forms.Label();
             this.cbGeneral = new System.Windows.Forms.ComboBox();
             this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
+            this.cmsLDLApplication = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TSMShowApplicationDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMEditApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMDeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMSechduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.notSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notSetToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.notSetToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMIssueDrivingLicenseFirstTimeApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMShowLicenseApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.cmsGeneralMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
+            this.cmsLDLApplication.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbFindBy
@@ -88,7 +106,9 @@
             this.dgvShowList.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
             this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvShowList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvShowList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -111,7 +131,7 @@
             this.dgvShowList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShowList.Size = new System.Drawing.Size(651, 290);
             this.dgvShowList.TabIndex = 2;
-            this.dgvShowList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._dgvShowList_ShowDeitails_CellDoubleClick);
+            this.dgvShowList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._dgvShowList_ShowDeitailsGeneral_CellDoubleClick);
             // 
             // cmsGeneralMenu
             // 
@@ -129,7 +149,7 @@
             this.TSMPhoneCallGeneral});
             this.cmsGeneralMenu.Name = "cmsAddEdit";
             this.cmsGeneralMenu.Size = new System.Drawing.Size(185, 326);
-            this.cmsGeneralMenu.Opening += new System.ComponentModel.CancelEventHandler(this._cmsEditDelete_opening);
+            this.cmsGeneralMenu.Opening += new System.ComponentModel.CancelEventHandler(this._cmsGeneralMenu_opening);
             // 
             // TSMShowDetailsGeneral
             // 
@@ -161,7 +181,7 @@
             this.TSMEditGeneral.Name = "TSMEditGeneral";
             this.TSMEditGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMEditGeneral.Text = "Edit";
-            this.TSMEditGeneral.Click += new System.EventHandler(this._EditGeneral_Click);
+            this.TSMEditGeneral.Click += new System.EventHandler(this._TSMEditGeneral_Click);
             // 
             // TSMDeleteGeneral
             // 
@@ -170,7 +190,7 @@
             this.TSMDeleteGeneral.Name = "TSMDeleteGeneral";
             this.TSMDeleteGeneral.Size = new System.Drawing.Size(184, 38);
             this.TSMDeleteGeneral.Text = "Delete";
-            this.TSMDeleteGeneral.Click += new System.EventHandler(this._DeleteGeneral_Click);
+            this.TSMDeleteGeneral.Click += new System.EventHandler(this._TSMDeleteGeneral_Click);
             // 
             // TSMRefreshGeneral
             // 
@@ -245,6 +265,7 @@
             // 
             // lblRrecords
             // 
+            this.lblRrecords.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRrecords.AutoSize = true;
             this.lblRrecords.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblRrecords.Location = new System.Drawing.Point(105, 372);
@@ -255,6 +276,7 @@
             // 
             // lblRecordsTitle
             // 
+            this.lblRecordsTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRecordsTitle.AutoSize = true;
             this.lblRecordsTitle.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblRecordsTitle.Location = new System.Drawing.Point(8, 371);
@@ -274,11 +296,11 @@
             this.cbGeneral.Size = new System.Drawing.Size(134, 21);
             this.cbGeneral.TabIndex = 9;
             this.cbGeneral.Visible = false;
-            this.cbGeneral.SelectedIndexChanged += new System.EventHandler(this._cbGendor_SelectedIndexChanged);
+            this.cbGeneral.SelectedIndexChanged += new System.EventHandler(this._cbGeneral_SelectedIndexChanged);
             // 
             // btnRefreshDGV
             // 
-            this.btnRefreshDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefreshDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefreshDGV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.btnRefreshDGV.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRefreshDGV.IconChar = FontAwesome.Sharp.IconChar.RotateBackward;
@@ -291,6 +313,143 @@
             this.btnRefreshDGV.TabIndex = 4;
             this.btnRefreshDGV.TabStop = false;
             this.btnRefreshDGV.Click += new System.EventHandler(this._btnRefreshDGV_Click);
+            // 
+            // cmsLDLApplication
+            // 
+            this.cmsLDLApplication.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMShowApplicationDetails,
+            this.toolStripMenuItem2,
+            this.TSMEditApplication,
+            this.TSMDeleteApplication,
+            this.TSMCancelApplication,
+            this.toolStripMenuItem3,
+            this.TSMSechduleTests,
+            this.toolStripMenuItem4,
+            this.TSMIssueDrivingLicenseFirstTimeApplication,
+            this.toolStripMenuItem5,
+            this.TSMShowLicenseApplication,
+            this.toolStripMenuItem6,
+            this.TSMShowPersonLicenseHistory});
+            this.cmsLDLApplication.Name = "cmsLDLApplication";
+            this.cmsLDLApplication.Size = new System.Drawing.Size(262, 338);
+            this.cmsLDLApplication.Opening += new System.ComponentModel.CancelEventHandler(this._cmsLDLApplication_Opening);
+            // 
+            // TSMShowApplicationDetails
+            // 
+            this.TSMShowApplicationDetails.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonDetails_32;
+            this.TSMShowApplicationDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMShowApplicationDetails.Name = "TSMShowApplicationDetails";
+            this.TSMShowApplicationDetails.Size = new System.Drawing.Size(261, 38);
+            this.TSMShowApplicationDetails.Text = "Show Application Details";
+            this.TSMShowApplicationDetails.Click += new System.EventHandler(this._TSMShowDetailsGeneral_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(258, 6);
+            // 
+            // TSMEditApplication
+            // 
+            this.TSMEditApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit_32_1;
+            this.TSMEditApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMEditApplication.Name = "TSMEditApplication";
+            this.TSMEditApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMEditApplication.Text = "Edit Application";
+            this.TSMEditApplication.Click += new System.EventHandler(this._TSMEditGeneral_Click);
+            // 
+            // TSMDeleteApplication
+            // 
+            this.TSMDeleteApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
+            this.TSMDeleteApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMDeleteApplication.Name = "TSMDeleteApplication";
+            this.TSMDeleteApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMDeleteApplication.Text = "Delete Application";
+            this.TSMDeleteApplication.Click += new System.EventHandler(this._TSMDeleteGeneral_Click);
+            // 
+            // TSMCancelApplication
+            // 
+            this.TSMCancelApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Delete_32;
+            this.TSMCancelApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMCancelApplication.Name = "TSMCancelApplication";
+            this.TSMCancelApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMCancelApplication.Text = "Cance Applicationl";
+            this.TSMCancelApplication.Click += new System.EventHandler(this._TSMCancelApplicationl_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(258, 6);
+            // 
+            // TSMSechduleTests
+            // 
+            this.TSMSechduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.notSetToolStripMenuItem,
+            this.notSetToolStripMenuItem1,
+            this.notSetToolStripMenuItem2});
+            this.TSMSechduleTests.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Schedule_Test_32;
+            this.TSMSechduleTests.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMSechduleTests.Name = "TSMSechduleTests";
+            this.TSMSechduleTests.Size = new System.Drawing.Size(261, 38);
+            this.TSMSechduleTests.Text = "Sechdule Tests";
+            // 
+            // notSetToolStripMenuItem
+            // 
+            this.notSetToolStripMenuItem.Name = "notSetToolStripMenuItem";
+            this.notSetToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.notSetToolStripMenuItem.Text = "not set";
+            // 
+            // notSetToolStripMenuItem1
+            // 
+            this.notSetToolStripMenuItem1.Name = "notSetToolStripMenuItem1";
+            this.notSetToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
+            this.notSetToolStripMenuItem1.Text = "not set";
+            // 
+            // notSetToolStripMenuItem2
+            // 
+            this.notSetToolStripMenuItem2.Name = "notSetToolStripMenuItem2";
+            this.notSetToolStripMenuItem2.Size = new System.Drawing.Size(110, 22);
+            this.notSetToolStripMenuItem2.Text = "not set";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(258, 6);
+            // 
+            // TSMIssueDrivingLicenseFirstTimeApplication
+            // 
+            this.TSMIssueDrivingLicenseFirstTimeApplication.Enabled = false;
+            this.TSMIssueDrivingLicenseFirstTimeApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.IssueDrivingLicense_32;
+            this.TSMIssueDrivingLicenseFirstTimeApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMIssueDrivingLicenseFirstTimeApplication.Name = "TSMIssueDrivingLicenseFirstTimeApplication";
+            this.TSMIssueDrivingLicenseFirstTimeApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMIssueDrivingLicenseFirstTimeApplication.Text = "Issue Driving License (First Time)";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(258, 6);
+            // 
+            // TSMShowLicenseApplication
+            // 
+            this.TSMShowLicenseApplication.Enabled = false;
+            this.TSMShowLicenseApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.License_View_32;
+            this.TSMShowLicenseApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMShowLicenseApplication.Name = "TSMShowLicenseApplication";
+            this.TSMShowLicenseApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMShowLicenseApplication.Text = "show License";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(258, 6);
+            // 
+            // TSMShowPersonLicenseHistory
+            // 
+            this.TSMShowPersonLicenseHistory.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonLicenseHistory_32;
+            this.TSMShowPersonLicenseHistory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMShowPersonLicenseHistory.Name = "TSMShowPersonLicenseHistory";
+            this.TSMShowPersonLicenseHistory.Size = new System.Drawing.Size(261, 38);
+            this.TSMShowPersonLicenseHistory.Text = "Show Person License History";
             // 
             // ucTemplateDGVAndSearch
             // 
@@ -310,6 +469,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
             this.cmsGeneralMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
+            this.cmsLDLApplication.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,5 +497,22 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem TSMChangePassword;
         private System.Windows.Forms.ToolStripSeparator TSSchangePassword;
+        private System.Windows.Forms.ContextMenuStrip cmsLDLApplication;
+        private System.Windows.Forms.ToolStripMenuItem TSMShowApplicationDetails;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem TSMEditApplication;
+        private System.Windows.Forms.ToolStripMenuItem TSMDeleteApplication;
+        private System.Windows.Forms.ToolStripMenuItem TSMCancelApplication;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem TSMSechduleTests;
+        private System.Windows.Forms.ToolStripMenuItem notSetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notSetToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem notSetToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem TSMIssueDrivingLicenseFirstTimeApplication;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem TSMShowLicenseApplication;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem TSMShowPersonLicenseHistory;
     }
 }

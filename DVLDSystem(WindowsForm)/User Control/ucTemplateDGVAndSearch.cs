@@ -19,7 +19,9 @@ namespace DVLDSystem_WindowsForm_.User_Control
     public partial class ucTemplateDGVAndSearch : UserControl
     {
         private string _FormName;
-        private enum enModeUC { Application,People,Drivers,Users,Empty}
+        private enum enLDLApplicationStatus { New = 1 ,Canceled =2 , Completed =3}
+        private enLDLApplicationStatus enLDLApplicationStatusMode;
+        private enum enModeUC { ManageLDLApplication , People,Drivers,Users,Empty}
         private enModeUC _enMode = enModeUC.Empty;
         public ucTemplateDGVAndSearch()
         {
@@ -30,12 +32,14 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             InitializeComponent();
             
+            
             _FormName = FormName;
             switch (_FormName)
             {
-                case "frmApplication":
-                    _enMode = enModeUC.Application;
-                    TSMAddNewGeneral.Text = "Add New Application";
+                case "frmManageLDLApplication":
+                    _enMode = enModeUC.ManageLDLApplication;
+                    dgvShowList.ContextMenuStrip = cmsLDLApplication;
+                    _FillcbGeneralForStatusLDLApplication();
                     break;
                 case "frmPeople":
                     _enMode = enModeUC.People;
@@ -46,7 +50,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case "frmDrivers":
                     _enMode = enModeUC.Drivers;
                     TSMAddNewGeneral.Text = "Add New Driver";
-
                     break;
                 case "frmUsers":
                     _enMode = enModeUC.Users;
@@ -93,6 +96,24 @@ namespace DVLDSystem_WindowsForm_.User_Control
             set { txtSearchDGV.Location = value; }
         }
 
+        [Browsable(true)]
+        [Category("Misc Controls Properties")]
+        public string Records
+        {
+            get { return lblRrecords.Text; }
+        }
+
+        [Browsable(true)]
+        [Category("Misc Controls Properties")]
+        public DataGridViewColumnHeadersHeightSizeMode dgvColumnHeadersHeightSizeMode
+        {
+            get { return dgvShowList.ColumnHeadersHeightSizeMode; }
+            set { dgvShowList.ColumnHeadersHeightSizeMode = value; }
+            
+        }
+        
+
+
         //############################ UI Data Helper ######################
         public void RefreshDGV(object DataSours)
         {
@@ -101,7 +122,9 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             switch(_enMode)
             {
-                case enModeUC.Application:
+                case enModeUC.ManageLDLApplication:
+                    dgvShowList.DataSource = dv;
+                    _UpdateLDLApplicatinColumnHeaders();
                     break;
                 case enModeUC.People:
                     dgvShowList.DataSource = dv ;
@@ -153,6 +176,34 @@ namespace DVLDSystem_WindowsForm_.User_Control
             _SafeHeaderUpdate("LastName", "Last Name");
             _SafeHeaderUpdate("DateOfBirth", "Date Of Birth");
         }
+        private void _UpdateLDLApplicatinColumnHeaders()
+        {
+            if (dgvShowList.Columns.Count <= 0) return;
+            _SafeHeaderUpdate("LocalDrivingLicenseApplicationID", "L.D.LAppID");
+            _SafeHeaderUpdate("ClassName", "Driving Class");
+            _SafeHeaderUpdate("NationalNo", "National NO");
+            _SafeHeaderUpdate("FullName", "Full Name");
+            _SafeHeaderUpdate("ApplicationDate", "Application Date");
+            _SafeHeaderUpdate("PassedTestCount", "Passed Test");
+            _updateColumnsSizeForDLDApplication();
+        }
+        private void _updateColumnsSizeForDLDApplication()
+        {
+            if(dgvShowList.Columns.Count <= 0) return;
+            _SafeHeaderSizeUpdate("LocalDrivingLicenseApplicationID", 100);
+            _SafeHeaderSizeUpdate("ClassName", 230);
+            _SafeHeaderSizeUpdate("NationalNo", 110);
+            _SafeHeaderSizeUpdate("FullName", 230);
+            _SafeHeaderSizeUpdate("ApplicationDate", 150);
+            _SafeHeaderSizeUpdate("PassedTestCount", 120);
+        }
+        private void _SafeHeaderSizeUpdate(string ColumnName, int ColumnSize)
+        {
+            if (dgvShowList.Columns.Contains(ColumnName))
+            {
+                dgvShowList.Columns[ColumnName].Width = ColumnSize;
+            }
+        }
         private void _SafeHeaderUpdate(string ColumnName, string headerText)
         {
             if (dgvShowList.Columns.Contains(ColumnName))
@@ -160,34 +211,75 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 dgvShowList.Columns[ColumnName].HeaderText = headerText;
             }
         }
-        private DataTable _ProcessPeopleGenderColumn(DataTable dt) 
+        private int _ConvertSatusToInt(string Status)
         {
-            if(dt.Columns.Count<=0)return dt;
-            dt.Columns.Add("GenderNew", typeof(string));
-
-            foreach (DataRow row in dt.Rows)
+            if (Status == "New")
             {
-                if (row["Gender"].ToString() == "0")
-                {
-                    row["GenderNew"] = "Male";
-                }
-                else if (row["Gender"].ToString() == "1")
-                {
-                    row["GenderNew"] = "Female";
-                }
+                return 1;
             }
-            dt.Columns.Remove("Gender");
-            dt.Columns["GenderNew"].ColumnName = "Gender";
-            dt.Columns["Gender"].SetOrdinal(4);
-            return dt;
+            else if (Status == "Cancelled")
+            {
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
         }
 
         /*############### for txtsearch ############################*/
-     
-        //--------------- Filter By People ---------------------------
+
+        //--------------- Filter  DLDApplication ---------------------------
+        private void _FillcbGeneralForStatusLDLApplication()
+        {
+            string[] Words = { "All", "New", "Cancelled","Completed" };
+            cbGeneral.DataSource = Words;
+        }
+        private void _SearchLDLApplicationByLDLApplicationID(string LDLApplicationID)
+        {
+            DataTable dt = clsLocalDrivingLicenseApplication.SearchLDLApplicationByLDLApplicationID(LDLApplicationID).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateLDLApplicatinColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchLDLApplicationByNationalNo(string NationalNo)
+        {
+            DataTable dt = clsLocalDrivingLicenseApplication.SearchLDLApplicationByNationalNo(NationalNo).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateLDLApplicatinColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchLDLApplicationByFullName(string FullName)
+        {
+            DataTable dt = clsLocalDrivingLicenseApplication.SearchLDLApplicationByFullName(FullName).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateLDLApplicatinColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchLDLApplicationByStatus(int Status)
+        {
+            DataTable dt = clsLocalDrivingLicenseApplication.SearchLDLApplicationByStatus(Status).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateLDLApplicatinColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+      
+        //--------------- Filter  People ---------------------------
         private void _FillcbGeneralForGenderpeople()
         {
-            string[] Words = { "Male", "Female" };
+            string[] Words = { "All","Male", "Female" };
             cbGeneral.DataSource = Words;
         }
         private void _SearchPeopleByPersonID(string ID)
@@ -250,9 +342,14 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
-        private void _SearchPeopleByGender(byte Gender)
+        private void _SearchPeopleByGender(string Gender)
         {
-            DataTable dt = clsPerson.SearchPeopleByGender(Gender).Table;
+            DataTable dt;
+            if (Gender == "Male")
+                 dt = clsPerson.SearchPeopleByGender(0).Table;
+            else
+                 dt = clsPerson.SearchPeopleByGender(1).Table;
+
             if (dt.Rows.Count > 0)
             {
                 dgvShowList.DataSource = dt;
@@ -291,7 +388,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
 
-        //--------------- Filter By User -----------------------------
+        //--------------- Filter User -----------------------------
         private void _FillcbGeneralForIsActiveUser()
         {
             string[] Words = { "All", "Yes","No" };
@@ -337,18 +434,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
         private void _SearchUserByIsActive()
         {
             DataTable dt;
-            if (cbGeneral.Text == "All" )
-            {
-                dt = clsUser.SearchUserByIsActive(0, 1).Table; 
-            }
-            else if( cbGeneral.Text == "Yes")
-            {
+            if( cbGeneral.Text == "Yes")
                 dt = clsUser.SearchUserByIsActive(1, 1).Table;
-            }
             else
-            {
                 dt = clsUser.SearchUserByIsActive(0, 0).Table;
-            }
+
             if (dt.Rows.Count > 0)
             {
                 dgvShowList.DataSource = dt;
@@ -386,7 +476,10 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _SearchPeopleByNationality(txtSearchDGV.Text.Trim());
                     break;
                 case "Gendor":
-                    _SearchPeopleByGender(Convert.ToByte(cbGeneral.SelectedIndex));
+                    if(cbGeneral.Text == "All")
+                        _btnRefreshDGV_Click(null, null);
+                    else
+                    _SearchPeopleByGender(cbGeneral.Text);
                     break;
                 case "Phone":
                     _SearchPeopleByPhone(txtSearchDGV.Text.Trim());
@@ -415,8 +508,62 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _SearchUserByFullName(txtSearchDGV.Text.Trim());
                     break;
                 case "Is Active":
-                    _SearchUserByIsActive();
+                    if (cbGeneral.Text == "All")
+                        _btnRefreshDGV_Click(null, null);
+                    else
+                        _SearchUserByIsActive();
                     break;
+            }
+        }
+        private void _SearchDataByFilteringLDLApplication(string Text)
+        {
+            switch (cbFindBy.Text)
+            {
+                case "None":
+                    break;
+                case "L.D.LAppID":
+                    _SearchLDLApplicationByLDLApplicationID(txtSearchDGV.Text.Trim());
+                    break;
+                case "National No":
+                    _SearchLDLApplicationByNationalNo(txtSearchDGV.Text.Trim());
+                    break;
+                case "Full Name":
+                    _SearchLDLApplicationByFullName(txtSearchDGV.Text.Trim());
+                    break;
+                case "Status":
+                    if (cbGeneral.Text == "All")
+                        _btnRefreshDGV_Click(null, null);
+                    else
+                        _SearchLDLApplicationByStatus(_ConvertSatusToInt(cbGeneral.Text));
+                    break;
+            }
+        }
+
+        /*########################### cmsLDLApplication ################################*/
+
+        private void _DeleteLDLApplication()
+        {
+            int ID = Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+            if (clsLocalDrivingLicenseApplication.IsLocalDrivingLicenseApplicationExist(ID))
+            {
+                if (MessageBox.Show($"Are you suer you want to Delete LDLApplicationID : {ID}", "Delete LDLApplication", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+
+                    if (clsLocalDrivingLicenseApplication.DeleteLocalDrivingLicenseApplication(ID))
+                    {
+                        MessageBox.Show($"LDLApplication with ID : {ID} was Deleted Successfully", "Successfully deleted\r\n ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _btnRefreshDGV_Click(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("LDLApplication was not deleted because it has data linked to it", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show($"LDLApplication with ID {ID} was not found", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -546,34 +693,13 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
         //########################## events #####################################
 
-        private void _cmsEditDelete_opening(object sender, CancelEventArgs e)
-        {
-            // Cancel the menu if there are no rows
-            if (dgvShowList.Rows.Count == 0)
-            {
-                e.Cancel = true;
-                return;
-            }
-
-            // Cursor.Position current mouse position 
-            // Get mouse position relative to the DataGridView
-            Point clientPoint = dgvShowList.PointToClient(Cursor.Position);
-
-            // Check if the click is on a valid row
-            DataGridView.HitTestInfo hitTest = dgvShowList.HitTest(clientPoint.X, clientPoint.Y);
-            if (hitTest.Type != DataGridViewHitTestType.Cell || hitTest.RowIndex < 0)
-            {
-                e.Cancel = true;
-            }
-
-        }
         private void _txtSearchDGV_TextChanged(object sender, EventArgs e)
         {
             dgvShowList.DataSource = null;
             switch (_enMode)
             {
-                case enModeUC.Application:
-
+                case enModeUC.ManageLDLApplication:
+                    _SearchDataByFilteringLDLApplication(txtSearchDGV.Text.Trim());
                     break;
                 case enModeUC.People:
                     _SearchDataByFilteringPeople(txtSearchDGV.Text.Trim());
@@ -589,21 +715,31 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
 
         }
+        private void _txtSearchDGV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(cbFindBy.Text == "Person ID" || cbFindBy.Text == "User ID" || cbFindBy.Text == "L.D.LAppID")
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
         private void _btnRefreshDGV_Click(object sender, EventArgs e)
         {
             txtSearchDGV.Clear();
-            switch (_FormName)
+            switch (_enMode)
             {
-                case "frmApplication":
-
+                case enModeUC.ManageLDLApplication:
+                    RefreshDGV(clsLocalDrivingLicenseApplication.GetAllLocalDrivingLicenseApplications());
                     break;
-                case "frmPeople":
+                case enModeUC.People:
                     RefreshDGV(clsPerson.GetAllPersons());
                     break;
-                case "frmDrivers":
+                case enModeUC.Drivers:
 
                     break;
-                case "frmUsers":
+                case enModeUC.Users:
                     RefreshDGV(clsUser.GetAllUsers());
                     break;
             }
@@ -612,12 +748,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             _btnRefreshDGV_Click(sender, e);
         }
-        private void _EditGeneral_Click(object sender, EventArgs e)
+        private void _TSMEditGeneral_Click(object sender, EventArgs e)
         {
             switch (_enMode)
             {
-                case enModeUC.Application:
-
+                case enModeUC.ManageLDLApplication:
                     break;
                 case enModeUC.People:
                     _EditPerson();
@@ -632,12 +767,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-        private void _DeleteGeneral_Click(object sender, EventArgs e)
+        private void _TSMDeleteGeneral_Click(object sender, EventArgs e)
         {
             switch (_enMode)
             {
-                case enModeUC.Application:
-
+                case enModeUC.ManageLDLApplication:
+                    _DeleteLDLApplication();
                     break;
                 case enModeUC.People:
                     _DeletePersone();
@@ -652,64 +787,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-        private void _cbFindBy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbFindBy.Text == "None")
-            {
-                txtSearchDGV.Visible = false;
-                cbGeneral.Visible = false;
-                _btnRefreshDGV_Click(sender, e);
-                return;
-            }
-            else txtSearchDGV.Visible = true;
-
-            if (cbFindBy.Text == "Gendor")
-            {
-                txtSearchDGV.Visible = false;
-                cbGeneral.Visible = true;
-                return;
-            }
-            else
-            {
-                txtSearchDGV.Visible = true;
-                cbGeneral.Visible = false;
-            }
-
-            if (cbFindBy.Text == "Is Active")
-            {
-                txtSearchDGV.Visible = false;
-                cbGeneral.Visible = true;
-                return;
-            }
-            else
-            {
-                txtSearchDGV.Visible = true;
-                cbGeneral.Visible = false;
-            }
-
-            _btnRefreshDGV_Click(sender, e);
-
-        }
-        private void _cbGendor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _txtSearchDGV_TextChanged(sender, e);
-        }
-        private void _txtSearchDGV_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if(cbFindBy.Text == "Person ID" || cbFindBy.Text == "User ID")
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-                {
-                    e.Handled = true;
-                }
-            }
-        }
         private void _TSMShowDetailsGeneral_Click(object sender, EventArgs e)
         {
             switch (_enMode)
             {
-                case enModeUC.Application:
-
+                case enModeUC.ManageLDLApplication:
                     break;
                 case enModeUC.People:
                     _ShowPersonDeitails();
@@ -728,9 +810,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             switch (_enMode)
             {
-                case enModeUC.Application:
-
-                    break;
                 case enModeUC.People:
                     _AddNewPerson();
                     break;
@@ -763,12 +842,155 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             } 
         }
-        private void _dgvShowList_ShowDeitails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void _TSMCancelApplicationl_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show($"Are you sure you want to cancel this LDLApplication \n{dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value}","Cancel Application",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes )
+            {
+                if (clsLocalDrivingLicenseApplication.UpdateApplicationStatus(Convert.ToInt32(enLDLApplicationStatus.Canceled),  Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value),DateTime.Now))
+                {
+                    MessageBox.Show("Application canceled successfully", "Canceled successfully", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    _btnRefreshDGV_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Application canceled Faild", "Canceled Faild", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+        }
+        private void _cbFindBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            if (cbFindBy.Text == "None")
+            {
+                txtSearchDGV.Visible = false;
+                cbGeneral.Visible = false;
+                _btnRefreshDGV_Click(sender, e);
+                return;
+            }
+            else txtSearchDGV.Visible = true;
+
+            if (cbFindBy.Text == "Gendor" || cbFindBy.Text == "Is Active" || cbFindBy.Text == "Status")
+            {
+                txtSearchDGV.Visible = false;
+                cbGeneral.Visible = true;
+                cbGeneral.SelectedIndex = 0;
+                _btnRefreshDGV_Click(sender, e);
+                return;
+            }
+            else
+            {
+                txtSearchDGV.Visible = true;
+                cbGeneral.Visible = false;
+            }
+            _btnRefreshDGV_Click(sender, e);
+
+        }
+        private void _cbGeneral_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _txtSearchDGV_TextChanged(sender, e);
+        }
+        private void _CheckdgvShowListEmpty(DataGridView dataGrid ,CancelEventArgs e)
+        {
+            if (dataGrid.Rows.Count == 0)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+        private void _CheckMousePosition(DataGridView dataGrid, CancelEventArgs e)
+        {
+            // Cursor.Position current mouse position 
+            // Get mouse position relative to the DataGridView
+            Point clientPoint = dataGrid.PointToClient(Cursor.Position);
+
+            // Check if the click is on a valid row
+            DataGridView.HitTestInfo hitTest = dataGrid.HitTest(clientPoint.X, clientPoint.Y);
+            if (hitTest.Type != DataGridViewHitTestType.Cell || hitTest.RowIndex < 0)
+            {
+                e.Cancel = true;
+            }
+        }
+        private void _cmsGeneralMenu_opening(object sender, CancelEventArgs e)
+        {
+            _CheckdgvShowListEmpty(dgvShowList,e);
+            _CheckMousePosition(dgvShowList, e);
+        }
+        private void _cmsLDLApplication_Opening(object sender, CancelEventArgs e)
+        {
+            _CheckdgvShowListEmpty(dgvShowList, e);
+            _CheckMousePosition(dgvShowList, e);
+            _EnableAndDisableCmsLDLApplication(_GetApplicationStatus(Convert.ToInt16(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value)));
+        }
+
+
+        private enLDLApplicationStatus _GetApplicationStatus(int LDLApplicationID)
+        {
+            int Status = clsLocalDrivingLicenseApplication.Find(Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value)).ApplicationStatus;
+            
+            switch (Status)
+            {
+                case 1:
+                    return enLDLApplicationStatus.New;
+                case 2:
+                    return enLDLApplicationStatus.Canceled;
+                default:
+                    return enLDLApplicationStatus.Completed;
+            }
+        }
+        private void _EnableAndDisableMenuCompletedStatus()
+        {
+            TSMShowLicenseApplication.Enabled = true;
+            TSMShowPersonLicenseHistory.Enabled = true;
+        }
+        private void _EnableAndDisableMenuNewStatus()
+        {
+            TSMEditApplication.Enabled = true;
+            TSMDeleteApplication.Enabled = true;
+            TSMCancelApplication.Enabled = true;
+            TSMSechduleTests.Enabled = true;
+            TSMShowPersonLicenseHistory.Enabled = true; 
+        }
+        private void _EnableAndDisableMenuCanceledStatus()
+        {
+            TSMDeleteApplication.Enabled = true;
+            TSMShowPersonLicenseHistory.Enabled = true;
+        }
+        private void _ResetAllMenus()
+        {
+            TSMEditApplication.Enabled = false;
+            TSMDeleteApplication.Enabled = false;
+            TSMCancelApplication.Enabled = false;
+            TSMSechduleTests.Enabled = false;
+            TSMIssueDrivingLicenseFirstTimeApplication.Enabled = false;
+            TSMShowLicenseApplication.Enabled = false;
+            TSMShowPersonLicenseHistory.Enabled = false;
+        }
+
+        private void _EnableAndDisableCmsLDLApplication(enLDLApplicationStatus status)
+        {
+            _ResetAllMenus();
+            switch (status)
+            {
+                case enLDLApplicationStatus.New:
+                    _EnableAndDisableMenuNewStatus();
+                    break;
+                case enLDLApplicationStatus.Canceled:
+                    _EnableAndDisableMenuCanceledStatus();
+                    break;
+                case enLDLApplicationStatus.Completed:
+                    _EnableAndDisableMenuCompletedStatus();
+                    break;
+
+            }
+        }
+
+
+        private void _dgvShowList_ShowDeitailsGeneral_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             switch (_enMode)
             {
-                case enModeUC.Application:
-
+                case enModeUC.ManageLDLApplication:
                     break;
                 case enModeUC.People:
                     _ShowPersonDeitails();
@@ -783,5 +1005,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
+
+       
     }
 }
