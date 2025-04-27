@@ -19,7 +19,7 @@ namespace DVLDSystem_WindowsForm_
     {
         private int _UserID = -1;
 
-        private clsUser _CurrentUser;
+        public static clsUser _CurrentUser;
         public frmMainScreen(int UserID)
         {
             InitializeComponent();
@@ -107,6 +107,7 @@ namespace DVLDSystem_WindowsForm_
                 frmManageApplicationTypes applicationTypes = new frmManageApplicationTypes();
                 applicationTypes.MdiParent = this;
                 applicationTypes.Show();
+
             }
         }
 
@@ -118,6 +119,29 @@ namespace DVLDSystem_WindowsForm_
                 applicationTypes.MdiParent = this;
                 applicationTypes.Show();
             }
+        }
+
+        private void TSMNewLocalLicenseApplication_Click(object sender, EventArgs e)
+        {
+            frmAddEditLDLApplication editLocalDrivingLicenseApplication  = new frmAddEditLDLApplication(-1);
+            editLocalDrivingLicenseApplication.MdiParent = this;
+            editLocalDrivingLicenseApplication.Show();
+        }
+
+        private void TSMlocalDrivingLicenseApplications_Click(object sender, EventArgs e)
+        {
+
+            frmManageLDLApplication manageLocalDrivingLicenseApplication = new frmManageLDLApplication();
+            manageLocalDrivingLicenseApplication.MdiParent = this;
+            manageLocalDrivingLicenseApplication.Show();
+
+        }
+
+        private void TSMinternationalLinceseApplications_Click(object sender, EventArgs e)
+        {
+            frmAddEditLDLApplication editLocalDrivingLicenseApplication = new frmAddEditLDLApplication(33);
+            editLocalDrivingLicenseApplication.MdiParent = this;
+            editLocalDrivingLicenseApplication.Show();
         }
     }
 }
