@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLDSystem_DataAccessLayer_
 {
@@ -100,6 +101,41 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return ApplicationID;
         }
+        public static int GetApplicationIDByLDLApplicationID(int LDLApplicationID)
+        {
+            int ApplicationID = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select 
+                             dbo.LocalDrivingLicenseApplications.ApplicationID from LocalDrivingLicenseApplications
+                             where dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LDLApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    if (int.TryParse(reader["ApplicationID"].ToString(),out int ID))
+                    {
+                        ApplicationID = ID;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ApplicationID;
+        }
+
         public static int AddNewLocalDrivingLicenseApplication(int ApplicationID, int LicenseClassID)
         {
             int LocalDrivingLicenseApplicationId = -1;
@@ -487,6 +523,43 @@ FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
                 connection.Close();
             }
             return dataTable.DefaultView;
+        }
+        public static bool UpdateApplicationStatus(int Status , int LDLApplicationID ,DateTime LastStatusDate) 
+        {
+
+            int AffectedRows = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"UPDATE [dbo].[Applications]
+                                SET 
+                                   [ApplicationStatus] = @Status,
+                             	   [LastStatusDate] = @LastStatusDate
+                             WHERE dbo.Applications.ApplicationID = (select 
+                             dbo.LocalDrivingLicenseApplications.ApplicationID from LocalDrivingLicenseApplications
+                             where dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LDLApplicationID)";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@Status", Status);
+            command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+
+            try
+            {
+                connection.Open();
+                AffectedRows = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return (AffectedRows > 0);
         }
 
     }

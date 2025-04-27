@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -114,15 +115,24 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsLocalDrivingLicenseApplicationDataAccess.GetApplicationIDByApplicantPersonIDAndLicenseClassID(ApplicantPersonID,LicenseClassID);
         }
+        public static int GetApplicationIDByLDLApplicationID(int LDLApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.GetApplicationIDByLDLApplicationID(LDLApplicationID);
+        }
         public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
         {
-            return clsLocalDrivingLicenseApplicationDataAccess.DeleteLocalDrivingLicenseApplicationByID(LocalDrivingLicenseApplicationID);
+            int ApplicationID = GetApplicationIDByLDLApplicationID (LocalDrivingLicenseApplicationID);
+
+            if (clsLocalDrivingLicenseApplicationDataAccess.DeleteLocalDrivingLicenseApplicationByID(LocalDrivingLicenseApplicationID))
+            {
+                return clsApplication.DeleteApplication(ApplicationID); 
+            }
+            return false;
         }
         public static DataView GetAllLocalDrivingLicenseApplications()
         {
             return clsLocalDrivingLicenseApplicationDataAccess.GetAllLocalDrivingLicenseApplication();
         }
-
         public static DataView SearchLDLApplicationByLDLApplicationID(string LDLApplicationID)
         {
             return clsLocalDrivingLicenseApplicationDataAccess.SearchLDLApplicationByLDLApplicationID(LDLApplicationID);
@@ -139,6 +149,10 @@ namespace DVLDSystem_BusinessLayer_
         public static DataView SearchLDLApplicationByStatus(int Status)
         {
             return clsLocalDrivingLicenseApplicationDataAccess.SearchLDLApplicationByStatus(Status);
+        }
+        public static bool UpdateApplicationStatus(int Status, int LDLApplicationID, DateTime LastStatusDate)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.UpdateApplicationStatus(Status,LDLApplicationID,LastStatusDate);
         }
     }
 }
