@@ -135,7 +135,43 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return ApplicationID;
         }
+        public static int GetPassedTestsByLDLApplicationID(int LDLApplicationID)
+        {
+            int PassTest = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
+            string query = @"SELECT       COUNT(TestAppointments.TestTypeID) AS PassedTestCount
+                            FROM            Tests INNER JOIN
+                            TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID INNER JOIN
+                            LocalDrivingLicenseApplications ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
+                            WHERE 
+                            (dbo.TestAppointments.LocalDrivingLicenseApplicationID = @LDLApplicationID) AND (dbo.Tests.TestResult = 1) ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    if (int.TryParse(reader["PassedTestCount"].ToString(), out int ID))
+                    {
+                        PassTest = ID;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return PassTest;
+        }
         public static int AddNewLocalDrivingLicenseApplication(int ApplicationID, int LicenseClassID)
         {
             int LocalDrivingLicenseApplicationId = -1;
@@ -326,17 +362,16 @@ FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
             bool IsFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string query = @"select * from (
+            string query = @"select Found =1 from (
                              SELECT       Applications.ApplicationID,ApplicantPersonID,ApplicationDate,Applications.ApplicationTypeID,LicenseClasses.ClassName,ApplicationStatus,LastStatusDate,PaidFees,CreatedByUserID,LocalDrivingLicenseApplicationID
                              ,LocalDrivingLicenseApplications.LicenseClassID
                              FROM            LocalDrivingLicenseApplications INNER JOIN
                              Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID INNER JOIN
                              ApplicationTypes ON Applications.ApplicationTypeID = ApplicationTypes.ApplicationTypeID INNER JOIN
                              People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN
-                             Users ON Applications.CreatedByUserID = Users.UserID inner join
 						     LicenseClasses on LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
-						      where ApplicantPersonID = @ApplicantPersonID) R1
-						      where R1.LicenseClassID= @LicenseClassID and  R1.ApplicationStatus = 1 or  R1.ApplicationStatus =3";
+						     where ApplicantPersonID = @ApplicantPersonID and LocalDrivingLicenseApplications.LicenseClassID = @LicenseClassID) R1
+						     where not R1.ApplicationStatus = 2";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);

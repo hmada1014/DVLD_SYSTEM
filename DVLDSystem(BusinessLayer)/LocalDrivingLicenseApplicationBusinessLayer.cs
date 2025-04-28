@@ -119,6 +119,10 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsLocalDrivingLicenseApplicationDataAccess.GetApplicationIDByLDLApplicationID(LDLApplicationID);
         }
+        public static int GetPassedTestsByLDLApplicationID(int LDLApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.GetPassedTestsByLDLApplicationID (LDLApplicationID);
+        }
         public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
         {
             int ApplicationID = GetApplicationIDByLDLApplicationID (LocalDrivingLicenseApplicationID);
