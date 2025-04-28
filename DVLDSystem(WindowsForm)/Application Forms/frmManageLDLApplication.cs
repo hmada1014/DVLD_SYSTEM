@@ -35,6 +35,7 @@ namespace DVLDSystem_WindowsForm_.Application_Forms
         {
             frmAddEditLDLApplication AddLDLAplication = new frmAddEditLDLApplication(-1);
             AddLDLAplication.ShowDialog();
+            ucTemplateDGVAndSearch1.RefreshDGV(clsLocalDrivingLicenseApplication.GetAllLocalDrivingLicenseApplications());
         }
     }
 }
