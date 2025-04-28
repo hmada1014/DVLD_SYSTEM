@@ -133,7 +133,7 @@
             // iconPictureBox5
             // 
             this.iconPictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox5.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Toggle_Indeterminate;
+            this.iconPictureBox5.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.User_32__2;
             this.iconPictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.iconPictureBox5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -149,7 +149,7 @@
             // iconPictureBox4
             // 
             this.iconPictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox4.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Person_32;
+            this.iconPictureBox4.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Calendar_32;
             this.iconPictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.iconPictureBox4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -165,7 +165,7 @@
             // iconPictureBox3
             // 
             this.iconPictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox3.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Password;
+            this.iconPictureBox3.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.License_Type_32;
             this.iconPictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.iconPictureBox3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -228,7 +228,7 @@
             // iconPictureBox2
             // 
             this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox2.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.Password;
+            this.iconPictureBox2.BackgroundImage = global::DVLDSystem_WindowsForm_.Properties.Resources.money_32;
             this.iconPictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.iconPictureBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -381,7 +381,7 @@
             this.lblTitleHeader.TabIndex = 41;
             this.lblTitleHeader.Text = "Tile Name";
             // 
-            // frmAddEditLocalDrivingLicenseApplication
+            // frmAddEditLDLApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -391,7 +391,8 @@
             this.Controls.Add(this.tcApplicationInfo);
             this.Controls.Add(this.lblTitleHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmAddEditLocalDrivingLicenseApplication";
+            this.Name = "frmAddEditLDLApplication";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLocalDrivingLicenseApplication";
             this.Load += new System.EventHandler(this.frmAddLocalDrivingLicenseApplication_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ep)).EndInit();

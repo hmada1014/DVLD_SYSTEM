@@ -21,12 +21,12 @@ namespace DVLDSystem_WindowsForm_.Application_Forms
         private int _PersonID = -1;
         private clsLocalDrivingLicenseApplication _localDrivingLicenseApplication;
 
-        private int _ApplicationID ;
+        private int _LDLApplicationID ;
         public frmAddEditLDLApplication(int ApplicationID)
         {
             InitializeComponent();
-            _ApplicationID = ApplicationID;
-            if (_ApplicationID == -1)
+            _LDLApplicationID = ApplicationID;
+            if (_LDLApplicationID == -1)
             {
                 _Mode = enMode.Add;
             }
@@ -70,7 +70,7 @@ namespace DVLDSystem_WindowsForm_.Application_Forms
             lblDLApplicationID.Text = _localDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
             lblApplicationDate.Text = _localDrivingLicenseApplication.ApplicationDate.ToString("M/d/yyyy");
             cbLicenseClass.SelectedItem = clsLicenseClass.Find(_localDrivingLicenseApplication.LicenseClassID).ClassName;
-            lblApplicationFees.Text = clsApplicationTypes.Find(_localDrivingLicenseApplication.ApplicationTypeID).ApplicationFees.ToString();
+            lblApplicationFees.Text = Convert.ToSingle(clsApplicationTypes.Find(_localDrivingLicenseApplication.ApplicationTypeID).ApplicationFees).ToString();
             lblCreatedBy.Text = clsUser.Find(_localDrivingLicenseApplication.CreatedByUserID).UserName;
             btnSave.Enabled = true;
             ucFindPerson1.Enabled = false;
@@ -85,7 +85,7 @@ namespace DVLDSystem_WindowsForm_.Application_Forms
                 return;
             }
 
-            _localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.Find(_ApplicationID);
+            _localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.Find(_LDLApplicationID);
 
             if (_localDrivingLicenseApplication == null)
             {
@@ -136,14 +136,22 @@ namespace DVLDSystem_WindowsForm_.Application_Forms
 
         private void _FillobjectLocalDrivingLicenseApplication()
         {
-            _localDrivingLicenseApplication.ApplicantPersonID = _PersonID;
-            _localDrivingLicenseApplication.ApplicationDate = DateTime.Now;
-            _localDrivingLicenseApplication.LicenseClassID = clsLicenseClass.Find(cbLicenseClass.Text).LicenseClassID;
-            _localDrivingLicenseApplication.PaidFees = Convert.ToDecimal(lblApplicationFees.Text);
-            _localDrivingLicenseApplication.CreatedByUserID = frmMainScreen._CurrentUser.UserID;
-            _localDrivingLicenseApplication.ApplicationStatus = Convert.ToByte( enModeApplicationStatus.New);
-            _localDrivingLicenseApplication.LastStatusDate = DateTime.Now;
-            _localDrivingLicenseApplication.ApplicationTypeID = clsApplicationTypes.Find("New Local Driving License Service").ApplicationTypeID;
+            if (_Mode == enMode.Add)
+            {
+                _localDrivingLicenseApplication.ApplicantPersonID = _PersonID;
+                _localDrivingLicenseApplication.ApplicationDate = DateTime.Now;
+                _localDrivingLicenseApplication.LicenseClassID = clsLicenseClass.Find(cbLicenseClass.Text).LicenseClassID;
+                _localDrivingLicenseApplication.PaidFees = Convert.ToDecimal(lblApplicationFees.Text);
+                _localDrivingLicenseApplication.CreatedByUserID = frmMainScreen._CurrentUser.UserID;
+                _localDrivingLicenseApplication.ApplicationStatus = Convert.ToByte(enModeApplicationStatus.New);
+                _localDrivingLicenseApplication.LastStatusDate = DateTime.Now;
+                _localDrivingLicenseApplication.ApplicationTypeID = clsApplicationTypes.Find("New Local Driving License Service").ApplicationTypeID; 
+            }
+            else if (_Mode == enMode.Update) 
+            {
+                
+                _localDrivingLicenseApplication.LicenseClassID = clsLicenseClass.Find(cbLicenseClass.Text).LicenseClassID;
+            }
         }
 
         private void _SaveLocalDrivingLicenseApplication()
@@ -152,6 +160,10 @@ namespace DVLDSystem_WindowsForm_.Application_Forms
             {
                 lblDLApplicationID.Text = _localDrivingLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
                 MessageBox.Show("Data Saved Successfuly.","Saved",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                lblTitleHeader.Text = "Update Local Driving License Application";
+                _Mode = enMode.Update;
+                ucFindPerson1.Enabled = false;
+
             }
             else
             {
