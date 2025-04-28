@@ -139,9 +139,7 @@ namespace DVLDSystem_WindowsForm_
 
         private void TSMinternationalLinceseApplications_Click(object sender, EventArgs e)
         {
-            frmAddEditLDLApplication editLocalDrivingLicenseApplication = new frmAddEditLDLApplication(33);
-            editLocalDrivingLicenseApplication.MdiParent = this;
-            editLocalDrivingLicenseApplication.Show();
+           
         }
     }
 }
