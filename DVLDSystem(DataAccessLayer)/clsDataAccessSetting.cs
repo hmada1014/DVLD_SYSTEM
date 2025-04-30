@@ -8,8 +8,13 @@ namespace DVLDSystem_DataAccessLayer_
 {
     static class clsDataAccessSetting
     {
+        //public static string ConnectionString = "Server=.;Database=DVLD_Test;User Id=admin;Password=mode2010;";
+
+        //public static string ConnectionString = "Server=.;Database=DVLD1;User Id=admin;Password=mode2010;";
+
         //public static string ConnectionString = "Server=.;Database=DVLD;User Id=admin;Password=mode2010;";
 
-        public static string ConnectionString = "Server=.;Database=DVLD1;User Id=admin;Password=mode2010;";
+        public static string ConnectionString = "Server=.;Database=DVLD_Test1;User Id=admin;Password=mode2010;";
+
     }
 }
