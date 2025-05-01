@@ -111,7 +111,11 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsLocalDrivingLicenseApplicationDataAccess.IsPersonHasSameLicenseClassExistAndGetApplicationID (ApplicantPersonID , LicenseClassID);
         }
-        public static int GetApplicationIDByApplicantPersonIDAndLicenseClassID(int ApplicantPersonID, int LicenseClassID)
+        public static bool IsHasDriverLicenseByApplicationID(int ApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.IsHasDriverLicenseByApplicationID(ApplicationID);
+        }
+        public static int GetApplicationID(int ApplicantPersonID, int LicenseClassID)
         {
             return clsLocalDrivingLicenseApplicationDataAccess.GetApplicationIDByApplicantPersonIDAndLicenseClassID(ApplicantPersonID,LicenseClassID);
         }

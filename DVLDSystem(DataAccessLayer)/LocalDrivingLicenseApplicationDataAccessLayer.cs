@@ -153,15 +153,14 @@ namespace DVLDSystem_DataAccessLayer_
             try
             {
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                object  result = command.ExecuteScalar();
 
-                if (reader.Read())
-                {
-                    if (int.TryParse(reader["PassedTestCount"].ToString(), out int ID))
+                
+                    if (int.TryParse(result.ToString(), out int ID))
                     {
                         PassTest = ID;
                     }
-                }
+                
             }
             catch (Exception ex)
             {
@@ -171,6 +170,34 @@ namespace DVLDSystem_DataAccessLayer_
                 connection.Close();
             }
             return PassTest;
+        }
+        public static bool IsHasDriverLicenseByApplicationID(int ApplicationID)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"SELECT Found = 1
+                             FROM Licenses 
+                             where  Licenses.ApplicationID = @ApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
         }
         public static int AddNewLocalDrivingLicenseApplication(int ApplicationID, int LicenseClassID)
         {
