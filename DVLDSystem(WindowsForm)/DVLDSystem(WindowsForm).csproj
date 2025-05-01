@@ -93,6 +93,12 @@
     <Compile Include="Application Forms\frmAddEditLDLApplication.Designer.cs">
       <DependentUpon>frmAddEditLDLApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application Forms\frmLDLApplicationDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Application Forms\frmLDLApplicationDetails.Designer.cs">
+      <DependentUpon>frmLDLApplicationDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application Forms\frmManageApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Test Forms\frmScheduelTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test Forms\frmScheduelTest.Designer.cs">
+      <DependentUpon>frmScheduelTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test Forms\frmTestAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test Forms\frmTestAppointments.Designer.cs">
+      <DependentUpon>frmTestAppointments.cs</DependentUpon>
+    </Compile>
     <Compile Include="test.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +186,18 @@
     <Compile Include="User  Forms\frmShowUserDetails.Designer.cs">
       <DependentUpon>frmShowUserDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Control\ucApplicationBasicInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucApplicationBasicInfo.Designer.cs">
+      <DependentUpon>ucApplicationBasicInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\ucDrivingLicenseApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucDrivingLicenseApplicationInfo.Designer.cs">
+      <DependentUpon>ucDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Control\ucFindPerson.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -179,6 +209,12 @@
     </Compile>
     <Compile Include="User Control\ucPersonCard.Designer.cs">
       <DependentUpon>ucPersonCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\ucRetakeTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucRetakeTest.Designer.cs">
+      <DependentUpon>ucRetakeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="User Control\ucTemplateDGV.cs">
       <SubType>UserControl</SubType>
@@ -210,6 +246,12 @@
     <Compile Include="User  Forms\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Control\ucTestAppointment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucTestAppointment.Designer.cs">
+      <DependentUpon>ucTestAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Control\ucUserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Application Forms\frmAddEditLDLApplication.resx">
       <DependentUpon>frmAddEditLDLApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Application Forms\frmLDLApplicationDetails.resx">
+      <DependentUpon>frmLDLApplicationDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Application Forms\frmManageApplicationTypes.resx">
       <DependentUpon>frmManageApplicationTypes.cs</DependentUpon>
@@ -258,6 +303,12 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test Forms\frmScheduelTest.resx">
+      <DependentUpon>frmScheduelTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test Forms\frmTestAppointments.resx">
+      <DependentUpon>frmTestAppointments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,6 +318,12 @@
     <EmbeddedResource Include="User  Forms\frmShowUserDetails.resx">
       <DependentUpon>frmShowUserDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucApplicationBasicInfo.resx">
+      <DependentUpon>ucApplicationBasicInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucDrivingLicenseApplicationInfo.resx">
+      <DependentUpon>ucDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucFindPerson.resx">
       <DependentUpon>ucFindPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucPersonCard.resx">
       <DependentUpon>ucPersonCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucRetakeTest.resx">
+      <DependentUpon>ucRetakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucTemplateDGV.resx">
       <DependentUpon>ucTemplateDGV.cs</DependentUpon>
@@ -287,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User  Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucTestAppointment.resx">
+      <DependentUpon>ucTestAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucUserCard.resx">
       <DependentUpon>ucUserCard.cs</DependentUpon>
