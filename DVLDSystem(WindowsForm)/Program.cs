@@ -1,5 +1,6 @@
 ﻿using DVLDSystem_WindowsForm_.Application_Forms;
 using DVLDSystem_WindowsForm_.People__Forms;
+using DVLDSystem_WindowsForm_.Test_Forms;
 using DVLDSystem_WindowsForm_.User;
 using DVLDSystem_WindowsForm_.User__Forms;
 using System;
@@ -38,6 +39,12 @@ namespace DVLDSystem_WindowsForm_
 
             //Application.Run(new frmAddEditLocalDrivingLicenseApplication(16));
             //Application.Run(new frmManageLDLApplication());
+
+            //Application.Run(new frmScheduelTest());
+
+            //Application.Run(new frmTestAppointments(38,""));
+
+
 
         }
     }
