@@ -29,13 +29,14 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 lblLDLApplicationID.Text = _LDLApplication.LocalDrivingLicenseApplicationID.ToString();
                 lblLicenseClassName.Text =  clsLicenseClass.Find(_LDLApplication.LicenseClassID).ClassName;
                 lblPassedTest.Text = $"{clsLocalDrivingLicenseApplication.GetPassedTestsByLDLApplicationID(LDLApplicationID)}/3";
-                lklShowLicenseInfo.Enabled = true;
+                lklShowLicenseInfo.Enabled = clsLocalDrivingLicenseApplication.IsHasDriverLicenseByApplicationID(_LDLApplication.ApplicationID);
             }
             else
             {
                 lblLDLApplicationID.Text = "????";
                 lblLicenseClassName.Text = "????";
                 lblPassedTest.Text = "0/3";
+                lklShowLicenseInfo.Enabled = false;
             }
 
         }
