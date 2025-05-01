@@ -17,13 +17,14 @@ namespace DVLDSystem_WindowsForm_.User_Control
 {
     public partial class ucTemplateDGV : UserControl
     {
-        private enum enModeUC { ManageApplicationTypes = 1, ManageTestTypes = 2, Empty }
-        enModeUC _enMode = enModeUC.Empty;
+        private  enum enModeUC { ManageApplicationTypes = 1, ManageTestTypes = 2, VisionTestAppointments =3 , WritingTestAppointments = 4, StreetTestAppointments = 5, Empty }
+        private  enModeUC _enMode = enModeUC.Empty;
         private string _FormName;
         public ucTemplateDGV()
         {
             InitializeComponent();
         }
+
         public ucTemplateDGV(string FormName)
         {
             InitializeComponent();
@@ -39,11 +40,20 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     TSMManageTestTypes.Visible = true;
                     _enMode = enModeUC.ManageTestTypes;
                     break;
+                case "frmVisionTestAppointments":
+                    _enMode = enModeUC.VisionTestAppointments;
+                    break;
+                case "frmWritingTestAppointments":
+                    _enMode = enModeUC.WritingTestAppointments;
+                    break;
+                case "frmStreetTestAppointments":
+                    _enMode = enModeUC.StreetTestAppointments;
+                    break;
             }
         }
 
-
         /*########### Expose Properties of Controls in UserControl #######*/
+
 
         [Browsable(true)]
         [Category("Misc Controls Properties")]
@@ -67,6 +77,9 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
 
         //############################ UI Data Helper ######################
+
+        
+
         public void RefreshDGV(object DataSours)
         {
             DataView dv = _ConvertToDataView(DataSours);
@@ -82,6 +95,21 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     dgvShowList.DataSource = dv;
                     _ResizeDgvForManageTestType();
                     _UpdateManageTestTypeColumnHeaders();
+                    break;
+                case enModeUC.VisionTestAppointments:
+                    dgvShowList.DataSource = dv;
+                    _UpdateAppointmentsColumnHeaders();
+                    _ResizeDgvForAppointment();
+                    break;
+                case enModeUC.WritingTestAppointments:
+                    dgvShowList.DataSource = dv;
+                    _UpdateAppointmentsColumnHeaders();
+                    _ResizeDgvForAppointment();
+                    break;
+                case enModeUC.StreetTestAppointments:
+                    dgvShowList.DataSource = dv;
+                    _UpdateAppointmentsColumnHeaders();
+                    _ResizeDgvForAppointment();
                     break;
             }
 
@@ -105,6 +133,15 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 dgvShowList.Columns[ColumnName].HeaderText = headerText;
             }
         }
+
+        private void _UpdateAppointmentsColumnHeaders()
+        {
+            _SafeHeaderUpdate("TestAppointmentID", "AppointmentID");
+            _SafeHeaderUpdate("AppointmentDate", "Appointment Date");
+            _SafeHeaderUpdate("PaidFees", "Paid Fees");
+            _SafeHeaderUpdate("IsLocked", "Is Locked");
+
+        }
         private void _UpdateManageApplicationTypesColumnHeaders()
         {
             _SafeHeaderUpdate("ApplicationTypeID", "ID");
@@ -120,9 +157,26 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         private void _ResizeDgvForManageTestType()
         {
-            dgvShowList.Columns["TestTypeDescription"].Width = 300;
-            dgvShowList.Columns["TestTypeTitle"].Width = 135;
-            dgvShowList.Columns["TestTypeID"].Width = 50;
+            _SafeHeaderSizeUpdate("TestTypeDescription" ,300);
+            _SafeHeaderSizeUpdate("TestTypeTitle", 135);
+            _SafeHeaderSizeUpdate("TestTypeID", 50);
+        }
+
+        private void _ResizeDgvForAppointment()
+        {
+            _SafeHeaderSizeUpdate("TestAppointmentID", 200);
+            _SafeHeaderSizeUpdate("AppointmentDate", 200);
+            _SafeHeaderSizeUpdate("PaidFees", 175);
+            _SafeHeaderSizeUpdate("IsLocked", 175);
+
+        }
+
+        private void _SafeHeaderSizeUpdate(string ColumnName, int ColumnSize)
+        {
+            if (dgvShowList.Columns.Contains(ColumnName))
+            {
+                dgvShowList.Columns[ColumnName].Width = ColumnSize;
+            }
         }
 
         /*########################### cmsGeneralMenu ################################*/

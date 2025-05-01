@@ -29,13 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
             this.cmsGeneral = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.lblRrecords = new System.Windows.Forms.Label();
-            this.lblRecordsTitle = new System.Windows.Forms.Label();
             this.TSMEditApplicationType = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblRrecords = new System.Windows.Forms.Label();
+            this.lblRecordsTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.cmsGeneral.SuspendLayout();
             this.SuspendLayout();
@@ -46,15 +49,29 @@
             this.dgvShowList.AllowUserToDeleteRows = false;
             this.dgvShowList.AllowUserToResizeColumns = false;
             this.dgvShowList.AllowUserToResizeRows = false;
-            this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
+            this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(64)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowList.ContextMenuStrip = this.cmsGeneral;
-            this.dgvShowList.Location = new System.Drawing.Point(0, 26);
+            this.dgvShowList.GridColor = System.Drawing.SystemColors.Desktop;
+            this.dgvShowList.Location = new System.Drawing.Point(0, 7);
             this.dgvShowList.Name = "dgvShowList";
             this.dgvShowList.ReadOnly = true;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.dgvShowList.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvShowList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowList.Size = new System.Drawing.Size(640, 330);
+            this.dgvShowList.Size = new System.Drawing.Size(640, 307);
             this.dgvShowList.TabIndex = 6;
             // 
             // cmsGeneral
@@ -64,28 +81,8 @@
             this.TSMManageTestTypes,
             this.TSMRefresh});
             this.cmsGeneral.Name = "cmsGeneral";
-            this.cmsGeneral.Size = new System.Drawing.Size(202, 140);
+            this.cmsGeneral.Size = new System.Drawing.Size(202, 118);
             this.cmsGeneral.Opening += new System.ComponentModel.CancelEventHandler(this.cmsGeneral_Opening);
-            // 
-            // lblRrecords
-            // 
-            this.lblRrecords.AutoSize = true;
-            this.lblRrecords.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblRrecords.Location = new System.Drawing.Point(114, 361);
-            this.lblRrecords.Name = "lblRrecords";
-            this.lblRrecords.Size = new System.Drawing.Size(18, 19);
-            this.lblRrecords.TabIndex = 10;
-            this.lblRrecords.Text = "0";
-            // 
-            // lblRecordsTitle
-            // 
-            this.lblRecordsTitle.AutoSize = true;
-            this.lblRecordsTitle.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lblRecordsTitle.Location = new System.Drawing.Point(17, 360);
-            this.lblRecordsTitle.Name = "lblRecordsTitle";
-            this.lblRecordsTitle.Size = new System.Drawing.Size(88, 19);
-            this.lblRecordsTitle.TabIndex = 9;
-            this.lblRecordsTitle.Text = "#Records :";
             // 
             // TSMEditApplicationType
             // 
@@ -116,6 +113,28 @@
             this.TSMRefresh.Text = "Refresh";
             this.TSMRefresh.Click += new System.EventHandler(this.TSMRefresh_Click);
             // 
+            // lblRrecords
+            // 
+            this.lblRrecords.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRrecords.AutoSize = true;
+            this.lblRrecords.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lblRrecords.Location = new System.Drawing.Point(114, 319);
+            this.lblRrecords.Name = "lblRrecords";
+            this.lblRrecords.Size = new System.Drawing.Size(18, 19);
+            this.lblRrecords.TabIndex = 10;
+            this.lblRrecords.Text = "0";
+            // 
+            // lblRecordsTitle
+            // 
+            this.lblRecordsTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRecordsTitle.AutoSize = true;
+            this.lblRecordsTitle.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lblRecordsTitle.Location = new System.Drawing.Point(17, 319);
+            this.lblRecordsTitle.Name = "lblRecordsTitle";
+            this.lblRecordsTitle.Size = new System.Drawing.Size(88, 19);
+            this.lblRecordsTitle.TabIndex = 9;
+            this.lblRecordsTitle.Text = "#Records :";
+            // 
             // ucTemplateDGV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,7 +143,7 @@
             this.Controls.Add(this.lblRecordsTitle);
             this.Controls.Add(this.dgvShowList);
             this.Name = "ucTemplateDGV";
-            this.Size = new System.Drawing.Size(640, 386);
+            this.Size = new System.Drawing.Size(640, 345);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
             this.cmsGeneral.ResumeLayout(false);
             this.ResumeLayout(false);
