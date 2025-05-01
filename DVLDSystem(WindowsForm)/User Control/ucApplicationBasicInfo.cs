@@ -48,7 +48,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 lblApplicationID.Text = _Application.ApplicationID.ToString();
                 lblApplicationStatus.Text = _GetApplicationStatusName(_Application.ApplicationStatus);
-                lblApplicationFees.Text = clsApplicationTypes.Find(_Application.ApplicationTypeID).ApplicationFees.ToString();
+                lblApplicationFees.Text = Convert.ToSingle( clsApplicationTypes.Find(_Application.ApplicationTypeID).ApplicationFees).ToString();
                 lblApplicationType.Text = clsApplicationTypes.Find(_Application.ApplicationTypeID).ApplicationTypeTitle;
                 lblApplicationPersonName.Text = clsPerson.Find(_Application.ApplicantPersonID).FullName;
                 lblApplicationDate.Text = _Application.ApplicationDate.ToString("M/d/yyyy");
@@ -66,6 +66,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 lblApplicationDate.Text = "????";
                 lblApplicationLastStatusDate.Text = "????";
                 lblApplicationCreatedBy.Text = "????";
+                lklPersonInfo.Enabled = false;
             }
 
         }
