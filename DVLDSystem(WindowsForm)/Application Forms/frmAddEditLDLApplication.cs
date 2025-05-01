@@ -191,7 +191,7 @@ namespace DVLDSystem_WindowsForm_.Application_Forms
             {
                 MessageBox.Show($"Choose another License class, the selected Person Already" +
                     $"\n have an active application for the selected class with id = " +
-                    $"{clsLocalDrivingLicenseApplication.GetApplicationIDByApplicantPersonIDAndLicenseClassID(_PersonID,clsLicenseClass.Find(cbLicenseClass.Text).LicenseClassID)}", 
+                    $"{clsLocalDrivingLicenseApplication.GetApplicationID(_PersonID,clsLicenseClass.Find(cbLicenseClass.Text).LicenseClassID)}", 
                     "Failed Save",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
