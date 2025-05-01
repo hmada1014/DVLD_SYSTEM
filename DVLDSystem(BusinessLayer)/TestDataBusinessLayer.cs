@@ -62,6 +62,12 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsTestDataAccessLayer.IsTestExist(TestID);
         }
+
+        public static bool IsLDLApplicationIDPassedTest(int LDLApplicationID ,int TestTypeID ,int StatusTest )
+        {
+            return clsTestDataAccessLayer.IsLDLApplicationIDPassedTest(LDLApplicationID,TestTypeID , StatusTest);
+        }
+
         private bool _AddNewTest()
         {
             this.TestID = clsTestDataAccessLayer.AddNewTest(this.TestAppointmentID, this.TestResult, this.Notes, this.CreatedByUserID);

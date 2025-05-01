@@ -248,6 +248,41 @@ namespace DVLDSystem_DataAccessLayer_
             return IsFound;
         }
 
+        public static bool IsLDLApplicationIDPassedTest(int LDLApplicationID , int TestTypeID, int StatusTest)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"SELECT    found = 1
+                             FROM  Tests INNER JOIN
+                                   TestTypes ON TestTypeID = TestTypes.TestTypeID INNER JOIN
+                                   TestAppointments ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID AND TestTypes.TestTypeID = TestAppointments.TestTypeID
+                             WHERE
+                           (TestAppointments.LocalDrivingLicenseApplicationID = @LDLApplicationID) 
+                           AND (TestAppointments.TestTypeID = @TestTypeID) 
+                           AND (Tests.TestResult = @StatusTest)";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            command.Parameters.AddWithValue("@StatusTest", StatusTest);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+
         public static DataView SearchTestByTestID(int TestID)
         {
             DataTable dataTable = new DataTable();
