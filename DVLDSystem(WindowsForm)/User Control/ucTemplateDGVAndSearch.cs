@@ -1,6 +1,8 @@
 ﻿using DVLDSystem_BusinessLayer_;
+using DVLDSystem_WindowsForm_.Application_Forms;
 using DVLDSystem_WindowsForm_.People;
 using DVLDSystem_WindowsForm_.People__Forms;
+using DVLDSystem_WindowsForm_.Test_Forms;
 using DVLDSystem_WindowsForm_.User;
 using DVLDSystem_WindowsForm_.User__Forms;
 using Guna.UI2.WinForms;
@@ -540,7 +542,32 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
 
         /*########################### cmsLDLApplication ################################*/
+        private void _ShowLDLApplicationDeitails()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            {
+                frmLDLApplicationDetails applicationDetails = new frmLDLApplicationDetails(ID);
+                applicationDetails.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Person Not Found to Show.", "warning");
+            }
 
+        }
+        private void _EditLDLApplication()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            {
+                frmAddEditLDLApplication addEditLDLApplication = new frmAddEditLDLApplication(ID);
+                addEditLDLApplication.ShowDialog();
+                _btnRefreshDGV_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Application Not Found to Edit.", "Failed");
+            }
+        }
         private void _DeleteLDLApplication()
         {
             int ID = Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
@@ -566,6 +593,66 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 MessageBox.Show($"LDLApplication with ID {ID} was not found", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void _CancelLDLApplication()
+        {
+            if (MessageBox.Show($"Are you sure you want to cancel this LDLApplication \n{dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value}", "Cancel Application", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (clsLocalDrivingLicenseApplication.UpdateApplicationStatus(Convert.ToInt32(enLDLApplicationStatus.Canceled), Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value), DateTime.Now))
+                {
+                    MessageBox.Show("Application canceled successfully", "Canceled successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _btnRefreshDGV_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Application canceled Faild", "Canceled Faild", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+        }
+
+        private void _ScheduleVisionTestLDLApplication()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            {
+                frmTestAppointments visionTestAppointments = new frmTestAppointments(ID, "VisionTest");
+                visionTestAppointments.ShowDialog();
+                _btnRefreshDGV_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Application Not Found to Edit.", "Failed");
+            }
+
+        }
+        private void _ScheduleWritingTestLDLApplication()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            {
+                frmTestAppointments visionTestAppointments = new frmTestAppointments(ID, "WritingTest");
+                visionTestAppointments.ShowDialog();
+                _btnRefreshDGV_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Application Not Found to Edit.", "Failed");
+            }
+
+        }
+        private void _ScheduleStreetTestLDLApplication()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            {
+                frmTestAppointments visionTestAppointments = new frmTestAppointments(ID, "StreetTest");
+                visionTestAppointments.ShowDialog();
+                _btnRefreshDGV_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Application Not Found to Edit.", "Failed");
+            }
+
+        }
+
 
         /*########################### cmsGeneralMenu ################################*/
 
@@ -753,6 +840,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             switch (_enMode)
             {
                 case enModeUC.ManageLDLApplication:
+                    _EditLDLApplication();
                     break;
                 case enModeUC.People:
                     _EditPerson();
@@ -792,6 +880,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
             switch (_enMode)
             {
                 case enModeUC.ManageLDLApplication:
+                    _ShowLDLApplicationDeitails();
                     break;
                 case enModeUC.People:
                     _ShowPersonDeitails();
@@ -844,19 +933,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         private void _TSMCancelApplicationl_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure you want to cancel this LDLApplication \n{dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value}","Cancel Application",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes )
-            {
-                if (clsLocalDrivingLicenseApplication.UpdateApplicationStatus(Convert.ToInt32(enLDLApplicationStatus.Canceled),  Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value),DateTime.Now))
-                {
-                    MessageBox.Show("Application canceled successfully", "Canceled successfully", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-                    _btnRefreshDGV_Click(sender, e);
-                }
-                else
-                {
-                    MessageBox.Show("Application canceled Faild", "Canceled Faild", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-            }
+            _CancelLDLApplication();
         }
         private void _cbFindBy_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -895,7 +972,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
             if (dataGrid.Rows.Count == 0)
             {
                 e.Cancel = true;
-                return;
             }
         }
         private void _CheckMousePosition(DataGridView dataGrid, CancelEventArgs e)
@@ -920,10 +996,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             _CheckdgvShowListEmpty(dgvShowList, e);
             _CheckMousePosition(dgvShowList, e);
-            _EnableAndDisableCmsLDLApplication(_GetApplicationStatus(Convert.ToInt16(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value)));
+
+            if (e.Cancel == false)
+                _EnableAndDisableCmsLDLApplication(_GetApplicationStatus(Convert.ToInt16(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value))); 
+            
         }
-
-
         private enLDLApplicationStatus _GetApplicationStatus(int LDLApplicationID)
         {
             int Status = clsLocalDrivingLicenseApplication.Find(Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value)).ApplicationStatus;
@@ -949,7 +1026,35 @@ namespace DVLDSystem_WindowsForm_.User_Control
             TSMDeleteApplication.Enabled = true;
             TSMCancelApplication.Enabled = true;
             TSMSechduleTests.Enabled = true;
-            TSMShowPersonLicenseHistory.Enabled = true; 
+            TSMShowPersonLicenseHistory.Enabled = true;
+            int PassedTestCount = 0;
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["PassedTestCount"].Value.ToString() ,out int CountTest))
+            {
+                PassedTestCount = CountTest;
+            }
+
+
+            TSMScheduleVisionTest.Enabled = false;
+            TSMScheduleWrittenTest.Enabled = false;
+            TSMScheduleStreetTest.Enabled = false;
+            switch (PassedTestCount)
+            {
+                case 0:
+                    TSMScheduleVisionTest.Enabled = true;
+
+                    break;
+                    case 1:              
+                    TSMScheduleWrittenTest.Enabled = true;
+                    break;
+                    case 2:
+                    TSMScheduleStreetTest.Enabled = true;
+                    break;
+                default:
+                    TSMSechduleTests.Enabled = false;
+                    TSMIssueDrivingLicenseFirstTimeApplication.Enabled = true;
+                    break;
+            }
+
         }
         private void _EnableAndDisableMenuCanceledStatus()
         {
@@ -984,13 +1089,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
             }
         }
-
-
         private void _dgvShowList_ShowDeitailsGeneral_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             switch (_enMode)
             {
                 case enModeUC.ManageLDLApplication:
+                    _ShowLDLApplicationDeitails();
                     break;
                 case enModeUC.People:
                     _ShowPersonDeitails();
@@ -1005,7 +1109,22 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
+        private void TSMScheduleTestGeneral_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem CurrenTest = sender as ToolStripMenuItem;
 
-       
+            switch (CurrenTest.Name)
+            {
+                case "TSMScheduleVisionTest":
+                    _ScheduleVisionTestLDLApplication();
+                    break;
+                case "TSMScheduleWrittenTest":
+                    _ScheduleWritingTestLDLApplication();
+                    break;
+                case "TSMScheduleStreetTest":
+                    _ScheduleStreetTestLDLApplication();
+                    break;
+            }
+        }
     }
 }

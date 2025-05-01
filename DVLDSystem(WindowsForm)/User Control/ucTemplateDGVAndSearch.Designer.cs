@@ -51,7 +51,6 @@
             this.lblRrecords = new System.Windows.Forms.Label();
             this.lblRecordsTitle = new System.Windows.Forms.Label();
             this.cbGeneral = new System.Windows.Forms.ComboBox();
-            this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
             this.cmsLDLApplication = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TSMShowApplicationDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -60,19 +59,20 @@
             this.TSMCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMSechduleTests = new System.Windows.Forms.ToolStripMenuItem();
-            this.notSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notSetToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.notSetToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMIssueDrivingLicenseFirstTimeApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMShowLicenseApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.cmsGeneralMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
             this.cmsLDLApplication.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // cbFindBy
@@ -298,22 +298,6 @@
             this.cbGeneral.Visible = false;
             this.cbGeneral.SelectedIndexChanged += new System.EventHandler(this._cbGeneral_SelectedIndexChanged);
             // 
-            // btnRefreshDGV
-            // 
-            this.btnRefreshDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefreshDGV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btnRefreshDGV.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRefreshDGV.IconChar = FontAwesome.Sharp.IconChar.RotateBackward;
-            this.btnRefreshDGV.IconColor = System.Drawing.SystemColors.ControlText;
-            this.btnRefreshDGV.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRefreshDGV.IconSize = 27;
-            this.btnRefreshDGV.Location = new System.Drawing.Point(616, 368);
-            this.btnRefreshDGV.Name = "btnRefreshDGV";
-            this.btnRefreshDGV.Size = new System.Drawing.Size(35, 27);
-            this.btnRefreshDGV.TabIndex = 4;
-            this.btnRefreshDGV.TabStop = false;
-            this.btnRefreshDGV.Click += new System.EventHandler(this._btnRefreshDGV_Click);
-            // 
             // cmsLDLApplication
             // 
             this.cmsLDLApplication.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -383,32 +367,44 @@
             // TSMSechduleTests
             // 
             this.TSMSechduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.notSetToolStripMenuItem,
-            this.notSetToolStripMenuItem1,
-            this.notSetToolStripMenuItem2});
+            this.TSMScheduleVisionTest,
+            this.TSMScheduleWrittenTest,
+            this.TSMScheduleStreetTest});
             this.TSMSechduleTests.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Schedule_Test_32;
             this.TSMSechduleTests.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMSechduleTests.Name = "TSMSechduleTests";
             this.TSMSechduleTests.Size = new System.Drawing.Size(261, 38);
             this.TSMSechduleTests.Text = "Sechdule Tests";
             // 
-            // notSetToolStripMenuItem
+            // TSMScheduleVisionTest
             // 
-            this.notSetToolStripMenuItem.Name = "notSetToolStripMenuItem";
-            this.notSetToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.notSetToolStripMenuItem.Text = "not set";
+            this.TSMScheduleVisionTest.Enabled = false;
+            this.TSMScheduleVisionTest.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Vision_Test_32;
+            this.TSMScheduleVisionTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMScheduleVisionTest.Name = "TSMScheduleVisionTest";
+            this.TSMScheduleVisionTest.Size = new System.Drawing.Size(203, 38);
+            this.TSMScheduleVisionTest.Text = "Schedule Vision Test";
+            this.TSMScheduleVisionTest.Click += new System.EventHandler(this.TSMScheduleTestGeneral_Click);
             // 
-            // notSetToolStripMenuItem1
+            // TSMScheduleWrittenTest
             // 
-            this.notSetToolStripMenuItem1.Name = "notSetToolStripMenuItem1";
-            this.notSetToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
-            this.notSetToolStripMenuItem1.Text = "not set";
+            this.TSMScheduleWrittenTest.Enabled = false;
+            this.TSMScheduleWrittenTest.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Written_Test_32_Sechdule;
+            this.TSMScheduleWrittenTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMScheduleWrittenTest.Name = "TSMScheduleWrittenTest";
+            this.TSMScheduleWrittenTest.Size = new System.Drawing.Size(203, 38);
+            this.TSMScheduleWrittenTest.Text = "Schedule Written Test";
+            this.TSMScheduleWrittenTest.Click += new System.EventHandler(this.TSMScheduleTestGeneral_Click);
             // 
-            // notSetToolStripMenuItem2
+            // TSMScheduleStreetTest
             // 
-            this.notSetToolStripMenuItem2.Name = "notSetToolStripMenuItem2";
-            this.notSetToolStripMenuItem2.Size = new System.Drawing.Size(110, 22);
-            this.notSetToolStripMenuItem2.Text = "not set";
+            this.TSMScheduleStreetTest.Enabled = false;
+            this.TSMScheduleStreetTest.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Street_Test_32;
+            this.TSMScheduleStreetTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMScheduleStreetTest.Name = "TSMScheduleStreetTest";
+            this.TSMScheduleStreetTest.Size = new System.Drawing.Size(203, 38);
+            this.TSMScheduleStreetTest.Text = "Schedule Street Test";
+            this.TSMScheduleStreetTest.Click += new System.EventHandler(this.TSMScheduleTestGeneral_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -451,6 +447,22 @@
             this.TSMShowPersonLicenseHistory.Size = new System.Drawing.Size(261, 38);
             this.TSMShowPersonLicenseHistory.Text = "Show Person License History";
             // 
+            // btnRefreshDGV
+            // 
+            this.btnRefreshDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefreshDGV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.btnRefreshDGV.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRefreshDGV.IconChar = FontAwesome.Sharp.IconChar.RotateBackward;
+            this.btnRefreshDGV.IconColor = System.Drawing.SystemColors.ControlText;
+            this.btnRefreshDGV.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRefreshDGV.IconSize = 27;
+            this.btnRefreshDGV.Location = new System.Drawing.Point(616, 368);
+            this.btnRefreshDGV.Name = "btnRefreshDGV";
+            this.btnRefreshDGV.Size = new System.Drawing.Size(35, 27);
+            this.btnRefreshDGV.TabIndex = 4;
+            this.btnRefreshDGV.TabStop = false;
+            this.btnRefreshDGV.Click += new System.EventHandler(this._btnRefreshDGV_Click);
+            // 
             // ucTemplateDGVAndSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,8 +480,8 @@
             this.Size = new System.Drawing.Size(651, 395);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
             this.cmsGeneralMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
             this.cmsLDLApplication.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,9 +517,9 @@
         private System.Windows.Forms.ToolStripMenuItem TSMCancelApplication;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem TSMSechduleTests;
-        private System.Windows.Forms.ToolStripMenuItem notSetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem notSetToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem notSetToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem TSMScheduleVisionTest;
+        private System.Windows.Forms.ToolStripMenuItem TSMScheduleWrittenTest;
+        private System.Windows.Forms.ToolStripMenuItem TSMScheduleStreetTest;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem TSMIssueDrivingLicenseFirstTimeApplication;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
