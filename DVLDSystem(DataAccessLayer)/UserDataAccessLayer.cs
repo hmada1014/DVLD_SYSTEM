@@ -95,9 +95,9 @@ namespace DVLDSystem_DataAccessLayer_
                     UserID = (int)reader["UserID"];
                     PersonID = (int)reader["PersonID"];
                     IsActive = (bool)reader["IsActive"];
-                    if (reader["Permission"] != null && reader["Permission"] == "")
+                    if (int.TryParse(reader["Permission"].ToString(), out int permission))
                     {
-                        Permission = Convert.ToInt32( reader["Permission"]);
+                        Permission = permission;
                     }
                     else
                     {
