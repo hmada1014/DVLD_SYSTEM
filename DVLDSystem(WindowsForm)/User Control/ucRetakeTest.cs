@@ -40,7 +40,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         [Browsable(true)]
         [Category("Misc Controls Properties")]
 
-        public Label NameProperty
+        public Label TotalFees
         {
             get { return lblTotalFees; }
             set { lblTotalFees = value; }
