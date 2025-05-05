@@ -84,6 +84,27 @@ namespace DVLDSystem_BusinessLayer_
                 return null;
             }
         }
+
+        public static clsLicense FindByApplicationID(int ApplicationID)
+        {
+            int LicenseID = -1, DriverID = -1, LicenseClass = -1, CreatedByUserID = -1;
+            DateTime IssueDate = DateTime.MinValue, ExpirationDate = DateTime.MinValue;
+            string Notes = string.Empty;
+            decimal PaidFees = -1;
+            bool IsActive = false;
+            byte IssueReason = 0;
+
+
+            if (clsLicenseDataAccessLayer.GetLicenseInfoByApplicationID(ApplicationID,ref LicenseID,ref DriverID,ref LicenseClass,ref IssueDate,ref ExpirationDate,ref Notes ,ref PaidFees ,ref IsActive,ref IssueReason,ref CreatedByUserID))
+            {
+                return new clsLicense(LicenseID, ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate, Notes, PaidFees, IsActive, IssueReason, CreatedByUserID);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static bool IsLicenseExist(int LicenseID)
         {
             return clsLicenseDataAccessLayer.IsLicenseExist(LicenseID);

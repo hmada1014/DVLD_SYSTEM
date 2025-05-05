@@ -65,6 +65,62 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
+        public static bool GetLicenseInfoByApplicationID(int ApplicationID,ref int LicenseID, ref int DriverID, ref int LicenseClass, ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, ref decimal PaidFees, ref bool IsActive, ref byte IssueReason, ref int CreatedByUserID)
+        {
+
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select * from Licenses where Licenses.ApplicationID = @ApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    LicenseID = (int)reader["LicenseID"];
+                    DriverID = (int)reader["DriverID"];
+                    LicenseClass = (int)reader["LicenseClass"];
+                    IssueDate = (DateTime)reader["IssueDate"];
+                    ExpirationDate = (DateTime)reader["ExpirationDate"];
+                    Notes = reader["Notes"] != System.DBNull.Value ? (string)reader["Notes"] : string.Empty;
+                    PaidFees = (decimal)reader["PaidFees"];
+                    IsActive = (bool)reader["IsActive"];
+                    IssueReason = (byte)reader["IssueReason"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+
+
+                }
+                else
+                {
+                    IsFound = false;
+
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+
         public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClass, DateTime IssueDate, DateTime ExpirationDate, string Notes, decimal PaidFees, bool IsActive, byte IssueReason, int CreatedByUserID)
         {
             int LicenseId = -1;
