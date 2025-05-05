@@ -78,6 +78,7 @@
             this.lklShowLicenseInfo.TabIndex = 9;
             this.lklShowLicenseInfo.TabStop = true;
             this.lklShowLicenseInfo.Text = "Show License Info";
+            this.lklShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklShowLicenseInfo_LinkClicked);
             // 
             // pictureBox3
             // 
@@ -189,8 +190,8 @@
         private System.Windows.Forms.Label lblLicenseClassName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel lklShowLicenseInfo;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
