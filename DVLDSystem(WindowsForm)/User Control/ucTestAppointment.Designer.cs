@@ -67,7 +67,6 @@
             // 
             this.DtpDateTestAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DtpDateTestAppointment.Location = new System.Drawing.Point(169, 172);
-            this.DtpDateTestAppointment.MinDate = new System.DateTime(2025, 4, 29, 0, 0, 0, 0);
             this.DtpDateTestAppointment.Name = "DtpDateTestAppointment";
             this.DtpDateTestAppointment.Size = new System.Drawing.Size(200, 27);
             this.DtpDateTestAppointment.TabIndex = 52;
