@@ -1,5 +1,6 @@
 ﻿using DVLDSystem_BusinessLayer_;
 using DVLDSystem_WindowsForm_.Application_Forms;
+using DVLDSystem_WindowsForm_.Driver_Forms;
 using DVLDSystem_WindowsForm_.Properties;
 using DVLDSystem_WindowsForm_.User;
 using DVLDSystem_WindowsForm_.User__Forms;
@@ -140,6 +141,17 @@ namespace DVLDSystem_WindowsForm_
         private void TSMinternationalLinceseApplications_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void tsmDrivers_Click(object sender, EventArgs e)
+        {
+            if (!_CheckIsFormOpen(typeof(frmDriver)))
+            {
+                frmDriver driver = new frmDriver();
+                driver.MdiParent = this;
+                driver.Show();
+            }
+          
         }
     }
 }
