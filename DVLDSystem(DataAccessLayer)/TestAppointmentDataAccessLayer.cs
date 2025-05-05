@@ -131,7 +131,7 @@ namespace DVLDSystem_DataAccessLayer_
                                    AppointmentDate = @AppointmentDate,
                                    PaidFees = @PaidFees,
                                    CreatedByUserID = @CreatedByUserID,
-                                   IsLocked = @IsLocked
+                                   IsLocked = @IsLocked,
                                    RetakeTestApplicationID = @RetakeTestApplicationID
                              where TestAppointmentID = @TestAppointmentID";
 
@@ -292,7 +292,7 @@ namespace DVLDSystem_DataAccessLayer_
             int PassTest = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string query = @"select count(TestAppointments.RetakeTestApplicationID) 
+            string query = @"select count(TestAppointmentID) 
                              from TestAppointments
                              where 
                              TestAppointments.LocalDrivingLicenseApplicationID =@LDLApplicationID 
@@ -410,16 +410,18 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
-        public static bool IsLDLApplicationIDHasTestAppointmentsExist(int LDLApplicationID)
+        public static bool IsLDLApplicationIDHasTestAppointmentsExist(int LDLApplicationID , int TestTypeID)
         {
             bool IsFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string query = @"select found = 1 from TestAppointments
-                             where TestAppointments.LocalDrivingLicenseApplicationID = @LDLApplicationID";
+                             where TestAppointments.LocalDrivingLicenseApplicationID = @LDLApplicationID and TestAppointments.TestTypeID =@TestTypeID";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+
 
 
             try

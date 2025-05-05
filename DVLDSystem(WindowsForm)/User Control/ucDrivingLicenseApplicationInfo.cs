@@ -1,4 +1,5 @@
 ﻿using DVLDSystem_BusinessLayer_;
+using DVLDSystem_WindowsForm_.Driver_License_Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,20 @@ namespace DVLDSystem_WindowsForm_.User_Control
     public partial class ucDrivingLicenseApplicationInfo : UserControl
     {
         private clsLocalDrivingLicenseApplication _LDLApplication;
+       
         public ucDrivingLicenseApplicationInfo()
         {
             InitializeComponent();
         }
 
+        [Browsable(true)]
+        [Category("Misc Controls Properties")]
 
+        public string PassedTest
+        {
+            get { return lblPassedTest.Text; }
+            set { lblPassedTest.Text = value; }
+        }
         public void LoadDLApplicationInfo(int LDLApplicationID)
         {
             _LDLApplication = clsLocalDrivingLicenseApplication.Find(LDLApplicationID);
@@ -30,6 +39,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 lblLicenseClassName.Text =  clsLicenseClass.Find(_LDLApplication.LicenseClassID).ClassName;
                 lblPassedTest.Text = $"{clsLocalDrivingLicenseApplication.GetPassedTestsByLDLApplicationID(LDLApplicationID)}/3";
                 lklShowLicenseInfo.Enabled = clsLocalDrivingLicenseApplication.IsHasDriverLicenseByApplicationID(_LDLApplication.ApplicationID);
+                
             }
             else
             {
@@ -39,6 +49,16 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 lklShowLicenseInfo.Enabled = false;
             }
 
+        }
+
+        private void lklShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (lklShowLicenseInfo.Enabled)
+            {
+                frmShowDriverLicenseDetails showDriverLicenseDetails = new frmShowDriverLicenseDetails(_LDLApplication.LocalDrivingLicenseApplicationID);
+                showDriverLicenseDetails.ShowDialog();
+            }
+        
         }
     }
 }

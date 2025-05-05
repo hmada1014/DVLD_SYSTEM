@@ -39,8 +39,13 @@
             this.TSMRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRrecords = new System.Windows.Forms.Label();
             this.lblRecordsTitle = new System.Windows.Forms.Label();
+            this.cmsAppointment = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMTakeTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.cmsGeneral.SuspendLayout();
+            this.cmsAppointment.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvShowList
@@ -135,6 +140,43 @@
             this.lblRecordsTitle.TabIndex = 9;
             this.lblRecordsTitle.Text = "#Records :";
             // 
+            // cmsAppointment
+            // 
+            this.cmsAppointment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.TSMTakeTest,
+            this.refreshToolStripMenuItem});
+            this.cmsAppointment.Name = "cmsAppointment";
+            this.cmsAppointment.Size = new System.Drawing.Size(197, 140);
+            this.cmsAppointment.Opening += new System.ComponentModel.CancelEventHandler(this.cmsGeneral_Opening);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit_32_1;
+            this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.TSMEditTestAppointment);
+            // 
+            // TSMTakeTest
+            // 
+            this.TSMTakeTest.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Test_32;
+            this.TSMTakeTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMTakeTest.Name = "TSMTakeTest";
+            this.TSMTakeTest.Size = new System.Drawing.Size(196, 38);
+            this.TSMTakeTest.Text = "Take Test";
+            this.TSMTakeTest.Click += new System.EventHandler(this.TSMTakeTest_Click);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Refresh_32;
+            this.refreshToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.TSMRefresh_Click);
+            // 
             // ucTemplateDGV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +188,7 @@
             this.Size = new System.Drawing.Size(640, 345);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).EndInit();
             this.cmsGeneral.ResumeLayout(false);
+            this.cmsAppointment.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +202,9 @@
         private System.Windows.Forms.ToolStripMenuItem TSMEditApplicationType;
         private System.Windows.Forms.ToolStripMenuItem TSMRefresh;
         private System.Windows.Forms.ToolStripMenuItem TSMManageTestTypes;
+        private System.Windows.Forms.ContextMenuStrip cmsAppointment;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSMTakeTest;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }

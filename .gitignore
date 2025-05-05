@@ -384,3 +384,7 @@ FodyWeavers.xsd
 /DVLDSystem(WindowsForm)/Application Forms/frmManagApplicationTypes.cs
 /DVLDSystem(WindowsForm)/Application Forms/frmManagApplicationTypes.Designer.cs
 /DVLDSystem(WindowsForm)/Application Forms/frmManagApplicationTypes.resx
+/DVLDSystem(WindowsForm)/User Control/.editorconfig
+/DVLDSystem(WindowsForm)/User Control/ucSaveButton.cs
+/DVLDSystem(WindowsForm)/User Control/ucSaveButton.Designer.cs
+/DVLDSystem(WindowsForm)/User Control/ucSaveButton.resx

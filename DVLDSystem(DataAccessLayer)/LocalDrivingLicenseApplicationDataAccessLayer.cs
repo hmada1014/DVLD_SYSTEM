@@ -63,7 +63,7 @@ namespace DVLDSystem_DataAccessLayer_
             int ApplicationID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string query = @"select * from (
+            string query = @" select R1.ApplicationID from (
                              SELECT       Applications.ApplicationID,ApplicantPersonID,ApplicationDate,Applications.ApplicationTypeID,LicenseClasses.ClassName,ApplicationStatus,LastStatusDate,PaidFees,CreatedByUserID,LocalDrivingLicenseApplicationID
                              ,LocalDrivingLicenseApplications.LicenseClassID
                              FROM            LocalDrivingLicenseApplications INNER JOIN
@@ -72,8 +72,7 @@ namespace DVLDSystem_DataAccessLayer_
                              People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN
                              Users ON Applications.CreatedByUserID = Users.UserID inner join
 						     LicenseClasses on LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
-						      where ApplicantPersonID = @ApplicantPersonID) R1
-						      where R1.LicenseClassID= @LicenseClassID and  R1.ApplicationStatus = 1 or  R1.ApplicationStatus =3";
+						      where ApplicantPersonID = @ApplicantPersonID and LocalDrivingLicenseApplications.LicenseClassID= @LicenseClassID) R1";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
@@ -299,16 +298,17 @@ namespace DVLDSystem_DataAccessLayer_
             DataTable dtLocalDrivingLicenseApplication = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string query = @"SELECT       dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, dbo.LicenseClasses.ClassName, dbo.People.NationalNo, dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') 
-                         + ' ' + dbo.People.LastName AS FullName, dbo.Applications.ApplicationDate,
-                             (SELECT       COUNT(dbo.TestAppointments.TestTypeID) AS PassedTestCount
-                               FROM             dbo.Tests INNER JOIN
-                                                         dbo.TestAppointments ON dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID
-                               WHERE         (dbo.TestAppointments.LocalDrivingLicenseApplicationID = dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) AND (dbo.Tests.TestResult = 1)) AS PassedTestCount, 
-                         CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' WHEN Applications.ApplicationStatus = 3 THEN 'Completed' END AS Status
-FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
-                         dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
-                         dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
-                         dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID";
+                              + ' ' + dbo.People.LastName AS FullName, dbo.Applications.ApplicationDate,
+                                  (SELECT       COUNT(dbo.TestAppointments.TestTypeID) AS PassedTestCount
+                                    FROM             dbo.Tests INNER JOIN
+                                                              dbo.TestAppointments ON dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID
+                                    WHERE         (dbo.TestAppointments.LocalDrivingLicenseApplicationID = dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID) AND (dbo.Tests.TestResult = 1)) AS PassedTestCount, 
+                              CASE WHEN Applications.ApplicationStatus = 1 THEN 'New' WHEN Applications.ApplicationStatus = 2 THEN 'Cancelled' WHEN Applications.ApplicationStatus = 3 THEN 'Completed' END AS Status
+                              FROM            dbo.LocalDrivingLicenseApplications INNER JOIN
+                              dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
+                              dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
+                              dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID
+                              order by dbo.LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID desc ";
             SqlCommand command = new SqlCommand(query, connection);
 
             try

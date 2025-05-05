@@ -117,6 +117,24 @@
     <Compile Include="Application Forms\frmManageTestTypes.Designer.cs">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Driver Forms\frmDriver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driver Forms\frmDriver.Designer.cs">
+      <DependentUpon>frmDriver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Driver License Forms\frmShowDriverLicenseDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Driver License Forms\frmShowDriverLicenseDetails.Designer.cs">
+      <DependentUpon>frmShowDriverLicenseDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Issue\frmIssueLicenseForFirstTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Issue\frmIssueLicenseForFirstTime.Designer.cs">
+      <DependentUpon>frmIssueLicenseForFirstTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main  Forms\frmMainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +180,12 @@
     <Compile Include="Test Forms\frmScheduelTest.Designer.cs">
       <DependentUpon>frmScheduelTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test Forms\frmTakeTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test Forms\frmTakeTest.Designer.cs">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test Forms\frmTestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +216,12 @@
     <Compile Include="User Control\ucApplicationBasicInfo.Designer.cs">
       <DependentUpon>ucApplicationBasicInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Control\ucDriverLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucDriverLicenseInfo.Designer.cs">
+      <DependentUpon>ucDriverLicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Control\ucDrivingLicenseApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -215,6 +245,12 @@
     </Compile>
     <Compile Include="User Control\ucRetakeTest.Designer.cs">
       <DependentUpon>ucRetakeTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\ucTakeTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucTakeTest.Designer.cs">
+      <DependentUpon>ucTakeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="User Control\ucTemplateDGV.cs">
       <SubType>UserControl</SubType>
@@ -283,6 +319,15 @@
     <EmbeddedResource Include="Application Forms\frmManageTestTypes.resx">
       <DependentUpon>frmManageTestTypes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Driver Forms\frmDriver.resx">
+      <DependentUpon>frmDriver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Driver License Forms\frmShowDriverLicenseDetails.resx">
+      <DependentUpon>frmShowDriverLicenseDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Issue\frmIssueLicenseForFirstTime.resx">
+      <DependentUpon>frmIssueLicenseForFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login Forms\frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,6 +351,9 @@
     <EmbeddedResource Include="Test Forms\frmScheduelTest.resx">
       <DependentUpon>frmScheduelTest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test Forms\frmTakeTest.resx">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test Forms\frmTestAppointments.resx">
       <DependentUpon>frmTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,6 +369,9 @@
     <EmbeddedResource Include="User Control\ucApplicationBasicInfo.resx">
       <DependentUpon>ucApplicationBasicInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucDriverLicenseInfo.resx">
+      <DependentUpon>ucDriverLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucDrivingLicenseApplicationInfo.resx">
       <DependentUpon>ucDrivingLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucRetakeTest.resx">
       <DependentUpon>ucRetakeTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucTakeTest.resx">
+      <DependentUpon>ucTakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucTemplateDGV.resx">
       <DependentUpon>ucTemplateDGV.cs</DependentUpon>

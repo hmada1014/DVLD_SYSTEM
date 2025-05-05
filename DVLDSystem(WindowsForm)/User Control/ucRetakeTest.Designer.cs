@@ -30,14 +30,14 @@
         {
             this.gbRetakeTest = new System.Windows.Forms.GroupBox();
             this.lblTotalFees = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.lblRetakeTestApplicationID = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lblRetakeApplicationFees = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.gbRetakeTest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -68,9 +68,19 @@
             this.lblTotalFees.AutoSize = true;
             this.lblTotalFees.Location = new System.Drawing.Point(439, 35);
             this.lblTotalFees.Name = "lblTotalFees";
-            this.lblTotalFees.Size = new System.Drawing.Size(29, 19);
+            this.lblTotalFees.Size = new System.Drawing.Size(19, 19);
             this.lblTotalFees.TabIndex = 44;
-            this.lblTotalFees.Text = "10";
+            this.lblTotalFees.Text = "0";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox10.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.money_32;
+            this.pictureBox10.Location = new System.Drawing.Point(392, 27);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox10.TabIndex = 43;
+            this.pictureBox10.TabStop = false;
             // 
             // label11
             // 
@@ -90,6 +100,16 @@
             this.lblRetakeTestApplicationID.TabIndex = 41;
             this.lblRetakeTestApplicationID.Text = "N/A";
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox9.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Number_32;
+            this.pictureBox9.Location = new System.Drawing.Point(137, 65);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox9.TabIndex = 40;
+            this.pictureBox9.TabStop = false;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -104,38 +124,9 @@
             this.lblRetakeApplicationFees.AutoSize = true;
             this.lblRetakeApplicationFees.Location = new System.Drawing.Point(177, 35);
             this.lblRetakeApplicationFees.Name = "lblRetakeApplicationFees";
-            this.lblRetakeApplicationFees.Size = new System.Drawing.Size(29, 19);
+            this.lblRetakeApplicationFees.Size = new System.Drawing.Size(19, 19);
             this.lblRetakeApplicationFees.TabIndex = 38;
-            this.lblRetakeApplicationFees.Text = "10";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(29, 35);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(106, 19);
-            this.label9.TabIndex = 36;
-            this.label9.Text = "R.App Fees:";
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox10.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.money_32;
-            this.pictureBox10.Location = new System.Drawing.Point(392, 27);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox10.TabIndex = 43;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Number_32;
-            this.pictureBox9.Location = new System.Drawing.Point(137, 65);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox9.TabIndex = 40;
-            this.pictureBox9.TabStop = false;
+            this.lblRetakeApplicationFees.Text = "0";
             // 
             // pictureBox8
             // 
@@ -147,13 +138,22 @@
             this.pictureBox8.TabIndex = 37;
             this.pictureBox8.TabStop = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(29, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(106, 19);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "R.App Fees:";
+            // 
             // ucRetakeTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbRetakeTest);
             this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucRetakeTest";
             this.Size = new System.Drawing.Size(502, 120);
             this.gbRetakeTest.ResumeLayout(false);

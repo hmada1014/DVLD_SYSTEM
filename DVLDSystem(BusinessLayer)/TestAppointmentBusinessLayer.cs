@@ -84,9 +84,9 @@ namespace DVLDSystem_BusinessLayer_
             return clsTestAppointmentDataAccessLayer.CheckTestAppointmentLockeStatus(LDLApplicationID, TestTypeID, IsLocked);
         }
 
-        public static bool IsLDLApplicationIDHasTestAppointmentsExist(int LDLApplicationID)
+        public static bool IsLDLApplicationIDHasTestAppointmentsExist(int LDLApplicationID, int TestTypeID)
         {
-            return clsTestAppointmentDataAccessLayer.IsLDLApplicationIDHasTestAppointmentsExist(LDLApplicationID);
+            return clsTestAppointmentDataAccessLayer.IsLDLApplicationIDHasTestAppointmentsExist(LDLApplicationID , TestTypeID);
         }
 
         public static DataView GetAllTestAppointment(int LDLApplicationID,int TestTypeID)

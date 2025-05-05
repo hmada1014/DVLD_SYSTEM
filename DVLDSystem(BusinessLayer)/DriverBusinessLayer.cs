@@ -78,6 +78,20 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsDriverDataAccessLayer.GetAllDriver();
         }
+
+        public static DataView SearchDriverByDriverID(string DriverID)
+        {
+            return clsDriverDataAccessLayer.SearchDriverByDriverID(DriverID);
+        }
+        public static DataView SearchDriverByFullName(string FullName)
+        {
+            return clsDriverDataAccessLayer.SearchDriverByFullName(FullName);
+        }
+
+        public static DataView SearchDriverByNationalNo(string NationalNo)
+        {
+            return clsDriverDataAccessLayer.SearchDriverByNationalNo(NationalNo);
+        }
         public bool Save()
         {
             switch (this.Mode)
