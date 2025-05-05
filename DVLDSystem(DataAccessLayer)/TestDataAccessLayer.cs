@@ -72,7 +72,15 @@ namespace DVLDSystem_DataAccessLayer_
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
             command.Parameters.AddWithValue("@TestResult", TestResult);
-            command.Parameters.AddWithValue("@Notes", Notes);
+            if (!string.IsNullOrEmpty(Notes))
+            {
+                command.Parameters.AddWithValue("@Notes", Notes); 
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@Notes", System.DBNull.Value);
+
+            }
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
 
