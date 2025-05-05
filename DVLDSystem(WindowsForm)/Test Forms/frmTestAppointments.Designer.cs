@@ -7,8 +7,8 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-    
-       
+
+
         /*
          switch (TestType)
             {
@@ -45,8 +45,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
 
-        
-        private void InitializeTestMode(string TestType) 
+
+        private void InitializeTestMode(string TestType)
         {
             this.lblTestType = new System.Windows.Forms.Label();
 
@@ -66,13 +66,12 @@
                     this.lblTestType.Text = "";
                     break;
             }
-            
+
         }
 
         private void InitializeComponent()
         {
-
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbMainImage = new System.Windows.Forms.PictureBox();
             this.lblHeaderTitle = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -81,19 +80,19 @@
             this.ucDrivingLicenseApplicationInfo1 = new DVLDSystem_WindowsForm_.User_Control.ucDrivingLicenseApplicationInfo();
             this.ucTemplateDGV1 = new DVLDSystem_WindowsForm_.User_Control.ucTemplateDGV(this.lblTestType.Text);
             this.lblTestType = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMainImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pbMainImage
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Vision_512;
-            this.pictureBox1.Location = new System.Drawing.Point(426, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(114, 83);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pbMainImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pbMainImage.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Vision_512;
+            this.pbMainImage.Location = new System.Drawing.Point(426, 6);
+            this.pbMainImage.Name = "pbMainImage";
+            this.pbMainImage.Size = new System.Drawing.Size(114, 83);
+            this.pbMainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbMainImage.TabIndex = 0;
+            this.pbMainImage.TabStop = false;
             // 
             // lblHeaderTitle
             // 
@@ -101,7 +100,7 @@
             this.lblHeaderTitle.AutoSize = true;
             this.lblHeaderTitle.Font = new System.Drawing.Font("Souvenir Lt BT", 25F, System.Drawing.FontStyle.Bold);
             this.lblHeaderTitle.ForeColor = System.Drawing.Color.Brown;
-            this.lblHeaderTitle.Location = new System.Drawing.Point(251, 84);
+            this.lblHeaderTitle.Location = new System.Drawing.Point(251, 103);
             this.lblHeaderTitle.Name = "lblHeaderTitle";
             this.lblHeaderTitle.Size = new System.Drawing.Size(447, 42);
             this.lblHeaderTitle.TabIndex = 1;
@@ -157,24 +156,6 @@
             this.btnAddnewVisionTestAppointment.TabIndex = 50;
             this.btnAddnewVisionTestAppointment.Click += new System.EventHandler(this.btnAddNewTestAppointment_Click);
             // 
-            // ucApplicationBasicInfo1
-            // 
-            this.ucApplicationBasicInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucApplicationBasicInfo1.Location = new System.Drawing.Point(17, 271);
-            this.ucApplicationBasicInfo1.Name = "ucApplicationBasicInfo1";
-            this.ucApplicationBasicInfo1.Size = new System.Drawing.Size(909, 239);
-            this.ucApplicationBasicInfo1.TabIndex = 3;
-            // 
-            // ucDrivingLicenseApplicationInfo1
-            // 
-            this.ucDrivingLicenseApplicationInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(17, 133);
-            this.ucDrivingLicenseApplicationInfo1.Name = "ucDrivingLicenseApplicationInfo1";
-            this.ucDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(909, 128);
-            this.ucDrivingLicenseApplicationInfo1.TabIndex = 2;
-            // 
             // lblTestType
             // 
             this.lblTestType.AutoSize = true;
@@ -185,10 +166,28 @@
             this.lblTestType.Text = "2";
             this.lblTestType.Visible = false;
             // 
+            // ucApplicationBasicInfo1
+            // 
+            this.ucApplicationBasicInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucApplicationBasicInfo1.Location = new System.Drawing.Point(17, 275);
+            this.ucApplicationBasicInfo1.Name = "ucApplicationBasicInfo1";
+            this.ucApplicationBasicInfo1.Size = new System.Drawing.Size(909, 239);
+            this.ucApplicationBasicInfo1.TabIndex = 3;
+            // 
+            // ucDrivingLicenseApplicationInfo1
+            // 
+            this.ucDrivingLicenseApplicationInfo1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(17, 137);
+            this.ucDrivingLicenseApplicationInfo1.Name = "ucDrivingLicenseApplicationInfo1";
+            this.ucDrivingLicenseApplicationInfo1.Size = new System.Drawing.Size(909, 128);
+            this.ucDrivingLicenseApplicationInfo1.TabIndex = 2;
+            // 
             // ucTemplateDGV1
             // 
-            this.ucTemplateDGV1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.ucTemplateDGV1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucTemplateDGV1.dgvColor = System.Drawing.SystemColors.AppWorkspace;
             this.ucTemplateDGV1.dgvSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
@@ -196,6 +195,7 @@
             this.ucTemplateDGV1.Name = "ucTemplateDGV1";
             this.ucTemplateDGV1.Size = new System.Drawing.Size(880, 197);
             this.ucTemplateDGV1.TabIndex = 49;
+            this.ucTemplateDGV1.onPersonPassedTest += new System.Action<int>(this.ucTemplateDGV1_onPersonPassedTest);
             // 
             // frmTestAppointments
             // 
@@ -209,23 +209,22 @@
             this.Controls.Add(this.ucApplicationBasicInfo1);
             this.Controls.Add(this.ucDrivingLicenseApplicationInfo1);
             this.Controls.Add(this.ucTemplateDGV1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbMainImage);
             this.Controls.Add(this.lblTestType);
             this.Controls.Add(this.btnAddnewVisionTestAppointment);
             this.Name = "frmTestAppointments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmVisionTestAppointments";
             this.Load += new System.EventHandler(this.frmTestAppointments_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMainImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbMainImage;
         private System.Windows.Forms.Label lblHeaderTitle;
         private User_Control.ucTemplateDGV ucTemplateDGV1;
         private User_Control.ucDrivingLicenseApplicationInfo ucDrivingLicenseApplicationInfo1;
