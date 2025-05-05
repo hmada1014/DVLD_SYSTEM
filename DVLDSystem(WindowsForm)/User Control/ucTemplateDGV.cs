@@ -1,6 +1,7 @@
 ﻿using DVLDSystem_BusinessLayer_;
 using DVLDSystem_WindowsForm_.Application_Forms;
 using DVLDSystem_WindowsForm_.People;
+using DVLDSystem_WindowsForm_.Test_Forms;
 using DVLDSystem_WindowsForm_.User;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Windows.Forms;
+using static DVLDSystem_BusinessLayer_.clsTest;
 
 namespace DVLDSystem_WindowsForm_.User_Control
 {
     public partial class ucTemplateDGV : UserControl
     {
+
+
+        // event for UserControl
+        public event Action<int> onPersonPassedTest;
+
+        protected virtual void PersonPassedTest(int PersonPassedTest)
+        {
+            Action<int> handler = onPersonPassedTest;
+            if (handler != null)
+            {
+                handler(PersonPassedTest);
+            }
+        }
+            
         private  enum enModeUC { ManageApplicationTypes = 1, ManageTestTypes = 2, VisionTestAppointments =3 , WritingTestAppointments = 4, StreetTestAppointments = 5, Empty }
         private  enModeUC _enMode = enModeUC.Empty;
         private string _FormName;
+        private clsLocalDrivingLicenseApplication _LDLApplication;
+        private int _TestTypeID;
         public ucTemplateDGV()
         {
             InitializeComponent();
@@ -42,12 +60,20 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
                 case "frmVisionTestAppointments":
                     _enMode = enModeUC.VisionTestAppointments;
+                    _TestTypeID = 1;
+                    dgvShowList.ContextMenuStrip = cmsAppointment;
                     break;
                 case "frmWritingTestAppointments":
                     _enMode = enModeUC.WritingTestAppointments;
+                    _TestTypeID = 2;
+                    dgvShowList.ContextMenuStrip = cmsAppointment;
+
                     break;
                 case "frmStreetTestAppointments":
                     _enMode = enModeUC.StreetTestAppointments;
+                    _TestTypeID = 3;
+                    dgvShowList.ContextMenuStrip = cmsAppointment;
+
                     break;
             }
         }
@@ -232,14 +258,26 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         private void TSMRefresh_Click(object sender, EventArgs e)
         {
-
-            switch(_enMode)
+            int LDLID;
+            switch (_enMode)
             {
                 case enModeUC.ManageApplicationTypes:
                     RefreshDGV(clsApplicationTypes.GetAllApplicationTypes());
                     break;
                 case enModeUC.ManageTestTypes:
                     RefreshDGV(clsTestType.GetAllTestTypeDatas());
+                    break;
+                case enModeUC.VisionTestAppointments:
+                    LDLID = clsTestAppointment.Find(Convert.ToInt32(dgvShowList.CurrentRow.Cells["TestAppointmentID"].Value)).LocalDrivingLicenseApplicationID;
+                    RefreshDGV(clsTestAppointment.GetAllTestAppointment(LDLID, 1));
+                    break;
+                case enModeUC.WritingTestAppointments:
+                    LDLID = clsTestAppointment.Find(Convert.ToInt32(dgvShowList.CurrentRow.Cells["TestAppointmentID"].Value)).LocalDrivingLicenseApplicationID;
+                    RefreshDGV(clsTestAppointment.GetAllTestAppointment(LDLID,2));
+                    break;
+                case enModeUC.StreetTestAppointments:
+                    LDLID = clsTestAppointment.Find(Convert.ToInt32(dgvShowList.CurrentRow.Cells["TestAppointmentID"].Value)).LocalDrivingLicenseApplicationID;
+                    RefreshDGV(clsTestAppointment.GetAllTestAppointment(LDLID, 3));
                     break;
             }
         }
@@ -254,6 +292,34 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _EditTestType();
                     break;
             }
+        }
+
+        private void TSMEditTestAppointment(object sender, EventArgs e)
+        {
+            int ID = int.Parse(dgvShowList.CurrentRow.Cells["TestAppointmentID"].Value.ToString());
+            _LDLApplication = clsLocalDrivingLicenseApplication.Find( clsTestAppointment.Find(ID).LocalDrivingLicenseApplicationID);
+            bool IsLocked = clsTestAppointment.Find(ID).IsLocked;
+            frmScheduleTest scheduelTest = new frmScheduleTest(ID, _LDLApplication,_TestTypeID,false,IsLocked);
+            scheduelTest.ShowDialog();
+            TSMRefresh_Click(null,null);
+        }
+
+        private void TSMTakeTest_Click(object sender, EventArgs e)
+        {
+            int ID = int.Parse(dgvShowList.CurrentRow.Cells["TestAppointmentID"].Value.ToString());
+            bool IsLocked = clsTestAppointment.Find(ID).IsLocked;
+            if (!IsLocked)
+            {
+                frmTakeTest takeTest = new frmTakeTest(ID, _TestTypeID);
+                takeTest.ShowDialog();
+                onPersonPassedTest(clsLocalDrivingLicenseApplication.GetPassedTestsByLDLApplicationID(clsTestAppointment.Find(ID).LocalDrivingLicenseApplicationID));
+            }
+            else
+            {
+                MessageBox.Show("This person  already took the Test", "Test is expired",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            TSMRefresh_Click(null, null);
+
         }
     }
 }
