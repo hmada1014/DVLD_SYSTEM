@@ -63,7 +63,7 @@ namespace DVLDSystem_DataAccessLayer_
             int ApplicationID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
-            string query = @"select * from (
+            string query = @" select R1.ApplicationID from (
                              SELECT       Applications.ApplicationID,ApplicantPersonID,ApplicationDate,Applications.ApplicationTypeID,LicenseClasses.ClassName,ApplicationStatus,LastStatusDate,PaidFees,CreatedByUserID,LocalDrivingLicenseApplicationID
                              ,LocalDrivingLicenseApplications.LicenseClassID
                              FROM            LocalDrivingLicenseApplications INNER JOIN
@@ -72,8 +72,7 @@ namespace DVLDSystem_DataAccessLayer_
                              People ON Applications.ApplicantPersonID = People.PersonID INNER JOIN
                              Users ON Applications.CreatedByUserID = Users.UserID inner join
 						     LicenseClasses on LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
-						      where ApplicantPersonID = @ApplicantPersonID) R1
-						      where R1.LicenseClassID= @LicenseClassID and  R1.ApplicationStatus = 1 or  R1.ApplicationStatus =3";
+						      where ApplicantPersonID = @ApplicantPersonID and LocalDrivingLicenseApplications.LicenseClassID= @LicenseClassID) R1";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
