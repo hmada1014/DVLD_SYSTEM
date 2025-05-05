@@ -156,7 +156,14 @@ namespace DVLDSystem_DataAccessLayer_
         {
             DataTable dtDriver = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = " select DriverID,PersonID,CreatedByUserID,CreatedDate from Drivers ";
+            string query = @"SELECT dbo.Drivers.DriverID, dbo.Drivers.PersonID, dbo.People.NationalNo,
+                             dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') + ' ' + dbo.People.LastName AS FullName,
+                             dbo.Drivers.CreatedDate,
+                             (SELECT       COUNT(LicenseID) AS NumberOfActiveLicenses
+                             FROM dbo.Licenses
+                             WHERE         (IsActive = 1) AND (DriverID = dbo.Drivers.DriverID)) AS NumberOfActiveLicenses
+                             FROM dbo.Drivers INNER JOIN 
+                             dbo.People ON dbo.Drivers.PersonID = dbo.People.PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -233,14 +240,94 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
-        public static DataView SearchDriverByDriverID(int DriverID)
+        public static DataView SearchDriverByDriverID(string DriverID)
         {
             DataTable dataTable = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = "Enter your query";
+            string query = @"SELECT       dbo.Drivers.DriverID, dbo.Drivers.PersonID, dbo.People.NationalNo, dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') + ' ' + dbo.People.LastName AS FullName, dbo.Drivers.CreatedDate,
+                             (SELECT       COUNT(LicenseID) AS NumberOfActiveLicenses
+                             FROM             dbo.Licenses
+                             WHERE         (IsActive = 1) AND (DriverID = dbo.Drivers.DriverID)) AS NumberOfActiveLicenses
+                             FROM            dbo.Drivers INNER JOIN
+                             dbo.People ON dbo.Drivers.PersonID = dbo.People.PersonID
+						     where Drivers.DriverID like '%'+@DriverID+'%'";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+
+        public static DataView SearchDriverByNationalNo(string NationalNo)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @" SELECT       dbo.Drivers.DriverID, dbo.Drivers.PersonID, dbo.People.NationalNo, dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') + ' ' + dbo.People.LastName AS FullName, dbo.Drivers.CreatedDate,
+                             (SELECT       COUNT(LicenseID) AS NumberOfActiveLicenses
+                               FROM             dbo.Licenses
+                               WHERE         (IsActive = 1) AND (DriverID = dbo.Drivers.DriverID)) AS NumberOfActiveLicenses
+                             FROM            dbo.Drivers INNER JOIN
+                             dbo.People ON dbo.Drivers.PersonID = dbo.People.PersonID
+						     where People.NationalNo  like '%'+@NationalNo+'%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dataTable.DefaultView;
+        }
+        public static DataView SearchDriverByFullName(string FullName)
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @" select * from(
+						      SELECT       dbo.Drivers.DriverID, dbo.Drivers.PersonID, dbo.People.NationalNo, dbo.People.FirstName + ' ' + dbo.People.SecondName + ' ' + ISNULL(dbo.People.ThirdName, '') + ' ' + dbo.People.LastName AS FullName, dbo.Drivers.CreatedDate,
+                                  (SELECT       COUNT(LicenseID) AS NumberOfActiveLicenses
+                                    FROM             dbo.Licenses
+                                    WHERE         (IsActive = 1) AND (DriverID = dbo.Drivers.DriverID)) AS NumberOfActiveLicenses
+                              FROM            dbo.Drivers INNER JOIN
+                              dbo.People ON dbo.Drivers.PersonID = dbo.People.PersonID)R1
+						      where R1.FullName like '%'+@FullName+'%'";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@FullName", FullName);
 
             try
             {
