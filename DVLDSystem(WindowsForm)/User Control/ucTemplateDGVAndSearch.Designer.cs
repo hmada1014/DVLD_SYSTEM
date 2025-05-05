@@ -135,6 +135,8 @@
             // 
             // cmsGeneralMenu
             // 
+            this.cmsGeneralMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cmsGeneralMenu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.cmsGeneralMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMShowDetailsGeneral,
             this.toolStripMenuItem1,
@@ -148,7 +150,8 @@
             this.TSMSendEmailGeneral,
             this.TSMPhoneCallGeneral});
             this.cmsGeneralMenu.Name = "cmsAddEdit";
-            this.cmsGeneralMenu.Size = new System.Drawing.Size(185, 326);
+            this.cmsGeneralMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.cmsGeneralMenu.Size = new System.Drawing.Size(187, 326);
             this.cmsGeneralMenu.Opening += new System.ComponentModel.CancelEventHandler(this._cmsGeneralMenu_opening);
             // 
             // TSMShowDetailsGeneral
@@ -156,21 +159,22 @@
             this.TSMShowDetailsGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonDetails_32;
             this.TSMShowDetailsGeneral.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMShowDetailsGeneral.Name = "TSMShowDetailsGeneral";
-            this.TSMShowDetailsGeneral.Size = new System.Drawing.Size(184, 38);
+            this.TSMShowDetailsGeneral.Size = new System.Drawing.Size(186, 38);
             this.TSMShowDetailsGeneral.Text = "Show Details";
             this.TSMShowDetailsGeneral.Click += new System.EventHandler(this._TSMShowDetailsGeneral_Click);
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(181, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(183, 6);
             // 
             // TSMAddNewGeneral
             // 
             this.TSMAddNewGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.AddPerson_32;
             this.TSMAddNewGeneral.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMAddNewGeneral.Name = "TSMAddNewGeneral";
-            this.TSMAddNewGeneral.Size = new System.Drawing.Size(184, 38);
+            this.TSMAddNewGeneral.Size = new System.Drawing.Size(186, 38);
             this.TSMAddNewGeneral.Text = "Add new ";
             this.TSMAddNewGeneral.Click += new System.EventHandler(this._TSMAddNewGeneral_Click);
             // 
@@ -179,7 +183,7 @@
             this.TSMEditGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit_32_1;
             this.TSMEditGeneral.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMEditGeneral.Name = "TSMEditGeneral";
-            this.TSMEditGeneral.Size = new System.Drawing.Size(184, 38);
+            this.TSMEditGeneral.Size = new System.Drawing.Size(186, 38);
             this.TSMEditGeneral.Text = "Edit";
             this.TSMEditGeneral.Click += new System.EventHandler(this._TSMEditGeneral_Click);
             // 
@@ -188,7 +192,7 @@
             this.TSMDeleteGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
             this.TSMDeleteGeneral.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMDeleteGeneral.Name = "TSMDeleteGeneral";
-            this.TSMDeleteGeneral.Size = new System.Drawing.Size(184, 38);
+            this.TSMDeleteGeneral.Size = new System.Drawing.Size(186, 38);
             this.TSMDeleteGeneral.Text = "Delete";
             this.TSMDeleteGeneral.Click += new System.EventHandler(this._TSMDeleteGeneral_Click);
             // 
@@ -197,21 +201,21 @@
             this.TSMRefreshGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Refresh_32;
             this.TSMRefreshGeneral.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMRefreshGeneral.Name = "TSMRefreshGeneral";
-            this.TSMRefreshGeneral.Size = new System.Drawing.Size(184, 38);
+            this.TSMRefreshGeneral.Size = new System.Drawing.Size(186, 38);
             this.TSMRefreshGeneral.Text = "Refresh";
             this.TSMRefreshGeneral.Click += new System.EventHandler(this._TSM_Refresh_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
             // 
             // TSMChangePassword
             // 
             this.TSMChangePassword.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Password_32;
             this.TSMChangePassword.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMChangePassword.Name = "TSMChangePassword";
-            this.TSMChangePassword.Size = new System.Drawing.Size(184, 38);
+            this.TSMChangePassword.Size = new System.Drawing.Size(186, 38);
             this.TSMChangePassword.Text = "Change Password";
             this.TSMChangePassword.Visible = false;
             this.TSMChangePassword.Click += new System.EventHandler(this._TSMChangePassword_Click);
@@ -219,7 +223,7 @@
             // TSSchangePassword
             // 
             this.TSSchangePassword.Name = "TSSchangePassword";
-            this.TSSchangePassword.Size = new System.Drawing.Size(181, 6);
+            this.TSSchangePassword.Size = new System.Drawing.Size(183, 6);
             this.TSSchangePassword.Visible = false;
             // 
             // TSMSendEmailGeneral
@@ -227,7 +231,7 @@
             this.TSMSendEmailGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.send_email_32;
             this.TSMSendEmailGeneral.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMSendEmailGeneral.Name = "TSMSendEmailGeneral";
-            this.TSMSendEmailGeneral.Size = new System.Drawing.Size(184, 38);
+            this.TSMSendEmailGeneral.Size = new System.Drawing.Size(186, 38);
             this.TSMSendEmailGeneral.Text = "Send Email";
             this.TSMSendEmailGeneral.Click += new System.EventHandler(this._TSMSendEmailGeneral_Click);
             // 
@@ -236,7 +240,7 @@
             this.TSMPhoneCallGeneral.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.call_32;
             this.TSMPhoneCallGeneral.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMPhoneCallGeneral.Name = "TSMPhoneCallGeneral";
-            this.TSMPhoneCallGeneral.Size = new System.Drawing.Size(184, 38);
+            this.TSMPhoneCallGeneral.Size = new System.Drawing.Size(186, 38);
             this.TSMPhoneCallGeneral.Text = "Phone Call";
             this.TSMPhoneCallGeneral.Click += new System.EventHandler(this._TSMPhoneCallGeneral_Click);
             // 
@@ -300,6 +304,8 @@
             // 
             // cmsLDLApplication
             // 
+            this.cmsLDLApplication.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cmsLDLApplication.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.cmsLDLApplication.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMShowApplicationDetails,
             this.toolStripMenuItem2,
@@ -315,7 +321,7 @@
             this.toolStripMenuItem6,
             this.TSMShowPersonLicenseHistory});
             this.cmsLDLApplication.Name = "cmsLDLApplication";
-            this.cmsLDLApplication.Size = new System.Drawing.Size(262, 338);
+            this.cmsLDLApplication.Size = new System.Drawing.Size(273, 360);
             this.cmsLDLApplication.Opening += new System.ComponentModel.CancelEventHandler(this._cmsLDLApplication_Opening);
             // 
             // TSMShowApplicationDetails
@@ -323,21 +329,21 @@
             this.TSMShowApplicationDetails.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonDetails_32;
             this.TSMShowApplicationDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMShowApplicationDetails.Name = "TSMShowApplicationDetails";
-            this.TSMShowApplicationDetails.Size = new System.Drawing.Size(261, 38);
+            this.TSMShowApplicationDetails.Size = new System.Drawing.Size(272, 38);
             this.TSMShowApplicationDetails.Text = "Show Application Details";
             this.TSMShowApplicationDetails.Click += new System.EventHandler(this._TSMShowDetailsGeneral_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(258, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(269, 6);
             // 
             // TSMEditApplication
             // 
             this.TSMEditApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit_32_1;
             this.TSMEditApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMEditApplication.Name = "TSMEditApplication";
-            this.TSMEditApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMEditApplication.Size = new System.Drawing.Size(272, 38);
             this.TSMEditApplication.Text = "Edit Application";
             this.TSMEditApplication.Click += new System.EventHandler(this._TSMEditGeneral_Click);
             // 
@@ -346,7 +352,7 @@
             this.TSMDeleteApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.delete;
             this.TSMDeleteApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMDeleteApplication.Name = "TSMDeleteApplication";
-            this.TSMDeleteApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMDeleteApplication.Size = new System.Drawing.Size(272, 38);
             this.TSMDeleteApplication.Text = "Delete Application";
             this.TSMDeleteApplication.Click += new System.EventHandler(this._TSMDeleteGeneral_Click);
             // 
@@ -355,14 +361,14 @@
             this.TSMCancelApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Delete_32;
             this.TSMCancelApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMCancelApplication.Name = "TSMCancelApplication";
-            this.TSMCancelApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMCancelApplication.Size = new System.Drawing.Size(272, 38);
             this.TSMCancelApplication.Text = "Cance Applicationl";
             this.TSMCancelApplication.Click += new System.EventHandler(this._TSMCancelApplicationl_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(258, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(269, 6);
             // 
             // TSMSechduleTests
             // 
@@ -373,7 +379,7 @@
             this.TSMSechduleTests.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Schedule_Test_32;
             this.TSMSechduleTests.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMSechduleTests.Name = "TSMSechduleTests";
-            this.TSMSechduleTests.Size = new System.Drawing.Size(261, 38);
+            this.TSMSechduleTests.Size = new System.Drawing.Size(272, 38);
             this.TSMSechduleTests.Text = "Sechdule Tests";
             // 
             // TSMScheduleVisionTest
@@ -382,7 +388,7 @@
             this.TSMScheduleVisionTest.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Vision_Test_32;
             this.TSMScheduleVisionTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMScheduleVisionTest.Name = "TSMScheduleVisionTest";
-            this.TSMScheduleVisionTest.Size = new System.Drawing.Size(203, 38);
+            this.TSMScheduleVisionTest.Size = new System.Drawing.Size(214, 38);
             this.TSMScheduleVisionTest.Text = "Schedule Vision Test";
             this.TSMScheduleVisionTest.Click += new System.EventHandler(this.TSMScheduleTestGeneral_Click);
             // 
@@ -392,7 +398,7 @@
             this.TSMScheduleWrittenTest.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Written_Test_32_Sechdule;
             this.TSMScheduleWrittenTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMScheduleWrittenTest.Name = "TSMScheduleWrittenTest";
-            this.TSMScheduleWrittenTest.Size = new System.Drawing.Size(203, 38);
+            this.TSMScheduleWrittenTest.Size = new System.Drawing.Size(214, 38);
             this.TSMScheduleWrittenTest.Text = "Schedule Written Test";
             this.TSMScheduleWrittenTest.Click += new System.EventHandler(this.TSMScheduleTestGeneral_Click);
             // 
@@ -402,14 +408,14 @@
             this.TSMScheduleStreetTest.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Street_Test_32;
             this.TSMScheduleStreetTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMScheduleStreetTest.Name = "TSMScheduleStreetTest";
-            this.TSMScheduleStreetTest.Size = new System.Drawing.Size(203, 38);
+            this.TSMScheduleStreetTest.Size = new System.Drawing.Size(214, 38);
             this.TSMScheduleStreetTest.Text = "Schedule Street Test";
             this.TSMScheduleStreetTest.Click += new System.EventHandler(this.TSMScheduleTestGeneral_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(258, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(269, 6);
             // 
             // TSMIssueDrivingLicenseFirstTimeApplication
             // 
@@ -417,13 +423,14 @@
             this.TSMIssueDrivingLicenseFirstTimeApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.IssueDrivingLicense_32;
             this.TSMIssueDrivingLicenseFirstTimeApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMIssueDrivingLicenseFirstTimeApplication.Name = "TSMIssueDrivingLicenseFirstTimeApplication";
-            this.TSMIssueDrivingLicenseFirstTimeApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMIssueDrivingLicenseFirstTimeApplication.Size = new System.Drawing.Size(272, 38);
             this.TSMIssueDrivingLicenseFirstTimeApplication.Text = "Issue Driving License (First Time)";
+            this.TSMIssueDrivingLicenseFirstTimeApplication.Click += new System.EventHandler(this.TSMIssueDrivingLicenseFirstTimeApplication_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(258, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(269, 6);
             // 
             // TSMShowLicenseApplication
             // 
@@ -431,20 +438,21 @@
             this.TSMShowLicenseApplication.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.License_View_32;
             this.TSMShowLicenseApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMShowLicenseApplication.Name = "TSMShowLicenseApplication";
-            this.TSMShowLicenseApplication.Size = new System.Drawing.Size(261, 38);
+            this.TSMShowLicenseApplication.Size = new System.Drawing.Size(272, 38);
             this.TSMShowLicenseApplication.Text = "show License";
+            this.TSMShowLicenseApplication.Click += new System.EventHandler(this.TSMShowLicenseApplication_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(258, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(269, 6);
             // 
             // TSMShowPersonLicenseHistory
             // 
             this.TSMShowPersonLicenseHistory.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonLicenseHistory_32;
             this.TSMShowPersonLicenseHistory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMShowPersonLicenseHistory.Name = "TSMShowPersonLicenseHistory";
-            this.TSMShowPersonLicenseHistory.Size = new System.Drawing.Size(261, 38);
+            this.TSMShowPersonLicenseHistory.Size = new System.Drawing.Size(272, 38);
             this.TSMShowPersonLicenseHistory.Text = "Show Person License History";
             // 
             // btnRefreshDGV

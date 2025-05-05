@@ -1,5 +1,7 @@
 ﻿using DVLDSystem_BusinessLayer_;
 using DVLDSystem_WindowsForm_.Application_Forms;
+using DVLDSystem_WindowsForm_.Driver_License_Forms;
+using DVLDSystem_WindowsForm_.Issue;
 using DVLDSystem_WindowsForm_.People;
 using DVLDSystem_WindowsForm_.People__Forms;
 using DVLDSystem_WindowsForm_.Test_Forms;
@@ -51,7 +53,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
                 case "frmDrivers":
                     _enMode = enModeUC.Drivers;
-                    TSMAddNewGeneral.Text = "Add New Driver";
+                    dgvShowList.ContextMenuStrip = null;
+
                     break;
                 case "frmUsers":
                     _enMode = enModeUC.Users;
@@ -133,6 +136,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _UpdatePeopleColumnHeaders();
                     break;
                 case enModeUC.Drivers:
+                    dgvShowList.DataSource = dv ;
+                    _UpdateDriverColumnHeaders();
                     break;
                 case enModeUC.Users:
                     dgvShowList.DataSource = dv;
@@ -199,6 +204,20 @@ namespace DVLDSystem_WindowsForm_.User_Control
             _SafeHeaderSizeUpdate("ApplicationDate", 150);
             _SafeHeaderSizeUpdate("PassedTestCount", 120);
         }
+
+        private void _UpdateDriverColumnHeaders()
+        {
+            if (dgvShowList.Columns.Count <= 0) return;
+            _SafeHeaderUpdate("DriverID", "Driver ID");
+            _SafeHeaderUpdate("PersonID", "Person ID");
+            _SafeHeaderUpdate("NationalNo", "National No");
+            _SafeHeaderUpdate("FullName", "Full Name");
+            _SafeHeaderUpdate("CreatedDate", "Created Date");
+            _SafeHeaderUpdate("NumberOfActiveLicenses", "Number Of Active Licenses");
+
+
+        }
+
         private void _SafeHeaderSizeUpdate(string ColumnName, int ColumnSize)
         {
             if (dgvShowList.Columns.Contains(ColumnName))
@@ -230,7 +249,46 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
 
         /*############### for txtsearch ############################*/
+        //--------------- Filter  Driver ---------------------------
+        private void _FillcbGeneralForStatusDriver()
+        {
+            string[] Words = { "All", "Yes", "No" };
+            cbGeneral.DataSource = Words;
+        }
 
+        private void _SearchDriverByDriverID(string DriverID)
+        {
+            DataTable dt = clsDriver.SearchDriverByDriverID(DriverID).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateLDLApplicatinColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchDriverByNationalNo(string NationalNo)
+        {
+
+            DataTable dt = clsDriver.SearchDriverByNationalNo(NationalNo).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateLDLApplicatinColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+
+        private void _SearchDriverByFullName(string FullName)
+        {
+
+            DataTable dt = clsDriver.SearchDriverByFullName(FullName).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+                _UpdateLDLApplicatinColumnHeaders();
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
         //--------------- Filter  DLDApplication ---------------------------
         private void _FillcbGeneralForStatusLDLApplication()
         {
@@ -540,6 +598,23 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
+        private void _SearchDataByFilteringDriver(string Text)
+        {
+            switch (cbFindBy.Text)
+            {
+                case "None":
+                    break;
+                case "Driver ID":
+                    _SearchDriverByDriverID(Text);
+                    break;
+                case "National No":
+                    _SearchDriverByNationalNo(Text);
+                    break;
+                case "Full Name":
+                   _SearchDriverByFullName(Text);
+                    break;
+            }
+        }
 
         /*########################### cmsLDLApplication ################################*/
         private void _ShowLDLApplicationDeitails()
@@ -792,7 +867,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _SearchDataByFilteringPeople(txtSearchDGV.Text.Trim());
                     break;
                 case enModeUC.Drivers:
-
+                    _SearchDataByFilteringDriver(txtSearchDGV.Text.Trim());
                     break;
                 case enModeUC.Users:
                     _SearchDataByFilteringUsers(txtSearchDGV.Text.Trim());
@@ -804,7 +879,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         private void _txtSearchDGV_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(cbFindBy.Text == "Person ID" || cbFindBy.Text == "User ID" || cbFindBy.Text == "L.D.LAppID")
+            if(cbFindBy.Text == "Person ID" || cbFindBy.Text == "User ID" || cbFindBy.Text == "L.D.LAppID" || cbFindBy.Text == "Driver ID")
             {
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
                 {
@@ -824,7 +899,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     RefreshDGV(clsPerson.GetAllPersons());
                     break;
                 case enModeUC.Drivers:
-
+                    RefreshDGV(clsDriver.GetAllDrivers());
                     break;
                 case enModeUC.Users:
                     RefreshDGV(clsUser.GetAllUsers());
@@ -1041,12 +1116,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 case 0:
                     TSMScheduleVisionTest.Enabled = true;
-
                     break;
-                    case 1:              
+                case 1:              
                     TSMScheduleWrittenTest.Enabled = true;
                     break;
-                    case 2:
+                case 2:
                     TSMScheduleStreetTest.Enabled = true;
                     break;
                 default:
@@ -1071,7 +1145,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
             TSMShowLicenseApplication.Enabled = false;
             TSMShowPersonLicenseHistory.Enabled = false;
         }
-
         private void _EnableAndDisableCmsLDLApplication(enLDLApplicationStatus status)
         {
             _ResetAllMenus();
@@ -1125,6 +1198,36 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _ScheduleStreetTestLDLApplication();
                     break;
             }
+        }
+
+        private void TSMIssueDrivingLicenseFirstTimeApplication_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            {
+                frmIssueLicenseForFirstTime issueLicenseForFirstTime = new frmIssueLicenseForFirstTime(ID);
+                issueLicenseForFirstTime.ShowDialog();
+                _btnRefreshDGV_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Application Not Found to issue License For First Time.", "Failed");
+            }
+        }
+
+        private void TSMShowLicenseApplication_Click(object sender, EventArgs e)
+        {
+
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            {
+                frmShowDriverLicenseDetails showDriverLicenseDetails = new frmShowDriverLicenseDetails(ID);
+                showDriverLicenseDetails.ShowDialog();
+                _btnRefreshDGV_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Driver License Not Found to Show.", "Failed");
+            }
+           
         }
     }
 }
