@@ -437,7 +437,8 @@ namespace DVLDSystem_DataAccessLayer_
                                                       dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
                                                       dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
                                                       dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID)R1
-					         	 where R1.LocalDrivingLicenseApplicationID Like '%'+@LDLApplicationID+'%' ";
+					         	 where R1.LocalDrivingLicenseApplicationID Like '%'+@LDLApplicationID+'%' 
+                              order by R1.LocalDrivingLicenseApplicationID desc";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
 
@@ -479,7 +480,8 @@ namespace DVLDSystem_DataAccessLayer_
                                                       dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
                                                       dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
                                                       dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID)R1
-                             						 where R1.NationalNo like '%'+@NationalNo+'%' ";
+                             						 where R1.NationalNo like '%'+@NationalNo+'%' 
+                                                      order by R1.LocalDrivingLicenseApplicationID desc";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@NationalNo", NationalNo);
 
@@ -521,7 +523,8 @@ namespace DVLDSystem_DataAccessLayer_
                                                       dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
                                                       dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
                                                       dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID)R1
-                             						 where R1.FullName like '%'+@FullName+'%' ";
+                             						 where R1.FullName like '%'+@FullName+'%' 
+                                                     order by R1.LocalDrivingLicenseApplicationID desc";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@FullName", FullName);
 
@@ -562,7 +565,8 @@ namespace DVLDSystem_DataAccessLayer_
                                                       dbo.Applications ON dbo.LocalDrivingLicenseApplications.ApplicationID = dbo.Applications.ApplicationID INNER JOIN
                                                       dbo.LicenseClasses ON dbo.LocalDrivingLicenseApplications.LicenseClassID = dbo.LicenseClasses.LicenseClassID INNER JOIN
                                                       dbo.People ON dbo.Applications.ApplicantPersonID = dbo.People.PersonID
-                             						 where Applications.ApplicationStatus = @Status ";
+                             						 where Applications.ApplicationStatus = @Status 
+                                                      order by LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID desc";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@Status", Status);
 
