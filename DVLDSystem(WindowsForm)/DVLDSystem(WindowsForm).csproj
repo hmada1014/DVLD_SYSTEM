@@ -123,16 +123,16 @@
     <Compile Include="Driver Forms\frmDriver.Designer.cs">
       <DependentUpon>frmDriver.cs</DependentUpon>
     </Compile>
-    <Compile Include="Driver License Forms\frmLicenseHistory.cs">
+    <Compile Include="License Forms\Driver License Forms\frmLicenseHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Driver License Forms\frmLicenseHistory.Designer.cs">
+    <Compile Include="License Forms\Driver License Forms\frmLicenseHistory.Designer.cs">
       <DependentUpon>frmLicenseHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Driver License Forms\frmShowDriverLicenseDetails.cs">
+    <Compile Include="License Forms\Driver License Forms\frmShowDriverLicenseDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Driver License Forms\frmShowDriverLicenseDetails.Designer.cs">
+    <Compile Include="License Forms\Driver License Forms\frmShowDriverLicenseDetails.Designer.cs">
       <DependentUpon>frmShowDriverLicenseDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Application Forms\frmManageIntlLicenseApplication.cs">
@@ -141,22 +141,22 @@
     <Compile Include="Application Forms\frmManageIntlLicenseApplication.Designer.cs">
       <DependentUpon>frmManageIntlLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="internationalLicense Forms\frmNewInternationalLicense.cs">
+    <Compile Include="License Forms\internationalLicense Forms\frmNewInternationalLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="internationalLicense Forms\frmNewInternationalLicense.Designer.cs">
+    <Compile Include="License Forms\internationalLicense Forms\frmNewInternationalLicense.Designer.cs">
       <DependentUpon>frmNewInternationalLicense.cs</DependentUpon>
     </Compile>
-    <Compile Include="internationalLicense Forms\frmShowInternationalLicenseDetails.cs">
+    <Compile Include="License Forms\internationalLicense Forms\frmShowInternationalLicenseDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="internationalLicense Forms\frmShowInternationalLicenseDetails.Designer.cs">
+    <Compile Include="License Forms\internationalLicense Forms\frmShowInternationalLicenseDetails.Designer.cs">
       <DependentUpon>frmShowInternationalLicenseDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Issue FIrst Time\frmIssueLicenseForFirstTime.cs">
+    <Compile Include="License Forms\Issue FIrst Time\frmIssueLicenseForFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Issue FIrst Time\frmIssueLicenseForFirstTime.Designer.cs">
+    <Compile Include="License Forms\Issue FIrst Time\frmIssueLicenseForFirstTime.Designer.cs">
       <DependentUpon>frmIssueLicenseForFirstTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Main  Forms\frmMainScreen.cs">
@@ -198,10 +198,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RenewLicense Forms\frmRenewLicense.cs">
+    <Compile Include="License Forms\RenewLicense Forms\frmRenewLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RenewLicense Forms\frmRenewLicense.Designer.cs">
+    <Compile Include="License Forms\RenewLicense Forms\frmRenewLicense.Designer.cs">
       <DependentUpon>frmRenewLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="Test Forms\frmScheduelTest.cs">
@@ -376,22 +376,22 @@
     <EmbeddedResource Include="Driver Forms\frmDriver.resx">
       <DependentUpon>frmDriver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Driver License Forms\frmLicenseHistory.resx">
+    <EmbeddedResource Include="License Forms\Driver License Forms\frmLicenseHistory.resx">
       <DependentUpon>frmLicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Driver License Forms\frmShowDriverLicenseDetails.resx">
+    <EmbeddedResource Include="License Forms\Driver License Forms\frmShowDriverLicenseDetails.resx">
       <DependentUpon>frmShowDriverLicenseDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Application Forms\frmManageIntlLicenseApplication.resx">
       <DependentUpon>frmManageIntlLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="internationalLicense Forms\frmNewInternationalLicense.resx">
+    <EmbeddedResource Include="License Forms\internationalLicense Forms\frmNewInternationalLicense.resx">
       <DependentUpon>frmNewInternationalLicense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="internationalLicense Forms\frmShowInternationalLicenseDetails.resx">
+    <EmbeddedResource Include="License Forms\internationalLicense Forms\frmShowInternationalLicenseDetails.resx">
       <DependentUpon>frmShowInternationalLicenseDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Issue FIrst Time\frmIssueLicenseForFirstTime.resx">
+    <EmbeddedResource Include="License Forms\Issue FIrst Time\frmIssueLicenseForFirstTime.resx">
       <DependentUpon>frmIssueLicenseForFirstTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login Forms\frmLoginScreen.resx">
@@ -414,7 +414,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RenewLicense Forms\frmRenewLicense.resx">
+    <EmbeddedResource Include="License Forms\RenewLicense Forms\frmRenewLicense.resx">
       <DependentUpon>frmRenewLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test Forms\frmScheduelTest.resx">
