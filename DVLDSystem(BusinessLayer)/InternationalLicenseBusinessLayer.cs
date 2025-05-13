@@ -205,7 +205,10 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsInternationalLicenseDataAccessLayer.GetAllInternationalLicense();
         }
-
+        public static DataView GetAllInternationalLicensesByDriverID(int DriverID)
+        {
+            return clsInternationalLicenseDataAccessLayer.GetAllInternationalLicenseByDriverID(DriverID);
+        }
         public static DataView SearchInternationalLicenseByInternationalLicenseID(string InternationalLicenseID)
         {
             return clsInternationalLicenseDataAccessLayer.SearchInternationalLicenseByInternationalLicenseID(InternationalLicenseID);

@@ -258,6 +258,38 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dtInternationalLicense.DefaultView;
         }
+        public static DataView GetAllInternationalLicenseByDriverID(int DriverID)
+        {
+            DataTable dtInternationalLicense = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT       InternationalLicenseID, ApplicationID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive
+                             FROM            InternationalLicenses
+                             where InternationalLicenses.DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dtInternationalLicense.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dtInternationalLicense.DefaultView;
+        }
+
         public static int GetTotalInternationalLicenses()
         {
             int Total = 0;
