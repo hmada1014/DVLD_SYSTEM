@@ -40,7 +40,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Souvenir Lt BT", 37F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(236, 119);
+            this.label1.Location = new System.Drawing.Point(236, 122);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(565, 62);
             this.label1.TabIndex = 2;
@@ -70,7 +70,7 @@
             this.btnClose.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(840, 584);
+            this.btnClose.Location = new System.Drawing.Point(888, 522);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(128, 38);
             this.btnClose.TabIndex = 42;
@@ -103,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 634);
+            this.ClientSize = new System.Drawing.Size(1028, 569);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ucDriverLicenseInfo1);
             this.Controls.Add(this.label1);

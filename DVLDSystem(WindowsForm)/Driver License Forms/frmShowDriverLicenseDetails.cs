@@ -14,12 +14,12 @@ namespace DVLDSystem_WindowsForm_.Driver_License_Forms
 {
     public partial class frmShowDriverLicenseDetails : Form
     {
-        private int _LDLApplicationID;
-        public frmShowDriverLicenseDetails(int LDLApplicationID)
+        private int _ApplicationID;
+        public frmShowDriverLicenseDetails(int ApplicationID)
         {
             InitializeComponent();
 
-            _LDLApplicationID = LDLApplicationID;
+            _ApplicationID = ApplicationID;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace DVLDSystem_WindowsForm_.Driver_License_Forms
         }
         private void frmShowDriverLicenseDetails_Load(object sender, EventArgs e)
         {
-            ucDriverLicenseInfo1.LoadDriverLicenseInfo(_LDLApplicationID);
+            ucDriverLicenseInfo1.LoadDriverLicenseInfo(_ApplicationID);
         }
     }
 }
