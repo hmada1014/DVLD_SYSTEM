@@ -15,6 +15,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
     public partial class ucDrivingLicenseApplicationInfo : UserControl
     {
         private clsLocalDrivingLicenseApplication _LDLApplication;
+        private clsApplication _Application;
        
         public ucDrivingLicenseApplicationInfo()
         {
@@ -55,7 +56,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
         {
             if (lklShowLicenseInfo.Enabled)
             {
-                frmShowDriverLicenseDetails showDriverLicenseDetails = new frmShowDriverLicenseDetails(_LDLApplication.LocalDrivingLicenseApplicationID);
+                frmShowDriverLicenseDetails showDriverLicenseDetails = new frmShowDriverLicenseDetails(_LDLApplication.ApplicationID);
                 showDriverLicenseDetails.ShowDialog();
             }
         

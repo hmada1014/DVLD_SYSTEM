@@ -16,7 +16,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
 {
     public partial class ucDriverLicenseInfo : UserControl
     {
-        private clsLocalDrivingLicenseApplication _LDLApplication;
+        
+        private clsApplication _Application;
         private clsPerson _Person;
         private clsLicense _License;
         public ucDriverLicenseInfo()
@@ -144,6 +145,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
             set { pbImagePerson.Image = value; }
         }
 
+        public string ImagePersonLocation
+        {
+            get { return pbImagePerson.ImageLocation; }
+            set { pbImagePerson.ImageLocation = value; }
+        }
+
         private string _GetIssueReasonString(int ReasonId)
         {
             switch (ReasonId)
@@ -159,17 +166,36 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
         }
 
-        public void LoadDriverLicenseInfo(int LDLApplicattion)
+        public bool LoadDriverLicenseInfo(int ApplicationID)
         {
-            _LDLApplication = clsLocalDrivingLicenseApplication.Find(LDLApplicattion);
-            _Person = clsPerson.Find(_LDLApplication.ApplicantPersonID);
-            _License = clsLicense.FindByApplicationID(_LDLApplication.ApplicationID);
-
-            if (_LDLApplication != null && _Person != null && _License != null)
+           
+            _Application = clsApplication.Find(ApplicationID);
+            if (_Application == null)
             {
-                this.ClassName = clsLicenseClass.Find(_LDLApplication.LicenseClassID).ClassName;
+                this.ClassName = "[???]";
+                this.NamePerson = "[???]";
+                this.LicenseID = "[???]";
+                this.NationalNo = "[???]";
+                this.GenderPerson = "[???]";
+                this.IssueDate = "[???]";
+                this.IssueReason = "[???]";
+                this.Notes = "[???]";
+                this.IsActive = "[???]";
+                this.DateOfBirth = "[???]";
+                this.DriverID = "[???]";
+                this.ExpirationDate = "[???]";
+                this.IsDetained = "[???]"; ;
+                this.ImagePerson = Resources.Male_512;
+                return false;
+            }
+            _Person = clsPerson.Find(_Application.ApplicantPersonID);
+            _License = clsLicense.FindByApplicationID(_Application.ApplicationID);
+
+            if (_Person != null && _License != null)
+            {
+                this.ClassName = clsLicenseClass.Find(_License.LicenseClass).ClassName;
                 this.NamePerson = _Person.FullName;
-                this.LicenseID = _LDLApplication.LicenseClassID.ToString();
+                this.LicenseID = _License.LicenseID.ToString();
                 this.NationalNo = _Person.NationalNo;
                 this.GenderPerson = _Person.Gender == 0 ? "Male" : "Female";
                 this.IssueDate = _License.IssueDate.ToString("d/MMM/yyyy");
@@ -182,31 +208,16 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 // this.IsDetained = clsDetaineLicense.Find(_License.LicenseID).IsReleased == true ?"Yes":"NO";
                 if (File.Exists(_Person.ImagePath))
                 {
-                    this.ImagePerson = Image.FromFile(_Person.ImagePath);
+                   // this.ImagePerson = Image.FromFile(_Person.ImagePath);
+                   this.ImagePersonLocation = _Person.ImagePath;
                 }
                 else
                 {
                     this.ImagePerson = _Person.Gender == 0 ? Resources.person_man : Resources.person_woman;
                 }
+                return true;
             }
-            else
-            {
-                this.ClassName = "???";
-                this.NamePerson = "???";
-                this.LicenseID = "???";
-                this.NationalNo = "???";
-                this.GenderPerson = "???";
-                this.IssueDate = "???";
-                this.IssueReason = "???";
-                this.Notes = "???";
-                this.IsActive = "???";
-                this.DateOfBirth = "???";
-                this.DriverID = "???";
-                this.ExpirationDate = "???";
-                this.IsDetained ="???";;
-                //this.ImagePerson = ;
-
-            }
+            return false;
         }
     }
 }

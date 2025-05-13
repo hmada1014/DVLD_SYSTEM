@@ -131,9 +131,9 @@
             this.gbDriverLicense.Controls.Add(this.label2);
             this.gbDriverLicense.Controls.Add(this.label1);
             this.gbDriverLicense.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.gbDriverLicense.Location = new System.Drawing.Point(5, 5);
+            this.gbDriverLicense.Location = new System.Drawing.Point(5, 3);
             this.gbDriverLicense.Name = "gbDriverLicense";
-            this.gbDriverLicense.Size = new System.Drawing.Size(998, 379);
+            this.gbDriverLicense.Size = new System.Drawing.Size(971, 327);
             this.gbDriverLicense.TabIndex = 0;
             this.gbDriverLicense.TabStop = false;
             this.gbDriverLicense.Text = "Driver License info";
@@ -141,7 +141,7 @@
             // pbImagePerson
             // 
             this.pbImagePerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbImagePerson.Location = new System.Drawing.Point(800, 93);
+            this.pbImagePerson.Location = new System.Drawing.Point(756, 81);
             this.pbImagePerson.Name = "pbImagePerson";
             this.pbImagePerson.Size = new System.Drawing.Size(190, 171);
             this.pbImagePerson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -152,57 +152,57 @@
             // 
             this.lblIsDetained.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIsDetained.AutoSize = true;
-            this.lblIsDetained.Location = new System.Drawing.Point(613, 303);
+            this.lblIsDetained.Location = new System.Drawing.Point(613, 284);
             this.lblIsDetained.Name = "lblIsDetained";
-            this.lblIsDetained.Size = new System.Drawing.Size(33, 19);
+            this.lblIsDetained.Size = new System.Drawing.Size(50, 19);
             this.lblIsDetained.TabIndex = 38;
-            this.lblIsDetained.Text = "NO";
+            this.lblIsDetained.Text = "[???]";
             // 
             // lblExpirationDate
             // 
             this.lblExpirationDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExpirationDate.AutoSize = true;
-            this.lblExpirationDate.Location = new System.Drawing.Point(613, 259);
+            this.lblExpirationDate.Location = new System.Drawing.Point(613, 233);
             this.lblExpirationDate.Name = "lblExpirationDate";
-            this.lblExpirationDate.Size = new System.Drawing.Size(112, 19);
+            this.lblExpirationDate.Size = new System.Drawing.Size(50, 19);
             this.lblExpirationDate.TabIndex = 37;
-            this.lblExpirationDate.Text = "09/oct/2033";
+            this.lblExpirationDate.Text = "[???]";
             // 
             // lblDriverID
             // 
             this.lblDriverID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDriverID.AutoSize = true;
-            this.lblDriverID.Location = new System.Drawing.Point(613, 215);
+            this.lblDriverID.Location = new System.Drawing.Point(613, 195);
             this.lblDriverID.Name = "lblDriverID";
-            this.lblDriverID.Size = new System.Drawing.Size(29, 19);
+            this.lblDriverID.Size = new System.Drawing.Size(50, 19);
             this.lblDriverID.TabIndex = 36;
-            this.lblDriverID.Text = "11";
+            this.lblDriverID.Text = "[???]";
             // 
             // lblDateOfBirth
             // 
             this.lblDateOfBirth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDateOfBirth.AutoSize = true;
-            this.lblDateOfBirth.Location = new System.Drawing.Point(613, 171);
+            this.lblDateOfBirth.Location = new System.Drawing.Point(613, 155);
             this.lblDateOfBirth.Name = "lblDateOfBirth";
-            this.lblDateOfBirth.Size = new System.Drawing.Size(112, 19);
+            this.lblDateOfBirth.Size = new System.Drawing.Size(50, 19);
             this.lblDateOfBirth.TabIndex = 35;
-            this.lblDateOfBirth.Text = "09/oct/2023";
+            this.lblDateOfBirth.Text = "[???]";
             // 
             // lblIsActive
             // 
             this.lblIsActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIsActive.AutoSize = true;
-            this.lblIsActive.Location = new System.Drawing.Point(613, 127);
+            this.lblIsActive.Location = new System.Drawing.Point(613, 116);
             this.lblIsActive.Name = "lblIsActive";
-            this.lblIsActive.Size = new System.Drawing.Size(38, 19);
+            this.lblIsActive.Size = new System.Drawing.Size(50, 19);
             this.lblIsActive.TabIndex = 34;
-            this.lblIsActive.Text = "Yes";
+            this.lblIsActive.Text = "[???]";
             // 
             // pictureBox9
             // 
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox9.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Man_32;
-            this.pictureBox9.Location = new System.Drawing.Point(569, 296);
+            this.pictureBox9.Location = new System.Drawing.Point(569, 277);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(32, 32);
             this.pictureBox9.TabIndex = 33;
@@ -212,7 +212,7 @@
             // 
             this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox10.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Number_32;
-            this.pictureBox10.Location = new System.Drawing.Point(569, 252);
+            this.pictureBox10.Location = new System.Drawing.Point(569, 226);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(32, 32);
             this.pictureBox10.TabIndex = 32;
@@ -222,7 +222,7 @@
             // 
             this.pictureBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox11.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Number_32;
-            this.pictureBox11.Location = new System.Drawing.Point(569, 208);
+            this.pictureBox11.Location = new System.Drawing.Point(569, 188);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(32, 32);
             this.pictureBox11.TabIndex = 31;
@@ -232,7 +232,7 @@
             // 
             this.pictureBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox12.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Person_32;
-            this.pictureBox12.Location = new System.Drawing.Point(569, 164);
+            this.pictureBox12.Location = new System.Drawing.Point(569, 148);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(32, 32);
             this.pictureBox12.TabIndex = 30;
@@ -241,8 +241,8 @@
             // pictureBox13
             // 
             this.pictureBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox13.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.License_Type_32;
-            this.pictureBox13.Location = new System.Drawing.Point(569, 120);
+            this.pictureBox13.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Question_32;
+            this.pictureBox13.Location = new System.Drawing.Point(569, 109);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(32, 32);
             this.pictureBox13.TabIndex = 29;
@@ -252,7 +252,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(442, 303);
+            this.label13.Location = new System.Drawing.Point(442, 284);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(118, 19);
             this.label13.TabIndex = 28;
@@ -262,7 +262,7 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(417, 259);
+            this.label14.Location = new System.Drawing.Point(417, 233);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(143, 19);
             this.label14.TabIndex = 27;
@@ -272,7 +272,7 @@
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(471, 215);
+            this.label15.Location = new System.Drawing.Point(471, 195);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(89, 19);
             this.label15.TabIndex = 26;
@@ -282,7 +282,7 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(444, 171);
+            this.label16.Location = new System.Drawing.Point(444, 155);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(122, 19);
             this.label16.TabIndex = 25;
@@ -292,7 +292,7 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(471, 127);
+            this.label17.Location = new System.Drawing.Point(471, 116);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(89, 19);
             this.label17.TabIndex = 24;
@@ -301,80 +301,80 @@
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(179, 347);
+            this.lblNote.Location = new System.Drawing.Point(179, 294);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(83, 19);
+            this.lblNote.Size = new System.Drawing.Size(50, 19);
             this.lblNote.TabIndex = 23;
-            this.lblNote.Text = "No Notes";
+            this.lblNote.Text = "[???]";
             // 
             // lblIssueReason
             // 
             this.lblIssueReason.AutoSize = true;
-            this.lblIssueReason.Location = new System.Drawing.Point(179, 303);
+            this.lblIssueReason.Location = new System.Drawing.Point(179, 257);
             this.lblIssueReason.Name = "lblIssueReason";
-            this.lblIssueReason.Size = new System.Drawing.Size(91, 19);
+            this.lblIssueReason.Size = new System.Drawing.Size(50, 19);
             this.lblIssueReason.TabIndex = 22;
-            this.lblIssueReason.Text = "First Time";
+            this.lblIssueReason.Text = "[???]";
             // 
             // lblIssueDate
             // 
             this.lblIssueDate.AutoSize = true;
-            this.lblIssueDate.Location = new System.Drawing.Point(179, 259);
+            this.lblIssueDate.Location = new System.Drawing.Point(179, 217);
             this.lblIssueDate.Name = "lblIssueDate";
-            this.lblIssueDate.Size = new System.Drawing.Size(112, 19);
+            this.lblIssueDate.Size = new System.Drawing.Size(50, 19);
             this.lblIssueDate.TabIndex = 21;
-            this.lblIssueDate.Text = "09/oct/2023";
+            this.lblIssueDate.Text = "[???]";
             // 
             // lblGenderPerson
             // 
             this.lblGenderPerson.AutoSize = true;
-            this.lblGenderPerson.Location = new System.Drawing.Point(179, 215);
+            this.lblGenderPerson.Location = new System.Drawing.Point(179, 179);
             this.lblGenderPerson.Name = "lblGenderPerson";
-            this.lblGenderPerson.Size = new System.Drawing.Size(48, 19);
+            this.lblGenderPerson.Size = new System.Drawing.Size(50, 19);
             this.lblGenderPerson.TabIndex = 20;
-            this.lblGenderPerson.Text = "Male";
+            this.lblGenderPerson.Text = "[???]";
             // 
             // lblNationalNo
             // 
             this.lblNationalNo.AutoSize = true;
-            this.lblNationalNo.Location = new System.Drawing.Point(179, 171);
+            this.lblNationalNo.Location = new System.Drawing.Point(179, 141);
             this.lblNationalNo.Name = "lblNationalNo";
-            this.lblNationalNo.Size = new System.Drawing.Size(41, 19);
+            this.lblNationalNo.Size = new System.Drawing.Size(50, 19);
             this.lblNationalNo.TabIndex = 19;
-            this.lblNationalNo.Text = "N10";
+            this.lblNationalNo.Text = "[???]";
             // 
             // lblLicenseID
             // 
             this.lblLicenseID.AutoSize = true;
-            this.lblLicenseID.Location = new System.Drawing.Point(179, 127);
+            this.lblLicenseID.Location = new System.Drawing.Point(179, 103);
             this.lblLicenseID.Name = "lblLicenseID";
-            this.lblLicenseID.Size = new System.Drawing.Size(29, 19);
+            this.lblLicenseID.Size = new System.Drawing.Size(50, 19);
             this.lblLicenseID.TabIndex = 18;
-            this.lblLicenseID.Text = "25";
+            this.lblLicenseID.Text = "[???]";
             // 
             // lblNamePerson
             // 
             this.lblNamePerson.AutoSize = true;
             this.lblNamePerson.ForeColor = System.Drawing.Color.Maroon;
-            this.lblNamePerson.Location = new System.Drawing.Point(179, 83);
+            this.lblNamePerson.Location = new System.Drawing.Point(179, 69);
             this.lblNamePerson.Name = "lblNamePerson";
-            this.lblNamePerson.Size = new System.Drawing.Size(326, 19);
+            this.lblNamePerson.Size = new System.Drawing.Size(50, 19);
             this.lblNamePerson.TabIndex = 17;
-            this.lblNamePerson.Text = "Mohammed Saqer Mussa Abu-Hadhoud";
+            this.lblNamePerson.Text = "[???]";
             // 
             // lblClassName
             // 
             this.lblClassName.AutoSize = true;
-            this.lblClassName.Location = new System.Drawing.Point(179, 39);
+            this.lblClassName.Location = new System.Drawing.Point(179, 34);
             this.lblClassName.Name = "lblClassName";
-            this.lblClassName.Size = new System.Drawing.Size(275, 19);
+            this.lblClassName.Size = new System.Drawing.Size(50, 19);
             this.lblClassName.TabIndex = 16;
-            this.lblClassName.Text = "Class 3 - Ordinary driving license";
+            this.lblClassName.Text = "[???]";
             // 
             // pictureBox8
             // 
             this.pictureBox8.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Notes_32;
-            this.pictureBox8.Location = new System.Drawing.Point(135, 340);
+            this.pictureBox8.Location = new System.Drawing.Point(135, 287);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(32, 32);
             this.pictureBox8.TabIndex = 15;
@@ -383,7 +383,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Notes_32;
-            this.pictureBox7.Location = new System.Drawing.Point(135, 296);
+            this.pictureBox7.Location = new System.Drawing.Point(135, 250);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(32, 32);
             this.pictureBox7.TabIndex = 14;
@@ -392,7 +392,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Calendar_32;
-            this.pictureBox6.Location = new System.Drawing.Point(135, 252);
+            this.pictureBox6.Location = new System.Drawing.Point(135, 210);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(32, 32);
             this.pictureBox6.TabIndex = 13;
@@ -401,7 +401,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Man_32;
-            this.pictureBox5.Location = new System.Drawing.Point(135, 208);
+            this.pictureBox5.Location = new System.Drawing.Point(135, 172);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(32, 32);
             this.pictureBox5.TabIndex = 12;
@@ -410,7 +410,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Number_32;
-            this.pictureBox4.Location = new System.Drawing.Point(135, 164);
+            this.pictureBox4.Location = new System.Drawing.Point(135, 134);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(32, 32);
             this.pictureBox4.TabIndex = 11;
@@ -419,7 +419,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Number_32;
-            this.pictureBox3.Location = new System.Drawing.Point(135, 120);
+            this.pictureBox3.Location = new System.Drawing.Point(135, 96);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(32, 32);
             this.pictureBox3.TabIndex = 10;
@@ -428,7 +428,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Person_32;
-            this.pictureBox1.Location = new System.Drawing.Point(135, 76);
+            this.pictureBox1.Location = new System.Drawing.Point(135, 62);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.TabIndex = 9;
@@ -437,7 +437,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.License_Type_32;
-            this.pictureBox2.Location = new System.Drawing.Point(135, 32);
+            this.pictureBox2.Location = new System.Drawing.Point(135, 27);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
             this.pictureBox2.TabIndex = 8;
@@ -446,7 +446,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(66, 347);
+            this.label5.Location = new System.Drawing.Point(66, 294);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 19);
             this.label5.TabIndex = 7;
@@ -455,7 +455,7 @@
             // lable7
             // 
             this.lable7.AutoSize = true;
-            this.lable7.Location = new System.Drawing.Point(5, 303);
+            this.lable7.Location = new System.Drawing.Point(5, 257);
             this.lable7.Name = "lable7";
             this.lable7.Size = new System.Drawing.Size(123, 19);
             this.lable7.TabIndex = 6;
@@ -464,7 +464,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 259);
+            this.label7.Location = new System.Drawing.Point(26, 217);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 19);
             this.label7.TabIndex = 5;
@@ -473,7 +473,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(54, 215);
+            this.label8.Location = new System.Drawing.Point(54, 179);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 19);
             this.label8.TabIndex = 4;
@@ -482,7 +482,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 171);
+            this.label3.Location = new System.Drawing.Point(17, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 19);
             this.label3.TabIndex = 3;
@@ -491,7 +491,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 127);
+            this.label4.Location = new System.Drawing.Point(29, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 19);
             this.label4.TabIndex = 2;
@@ -500,7 +500,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 83);
+            this.label2.Location = new System.Drawing.Point(66, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 19);
             this.label2.TabIndex = 1;
@@ -509,7 +509,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 39);
+            this.label1.Location = new System.Drawing.Point(71, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 19);
             this.label1.TabIndex = 0;
@@ -521,7 +521,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbDriverLicense);
             this.Name = "ucDriverLicenseInfo";
-            this.Size = new System.Drawing.Size(1006, 386);
+            this.Size = new System.Drawing.Size(977, 327);
             this.gbDriverLicense.ResumeLayout(false);
             this.gbDriverLicense.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagePerson)).EndInit();
