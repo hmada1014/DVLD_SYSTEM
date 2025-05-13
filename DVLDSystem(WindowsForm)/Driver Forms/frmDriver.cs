@@ -30,5 +30,10 @@ namespace DVLDSystem_WindowsForm_.Driver_Forms
             ucTemplateDGVAndSearch1.RefreshDGV(clsDriver.GetAllDrivers());
             ucTemplateDGVAndSearch1.FillComboBox(_FillComboBoxwhitString());
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
