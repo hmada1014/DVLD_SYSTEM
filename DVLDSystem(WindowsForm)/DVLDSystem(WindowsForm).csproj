@@ -153,10 +153,10 @@
     <Compile Include="internationalLicense Forms\frmShowInternationalLicenseDetails.Designer.cs">
       <DependentUpon>frmShowInternationalLicenseDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Issue\frmIssueLicenseForFirstTime.cs">
+    <Compile Include="Issue FIrst Time\frmIssueLicenseForFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Issue\frmIssueLicenseForFirstTime.Designer.cs">
+    <Compile Include="Issue FIrst Time\frmIssueLicenseForFirstTime.Designer.cs">
       <DependentUpon>frmIssueLicenseForFirstTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Main  Forms\frmMainScreen.cs">
@@ -391,7 +391,7 @@
     <EmbeddedResource Include="internationalLicense Forms\frmShowInternationalLicenseDetails.resx">
       <DependentUpon>frmShowInternationalLicenseDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Issue\frmIssueLicenseForFirstTime.resx">
+    <EmbeddedResource Include="Issue FIrst Time\frmIssueLicenseForFirstTime.resx">
       <DependentUpon>frmIssueLicenseForFirstTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login Forms\frmLoginScreen.resx">
