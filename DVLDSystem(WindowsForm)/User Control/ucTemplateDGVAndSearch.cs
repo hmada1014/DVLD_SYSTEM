@@ -23,10 +23,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
     public partial class ucTemplateDGVAndSearch : UserControl
     {
         private string _FormName;
+        
         private enum enLDLApplicationStatus { New = 1 ,Canceled =2 , Completed =3}
         private enLDLApplicationStatus enLDLApplicationStatusMode;
-        private enum enModeUC { ManageLDLApplication , People,Drivers,Users,Empty}
+        private enum enModeUC { ManageLDLApplication ,ManageInelLicenseApplication, People,Drivers,Users,Empty}
         private enModeUC _enMode = enModeUC.Empty;
+       
         public ucTemplateDGVAndSearch()
         {
             InitializeComponent();
@@ -44,6 +46,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _enMode = enModeUC.ManageLDLApplication;
                     dgvShowList.ContextMenuStrip = cmsLDLApplication;
                     _FillcbGeneralForStatusLDLApplication();
+                    break;
+                case "frmManageIntLLicenseApplication":
+                    _enMode = enModeUC.ManageInelLicenseApplication;
+                    dgvShowList.ContextMenuStrip = cmsInternationalApplication;
+
                     break;
                 case "frmPeople":
                     _enMode = enModeUC.People;
@@ -69,47 +76,41 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
         /*########### Expose Properties of Controls in UserControl #######*/
 
-        [Browsable(true)]
-        [Category("Misc Controls Properties")]
+        [Browsable(true),Category("Misc Controls Properties")]
         public Color dgvBackgroundColor
         {
             get { return dgvShowList.BackgroundColor; }
             set { dgvShowList.BackgroundColor = value;}
         }
 
-        [Browsable(true)]
-        [Category("Misc Controls Properties")]
+        [Browsable(true), Category("Misc Controls Properties")]
         public DataGridViewAutoSizeRowsMode dgvAutoSizeRowsMode
         {
             get { return dgvShowList.AutoSizeRowsMode; }
             set { dgvShowList.AutoSizeRowsMode = value; }
         }
 
-        [Browsable(true)]
-        [Category("Misc Controls Properties")]
+        [Browsable(true), Category("Misc Controls Properties")]
         public DataGridViewAutoSizeColumnsMode dgvAutoSizeColumnMode
         {
             get { return dgvShowList.AutoSizeColumnsMode; }
             set { dgvShowList.AutoSizeColumnsMode = value; }
         }
 
-        [Browsable(true)]
-        [Category("Misc Controls Properties")]
+        [Browsable(true), Category("Misc Controls Properties")]
         public Point TextBoxLocation
         {
             get { return txtSearchDGV.Location; }
             set { txtSearchDGV.Location = value; }
         }
 
-        [Browsable(true)]
-        [Category("Misc Controls Properties")]
+        [Browsable(true), Category("Misc Controls Properties")]
         public string Records
         {
             get { return lblRrecords.Text; }
         }
 
-        [Browsable(true)]
-        [Category("Misc Controls Properties")]
+        [Browsable(true), Category("Misc Controls Properties")]
         public DataGridViewColumnHeadersHeightSizeMode dgvColumnHeadersHeightSizeMode
         {
             get { return dgvShowList.ColumnHeadersHeightSizeMode; }
@@ -130,6 +131,10 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case enModeUC.ManageLDLApplication:
                     dgvShowList.DataSource = dv;
                     _UpdateLDLApplicatinColumnHeaders();
+                    break;
+                case enModeUC.ManageInelLicenseApplication:
+                    dgvShowList.DataSource = dv;
+                    
                     break;
                 case enModeUC.People:
                     dgvShowList.DataSource = dv ;
@@ -204,7 +209,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
             _SafeHeaderSizeUpdate("ApplicationDate", 150);
             _SafeHeaderSizeUpdate("PassedTestCount", 120);
         }
-
         private void _UpdateDriverColumnHeaders()
         {
             if (dgvShowList.Columns.Count <= 0) return;
@@ -217,7 +221,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
 
 
         }
-
         private void _SafeHeaderSizeUpdate(string ColumnName, int ColumnSize)
         {
             if (dgvShowList.Columns.Contains(ColumnName))
@@ -247,6 +250,92 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 return 3;
             }
         }
+        private enLDLApplicationStatus _GetApplicationStatus(int LDLApplicationID)
+        {
+            int Status = clsLocalDrivingLicenseApplication.Find(Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value)).ApplicationStatus;
+
+            switch (Status)
+            {
+                case 1:
+                    return enLDLApplicationStatus.New;
+                case 2:
+                    return enLDLApplicationStatus.Canceled;
+                default:
+                    return enLDLApplicationStatus.Completed;
+            }
+        }
+        private void _EnableAndDisableMenuCompletedStatus()
+        {
+            TSMShowLicenseApplication.Enabled = true;
+            TSMShowPersonLicenseHistory.Enabled = true;
+        }
+        private void _EnableAndDisableMenuNewStatus()
+        {
+            TSMEditApplication.Enabled = true;
+            TSMDeleteApplication.Enabled = true;
+            TSMCancelApplication.Enabled = true;
+            TSMSechduleTests.Enabled = true;
+            TSMShowPersonLicenseHistory.Enabled = true;
+            int PassedTestCount = 0;
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["PassedTestCount"].Value.ToString(), out int CountTest))
+            {
+                PassedTestCount = CountTest;
+            }
+
+
+            TSMScheduleVisionTest.Enabled = false;
+            TSMScheduleWrittenTest.Enabled = false;
+            TSMScheduleStreetTest.Enabled = false;
+            switch (PassedTestCount)
+            {
+                case 0:
+                    TSMScheduleVisionTest.Enabled = true;
+                    break;
+                case 1:
+                    TSMScheduleWrittenTest.Enabled = true;
+                    break;
+                case 2:
+                    TSMScheduleStreetTest.Enabled = true;
+                    break;
+                default:
+                    TSMSechduleTests.Enabled = false;
+                    TSMIssueDrivingLicenseFirstTimeApplication.Enabled = true;
+                    break;
+            }
+
+        }
+        private void _EnableAndDisableMenuCanceledStatus()
+        {
+            TSMDeleteApplication.Enabled = true;
+            TSMShowPersonLicenseHistory.Enabled = true;
+        }
+        private void _ResetAllMenus()
+        {
+            TSMEditApplication.Enabled = false;
+            TSMDeleteApplication.Enabled = false;
+            TSMCancelApplication.Enabled = false;
+            TSMSechduleTests.Enabled = false;
+            TSMIssueDrivingLicenseFirstTimeApplication.Enabled = false;
+            TSMShowLicenseApplication.Enabled = false;
+            TSMShowPersonLicenseHistory.Enabled = false;
+        }
+        private void _EnableAndDisableCmsLDLApplication(enLDLApplicationStatus status)
+        {
+            _ResetAllMenus();
+            switch (status)
+            {
+                case enLDLApplicationStatus.New:
+                    _EnableAndDisableMenuNewStatus();
+                    break;
+                case enLDLApplicationStatus.Canceled:
+                    _EnableAndDisableMenuCanceledStatus();
+                    break;
+                case enLDLApplicationStatus.Completed:
+                    _EnableAndDisableMenuCompletedStatus();
+                    break;
+
+            }
+        }
 
         /*############### for txtsearch ############################*/
         //--------------- Filter  Driver ---------------------------
@@ -255,14 +344,13 @@ namespace DVLDSystem_WindowsForm_.User_Control
             string[] Words = { "All", "Yes", "No" };
             cbGeneral.DataSource = Words;
         }
-
         private void _SearchDriverByDriverID(string DriverID)
         {
             DataTable dt = clsDriver.SearchDriverByDriverID(DriverID).Table;
             if (dt.Rows.Count > 0)
             {
                 dgvShowList.DataSource = dt;
-                _UpdateLDLApplicatinColumnHeaders();
+                
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
@@ -273,11 +361,10 @@ namespace DVLDSystem_WindowsForm_.User_Control
             if (dt.Rows.Count > 0)
             {
                 dgvShowList.DataSource = dt;
-                _UpdateLDLApplicatinColumnHeaders();
+               
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
-
         private void _SearchDriverByFullName(string FullName)
         {
 
@@ -285,10 +372,44 @@ namespace DVLDSystem_WindowsForm_.User_Control
             if (dt.Rows.Count > 0)
             {
                 dgvShowList.DataSource = dt;
-                _UpdateLDLApplicatinColumnHeaders();
+              
             }
             lblRrecords.Text = dgvShowList.RowCount.ToString();
         }
+        //--------------- Filter  inetlLicenseApplication ---------------------------
+
+        private void _SearchIntelLicenseByDriverID(string DriverID)
+        {
+            DataTable dt = clsInternationalLicense.SearchInternationalLicenseByDriverID(DriverID).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+               
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchIntelLicenseByInelLicenseID(string internationalLicenseID)
+        {
+            DataTable dt = clsInternationalLicense.SearchInternationalLicenseByInternationalLicenseID(internationalLicenseID).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+        private void _SearchIntelLicenseByApplicationID(string ApplicationID)
+        {
+            DataTable dt = clsInternationalLicense.SearchInternationalLicenseByApplicationID(ApplicationID).Table;
+            if (dt.Rows.Count > 0)
+            {
+                dgvShowList.DataSource = dt;
+
+            }
+            lblRrecords.Text = dgvShowList.RowCount.ToString();
+        }
+
+
         //--------------- Filter  DLDApplication ---------------------------
         private void _FillcbGeneralForStatusLDLApplication()
         {
@@ -616,6 +737,53 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
         }
 
+        private void _SearchDataByFilteringInelLicenseApplication(string Text)
+        {
+            switch (cbFindBy.Text)
+            {
+                case "None":
+                    break;
+                case "Driver ID":
+                    _SearchIntelLicenseByDriverID(Text);
+                    break;
+                case "intel ID":
+                    _SearchIntelLicenseByInelLicenseID(Text );   
+                        break;
+                case "Application ID":
+                    _SearchIntelLicenseByApplicationID(Text);
+                    break;
+            }
+        }
+
+
+        /*########################### cmsInternationalApplication ################################*/
+        private void _ShowPersonDeitailsIntenational()
+        {
+            int ID = clsDriver.Find((int)dgvShowList.CurrentRow.Cells["DriverID"].Value).PersonID;
+            if (ID != -1)
+            {
+                frmShowPersonDetails personDetails = new frmShowPersonDetails(ID);
+                personDetails.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Person Not Found to Show.", "warning");
+            }
+
+        }
+        private void _ShowinternationalHistory()
+        {
+            if (int.TryParse(dgvShowList.CurrentRow.Cells["DriverID"].Value.ToString(), out int ID))
+            {
+                frmLicenseHistory ShowLicenseHistory = new frmLicenseHistory(ID);
+                ShowLicenseHistory.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Person Not Found to Show.", "warning");
+            }
+        }
+
         /*########################### cmsLDLApplication ################################*/
         private void _ShowLDLApplicationDeitails()
         {
@@ -629,6 +797,20 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 MessageBox.Show("Person Not Found to Show.", "warning");
             }
 
+        }
+        private void _ShowLocalHistory()
+        {
+            int ID = clsLocalDrivingLicenseApplication.GetDriverIDByLDLApplicationID((int)dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+
+            if (ID != -1)
+            {
+                frmLicenseHistory ShowLicenseHistory = new frmLicenseHistory(ID);
+                ShowLicenseHistory.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Person Not Found to Show.", "warning");
+            }
         }
         private void _EditLDLApplication()
         {
@@ -863,6 +1045,9 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case enModeUC.ManageLDLApplication:
                     _SearchDataByFilteringLDLApplication(txtSearchDGV.Text.Trim());
                     break;
+                case enModeUC.ManageInelLicenseApplication:
+                    _SearchDataByFilteringInelLicenseApplication(txtSearchDGV.Text.Trim());
+                    break;
                 case enModeUC.People:
                     _SearchDataByFilteringPeople(txtSearchDGV.Text.Trim());
                     break;
@@ -879,7 +1064,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
         }
         private void _txtSearchDGV_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(cbFindBy.Text == "Person ID" || cbFindBy.Text == "User ID" || cbFindBy.Text == "L.D.LAppID" || cbFindBy.Text == "Driver ID")
+            if(cbFindBy.Text == "Person ID" || cbFindBy.Text == "User ID" || cbFindBy.Text == "L.D.LAppID" || cbFindBy.Text == "Driver ID"
+                || cbFindBy.Text == "intel ID" || cbFindBy.Text == "Application ID")
             {
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
                 {
@@ -894,6 +1080,9 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 case enModeUC.ManageLDLApplication:
                     RefreshDGV(clsLocalDrivingLicenseApplication.GetAllLocalDrivingLicenseApplications());
+                    break;
+                case enModeUC.ManageInelLicenseApplication:
+                    RefreshDGV(clsInternationalLicense.GetAllInternationalLicenses());
                     break;
                 case enModeUC.People:
                     RefreshDGV(clsPerson.GetAllPersons());
@@ -956,6 +1145,9 @@ namespace DVLDSystem_WindowsForm_.User_Control
             {
                 case enModeUC.ManageLDLApplication:
                     _ShowLDLApplicationDeitails();
+                    break;
+                case enModeUC.ManageInelLicenseApplication:
+                    _ShowPersonDeitailsIntenational();
                     break;
                 case enModeUC.People:
                     _ShowPersonDeitails();
@@ -1076,92 +1268,6 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 _EnableAndDisableCmsLDLApplication(_GetApplicationStatus(Convert.ToInt16(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value))); 
             
         }
-        private enLDLApplicationStatus _GetApplicationStatus(int LDLApplicationID)
-        {
-            int Status = clsLocalDrivingLicenseApplication.Find(Convert.ToInt32(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value)).ApplicationStatus;
-            
-            switch (Status)
-            {
-                case 1:
-                    return enLDLApplicationStatus.New;
-                case 2:
-                    return enLDLApplicationStatus.Canceled;
-                default:
-                    return enLDLApplicationStatus.Completed;
-            }
-        }
-        private void _EnableAndDisableMenuCompletedStatus()
-        {
-            TSMShowLicenseApplication.Enabled = true;
-            TSMShowPersonLicenseHistory.Enabled = true;
-        }
-        private void _EnableAndDisableMenuNewStatus()
-        {
-            TSMEditApplication.Enabled = true;
-            TSMDeleteApplication.Enabled = true;
-            TSMCancelApplication.Enabled = true;
-            TSMSechduleTests.Enabled = true;
-            TSMShowPersonLicenseHistory.Enabled = true;
-            int PassedTestCount = 0;
-            if (int.TryParse(dgvShowList.CurrentRow.Cells["PassedTestCount"].Value.ToString() ,out int CountTest))
-            {
-                PassedTestCount = CountTest;
-            }
-
-
-            TSMScheduleVisionTest.Enabled = false;
-            TSMScheduleWrittenTest.Enabled = false;
-            TSMScheduleStreetTest.Enabled = false;
-            switch (PassedTestCount)
-            {
-                case 0:
-                    TSMScheduleVisionTest.Enabled = true;
-                    break;
-                case 1:              
-                    TSMScheduleWrittenTest.Enabled = true;
-                    break;
-                case 2:
-                    TSMScheduleStreetTest.Enabled = true;
-                    break;
-                default:
-                    TSMSechduleTests.Enabled = false;
-                    TSMIssueDrivingLicenseFirstTimeApplication.Enabled = true;
-                    break;
-            }
-
-        }
-        private void _EnableAndDisableMenuCanceledStatus()
-        {
-            TSMDeleteApplication.Enabled = true;
-            TSMShowPersonLicenseHistory.Enabled = true;
-        }
-        private void _ResetAllMenus()
-        {
-            TSMEditApplication.Enabled = false;
-            TSMDeleteApplication.Enabled = false;
-            TSMCancelApplication.Enabled = false;
-            TSMSechduleTests.Enabled = false;
-            TSMIssueDrivingLicenseFirstTimeApplication.Enabled = false;
-            TSMShowLicenseApplication.Enabled = false;
-            TSMShowPersonLicenseHistory.Enabled = false;
-        }
-        private void _EnableAndDisableCmsLDLApplication(enLDLApplicationStatus status)
-        {
-            _ResetAllMenus();
-            switch (status)
-            {
-                case enLDLApplicationStatus.New:
-                    _EnableAndDisableMenuNewStatus();
-                    break;
-                case enLDLApplicationStatus.Canceled:
-                    _EnableAndDisableMenuCanceledStatus();
-                    break;
-                case enLDLApplicationStatus.Completed:
-                    _EnableAndDisableMenuCompletedStatus();
-                    break;
-
-            }
-        }
         private void _dgvShowList_ShowDeitailsGeneral_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             switch (_enMode)
@@ -1199,35 +1305,58 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     break;
             }
         }
-
         private void TSMIssueDrivingLicenseFirstTimeApplication_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            switch (_enMode)
             {
-                frmIssueLicenseForFirstTime issueLicenseForFirstTime = new frmIssueLicenseForFirstTime(ID);
-                issueLicenseForFirstTime.ShowDialog();
-                _btnRefreshDGV_Click(null, null);
-            }
-            else
-            {
-                MessageBox.Show("Application Not Found to issue License For First Time.", "Failed");
+                case enModeUC.ManageLDLApplication:
+                    if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+                    {
+                        frmIssueLicenseForFirstTime issueLicenseForFirstTime = new frmIssueLicenseForFirstTime(ID);
+                        issueLicenseForFirstTime.ShowDialog();
+                        _btnRefreshDGV_Click(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Application Not Found to issue License For First Time.", "Failed");
+                    }
+                    break;
+                case enModeUC.ManageInelLicenseApplication:
+                    break;
             }
         }
-
-        private void TSMShowLicenseApplication_Click(object sender, EventArgs e)
+        private void TSMShowLicenseApplicationGeneral_Click(object sender, EventArgs e)
         {
-
-            if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+            switch (_enMode)
             {
-                frmShowDriverLicenseDetails showDriverLicenseDetails = new frmShowDriverLicenseDetails(ID);
-                showDriverLicenseDetails.ShowDialog();
-                _btnRefreshDGV_Click(null, null);
+                case enModeUC.ManageLDLApplication:
+                    if (int.TryParse(dgvShowList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value.ToString(), out int ID))
+                    {
+                        int ApplicationID = clsLocalDrivingLicenseApplication.GetApplicationIDByLDLApplicationID(ID);
+                        frmShowDriverLicenseDetails showDriverLicenseDetails = new frmShowDriverLicenseDetails(ApplicationID);
+                        showDriverLicenseDetails.ShowDialog();
+                        _btnRefreshDGV_Click(null, null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Driver License Not Found to Show.", "Failed");
+                    }
+                    break;
+                case enModeUC.ManageInelLicenseApplication:
+                    break;
             }
-            else
+        }
+        private void TSMShowPersonLicenseHistoryGeneral_Click(object sender, EventArgs e)
+        {
+            switch (_enMode)
             {
-                MessageBox.Show("Driver License Not Found to Show.", "Failed");
+                case enModeUC.ManageLDLApplication:
+                    _ShowLocalHistory();
+                    break;
+                case enModeUC.ManageInelLicenseApplication:
+                    _ShowinternationalHistory();
+                    break;
             }
-           
         }
     }
 }
