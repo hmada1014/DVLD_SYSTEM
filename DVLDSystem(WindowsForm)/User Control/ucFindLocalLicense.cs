@@ -57,6 +57,11 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
         }
 
+        public void SearchForLicense()
+        {
+            btnIssue_Click(null,null);
+        }
+
         private void txtLicenseID_KeyPress(object sender, KeyPressEventArgs e)
        {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
