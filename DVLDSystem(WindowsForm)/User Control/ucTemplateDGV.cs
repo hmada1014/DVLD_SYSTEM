@@ -33,7 +33,8 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
         }
             
-        private  enum enModeUC { ManageApplicationTypes = 1, ManageTestTypes = 2, VisionTestAppointments =3 , WritingTestAppointments = 4, StreetTestAppointments = 5, Empty }
+        private  enum enModeUC { ManageApplicationTypes = 1, ManageTestTypes = 2, VisionTestAppointments =3 , WritingTestAppointments = 4, StreetTestAppointments = 5, 
+                                LicenseLocalHistory = 6, LicenseInternationalHistory = 7, Empty }
         private  enModeUC _enMode = enModeUC.Empty;
         private string _FormName;
         private clsLocalDrivingLicenseApplication _LDLApplication;
@@ -73,6 +74,15 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _enMode = enModeUC.StreetTestAppointments;
                     _TestTypeID = 3;
                     dgvShowList.ContextMenuStrip = cmsAppointment;
+
+                    break;
+                case "ucLocalHistory":
+                    _enMode = enModeUC.LicenseLocalHistory;
+                    dgvShowList.ContextMenuStrip = null;
+                    break;
+                case "ucInternationalHistory":
+                    _enMode = enModeUC.LicenseInternationalHistory;
+                    dgvShowList.ContextMenuStrip = null;
 
                     break;
             }
@@ -137,6 +147,17 @@ namespace DVLDSystem_WindowsForm_.User_Control
                     _UpdateAppointmentsColumnHeaders();
                     _ResizeDgvForAppointment();
                     break;
+                case enModeUC.LicenseLocalHistory:
+                    dgvShowList.DataSource = dv;
+                    _UpdateLocalHistoryColumnHeaders();
+                    _ResizeDgvForLocalHistory();
+
+                    break;
+                case enModeUC.LicenseInternationalHistory:
+                    dgvShowList.DataSource = dv;
+                    _UpdateInternationalHistoryColumnHeaders();
+                    _ResizeDgvFoInternationalHistory();
+                    break;
             }
 
             lblRrecords.Text = dgvShowList.RowCount.ToString();
@@ -180,6 +201,51 @@ namespace DVLDSystem_WindowsForm_.User_Control
             _SafeHeaderUpdate("TestTypeTitle", "Title");
             _SafeHeaderUpdate("TestTypeDescription", "Description");
             _SafeHeaderUpdate("TestTypeFees", "Fees");
+        }
+
+        private void _UpdateLocalHistoryColumnHeaders()
+        {
+            _SafeHeaderUpdate("LicenseID", "License ID");
+            _SafeHeaderUpdate("ApplicationID", "Application ID");
+            _SafeHeaderUpdate("IssueDate", "Issue Date");
+            _SafeHeaderUpdate("ExpirationDate", "ExpirationDate");
+            _SafeHeaderUpdate("IsActive", "Is Active");
+            _SafeHeaderUpdate("className", "class Name");
+
+
+        }
+
+        private void _ResizeDgvForLocalHistory()
+        {
+            _SafeHeaderSizeUpdate("LicenseID", 120);
+            _SafeHeaderSizeUpdate("ApplicationID", 120);
+            _SafeHeaderSizeUpdate("IssueDate", 150);
+            _SafeHeaderSizeUpdate("ExpirationDate", 150);
+            _SafeHeaderSizeUpdate("IsActive", 120);
+            _SafeHeaderSizeUpdate("className", 250);
+
+
+        }
+        private void _UpdateInternationalHistoryColumnHeaders()
+        {
+            _SafeHeaderUpdate("InternationalLicenseID", "I.License ID");
+            _SafeHeaderUpdate("ApplicationID", "Application ID");
+            _SafeHeaderUpdate("IssuedUsingLocalLicenseID", "Locale License");
+            _SafeHeaderUpdate("IssueDate", "Issue Date");
+            _SafeHeaderUpdate("ExpirationDate", "Expiration Date");
+            _SafeHeaderUpdate("IsActive", "Is Active");
+
+        }
+
+        private void _ResizeDgvFoInternationalHistory()
+        {
+           _SafeHeaderSizeUpdate("InternationalLicenseID", 120);
+           _SafeHeaderSizeUpdate("ApplicationID", 120);
+           _SafeHeaderSizeUpdate("IssuedUsingLocalLicenseID", 120);
+           _SafeHeaderSizeUpdate("IssueDate", 150);
+           _SafeHeaderSizeUpdate("ExpirationDate", 150);
+           _SafeHeaderSizeUpdate("IsActive", 120);
+
         }
         private void _ResizeDgvForManageTestType()
         {
