@@ -170,6 +170,42 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return PassTest;
         }
+        public static int GetDriverIDByLDLApplicationID(int LDLApplicationID)
+        {
+            int DriverID = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"SELECT   Drivers.DriverID
+                             FROM            LocalDrivingLicenseApplications INNER JOIN
+                             Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID INNER JOIN
+                             Licenses ON Applications.ApplicationID = Licenses.ApplicationID INNER JOIN
+                             Drivers ON Licenses.DriverID = Drivers.DriverID
+						     where LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @LDLApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LDLApplicationID", LDLApplicationID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+
+                if (int.TryParse(result.ToString(), out int ID))
+                {
+                    DriverID = ID;
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return DriverID;
+        }
         public static bool IsHasDriverLicenseByApplicationID(int ApplicationID)
         {
             bool IsFound = false;

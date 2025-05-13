@@ -85,7 +85,7 @@ namespace DVLDSystem_BusinessLayer_
             }
             return false;
         }
-        public static clsLocalDrivingLicenseApplication Find(int LocalDrivingLicenseApplicationID)
+        public static  clsLocalDrivingLicenseApplication Find(int LocalDrivingLicenseApplicationID)
         {
             int ApplicationID = -1, LicenseClassID = -1;
 
@@ -122,6 +122,10 @@ namespace DVLDSystem_BusinessLayer_
         public static int GetApplicationIDByLDLApplicationID(int LDLApplicationID)
         {
             return clsLocalDrivingLicenseApplicationDataAccess.GetApplicationIDByLDLApplicationID(LDLApplicationID);
+        }
+        public static int GetDriverIDByLDLApplicationID(int LDLApplicationID)
+        {
+            return clsLocalDrivingLicenseApplicationDataAccess.GetDriverIDByLDLApplicationID(LDLApplicationID) ;
         }
         public static int GetPassedTestsByLDLApplicationID(int LDLApplicationID)
         {
