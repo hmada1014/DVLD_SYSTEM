@@ -41,10 +41,22 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
         }
 
+        public string txtSearch
+        {
+            get => txtSearchAPerson.Text;
+            set => txtSearchAPerson.Text = value;
+        }
+
         public bool GBFilterMode
         {
             get { return GBFilter.Enabled; }
             set { GBFilter.Enabled = value; }
+        }
+
+        public void SearchForPersonByPersonID(string personId)
+        {
+            cbFinder.SelectedIndex = 1;
+            FillUCPersonCard(personId);
         }
 
         private void FillUCPersonCard(string Person ,bool AddPersonUserFormCall = true)
