@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using static DVLDSystem_BusinessLayer_.clsTest;
 
@@ -16,7 +17,7 @@ namespace DVLDSystem_WindowsForm_.Issue
     {
         private clsLocalDrivingLicenseApplication _LDLApplication;
         private clsPerson _Person;
-        private clsLicense _License;
+        private clsLicense _License = new clsLicense();
         private clsDriver _Driver;
         private int _LDLApplicationID = -1;
         public frmIssueLicenseForFirstTime(int LDLApplicationID)
@@ -39,52 +40,24 @@ namespace DVLDSystem_WindowsForm_.Issue
             }
             else
             {
-                MessageBox.Show("this form will close");
+                System.Windows.Forms.MessageBox.Show("this form will close");
                 this.Close();
             }
         }
-        private void _FillObjectDriver()
-        {
-
-            _Driver = new clsDriver();
-            _Driver.CreatedDate = DateTime.Now;
-            _Driver.CreatedByUserID = frmMainScreen._CurrentUser.UserID;
-            _Driver.PersonID = _LDLApplication.ApplicantPersonID;
-        }
-        private void _FillObjectLicense()
-        {
-            _License = new clsLicense();
-            _License.ApplicationID = _LDLApplication.ApplicationID;
-            _License.DriverID = _Driver.DriverID;
-            _License.LicenseClass = _LDLApplication.LicenseClassID;
-            _License.IssueDate = DateTime.Now;
-            _License.ExpirationDate = _License.IssueDate.AddYears(clsLicenseClass.Find(_LDLApplication.LicenseClassID).DefaultValidityLength);
-            _License.Notes = txtNotes.Text;
-            _License.PaidFees = clsLicenseClass.Find(_LDLApplication.LicenseClassID).ClassFees;
-            _License.IsActive = true;
-            _License.IssueReason = 1;
-            _License.CreatedByUserID = frmMainScreen._CurrentUser.UserID;
-        }
-        private void _FillObjectLDLApplication()
-        {
-            _LDLApplication.ApplicationStatus = 3;
-        }
+        
         private void btnIssue_Click(object sender, EventArgs e)
         {
+            int LicesneID = _License.IssueFirstTimeLicense(_LDLApplication,frmMainScreen._CurrentUser.UserID,txtNotes.Text);
 
-            _FillObjectDriver();
-            if (_Driver.Save())
+            if (LicesneID != -1)
             {
-                _FillObjectLicense();
-                if (_License.Save())
-                {
-                    _FillObjectLDLApplication();
-                    if (_LDLApplication.Save())
-                    {
-                        MessageBox.Show($"License Issued Successfully with License ID = {_License.LicenseID}", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ucDrivingLicenseApplicationInfo1.LoadDLApplicationInfo(_LDLApplication.LocalDrivingLicenseApplicationID);
-                    }
-                }
+                System.Windows.Forms.MessageBox.Show($"License Issued Successfully with License ID = {_License.LicenseID}", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ucDrivingLicenseApplicationInfo1.LoadDLApplicationInfo(_LDLApplication.LocalDrivingLicenseApplicationID);
+                btnIssue.Enabled = false;
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show($"License Issued Failed with License ", "Failde", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
