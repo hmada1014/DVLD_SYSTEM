@@ -90,6 +90,11 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsApplicationDataAccessLayer.DeleteApplicationByApplicationID(ApplicationID);
         }
+
+        public  int GetApplicationPersonIDByApplicationID(int ApplicationID )
+        {
+            return clsApplicationDataAccessLayer.GetApplicationPersonIDByApplicationID(ApplicationID );
+        }
         public static DataView GetAllApplications()
         {
             return clsApplicationDataAccessLayer.GetAllApplication();

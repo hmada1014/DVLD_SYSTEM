@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DVLDSystem_WindowsForm_
+namespace DVLDSystem_WindowsForm_.User_Control
 {
-    public partial class testfrm : Form
+    public partial class ucApplicationReplacmentInfo : UserControl
     {
-        public testfrm()
+        public ucApplicationReplacmentInfo()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

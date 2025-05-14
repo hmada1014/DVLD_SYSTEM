@@ -61,6 +61,16 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsDriverDataAccessLayer.IsDriverExist(DriverID);
         }
+
+        public static bool IsDriverByPersonIDExist(int PersonID)
+        {
+            return clsDriverDataAccessLayer.IsDriverByPersonIDExist(PersonID);
+        }
+
+        public static int GetDriverIDByPersonID(int PersonID)
+        {
+            return clsDriverDataAccessLayer.GetDriverIDByPersonID(PersonID);
+        }
         private bool _AddNewDriver()
         {
             this.DriverID = clsDriverDataAccessLayer.AddNewDriver(this.PersonID, this.CreatedByUserID, this.CreatedDate);

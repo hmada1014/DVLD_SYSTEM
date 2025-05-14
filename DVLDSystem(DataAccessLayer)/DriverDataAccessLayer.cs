@@ -211,6 +211,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             finally
             {
+                connection.Close();
             }
             return Total;
         }
@@ -239,6 +240,65 @@ namespace DVLDSystem_DataAccessLayer_
                 connection.Close();
             }
             return IsFound;
+        }
+
+        public static bool IsDriverByPersonIDExist(int PersonID)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Found = 1 from Drivers where  Drivers.PersonID  = @PersonID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+        public static int GetDriverIDByPersonID(int PersonID)
+        {
+            int DriverId = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Drivers.DriverID from Drivers where  Drivers.PersonID  = @PersonID ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(),out int ID))
+                {
+                    DriverId = ID;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return DriverId;
         }
         public static DataView SearchDriverByDriverID(string DriverID)
         {

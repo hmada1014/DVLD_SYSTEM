@@ -37,14 +37,31 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
             else 
             {
-                return clsPerson.Find(Convert.ToInt32(text));       
+                if (text.Length <= 10)
+                {
+                    return clsPerson.Find(Convert.ToInt32(text));   
+                } 
+                else
+                    return clsPerson.Find(-1);
             }
+        }
+
+        public string txtSearch
+        {
+            get => txtSearchAPerson.Text;
+            set => txtSearchAPerson.Text = value;
         }
 
         public bool GBFilterMode
         {
             get { return GBFilter.Enabled; }
             set { GBFilter.Enabled = value; }
+        }
+
+        public void SearchForPersonByPersonID(string personId)
+        {
+            cbFinder.SelectedIndex = 1;
+            FillUCPersonCard(personId);
         }
 
         private void FillUCPersonCard(string Person ,bool AddPersonUserFormCall = true)

@@ -1,6 +1,6 @@
-﻿namespace DVLDSystem_WindowsForm_.Driver_License_Forms
+﻿namespace DVLDSystem_WindowsForm_.internationalLicense_Forms
 {
-    partial class frmShowDriverLicenseDetails
+    partial class frmShowInternationalLicenseDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -30,31 +30,51 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ucInternationalLicenseInfo1 = new DVLDSystem_WindowsForm_.User_Control.ucInternationalLicenseInfo();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
-            this.ucDriverLicenseInfo1 = new DVLDSystem_WindowsForm_.User_Control.ucDriverLicenseInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Souvenir Lt BT", 37F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Souvenir Lt BT", 25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(236, 119);
+            this.label1.Location = new System.Drawing.Point(162, 139);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(565, 62);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Driver License Details";
+            this.label1.Size = new System.Drawing.Size(626, 42);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Driver  International License Details";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.LicenseView_400;
-            this.pictureBox1.Location = new System.Drawing.Point(419, -13);
+            this.pictureBox1.Location = new System.Drawing.Point(376, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(199, 137);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // ucInternationalLicenseInfo1
+            // 
+            this.ucInternationalLicenseInfo1.ApplicationID = "[???]";
+            this.ucInternationalLicenseInfo1.ContainerDriverLicense = "Driver License info";
+            this.ucInternationalLicenseInfo1.DateOfBirth = "[???]";
+            this.ucInternationalLicenseInfo1.DriverID = "[???]";
+            this.ucInternationalLicenseInfo1.ExpirationDate = "[???]";
+            this.ucInternationalLicenseInfo1.GenderPerson = "[???]";
+            this.ucInternationalLicenseInfo1.ImagePerson = global::DVLDSystem_WindowsForm_.Properties.Resources.Male_512;
+            this.ucInternationalLicenseInfo1.InternationalLicenseID = "[???]";
+            this.ucInternationalLicenseInfo1.IsActive = "[???]";
+            this.ucInternationalLicenseInfo1.IssueDate = "[???]";
+            this.ucInternationalLicenseInfo1.LicenseID = "[???]";
+            this.ucInternationalLicenseInfo1.Location = new System.Drawing.Point(10, 180);
+            this.ucInternationalLicenseInfo1.Name = "ucInternationalLicenseInfo1";
+            this.ucInternationalLicenseInfo1.NamePerson = "mohammed khaled qaid ahmed hassen";
+            this.ucInternationalLicenseInfo1.NationalNo = "[???]";
+            this.ucInternationalLicenseInfo1.Size = new System.Drawing.Size(929, 252);
+            this.ucInternationalLicenseInfo1.TabIndex = 6;
             // 
             // btnClose
             // 
@@ -70,49 +90,27 @@
             this.btnClose.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(840, 584);
+            this.btnClose.Location = new System.Drawing.Point(808, 438);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(128, 38);
-            this.btnClose.TabIndex = 42;
+            this.btnClose.TabIndex = 41;
             this.btnClose.Text = "close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ucDriverLicenseInfo1
-            // 
-            this.ucDriverLicenseInfo1.ClassName = "???";
-            this.ucDriverLicenseInfo1.ContainerDriverLicense = "License Info";
-            this.ucDriverLicenseInfo1.DateOfBirth = "???";
-            this.ucDriverLicenseInfo1.DriverID = "???";
-            this.ucDriverLicenseInfo1.ExpirationDate = "???";
-            this.ucDriverLicenseInfo1.GenderPerson = "???";
-            this.ucDriverLicenseInfo1.ImagePerson = global::DVLDSystem_WindowsForm_.Properties.Resources.person_man;
-            this.ucDriverLicenseInfo1.IsActive = "???";
-            this.ucDriverLicenseInfo1.IsDetained = "???";
-            this.ucDriverLicenseInfo1.IssueDate = "???";
-            this.ucDriverLicenseInfo1.IssueReason = "???";
-            this.ucDriverLicenseInfo1.LicenseID = "???";
-            this.ucDriverLicenseInfo1.Location = new System.Drawing.Point(10, 182);
-            this.ucDriverLicenseInfo1.Name = "ucDriverLicenseInfo1";
-            this.ucDriverLicenseInfo1.NamePerson = "???";
-            this.ucDriverLicenseInfo1.NationalNo = "???";
-            this.ucDriverLicenseInfo1.Notes = "???";
-            this.ucDriverLicenseInfo1.Size = new System.Drawing.Size(1016, 400);
-            this.ucDriverLicenseInfo1.TabIndex = 4;
-            // 
-            // frmShowDriverLicenseDetails
+            // frmShowInternationalLicenseDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 634);
+            this.ClientSize = new System.Drawing.Size(948, 483);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.ucDriverLicenseInfo1);
+            this.Controls.Add(this.ucInternationalLicenseInfo1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmShowDriverLicenseDetails";
+            this.Name = "frmShowInternationalLicenseDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmDriverLicenseInfo";
-            this.Load += new System.EventHandler(this.frmShowDriverLicenseDetails_Load);
+            this.Text = "frmShowInternationalLicenseDetails";
+            this.Load += new System.EventHandler(this.frmShowInternationalLicenseDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -123,7 +121,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private User_Control.ucDriverLicenseInfo ucDriverLicenseInfo1;
+        private User_Control.ucInternationalLicenseInfo ucInternationalLicenseInfo1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
     }
 }

@@ -65,6 +65,60 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
+        public static bool GetInternationalLicenseInfoByApplicationID(int ApplicationID, ref int InternationalLicenseID,
+                                                                              ref int DriverID, ref int IssuedUsingLocalLicenseID,
+                                                                              ref DateTime IssueDate, ref DateTime ExpirationDate, ref bool IsActive, ref int CreatedByUserID)
+        {
+
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select * from InternationalLicenses where InternationalLicenses.ApplicationID = @ApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    IsFound = true;
+
+                    InternationalLicenseID = (int)reader["InternationalLicenseID"];
+                    DriverID = (int)reader["DriverID"];
+                    IssuedUsingLocalLicenseID = (int)reader["IssuedUsingLocalLicenseID"];
+                    IssueDate = (DateTime)reader["IssueDate"];
+                    ExpirationDate = (DateTime)reader["ExpirationDate"];
+                    IsActive = (bool)reader["IsActive"];
+                    CreatedByUserID = (int)reader["CreatedByUserID"];
+
+
+                }
+                else
+                {
+                    IsFound = false;
+
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                IsFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
         public static int AddNewInternationalLicense(int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID, DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
         {
             int InternationalLicenseId = -1;
@@ -180,7 +234,7 @@ namespace DVLDSystem_DataAccessLayer_
         {
             DataTable dtInternationalLicense = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string query = " select InternationalLicenseID,ApplicationID,DriverID,IssuedUsingLocalLicenseID,IssueDate,ExpirationDate,IsActive,CreatedByUserID from InternationalLicenses ";
+            string query = " select InternationalLicenseID,ApplicationID,DriverID,IssuedUsingLocalLicenseID,IssueDate,ExpirationDate,IsActive from InternationalLicenses ";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -204,6 +258,38 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dtInternationalLicense.DefaultView;
         }
+        public static DataView GetAllInternationalLicenseByDriverID(int DriverID)
+        {
+            DataTable dtInternationalLicense = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT       InternationalLicenseID, ApplicationID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive
+                             FROM            InternationalLicenses
+                             where InternationalLicenses.DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dtInternationalLicense.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dtInternationalLicense.DefaultView;
+        }
+
         public static int GetTotalInternationalLicenses()
         {
             int Total = 0;
@@ -228,8 +314,75 @@ namespace DVLDSystem_DataAccessLayer_
             }
             finally
             {
+
+                connection.Close();
             }
             return Total;
+        }
+
+        public static int GetApplicationIDByInternationalID(int internationalID)
+        {
+            int ApplicationID = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select InternationalLicenses.ApplicationID from InternationalLicenses
+			                 where InternationalLicenses.InternationalLicenseID = @internationalID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@internationalID", internationalID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int ID))
+                {
+                    ApplicationID = ID;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ApplicationID;
+        }
+
+        public static int GetInternationalLicenseIDByLicenseID(int LicenseID)
+        {
+            int internationalID = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"SELECT InternationalLicenseID
+                             FROM InternationalLicenses
+                             WHERE (IssuedUsingLocalLicenseID) = @LicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int ID))
+                {
+                    internationalID = ID;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return internationalID;
         }
         public static bool IsInternationalLicenseIDExist(int InternationalLicenseID)
         {
@@ -257,6 +410,128 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return IsFound;
         }
+        public static bool IsInternationalLicenseWithLicenseIDExist(int LicensID,bool IsActive = true)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Found = 1 from InternationalLicenses 
+                             where InternationalLicenses.IssuedUsingLocalLicenseID = @LicensID and InternationalLicenses.IsActive =@IsActive";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicensID", LicensID);
+            command.Parameters.AddWithValue("@IsActive", IsActive);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+
+        public static DataView SearchInternationalLicenseByInternationalLicenseID(string InternationalLicenseID)
+        {
+            DataTable dtInternationalLicense = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT       InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive
+                             FROM            InternationalLicenses
+                             where InternationalLicenses.InternationalLicenseID like '%'+@InternationalLicenseID+'%' ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@InternationalLicenseID", InternationalLicenseID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dtInternationalLicense.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dtInternationalLicense.DefaultView;
+        }
+        public static DataView SearchInternationalLicenseByDriverID(string DriverID)
+        {
+            DataTable dtInternationalLicense = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT       InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive
+                             FROM            InternationalLicenses
+                             where InternationalLicenses.DriverID like '%'+@DriverID+'%' ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dtInternationalLicense.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dtInternationalLicense.DefaultView;
+        }
+        public static DataView SearchInternationalLicenseByApplicationID(string ApplicationID)
+        {
+            DataTable dtInternationalLicense = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT       InternationalLicenseID, ApplicationID, DriverID, IssuedUsingLocalLicenseID, IssueDate, ExpirationDate, IsActive
+                             FROM            InternationalLicenses
+                             where InternationalLicenses.ApplicationID like '%'+@ApplicationID+'%' ";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dtInternationalLicense.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dtInternationalLicense.DefaultView;
+        }
+
 
     }
 }

@@ -147,7 +147,7 @@
             this.TSMTakeTest,
             this.refreshToolStripMenuItem});
             this.cmsAppointment.Name = "cmsAppointment";
-            this.cmsAppointment.Size = new System.Drawing.Size(197, 140);
+            this.cmsAppointment.Size = new System.Drawing.Size(137, 118);
             this.cmsAppointment.Opening += new System.ComponentModel.CancelEventHandler(this.cmsGeneral_Opening);
             // 
             // editToolStripMenuItem
@@ -155,7 +155,7 @@
             this.editToolStripMenuItem.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Edit_32_1;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(136, 38);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.TSMEditTestAppointment);
             // 
@@ -164,7 +164,7 @@
             this.TSMTakeTest.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Test_32;
             this.TSMTakeTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.TSMTakeTest.Name = "TSMTakeTest";
-            this.TSMTakeTest.Size = new System.Drawing.Size(196, 38);
+            this.TSMTakeTest.Size = new System.Drawing.Size(136, 38);
             this.TSMTakeTest.Text = "Take Test";
             this.TSMTakeTest.Click += new System.EventHandler(this.TSMTakeTest_Click);
             // 
@@ -173,14 +173,13 @@
             this.refreshToolStripMenuItem.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Refresh_32;
             this.refreshToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(136, 38);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.TSMRefresh_Click);
             // 
             // ucTemplateDGV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.lblRrecords);
             this.Controls.Add(this.lblRecordsTitle);
             this.Controls.Add(this.dgvShowList);

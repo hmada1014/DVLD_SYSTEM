@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLDSystem_DataAccessLayer_
 {
@@ -121,6 +122,76 @@ namespace DVLDSystem_DataAccessLayer_
             return IsFound;
         }
 
+        public static int GetLocalDrivingLicenseIDByLicenseID(int LicenseID)
+        {
+            int LocalDrivingLicenseID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"SELECT       LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
+                             FROM            Licenses INNER JOIN
+                             Applications ON Licenses.ApplicationID = Applications.ApplicationID INNER JOIN
+                             LocalDrivingLicenseApplications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
+						     where Licenses.LicenseID = @LicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@License", LicenseID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int InsertID))
+                {
+                    LocalDrivingLicenseID = InsertID;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return LocalDrivingLicenseID;
+        }
+        public static int GetApplicationIDByLicenseID(int LicenseID)
+        {
+            int LocalDrivingLicenseID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select Licenses.ApplicationID from Licenses
+                             inner join Applications on Licenses.ApplicationID = Applications.ApplicationID
+                             where Licenses.LicenseID = @LicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int InsertID))
+                {
+                    LocalDrivingLicenseID = InsertID;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return LocalDrivingLicenseID;
+        }
         public static int AddNewLicense(int ApplicationID, int DriverID, int LicenseClass, DateTime IssueDate, DateTime ExpirationDate, string Notes, decimal PaidFees, bool IsActive, byte IssueReason, int CreatedByUserID)
         {
             int LicenseId = -1;
@@ -214,7 +285,39 @@ namespace DVLDSystem_DataAccessLayer_
 
             return (AffectedRows > 0);
         }
+        public static DataView GetAllLocalLicenseByDriverID(int DriverID)
+        {
+            DataTable dtLicenseClass = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string query = @"SELECT  LicenseID, ApplicationID,(select LicenseClasses.ClassName 
+                             from LicenseClasses 
+                             where LicenseClasses.LicenseClassID = Licenses.LicenseClass) as className, IssueDate,
+                             ExpirationDate, IsActive FROM            Licenses 
+                             where Licenses.DriverID = @DriverID";
 
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("DriverID", @DriverID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    dtLicenseClass.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dtLicenseClass.DefaultView;
+        }
         public static bool DeleteLicenseByLicenseID(int LicenseID)
         {
             int AffectedRows = 0;
@@ -293,6 +396,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             finally
             {
+                connection.Close();
             }
             return Total;
         }

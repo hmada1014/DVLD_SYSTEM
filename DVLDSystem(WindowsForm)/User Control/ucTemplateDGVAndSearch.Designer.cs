@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.lblFindBy = new System.Windows.Forms.Label();
             this.dgvShowList = new System.Windows.Forms.DataGridView();
@@ -69,10 +69,17 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRefreshDGV = new FontAwesome.Sharp.IconPictureBox();
+            this.cmsInternationalApplication = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TSMShowPersonDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMShowLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowList)).BeginInit();
             this.cmsGeneralMenu.SuspendLayout();
             this.cmsLDLApplication.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).BeginInit();
+            this.cmsInternationalApplication.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbFindBy
@@ -104,21 +111,21 @@
             this.dgvShowList.AllowUserToAddRows = false;
             this.dgvShowList.AllowUserToDeleteRows = false;
             this.dgvShowList.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
-            this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(204)))), ((int)(((byte)(197)))));
+            this.dgvShowList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvShowList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvShowList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvShowList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(64)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(64)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShowList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvShowList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowList.ContextMenuStrip = this.cmsGeneralMenu;
             this.dgvShowList.EnableHeadersVisualStyles = false;
@@ -126,8 +133,8 @@
             this.dgvShowList.Location = new System.Drawing.Point(0, 78);
             this.dgvShowList.Name = "dgvShowList";
             this.dgvShowList.ReadOnly = true;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dgvShowList.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dgvShowList.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvShowList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShowList.Size = new System.Drawing.Size(651, 290);
             this.dgvShowList.TabIndex = 2;
@@ -321,7 +328,7 @@
             this.toolStripMenuItem6,
             this.TSMShowPersonLicenseHistory});
             this.cmsLDLApplication.Name = "cmsLDLApplication";
-            this.cmsLDLApplication.Size = new System.Drawing.Size(273, 360);
+            this.cmsLDLApplication.Size = new System.Drawing.Size(273, 338);
             this.cmsLDLApplication.Opening += new System.ComponentModel.CancelEventHandler(this._cmsLDLApplication_Opening);
             // 
             // TSMShowApplicationDetails
@@ -440,7 +447,7 @@
             this.TSMShowLicenseApplication.Name = "TSMShowLicenseApplication";
             this.TSMShowLicenseApplication.Size = new System.Drawing.Size(272, 38);
             this.TSMShowLicenseApplication.Text = "show License";
-            this.TSMShowLicenseApplication.Click += new System.EventHandler(this.TSMShowLicenseApplication_Click);
+            this.TSMShowLicenseApplication.Click += new System.EventHandler(this.TSMShowLicenseApplicationGeneral_Click);
             // 
             // toolStripMenuItem6
             // 
@@ -454,6 +461,7 @@
             this.TSMShowPersonLicenseHistory.Name = "TSMShowPersonLicenseHistory";
             this.TSMShowPersonLicenseHistory.Size = new System.Drawing.Size(272, 38);
             this.TSMShowPersonLicenseHistory.Text = "Show Person License History";
+            this.TSMShowPersonLicenseHistory.Click += new System.EventHandler(this.TSMShowPersonLicenseHistoryGeneral_Click);
             // 
             // btnRefreshDGV
             // 
@@ -470,6 +478,55 @@
             this.btnRefreshDGV.TabIndex = 4;
             this.btnRefreshDGV.TabStop = false;
             this.btnRefreshDGV.Click += new System.EventHandler(this._btnRefreshDGV_Click);
+            // 
+            // cmsInternationalApplication
+            // 
+            this.cmsInternationalApplication.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cmsInternationalApplication.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.cmsInternationalApplication.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMShowPersonDetails,
+            this.toolStripSeparator5,
+            this.toolStripMenuItem16,
+            this.toolStripSeparator6,
+            this.TSMShowLicenseHistory});
+            this.cmsInternationalApplication.Name = "cmsLDLApplication";
+            this.cmsInternationalApplication.Size = new System.Drawing.Size(250, 130);
+            // 
+            // TSMShowPersonDetails
+            // 
+            this.TSMShowPersonDetails.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonDetails_32;
+            this.TSMShowPersonDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMShowPersonDetails.Name = "TSMShowPersonDetails";
+            this.TSMShowPersonDetails.Size = new System.Drawing.Size(249, 38);
+            this.TSMShowPersonDetails.Text = "Show Persone Details";
+            this.TSMShowPersonDetails.Click += new System.EventHandler(this._TSMShowDetailsGeneral_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(246, 6);
+            // 
+            // toolStripMenuItem16
+            // 
+            this.toolStripMenuItem16.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.License_View_32;
+            this.toolStripMenuItem16.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem16.Name = "toolStripMenuItem16";
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(249, 38);
+            this.toolStripMenuItem16.Text = "show License Details";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(246, 6);
+            // 
+            // TSMShowLicenseHistory
+            // 
+            this.TSMShowLicenseHistory.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.PersonLicenseHistory_32;
+            this.TSMShowLicenseHistory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMShowLicenseHistory.Name = "TSMShowLicenseHistory";
+            this.TSMShowLicenseHistory.Size = new System.Drawing.Size(249, 38);
+            this.TSMShowLicenseHistory.Text = "Show Person License History";
+            this.TSMShowLicenseHistory.Click += new System.EventHandler(this.TSMShowPersonLicenseHistoryGeneral_Click);
             // 
             // ucTemplateDGVAndSearch
             // 
@@ -490,6 +547,7 @@
             this.cmsGeneralMenu.ResumeLayout(false);
             this.cmsLDLApplication.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnRefreshDGV)).EndInit();
+            this.cmsInternationalApplication.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -534,5 +592,11 @@
         private System.Windows.Forms.ToolStripMenuItem TSMShowLicenseApplication;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem TSMShowPersonLicenseHistory;
+        private System.Windows.Forms.ContextMenuStrip cmsInternationalApplication;
+        private System.Windows.Forms.ToolStripMenuItem TSMShowPersonDetails;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem TSMShowLicenseHistory;
     }
 }

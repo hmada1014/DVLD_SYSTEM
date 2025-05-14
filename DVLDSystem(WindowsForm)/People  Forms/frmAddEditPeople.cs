@@ -113,33 +113,12 @@ namespace DVLDSystem_WindowsForm_.People
             {
                 openFile.Filter = "image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
                 openFile.Title = "Select an Image";
-               // string oldPath = pbImage.ImageLocation;
-
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     pbImage.ImageLocation = openFile.FileName;
                     MessageBox.Show($"Image selected: {pbImage.ImageLocation}", "Image Location");
                     lblLinkRemoveImage.Visible = true;
                     pbImage.Tag = "1";
-                    
-
-                    //Guid guid = Guid.NewGuid();
-
-
-
-                    //if (oldPath != null )
-                    //{
-                    //    File.Copy(oldPath, $"D:\\DVLD-People-Images\\{guid}.png", true);
-
-                    //}
-                    //else
-                    //{
-                    //    File.Copy(openFile.FileName, $"D:\\DVLD-People-Images\\{guid}.png", true); 
-                        
-                    //}
-
-
-
                 }
             }
 
@@ -288,6 +267,49 @@ namespace DVLDSystem_WindowsForm_.People
 
             return isValid;
         }
+        private string _GetImagePath()
+        {
+            if (string.IsNullOrEmpty(pbImage.ImageLocation))
+            {
+
+                if (File.Exists(_CurrentPerson.ImagePath))
+                   
+                        File.Delete(_CurrentPerson.ImagePath);             
+              
+                return null;
+            }
+
+
+
+            string NewImagePath = Path.Combine("D:\\DVLD-People-Images", $"{Guid.NewGuid()}.png");
+
+            if (_Mode == enMode.Add)
+            {
+                File.Copy(pbImage.ImageLocation, NewImagePath, true);
+                return NewImagePath;
+            }
+
+            if (_Mode == enMode.Update)
+            {
+                if (string.IsNullOrEmpty(_CurrentPerson.ImagePath))
+                {
+                    File.Copy(pbImage.ImageLocation, NewImagePath, true);
+                    return NewImagePath;
+
+                }
+                else if (!string.IsNullOrEmpty(pbImage.ImageLocation) && !string.IsNullOrEmpty(_CurrentPerson.ImagePath))
+                {
+                     File.Copy(pbImage.ImageLocation, NewImagePath, true);
+
+                   File.Delete(_CurrentPerson.ImagePath);              
+                    return NewImagePath;
+
+                }
+
+            }
+            return null;
+
+        }
         private void _FillPersonObject()
         {
             _CurrentPerson.NationalNo = txtNationalNo.Text.Trim();
@@ -301,14 +323,7 @@ namespace DVLDSystem_WindowsForm_.People
             _CurrentPerson.Phone = txtPhone.Text.Trim();
             _CurrentPerson.Email = txtEmail.Text.Trim();
             _CurrentPerson.NationalityCountryID = cbCountry.SelectedIndex == -1 ? 0 : cbCountry.SelectedIndex + 1;
-            if (pbImage.ImageLocation != null)
-            {
-                _CurrentPerson.ImagePath = pbImage.ImageLocation;
-            }
-            else
-            {
-                _CurrentPerson.ImagePath = null;
-            }
+            _CurrentPerson.ImagePath = _GetImagePath();
         }
         private void _SavePerson()
         {

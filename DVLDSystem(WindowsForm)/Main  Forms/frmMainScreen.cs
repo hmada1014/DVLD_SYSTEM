@@ -1,7 +1,10 @@
 ﻿using DVLDSystem_BusinessLayer_;
 using DVLDSystem_WindowsForm_.Application_Forms;
 using DVLDSystem_WindowsForm_.Driver_Forms;
+using DVLDSystem_WindowsForm_.international_License_Forms;
+using DVLDSystem_WindowsForm_.internationalLicenseID;
 using DVLDSystem_WindowsForm_.Properties;
+using DVLDSystem_WindowsForm_.RenewLicense_Forms;
 using DVLDSystem_WindowsForm_.User;
 using DVLDSystem_WindowsForm_.User__Forms;
 using System;
@@ -80,7 +83,7 @@ namespace DVLDSystem_WindowsForm_
 
         private void TSMCurrentUserInfo_Click(object sender, EventArgs e)
         {
-            if (_CurrentUser != null)
+            if (_CurrentUser != null && !_CheckIsFormOpen(typeof(frmShowUserDetails)))
             {
                 frmShowUserDetails userDetails = new frmShowUserDetails(_CurrentUser.UserID);
                 userDetails.StartPosition = FormStartPosition.CenterScreen;
@@ -91,7 +94,7 @@ namespace DVLDSystem_WindowsForm_
 
         private void TSMChangePassword_Click(object sender, EventArgs e)
         {
-            if (_CurrentUser != null)
+            if (_CurrentUser != null && !_CheckIsFormOpen(typeof(frmChangePasswordUser)))
             {
                 frmChangePasswordUser changePasswordUser = new frmChangePasswordUser(_CurrentUser.UserID);
                 changePasswordUser.StartPosition = FormStartPosition.CenterScreen;
@@ -140,7 +143,12 @@ namespace DVLDSystem_WindowsForm_
 
         private void TSMinternationalLinceseApplications_Click(object sender, EventArgs e)
         {
-           
+            if (!_CheckIsFormOpen(typeof(frmManageIntlLicenseApplication)))
+            {
+                frmManageIntlLicenseApplication intlLicenseApplication = new frmManageIntlLicenseApplication();
+                intlLicenseApplication.MdiParent = this;
+                intlLicenseApplication.Show();
+            }
         }
 
         private void tsmDrivers_Click(object sender, EventArgs e)
@@ -152,6 +160,26 @@ namespace DVLDSystem_WindowsForm_
                 driver.Show();
             }
           
+        }
+
+        private void TSMNewInternationalLicense_Click(object sender, EventArgs e)
+        {
+            if (!_CheckIsFormOpen(typeof(frmNewInternationalLicense)))
+            {
+                frmNewInternationalLicense NewInternationalLicense = new frmNewInternationalLicense();
+                NewInternationalLicense.MdiParent = this;
+                NewInternationalLicense.Show();
+            }
+        }
+
+        private void TSMRenewDrivingLicense_Click(object sender, EventArgs e)
+        {
+            if (!_CheckIsFormOpen(typeof(frmRenewLicense)))
+            {
+                frmRenewLicense renewLicense = new frmRenewLicense();
+                renewLicense.MdiParent = this;
+                renewLicense.Show(); 
+            }
         }
     }
 }

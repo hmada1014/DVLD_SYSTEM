@@ -240,6 +240,8 @@ namespace DVLDSystem_DataAccessLayer_
             }
             return dtLicenseClass.DefaultView;
         }
+
+       
         public static int GetTotalLicenseClasses()
         {
             int Total = 0;
@@ -264,6 +266,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             finally
             {
+                    connection.Close();
             }
             return Total;
         }

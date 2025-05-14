@@ -177,6 +177,41 @@ namespace DVLDSystem_DataAccessLayer_
             return (AffectedRows > 0);
         }
 
+        public static int GetApplicationPersonIDByApplicationID(int ApplicationID)
+        {
+            int ApplicationPersonID = -1;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select  Applications.ApplicantPersonID from Applications
+                             where Applications.ApplicationID = @ApplicationID";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (int.TryParse(result.ToString(),out int ID))
+                {
+                    ApplicationPersonID = ID;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ApplicationPersonID;
+
+        }
+
         public static DataView GetAllApplication()
         {
             DataTable dtApplication = new DataTable();
@@ -230,6 +265,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             finally
             {
+                connection.Close();
             }
             return Total;
         }

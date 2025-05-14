@@ -88,6 +88,7 @@
             this.btnClose.Size = new System.Drawing.Size(128, 38);
             this.btnClose.TabIndex = 39;
             this.btnClose.Text = "close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmDriver
             // 

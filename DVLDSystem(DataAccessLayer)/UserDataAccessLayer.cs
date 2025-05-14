@@ -291,6 +291,7 @@ namespace DVLDSystem_DataAccessLayer_
             }
             finally
             {
+                connection.Close();
             }
             return Total;
         }
