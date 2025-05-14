@@ -37,7 +37,12 @@ namespace DVLDSystem_WindowsForm_.User_Control
             }
             else 
             {
-                return clsPerson.Find(Convert.ToInt32(text));       
+                if (text.Length <= 10)
+                {
+                    return clsPerson.Find(Convert.ToInt32(text));   
+                } 
+                else
+                    return clsPerson.Find(-1);
             }
         }
 
