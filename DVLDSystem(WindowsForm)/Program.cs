@@ -1,6 +1,7 @@
 ﻿using DVLDSystem_WindowsForm_.Application_Forms;
 using DVLDSystem_WindowsForm_.Driver_License_Forms;
 using DVLDSystem_WindowsForm_.internationalLicenseID;
+using DVLDSystem_WindowsForm_.License_Forms.Replacement_Damaged_or_Lost_Forms;
 using DVLDSystem_WindowsForm_.People__Forms;
 using DVLDSystem_WindowsForm_.Test_Forms;
 using DVLDSystem_WindowsForm_.User;
@@ -23,7 +24,7 @@ namespace DVLDSystem_WindowsForm_
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLoginScreen());
+            //Application.Run(new frmLoginScreen());
 
             //Application.Run(new frmPeople());
             //Application.Run(new frmShowPersonDetails(-1));
@@ -32,7 +33,7 @@ namespace DVLDSystem_WindowsForm_
             //Application.Run(new frmUser());
             //Application.Run(new frmAddEditeUser(1));
 
-           // Application.Run(new Test1());
+            // Application.Run(new Test1());
             // Application.Run(new frmChangePasswordUser(33));
 
             //   Application.Run(new frmManagApplicationTypes());
@@ -49,7 +50,10 @@ namespace DVLDSystem_WindowsForm_
             // Application.Run(new frmNewInternationalLicense());
 
 
-           // Application.Run(new frmLicenseHistory());
+            // Application.Run(new frmLicenseHistory());
+
+            Application.Run(new frmReplacementDamagedOrLostLicense());
+
 
 
         }

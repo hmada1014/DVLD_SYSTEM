@@ -159,6 +159,12 @@
     <Compile Include="License Forms\Issue FIrst Time\frmIssueLicenseForFirstTime.Designer.cs">
       <DependentUpon>frmIssueLicenseForFirstTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="License Forms\Replacement Damaged or Lost Forms\frmReplacementDamagedOrLostLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="License Forms\Replacement Damaged or Lost Forms\frmReplacementDamagedOrLostLicense.Designer.cs">
+      <DependentUpon>frmReplacementDamagedOrLostLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main  Forms\frmMainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,12 @@
     </Compile>
     <Compile Include="User Control\ucApplicationNewLicenseInfo.Designer.cs">
       <DependentUpon>ucApplicationNewLicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\ucApplicationReplacmentInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\ucApplicationReplacmentInfo.Designer.cs">
+      <DependentUpon>ucApplicationReplacmentInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="User Control\ucDriverLicenseInfo.cs">
       <SubType>UserControl</SubType>
@@ -351,6 +363,7 @@
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="AccessDeniedForms\AccessDenied.resx">
       <DependentUpon>AccessDenied.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Application Forms\frmEditApplicationType.resx">
       <DependentUpon>frmEditApplicationType.cs</DependentUpon>
@@ -393,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="License Forms\Issue FIrst Time\frmIssueLicenseForFirstTime.resx">
       <DependentUpon>frmIssueLicenseForFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License Forms\Replacement Damaged or Lost Forms\frmReplacementDamagedOrLostLicense.resx">
+      <DependentUpon>frmReplacementDamagedOrLostLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login Forms\frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
@@ -441,6 +457,9 @@
     <EmbeddedResource Include="User Control\ucApplicationNewLicenseInfo.resx">
       <DependentUpon>ucApplicationNewLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Control\ucApplicationReplacmentInfo.resx">
+      <DependentUpon>ucApplicationReplacmentInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucDriverLicenseInfo.resx">
       <DependentUpon>ucDriverLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -455,6 +474,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User  Forms\frmAddEditeUser.resx">
       <DependentUpon>frmAddEditeUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucInternationalApplicationInfo.resx">
       <DependentUpon>ucInternationalApplicationInfo.cs</DependentUpon>
@@ -479,6 +499,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Control\ucRoundedPanel.resx">
       <DependentUpon>ucRoundedPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="User  Forms\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
