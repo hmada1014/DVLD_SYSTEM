@@ -89,7 +89,8 @@
             this.ucDriverLicenseInfo1.DriverID = "[???]";
             this.ucDriverLicenseInfo1.ExpirationDate = "[???]";
             this.ucDriverLicenseInfo1.GenderPerson = "[???]";
-            this.ucDriverLicenseInfo1.ImagePerson = null;
+            this.ucDriverLicenseInfo1.ImagePerson = global::DVLDSystem_WindowsForm_.Properties.Resources.Male_512;
+            this.ucDriverLicenseInfo1.ImagePersonLocation = null;
             this.ucDriverLicenseInfo1.IsActive = "[???]";
             this.ucDriverLicenseInfo1.IsDetained = "[???]";
             this.ucDriverLicenseInfo1.IssueDate = "[???]";
