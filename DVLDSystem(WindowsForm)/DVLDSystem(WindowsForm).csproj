@@ -586,5 +586,8 @@
   <ItemGroup>
     <None Include="Resources\Applications_Inel_512.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id_reload.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -160,9 +160,9 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 case 2:
                     return "Renew";
                 case 3:
-                    return "Replacement for Damaged";
-                default:
                     return "Replacement for Lost";
+                default:
+                    return "Replacement for Damaged";
             }
         }
 
@@ -205,7 +205,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 this.DateOfBirth = _Person.DateOfBirth.ToString("d/M/yyyy");
                 this.DriverID = _License.DriverID.ToString();
                 this.ExpirationDate = _License.ExpirationDate.ToString("d/MMM/yyyy");
-                // this.IsDetained = clsDetaineLicense.Find(_License.LicenseID).IsReleased == true ?"Yes":"NO";
+                this.IsDetained = clsDetaineLicense.IsLicenseDetained(_License.LicenseID) == true ?"Yes":"NO";
                 if (File.Exists(_Person.ImagePath))
                 {
                    // this.ImagePerson = Image.FromFile(_Person.ImagePath);
