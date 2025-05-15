@@ -47,6 +47,7 @@ namespace DVLDSystem_WindowsForm_.internationalLicenseID
                         {
                             lklLicenseHistory.Enabled = true;
                             btnIssue.Enabled = true;
+                            lklShowLicenseInfo.Enabled = false;
                             ucInternationalApplicationInfo1.LocalLicenseID = _License.LicenseID.ToString();
                             return;
                         }  
@@ -73,6 +74,7 @@ namespace DVLDSystem_WindowsForm_.internationalLicenseID
                 ucInternationalApplicationInfo1.LocalLicenseID = "[???]";
                 btnIssue.Enabled = false;
                 lklLicenseHistory.Enabled = false;
+                lklShowLicenseInfo.Enabled= false;
 
         }
 
@@ -83,20 +85,23 @@ namespace DVLDSystem_WindowsForm_.internationalLicenseID
 
         private void btnIssue_Click(object sender, EventArgs e)
         {
-            int InternationalLicenseID = _internationalLicense.IssueInternationalLicense(_License,frmMainScreen._CurrentUser.UserID);
+            if (MessageBox.Show("Are you sure you want to issue a international license?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int InternationalLicenseID = _internationalLicense.IssueInternationalLicense(_License, frmMainScreen._CurrentUser.UserID);
 
-            if (InternationalLicenseID != -1)
-            {
-                MessageBox.Show($"Congratulations, you have international license \n ID = {InternationalLicenseID}", "Issue Succeeded", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                this.ucInternationalApplicationInfo1.InrenationalLicenseID =InternationalLicenseID.ToString() ;
-                this.ucInternationalApplicationInfo1.InrenationalApplicationID =_internationalLicense.ApplicationID.ToString();
-                this.lklShowLicenseInfo.Enabled = true;
-                this.ucFindLocalLicense1.Enabled = false;
-                this.btnIssue.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show($"Sorry, your license is not issued.", "Issue failed", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                if (InternationalLicenseID != -1)
+                {
+                    MessageBox.Show($"Congratulations, you have international license \n ID = {InternationalLicenseID}", "Issue Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.ucInternationalApplicationInfo1.InrenationalLicenseID = InternationalLicenseID.ToString();
+                    this.ucInternationalApplicationInfo1.InrenationalApplicationID = _internationalLicense.ApplicationID.ToString();
+                    this.lklShowLicenseInfo.Enabled = true;
+                    //this.ucFindLocalLicense1.Enabled = false;
+                    this.btnIssue.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show($"Sorry, your license is not issued.", "Issue failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } 
             }
         }
 
