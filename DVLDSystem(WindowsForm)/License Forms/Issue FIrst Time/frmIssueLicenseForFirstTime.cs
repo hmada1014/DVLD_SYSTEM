@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 using static DVLDSystem_BusinessLayer_.clsTest;
 
 namespace DVLDSystem_WindowsForm_.Issue
@@ -47,17 +48,20 @@ namespace DVLDSystem_WindowsForm_.Issue
         
         private void btnIssue_Click(object sender, EventArgs e)
         {
-            int LicesneID = _License.IssueFirstTimeLicense(_LDLApplication,frmMainScreen._CurrentUser.UserID,txtNotes.Text);
+            if (MessageBox.Show("Are you sure you want to issue a License for First Time?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int LicesneID = _License.IssueFirstTimeLicense(_LDLApplication, frmMainScreen._CurrentUser.UserID, txtNotes.Text);
 
-            if (LicesneID != -1)
-            {
-                System.Windows.Forms.MessageBox.Show($"License Issued Successfully with License ID = {_License.LicenseID}", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ucDrivingLicenseApplicationInfo1.LoadDLApplicationInfo(_LDLApplication.LocalDrivingLicenseApplicationID);
-                btnIssue.Enabled = false;
-            }
-            else
-            {
-                System.Windows.Forms.MessageBox.Show($"License Issued Failed with License ", "Failde", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (LicesneID != -1)
+                {
+                    System.Windows.Forms.MessageBox.Show($"License Issued Successfully with License ID = {_License.LicenseID}", "Succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ucDrivingLicenseApplicationInfo1.LoadDLApplicationInfo(_LDLApplication.LocalDrivingLicenseApplicationID);
+                    btnIssue.Enabled = false;
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show($"License Issued Failed with License ", "Failde", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } 
             }
 
         }
