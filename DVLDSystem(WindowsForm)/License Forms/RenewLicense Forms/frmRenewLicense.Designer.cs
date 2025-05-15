@@ -59,6 +59,7 @@
             this.lklShowNewLicenseInfo.TabIndex = 57;
             this.lklShowNewLicenseInfo.TabStop = true;
             this.lklShowNewLicenseInfo.Text = "Show New Licenses info";
+            this.lklShowNewLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklShowNewLicenseInfo_LinkClicked);
             // 
             // lklLicenseHistory
             // 
@@ -71,6 +72,7 @@
             this.lklLicenseHistory.TabIndex = 56;
             this.lklLicenseHistory.TabStop = true;
             this.lklLicenseHistory.Text = "Show Licenses History";
+            this.lklLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklLicenseHistory_LinkClicked);
             // 
             // btnRenew
             // 
