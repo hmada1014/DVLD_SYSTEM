@@ -191,9 +191,12 @@ namespace DVLDSystem_DataAccessLayer_
                 object result = command.ExecuteScalar();
 
 
-                if (int.TryParse(result.ToString(), out int ID))
+                if (result != null)
                 {
-                    DriverID = ID;
+                    if (int.TryParse(result.ToString(), out int ID))
+                    {
+                        DriverID = ID;
+                    } 
                 }
 
             }
