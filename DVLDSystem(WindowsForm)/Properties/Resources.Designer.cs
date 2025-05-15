@@ -623,6 +623,16 @@ namespace DVLDSystem_WindowsForm_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap id_reload {
+            get {
+                object obj = ResourceManager.GetObject("id_reload", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Identification_Documents {
             get {
                 object obj = ResourceManager.GetObject("Identification Documents", resourceCulture);
