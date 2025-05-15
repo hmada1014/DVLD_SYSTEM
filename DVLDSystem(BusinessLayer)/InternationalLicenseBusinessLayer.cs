@@ -119,6 +119,10 @@ namespace DVLDSystem_BusinessLayer_
 
         public int IssueInternationalLicense(clsLicense License ,int UserID)
         {
+            if (License == null)
+            {return -1; }
+            else if (clsDetaineLicense.IsLicenseDetained(License.LicenseID))
+            {return -1;}
             if (License.LicenseClass == 3)
             {
                 clsApplicationTypes _ApplicationType = clsApplicationTypes.Find(6);
