@@ -181,11 +181,11 @@ namespace DVLDSystem_BusinessLayer_
                 _Driver.CreatedDate = DateTime.Now;
                 _Driver.CreatedByUserID = UserID;
                 _Driver.PersonID = LDLApplication.ApplicantPersonID;
-                return _Driver.Save(); 
+                return _Driver.Save();
             }
             return false;
-        } 
-        private bool _SaveLicenseFirstTime(clsLocalDrivingLicenseApplication LDLApplication ,int UserID , string txtNotes)
+        }
+        private bool _SaveLicenseFirstTime(clsLocalDrivingLicenseApplication LDLApplication, int UserID, string txtNotes)
         {
             if (LDLApplication != null)
             {
@@ -210,7 +210,7 @@ namespace DVLDSystem_BusinessLayer_
                 this.Notes = txtNotes;
                 this.PaidFees = clsLicenseClass.Find(LDLApplication.LicenseClassID).ClassFees;
                 this.IsActive = true;
-                this.IssueReason = (int)enApplicationType.FirstTime;
+                this.IssueReason = (byte)enApplicationType.FirstTime;
                 this.CreatedByUserID = UserID;
 
                 return this.Save();
@@ -225,7 +225,7 @@ namespace DVLDSystem_BusinessLayer_
             {
                 if (LDLApplication != null)
                 {
-                    if (_SaveDriverFirstTime(LDLApplication,UserID))
+                    if (_SaveDriverFirstTime(LDLApplication, UserID))
                     {
                         if (_SaveLicenseFirstTime(LDLApplication, UserID, txtNotes))
                         {
@@ -236,7 +236,7 @@ namespace DVLDSystem_BusinessLayer_
             }
             else
             {
-                
+
                 if (_SaveLicenseFirstTime(LDLApplication, UserID, txtNotes))
                 {
                     return this.LicenseID;
@@ -262,7 +262,7 @@ namespace DVLDSystem_BusinessLayer_
             }
             return false;
         }
-        private bool _SaveLicenseForRenew(clsLicense OldLicense, int UserID, int ApplicationID)
+        private bool _SaveLicenseForRenew(clsLicense OldLicense, int UserID, int ApplicationID , string Notes)
         {
             _LicenseClass = clsLicenseClass.Find(OldLicense.LicenseClass);
             if (OldLicense != null && _LicenseClass != null)
@@ -273,10 +273,10 @@ namespace DVLDSystem_BusinessLayer_
                 this.LicenseClass = OldLicense.LicenseClass;
                 this.IssueDate = DateTime.Now;
                 this.ExpirationDate = DateTime.Now.AddYears(_LicenseClass.DefaultValidityLength);
-                this.Notes = OldLicense.Notes;
+                this.Notes = Notes;
                 this.PaidFees = _LicenseClass.ClassFees;
                 this.IsActive = true;
-                this.IssueReason = (int)enApplicationType.Renew;
+                this.IssueReason = (byte)enApplicationType.Renew;
                 this.CreatedByUserID = UserID;
                 base.CreatedByUserID = UserID;
 
@@ -290,11 +290,11 @@ namespace DVLDSystem_BusinessLayer_
             OldLicense.IsActive = false;
             return OldLicense.Save();
         }
-        public int IssueRenewLicense(clsLicense OldLicense, int UserID)
+        public int IssueRenewLicense(clsLicense OldLicense, int UserID , string Note)
         {
             if (OldLicense == null)
                 return -1;
-            if ((DateTime.Now < OldLicense.ExpirationDate) || OldLicense.IsActive == false)
+            if ((DateTime.Now < OldLicense.ExpirationDate) || OldLicense.IsActive == false|| clsDetaineLicense.IsLicenseDetained(OldLicense.LicenseID))
             {
                 return -1;
             }
@@ -302,7 +302,7 @@ namespace DVLDSystem_BusinessLayer_
             {
                 if (_SaveApplicationRenew(OldLicense, UserID))
                 {
-                    if (_SaveLicenseForRenew(OldLicense, UserID, base.ApplicationID))
+                    if (_SaveLicenseForRenew(OldLicense, UserID, base.ApplicationID,Note))
                     {
                         if (_SaveOldLicenseForRenew(OldLicense))
                         {
@@ -317,6 +317,80 @@ namespace DVLDSystem_BusinessLayer_
 
         }
 
+
+        private enApplicationType _GetApplicationType(int ReplacementStatus)
+        {
+            return (ReplacementStatus == 3) ? enApplicationType.ReplacementforLost: enApplicationType.ReplacementDamaged;
+        }
+        private bool _SaveApplicationReplacement(clsLicense OldLicense, int UserID, enApplicationType AppType)
+        {
+            if (OldLicense != null)
+            {
+                base.ApplicantPersonID = OldLicense.ApplicantPersonID;
+                base.ApplicationDate = DateTime.Now;
+                base.ApplicationTypeID = (int)AppType;
+                base.ApplicationStatus = (int)enApplicationStatus.Completed;
+                base.LastStatusDate = DateTime.Now;
+                base.PaidFees = clsApplicationTypes.Find((int)AppType).ApplicationFees;
+                base.CreatedByUserID = UserID;
+                return base.Save();
+            }
+            return false;
+        }
+        private bool _SaveLicenseForReplacement(clsLicense OldLicense, int UserID, int ApplicationID, enApplicationType AppType)
+        {
+            _LicenseClass = clsLicenseClass.Find(OldLicense.LicenseClass);
+            if (OldLicense != null && _LicenseClass != null)
+            {
+
+                this.ApplicationID = ApplicationID;
+                this.DriverID = OldLicense.DriverID;
+                this.LicenseClass = OldLicense.LicenseClass;
+                this.IssueDate = DateTime.Now;
+                this.ExpirationDate = DateTime.Now.AddYears(_LicenseClass.DefaultValidityLength);
+                this.Notes = OldLicense.Notes;
+                this.PaidFees = _LicenseClass.ClassFees;
+                this.IsActive = true;
+                this.IssueReason = (byte)AppType;
+                this.CreatedByUserID = UserID;
+                base.CreatedByUserID = UserID;
+
+                return this.Save();
+            }
+
+            return false;
+        }
+        private bool _SaveOldLicenseForReplacement(clsLicense OldLicense)
+        {
+            OldLicense.IsActive = false;
+            return OldLicense.Save();
+        }
+        public int IssueReplacementLicense(clsLicense OldLicense, int UserID, int ReplacementStatus)
+        {
+            if (OldLicense == null)
+                return -1;
+            if (!(OldLicense.ExpirationDate > DateTime.Now) || OldLicense.IsActive == false || clsDetaineLicense.IsLicenseDetained(OldLicense.LicenseID))
+            {
+                return -1;
+            }
+            else
+            {
+                if (_SaveApplicationReplacement(OldLicense,UserID,_GetApplicationType(ReplacementStatus)))
+                {
+                    if (_SaveLicenseForReplacement(OldLicense, UserID,base.ApplicationID ,_GetApplicationType(ReplacementStatus)))
+                    {
+                        if (_SaveOldLicenseForReplacement(OldLicense))
+                        {
+                            return this.LicenseID;
+                        }
+                    }
+                }
+
+            }
+
+
+            return -1;
+        }
         public static bool DeleteLicense(int LicenseID)
         {
             return clsLicenseDataAccessLayer.DeleteLicenseByLicenseID(LicenseID);

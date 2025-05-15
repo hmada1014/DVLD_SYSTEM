@@ -201,7 +201,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Man_32;
+            this.pictureBox9.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Question_32;
             this.pictureBox9.Location = new System.Drawing.Point(569, 277);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(32, 32);
@@ -211,7 +211,7 @@
             // pictureBox10
             // 
             this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox10.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Number_32;
+            this.pictureBox10.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Calendar_32;
             this.pictureBox10.Location = new System.Drawing.Point(569, 226);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(32, 32);
@@ -231,7 +231,7 @@
             // pictureBox12
             // 
             this.pictureBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox12.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Person_32;
+            this.pictureBox12.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Calendar_32;
             this.pictureBox12.Location = new System.Drawing.Point(569, 148);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(32, 32);

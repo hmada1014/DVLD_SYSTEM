@@ -80,6 +80,11 @@ namespace DVLDSystem_BusinessLayer_
         {
             return clsDetaineLicenseDataAccessLayer.IsDetainExist(DetainID);
         }
+
+        public static bool IsLicenseDetained(int LicenseID)
+        {
+            return clsDetaineLicenseDataAccessLayer.IsLicenseDetained(LicenseID);
+        }
         private bool _AddNewDetain()
         {
             this.DetainID = clsDetaineLicenseDataAccessLayer.AddNewDetain(this.LicenseID, this.DetainDate, this.FineFees, this.CreatedByUserID, this.IsReleased, this.ReleaseDate, this.ReleasedByUserID, this.ReleaseApplicationID);
@@ -117,6 +122,7 @@ namespace DVLDSystem_BusinessLayer_
             return false;
         }
     }
+
 
 
 }

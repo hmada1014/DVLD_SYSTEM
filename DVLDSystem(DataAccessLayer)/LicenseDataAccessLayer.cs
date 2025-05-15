@@ -207,7 +207,15 @@ namespace DVLDSystem_DataAccessLayer_
             command.Parameters.AddWithValue("@LicenseClass", LicenseClass);
             command.Parameters.AddWithValue("@IssueDate", IssueDate);
             command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
-            command.Parameters.AddWithValue("@Notes", Notes);
+            if (!string.IsNullOrEmpty(Notes))
+            {
+                command.Parameters.AddWithValue("@Notes", Notes); 
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@Notes", System.DBNull.Value);
+
+            }
             command.Parameters.AddWithValue("@PaidFees", PaidFees);
             command.Parameters.AddWithValue("@IsActive", IsActive);
             command.Parameters.AddWithValue("@IssueReason", IssueReason);

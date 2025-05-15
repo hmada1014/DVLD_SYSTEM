@@ -44,7 +44,7 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 {
 
                     _License = clsLicense.Find(ID);
-                    if (_License != null)
+                    if (_License != null && onLicenseSelected != null)
                     {
                         onLicenseSelected(_License);
                     }
@@ -52,7 +52,9 @@ namespace DVLDSystem_WindowsForm_.User_Control
                 }
                 else
                 {
-                    onLicenseSelected(null);
+                    if (onLicenseSelected != null)
+                        onLicenseSelected(null); 
+                    
                 }
             }
         }

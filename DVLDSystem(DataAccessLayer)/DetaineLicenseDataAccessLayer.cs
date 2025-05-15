@@ -291,6 +291,34 @@ namespace DVLDSystem_DataAccessLayer_
             return dataTable.DefaultView;
         }
 
+        public static bool IsLicenseDetained(int  licenseID)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string query = @"select  Found = 1 from DetainedLicenses
+                             where DetainedLicenses.LicenseID = @licenseID and DetainedLicenses.IsReleased = 0";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@licenseID", licenseID);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                IsFound = reader.HasRows;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+
+        }
 
 
 

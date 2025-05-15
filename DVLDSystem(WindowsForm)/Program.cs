@@ -24,7 +24,7 @@ namespace DVLDSystem_WindowsForm_
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmLoginScreen());
+            Application.Run(new frmLoginScreen());
 
             //Application.Run(new frmPeople());
             //Application.Run(new frmShowPersonDetails(-1));
@@ -52,7 +52,7 @@ namespace DVLDSystem_WindowsForm_
 
             // Application.Run(new frmLicenseHistory());
 
-            Application.Run(new frmReplacementDamagedOrLostLicense());
+           // Application.Run(new frmReplacementDamagedOrLostLicense());
 
 
 

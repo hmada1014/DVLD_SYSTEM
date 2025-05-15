@@ -3,6 +3,7 @@ using DVLDSystem_WindowsForm_.Application_Forms;
 using DVLDSystem_WindowsForm_.Driver_Forms;
 using DVLDSystem_WindowsForm_.international_License_Forms;
 using DVLDSystem_WindowsForm_.internationalLicenseID;
+using DVLDSystem_WindowsForm_.License_Forms.Replacement_Damaged_or_Lost_Forms;
 using DVLDSystem_WindowsForm_.Properties;
 using DVLDSystem_WindowsForm_.RenewLicense_Forms;
 using DVLDSystem_WindowsForm_.User;
@@ -179,6 +180,16 @@ namespace DVLDSystem_WindowsForm_
                 frmRenewLicense renewLicense = new frmRenewLicense();
                 renewLicense.MdiParent = this;
                 renewLicense.Show(); 
+            }
+        }
+
+        private void TSMReplacementForLostOrDamagedLicense_Click(object sender, EventArgs e)
+        {
+            if (!_CheckIsFormOpen(typeof(frmReplacementDamagedOrLostLicense)))
+            {
+                frmReplacementDamagedOrLostLicense ReplacementLicense = new frmReplacementDamagedOrLostLicense();
+                ReplacementLicense.MdiParent = this;
+                ReplacementLicense.Show();
             }
         }
     }
