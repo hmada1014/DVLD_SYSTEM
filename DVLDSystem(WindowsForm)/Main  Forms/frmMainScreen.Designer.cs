@@ -35,7 +35,7 @@
             this.TSMNewLocalLicenseApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMNewInternationalLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMRenewDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.replacementForLostOrDamagedLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMReplacementForLostOrDamagedLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.releaseDetainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +98,7 @@
             this.drivingLicensesServicesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newDrivingLicenseToolStripMenuItem,
             this.TSMRenewDrivingLicense,
-            this.replacementForLostOrDamagedLicenseToolStripMenuItem,
+            this.TSMReplacementForLostOrDamagedLicense,
             this.toolStripMenuItem2,
             this.toolStripMenuItem3,
             this.releaseDetainToolStripMenuItem,
@@ -146,13 +146,14 @@
             this.TSMRenewDrivingLicense.Text = "Renew Driving License";
             this.TSMRenewDrivingLicense.Click += new System.EventHandler(this.TSMRenewDrivingLicense_Click);
             // 
-            // replacementForLostOrDamagedLicenseToolStripMenuItem
+            // TSMReplacementForLostOrDamagedLicense
             // 
-            this.replacementForLostOrDamagedLicenseToolStripMenuItem.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Damaged_Driving_License_32;
-            this.replacementForLostOrDamagedLicenseToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.replacementForLostOrDamagedLicenseToolStripMenuItem.Name = "replacementForLostOrDamagedLicenseToolStripMenuItem";
-            this.replacementForLostOrDamagedLicenseToolStripMenuItem.Size = new System.Drawing.Size(389, 38);
-            this.replacementForLostOrDamagedLicenseToolStripMenuItem.Text = "Replacement for Lost or Damaged License";
+            this.TSMReplacementForLostOrDamagedLicense.Image = global::DVLDSystem_WindowsForm_.Properties.Resources.Damaged_Driving_License_32;
+            this.TSMReplacementForLostOrDamagedLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSMReplacementForLostOrDamagedLicense.Name = "TSMReplacementForLostOrDamagedLicense";
+            this.TSMReplacementForLostOrDamagedLicense.Size = new System.Drawing.Size(389, 38);
+            this.TSMReplacementForLostOrDamagedLicense.Text = "Replacement for Lost or Damaged License";
+            this.TSMReplacementForLostOrDamagedLicense.Click += new System.EventHandler(this.TSMReplacementForLostOrDamagedLicense_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -378,7 +379,7 @@
         private System.Windows.Forms.ToolStripMenuItem newDrivingLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TSMRenewDrivingLicense;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem replacementForLostOrDamagedLicenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSMReplacementForLostOrDamagedLicense;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripSeparator manageApplicationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageApplicationsToolStripMenuItem1;
