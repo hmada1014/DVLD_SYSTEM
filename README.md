@@ -33,7 +33,7 @@ The DVLD System is designed to manage users, drivers, and driving licenses with 
 
 - **Language:** C# (Windows Forms)  
 - **Architecture:** 3-tier (Presentation, Business Logic, Data Access)  
-- **Database:** SQL Server (Stored Procedures & Triggers)  
+
 
 ---
 
